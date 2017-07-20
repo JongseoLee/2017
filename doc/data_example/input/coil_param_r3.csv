@@ -1,0 +1,10 @@
+Model,tl_r3
+Spring Design Data File,coil_design_r3.csv
+Intial Conditioner File,coil_initial_conditioner.csv
+Log File,coil_itr_r3.log
+stroke,225
+Setting Temperature,300
+Center Beam Node start,1000001
+Error Tolerance,0.5
+Max. Iteration No.,5
+material name,posh1s125
