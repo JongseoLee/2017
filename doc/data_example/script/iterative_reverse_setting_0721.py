@@ -1086,7 +1086,7 @@ def post_align_set() :
 
 def main():  
    py_send("*new_model yes") 
-   ipname="coil_param_r3.csv"
+   ipname="coil_param.csv"
    title,param=read_param(ipname)   
    iname=param[1] 
    icname=param[2]
