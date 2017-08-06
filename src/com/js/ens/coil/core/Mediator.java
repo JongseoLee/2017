@@ -1,0 +1,18 @@
+package com.js.ens.coil.core;
+
+
+
+public class Mediator {
+	private static Mediator instance = new Mediator();
+	public static Mediator getInstance(){
+		return instance;
+	}
+	
+	//////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////
+	// 
+	// Common
+	//
+		
+	
+}

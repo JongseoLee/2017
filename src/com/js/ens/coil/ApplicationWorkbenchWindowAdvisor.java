@@ -13,8 +13,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 	}
 	
 	@Override
-	public ActionBarAdvisor createActionBarAdvisor(
-			IActionBarConfigurer configurer) {
+	public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
 		return new ApplicationActionBarAdvisor(configurer);
 	}
 
@@ -25,5 +24,17 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowCoolBar(false);
 		configurer.setShowStatusLine(false);
 		configurer.setTitle("Coil Anaylsis");
+	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		super.dispose();
+	}
+
+	@Override
+	public void postWindowClose() {
+		// TODO Auto-generated method stub
+		super.postWindowClose();
 	}
 }
