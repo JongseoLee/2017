@@ -23,11 +23,10 @@ public class CustomButton implements ICommand {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		/*
-		if(this.widgetName.equals()){
-			// TODO call MC method
+		if(this.widgetName.equals(Mediator.BUTTON_btnStepSave)){
+			// Call MC method
+			System.out.println("Click btn : " + Mediator.BUTTON_btnStepSave);
 		}
-		// */
 	}
 	
 	////////////////////////////////////////////////
@@ -39,5 +38,9 @@ public class CustomButton implements ICommand {
 		this.button = med.getBtnPrevious();
 	}
 	//*/
+	
+	public void setCustomWidget_btnStepSave(){
+		this.button = med.getBtnStepSave();
+	}
 	
 }

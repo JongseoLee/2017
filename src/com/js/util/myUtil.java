@@ -193,7 +193,7 @@ public class myUtil {
 		if(osName.toLowerCase().contains("win")){
 			os = "window";
 		}else {
-			os = "linux";
+			os = "other";
 		}
 		return os;
 	}

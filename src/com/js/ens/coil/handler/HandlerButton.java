@@ -16,11 +16,9 @@ public class HandlerButton implements Listener {
 	@Override
 	public void handleEvent(Event event) {
 		// TODO Auto-generated method stub
-		/*
-		if(event.widget == med.get){
-			med.getC_Bnt .execute();
+		if(event.widget == med.getBtnStepSave()){
+			med.getC_btnStepSave().execute();
 		}
-		//*/
 	}
 
 }

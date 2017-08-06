@@ -13,28 +13,17 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 	}
 	
 	@Override
-	public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
+	public ActionBarAdvisor createActionBarAdvisor(
+			IActionBarConfigurer configurer) {
 		return new ApplicationActionBarAdvisor(configurer);
 	}
 
 	@Override
 	public void preWindowOpen() {
 		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
-		configurer.setInitialSize(new Point(400, 300));
+		configurer.setInitialSize(new Point(700, 800));
 		configurer.setShowCoolBar(false);
 		configurer.setShowStatusLine(false);
-		configurer.setTitle("Coil Anaylsis");
-	}
-
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-		super.dispose();
-	}
-
-	@Override
-	public void postWindowClose() {
-		// TODO Auto-generated method stub
-		super.postWindowClose();
+		configurer.setTitle("Coil Analysis");
 	}
 }
