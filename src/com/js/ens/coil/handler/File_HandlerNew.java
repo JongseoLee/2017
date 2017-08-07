@@ -16,6 +16,7 @@ public class File_HandlerNew extends AbstractHandler implements IHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// TODO Auto-generated method stub
 		//MC.executeFileNew();
+		System.out.println("File menu New");
 		return null;
 	}
 

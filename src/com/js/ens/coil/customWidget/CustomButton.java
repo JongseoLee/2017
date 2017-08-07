@@ -26,6 +26,10 @@ public class CustomButton implements ICommand {
 		if(this.widgetName.equals(Mediator.BUTTON_btnStepSave)){
 			// Call MC method
 			System.out.println("Click btn : " + Mediator.BUTTON_btnStepSave);
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnExplorer)){
+			// Call MC method
+			System.out.println("Click btn : " + Mediator.BUTTON_btnExplorer);
+			MC.Button_StepSave();
 		}
 	}
 	
@@ -33,14 +37,12 @@ public class CustomButton implements ICommand {
 	////////////////////////////////////////////////
 	//
 	//
-	/*
-	public void setCustomWidget_btnPrevious(){
-		this.button = med.getBtnPrevious();
-	}
-	//*/
 	
 	public void setCustomWidget_btnStepSave(){
 		this.button = med.getBtnStepSave();
 	}
 	
+	public void setCustomWidget_btnExplorer(){
+		this.button = med.getBtnExplorer();
+	}
 }

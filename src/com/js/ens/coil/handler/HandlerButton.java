@@ -18,6 +18,8 @@ public class HandlerButton implements Listener {
 		// TODO Auto-generated method stub
 		if(event.widget == med.getBtnStepSave()){
 			med.getC_btnStepSave().execute();
+		}else if(event.widget == med.getBtnExplorer()){
+			med.getC_btnExplorer().execute();
 		}
 	}
 
