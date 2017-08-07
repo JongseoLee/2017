@@ -2,13 +2,13 @@ package com.js.ens.coil.db;
 
 public class CoilDataLabel {
 	
-	public static String ProductName="Á¦Ç°";
-	public static String LineDiameter="¼±°æ";
-	public static String CenterDiameter="ÄÚÀÏÁß½É°æ";
-	public static String InnerDiameter="ÄÚÀÏ³»°æ";
-	public static String OuterDiameter="ÄÚÀÏ¿Ü°æ";
-	public static String UpperInnerDiameter="¾îÆÛ ³»°æ";
-	public static String LowerInnerDiameter="·Î¿ö ³»°æ";
-	public static String TotalNumber="ÃÑ±Ç¼ö";
+	public static String ProductName="ì œí’ˆ";
+	public static String LineDiameter="ì„ ê²½";
+	public static String CenterDiameter="ì½”ì¼ì¤‘ì‹¬ê²½";
+	public static String InnerDiameter="ì½”ì¼ë‚´ê²½";
+	public static String OuterDiameter="ì½”ì¼ì™¸ê²½";
+	public static String UpperInnerDiameter="ì–´í¼ ë‚´ê²½";
+	public static String LowerInnerDiameter="ë¡œì›Œ ë‚´ê²½";
+	public static String TotalNumber="ì´ê¶Œìˆ˜";
 
 }

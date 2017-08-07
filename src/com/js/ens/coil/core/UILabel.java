@@ -41,21 +41,21 @@ public class UILabel {
 	public static String CoilData = "CoilData";
 	private String base_CoilData = "Coil data";
 	public static String ProductName = "ProductName";
-	private String base_ProductName = "¡¶«∞∏Ì";
+	private String base_ProductName = "Ï†úÌíàÎ™Ö";
 	public static String LineDiameter = "LineDiameter";
-	private String base_LineDiameter = "º±∞Ê";
+	private String base_LineDiameter = "ÏÑ†Í≤Ω(mm)";
 	public static String CenterDiameter = "CenterDiameter";
-	private String base_CenterDiameter = "ƒ⁄¿œ ¡ﬂΩ…∞Ê";
+	private String base_CenterDiameter = "ÏΩîÏùº Ï§ëÏã¨Í≤Ω(mm)";
 	public static String InnerDiameter = "InnerDiameter";
-	private String base_InnerDiameter = "ƒ⁄¿œ ≥ª∞Ê";
+	private String base_InnerDiameter = "ÏΩîÏùº ÎÇ¥Í≤Ω(mm)";
 	public static String OuterDiameter = "OuterDiameter";
-	private String base_OuterDiameter = "ƒ⁄¿œ ø‹∞Ê";
+	private String base_OuterDiameter = "ÏΩîÏùº Ïô∏Í≤Ω(mm)";
 	public static String UpperInnerDiameter = "UpperInnerDiameter";
-	private String base_UpperInnerDiameter = "æÓ∆€ ≥ª∞Ê";
+	private String base_UpperInnerDiameter = "Ïñ¥Ìçº ÎÇ¥Í≤Ω(mm)";
 	public static String LowerInnerDiameter = "LowerInnerDiameter";
-	private String base_LowerInnerDiameter = "∑Œøˆ ≥ª∞Ê";
+	private String base_LowerInnerDiameter = "Î°úÏõå ÎÇ¥Í≤Ω(mm)";
 	public static String TotalNumber = "TotalNumber";
-	private String base_TotalNumber = "√— ±« ºˆ";
+	private String base_TotalNumber = "Ï¥ùÍ∂åÏàò";
 	public static String CoilGeoDataTable = "CoilGeoDataTable";
 	private String base_CoilGeoDataTable = "Coil geometry data table";
 	public static String ColumnTheta = "ColumnTheta";
@@ -64,6 +64,69 @@ public class UILabel {
 	private String base_ColumnRadius = "Radius";
 	public static String ColumnHeight = "ColumnHeight";
 	private String base_ColumnHeight = "Height";
+	
+	public static String SettingProcessInformation = "SettingProcessInformation";
+	private String base_SettingProcessInformation = "Setting Process Information";
+	public static String HotSettingTemp = "HotSettingTemp";
+	private String base_HotSettingTemp = "Hot Setting Temp.(C)";
+	public static String ColdSettingTemp = "ColdSettingTemp";
+	private String base_ColdSettingTemp = "Cold Setting Temp.(C)";
+	public static String HotSettingStrok = "HotSettingStrok";
+	private String base_HotSettingStrok = "Hot Setting Strok(C)";
+	public static String ColdSettingStrok = "ColdSettingStrok";
+	private String base_ColdSettingStrok = "Cold Setting Strok(C)";
+	public static String SeatUInnerMargina = "SeatUInnerMargina";
+	private String base_SeatUInnerMargina = "Seat U. Inner Margina(mm)";
+	public static String SeatLInnerMargina = "SeatLInnerMargina";
+	private String base_SeatLInnerMargina = "Seat L. Inner Margina(mm)";
+	public static String SeatHeight = "SeatHeight";
+	private String base_SeatHeight = "Seat Height(mm)";
+	
+	public static String InitialConditioner = "InitialConditioner";
+	private String base_InitialConditioner = "Initial conditioner";
+	public static String RadiusConditioner = "RadiusConditioner";
+	private String base_RadiusConditioner = "Radius Conditioner(%)";
+	public static String Constant = "Constant";
+	private String base_Constant = "Constant";
+	public static String File = "File";
+	private String base_File ="File";
+	public static String HeightConditioner = "HeightConditioner";
+	private String base_HeightConditioner = "Height Conditioner(%)";
+	
+	// Step2
+	public static String AnalysisOptions = "AnalysisOptions";
+	private String base_AnalysisOptions = "Analysis Options";
+	public static String RadiusTolerance = "RadiusTolerance";
+	private String base_RadiusTolerance = "Radius Tolerance(mm)";
+	public static String HeightTolerance = "HeightTolerance";
+	private String base_HeightTolerance = "Height Tolerance(mm)";
+	public static String MaximumIterationNumber = "MaximumIterationNumber";
+	private String base_MaximumIterationNumber = "Maximum Iteration Number";
+	public static String SimulationIteration = "SimulationIteration";
+	private String base_SimulationIteration = "Simulation Iteration";
+	public static String StartSimulation = "StartSimulation";
+	private String base_StartSimulation = "Start Simulation";
+	public static String CheckError = "CheckError";
+	private String base_CheckError = "Check Error";
+	public static String ReadLog = "ReadLog";
+	private String base_ReadLog = "Read Log";	
+	
+	// Step3
+	public static String DisplayResultCoilData = "DisplayResultCoilData";
+	private String base_DisplayResultCoilData = "Display Result Coil Data";
+	public static String SelectGraph = "SelectGraph";
+	private String base_SelectGraph = "Select Graph";
+	public static String ShowPopupWindow_1 = "ShowPopupWindow_1";
+	private String base_ShowPopupWindow_1 = "Show popup window";
+	public static String SelectImage = "SelectImage";
+	private String base_SelectImage = "Select Image";	
+	public static String ShowPopupWindow_2 = "ShowPopupWindow_2";
+	private String base_ShowPopupWindow_2 = "Show popup window";
+	public static String ShowTableData = "ShowTableData";
+	private String base_ShowTableData = "Show table Data";
+	public static String Show = "Show";
+	private String base_Show = "Show";
+	
 	//
 	//
 	////////////////////////////////////////////////////////////////////////////	
@@ -100,6 +163,37 @@ public class UILabel {
 		this.BaseUILabelMap.put("ColumnRadius",this.base_ColumnRadius);
 		this.BaseUILabelMap.put("ColumnHeight",this.base_ColumnHeight);
 		
+		this.BaseUILabelMap.put("SettingProcessInformation", this.base_SettingProcessInformation);
+		this.BaseUILabelMap.put("HotSettingTemp", this.base_HotSettingTemp);
+		this.BaseUILabelMap.put("ColdSettingTemp", this.base_ColdSettingTemp);
+		this.BaseUILabelMap.put("HotSettingStrok", this.base_HotSettingStrok);
+		this.BaseUILabelMap.put("ColdSettingStrok", this.base_ColdSettingStrok);
+		this.BaseUILabelMap.put("SeatUInnerMargina", this.base_SeatUInnerMargina);
+		this.BaseUILabelMap.put("SeatLInnerMargina", this.base_SeatLInnerMargina);
+		this.BaseUILabelMap.put("SeatHeight", this.base_SeatHeight);
+	
+		this.BaseUILabelMap.put("InitialConditioner", this.base_InitialConditioner);
+		this.BaseUILabelMap.put("RadiusConditioner", this.base_RadiusConditioner);
+		this.BaseUILabelMap.put("Constant", this.base_Constant);
+		this.BaseUILabelMap.put("File",this.base_File);
+		this.BaseUILabelMap.put("HeightConditioner", this.base_HeightConditioner);
+		
+		this.BaseUILabelMap.put("AnalysisOptions", this.base_AnalysisOptions);
+		this.BaseUILabelMap.put("RadiusTolerance", this.base_RadiusTolerance);
+		this.BaseUILabelMap.put("HeightTolerance", this.base_HeightTolerance);
+		this.BaseUILabelMap.put("MaximumIterationNumber", this.base_MaximumIterationNumber);
+		this.BaseUILabelMap.put("SimulationIteration", this.base_SimulationIteration);
+		this.BaseUILabelMap.put("StartSimulation", this.base_StartSimulation);
+		this.BaseUILabelMap.put("CheckError", this.base_CheckError);
+		this.BaseUILabelMap.put("ReadLog", this.base_ReadLog);
+		
+		this.BaseUILabelMap.put("DisplayResultCoilData", this.base_DisplayResultCoilData);
+		this.BaseUILabelMap.put("SelectGraph", this.base_SelectGraph);
+		this.BaseUILabelMap.put("ShowPopupWindow_1", this.base_ShowPopupWindow_1);
+		this.BaseUILabelMap.put("SelectImage", this.base_SelectImage);
+		this.BaseUILabelMap.put("ShowPopupWindow_2", this.base_ShowPopupWindow_2);
+		this.BaseUILabelMap.put("ShowTableData", this.base_ShowTableData);
+		this.BaseUILabelMap.put("Show", this.base_Show);
 	}
 	
 	private void readUILabelFile(){
