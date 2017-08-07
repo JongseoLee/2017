@@ -62,15 +62,18 @@ public class UILabel {
 	}
 	
 	private void readUILabelFile(){
-		Reader reader = new Reader(this.UILabelPath);
-		reader.running();
-		for(String line : reader.getFileDataList()){
-			String data = line.trim();
-			if(data.contains("=")){
-				ArrayList<String> tokens = new ArrayList<String>();
-				tokens = myUtil.splitData(line, "=");
-				this.UILabelMap.put(tokens.get(0), tokens.get(1));
+		try{
+			Reader reader = new Reader(this.UILabelPath);
+			reader.running();
+			for(String line : reader.getFileDataList()){
+				String data = line.trim();
+				if(data.contains("=")){
+					ArrayList<String> tokens = new ArrayList<String>();
+					tokens = myUtil.splitData(line, "=");
+					this.UILabelMap.put(tokens.get(0), tokens.get(1));
+				}
 			}
+		}catch(Exception e){
 		}
 	}
 	
