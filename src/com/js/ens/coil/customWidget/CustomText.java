@@ -24,7 +24,9 @@ public class CustomText implements ICommand {
 		// TODO Auto-generated method stub
 		if(this.widgetName.equals(Mediator.TEXT_textCoilFilePath)){
 			System.out.println("Text("+Mediator.TEXT_textCoilFilePath+")"+med.getTextCoilFilePath().getText());
-		}else if(this.widgetName.equals(Mediator.TEXT_textProductName)){
+		}
+		
+		else if(this.widgetName.equals(Mediator.TEXT_textProductName)){
 			System.out.println("Text("+Mediator.TEXT_textProductName +")"+med.getTextProductName().getText());
 		}else if(this.widgetName.equals(Mediator.TEXT_textLineDiameter)){
 			System.out.println("Text("+Mediator.TEXT_textLineDiameter +")"+med.getTextLineDiameter().getText());
@@ -41,6 +43,34 @@ public class CustomText implements ICommand {
 		}else if(this.widgetName.equals(Mediator.TEXT_textTotalNumber)){
 			System.out.println("Text("+Mediator.TEXT_textTotalNumber +")"+med.getTextTotalNumber().getText());
 		}
+		
+		else if(this.widgetName.equals(Mediator.TEXT_textHotSettingTemp)){
+			System.out.println("Text("+Mediator.TEXT_textHotSettingTemp +")"+med.getTextHotSettingTemp().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textColdSettingTemp)){
+			System.out.println("Text("+Mediator.TEXT_textColdSettingTemp +")"+med.getTextColdSettingTemp().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textHotSettingStrok)){
+			System.out.println("Text("+Mediator.TEXT_textHotSettingStrok +")"+med.getTextHotSettingStrok().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textColdSettingStrok)){
+			System.out.println("Text("+Mediator.TEXT_textColdSettingStrok +")"+med.getTextColdSettingStrok().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textSeatUInnerMargina)){
+			System.out.println("Text("+Mediator.TEXT_textSeatUInnerMargina +")"+med.getTextSeatUInnerMargina().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textSeatLInnerMargina)){
+			System.out.println("Text("+Mediator.TEXT_textSeatLInnerMargina +")"+med.getTextSeatLInnerMargina().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textSeatHeight)){
+			System.out.println("Text("+Mediator.TEXT_textSeatHeight +")"+med.getTextSeatHeight().getText());
+		}
+		
+		else if(this.widgetName.equals(Mediator.TEXT_textRadiusConditionerValue)){
+			System.out.println("Text("+Mediator.TEXT_textRadiusConditionerValue +")"+med.getTextRadiusConditionerValue().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textRadiusConditionerPath)){
+			System.out.println("Text("+Mediator.TEXT_textRadiusConditionerPath +")"+med.getTextRadiusConditionerPath().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textHeightConditionerValue)){
+			System.out.println("Text("+Mediator.TEXT_textHeightConditionerValue +")"+med.getTextHeightConditionerValue().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textHeightConditionerPath)){
+			System.out.println("Text("+Mediator.TEXT_textHeightConditionerPath +")"+med.getTextHeightConditionerPath().getText());
+		}
+		
+		
 
 	}
 	
@@ -49,32 +79,67 @@ public class CustomText implements ICommand {
 	////////////////////////////////////////////////
 	//
 	//
-	public void setCustomWidte_textCoilFilePath(){
+	public void setCustomWidget_textCoilFilePath(){
 		this.text = med.getTextCoilFilePath();
 	}
-	public void setCustomWidte_textProductName(){
+	public void setCustomWidget_textProductName(){
 		this.text = med.getTextProductName();
 	}
-	public void setCustomWidte_textLineDiameter(){
+	public void setCustomWidget_textLineDiameter(){
 		this.text = med.getTextLineDiameter();
 	}
-	public void setCustomWidte_textCenterDiameter(){
+	public void setCustomWidget_textCenterDiameter(){
 		this.text = med.getTextCenterDiameter();
 	}
-	public void setCustomWidte_textInnerDiameter(){
+	public void setCustomWidget_textInnerDiameter(){
 		this.text = med.getTextInnerDiameter();
 	}
-	public void setCustomWidte_textOuterDiameter(){
+	public void setCustomWidget_textOuterDiameter(){
 		this.text = med.getTextOuterDiameter();
 	}
-	public void setCustomWidte_textUpperInnerDiameter(){
+	public void setCustomWidget_textUpperInnerDiameter(){
 		this.text = med.getTextUpperInnerDiameter();
 	}
-	public void setCustomWidte_textLowerInnerDiameter(){
+	public void setCustomWidget_textLowerInnerDiameter(){
 		this.text = med.getTextLowerInnerDiameter();
 	}
-	public void setCustomWidte_textTotalNumber(){
+	public void setCustomWidget_textTotalNumber(){
 		this.text = med.getTextTotalNumber();
+	}
+	
+	public void setCustomWidget_textHotSettingTemp(){
+		this.text = med.getTextHotSettingTemp();
+	}
+	public void setCustomWidget_textColdSettingTemp(){
+		this.text = med.getTextColdSettingTemp();
+	}
+	public void setCustomWidget_textHotSettingStrok(){
+		this.text = med.getTextHotSettingStrok();
+	}
+	public void setCustomWidget_textColdSettingStrok(){
+		this.text = med.getTextColdSettingStrok();
+	}
+	public void setCustomWidget_textSeatUInnerMargina(){
+		this.text = med.getTextSeatUInnerMargina();
+	}
+	public void setCustomWidget_textSeatLInnerMargina(){
+		this.text = med.getTextSeatLInnerMargina();
+	}
+	public void setCustomWidget_textSeatHeight(){
+		this.text = med.getTextSeatHeight();
+	}
+	
+	public void setCustomWidget_textRadiusConditionerValue(){
+		this.text =med.getTextRadiusConditionerValue();
+	}
+	public void setCustomWidget_textRadiusConditionerPath(){
+		this.text =med.getTextRadiusConditionerPath();
+	}
+	public void setCustomWidget_textHeightConditionerValue(){
+		this.text =med.getTextHeightConditionerValue();
+	}
+	public void setCustomWidget_textHeightConditionerPath(){
+		this.text =med.getTextHeightConditionerPath();
 	}
 
 

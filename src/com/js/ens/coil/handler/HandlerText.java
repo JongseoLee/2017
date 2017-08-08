@@ -17,7 +17,9 @@ public class HandlerText implements Listener {
 		// TODO Auto-generated method stub
 		if(event.widget == med.getTextCoilFilePath()){
 			med.getC_textCoilFilePath().execute();
-		}else if(event.widget == med.getTextProductName()){
+		}
+		
+		else if(event.widget == med.getTextProductName()){
 			med.getC_textProductName().execute();
 		}else if(event.widget == med.getTextLineDiameter()){
 			med.getC_textLineDiameter().execute();
@@ -34,6 +36,33 @@ public class HandlerText implements Listener {
 		}else if(event.widget == med.getTextTotalNumber()){
 			med.getC_textTotalNumber().execute();
 		}
+		
+		else if(event.widget == med.getTextHotSettingTemp()){
+			med.getC_textHotSettingTemp().execute();
+		}else if(event.widget == med.getTextColdSettingTemp()){
+			med.getC_textColdSettingTemp().execute();
+		}else if(event.widget == med.getTextHotSettingStrok()){
+			med.getC_textHotSettingStrok().execute();
+		}else if(event.widget == med.getTextColdSettingStrok()){
+			med.getC_textColdSettingStrok().execute();
+		}else if(event.widget == med.getTextSeatUInnerMargina()){
+			med.getC_textSeatUInnerMargina().execute();
+		}else if(event.widget == med.getTextSeatLInnerMargina()){
+			med.getC_textSeatLInnerMargina().execute();
+		}else if(event.widget == med.getTextSeatHeight()){
+			med.getC_textSeatHeight().execute();
+		}
+		
+		else if(event.widget == med.getTextRadiusConditionerValue()){
+			med.getC_textRadiusConditionerValue().execute();
+		}else if(event.widget == med.getTextRadiusConditionerPath()){
+			med.getC_textRadiusConditionerPath().execute();
+		}else if(event.widget == med.getTextHeightConditionerValue()){
+			med.getC_textHeightConditionerValue().execute();
+		}else if(event.widget == med.getTextHeightConditionerPath()){
+			med.getC_textHeightConditionerPath().execute();
+		}
+		
 	}
 
 }

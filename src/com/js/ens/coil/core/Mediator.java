@@ -120,6 +120,75 @@ public class Mediator {
 	public ICommand C_tableViewerCoilTable;
 	public static String TABLEVIEWER_tableViewerCoilTable = "tableViewerCoilTable";
 	
+	private Text textHotSettingTemp;
+	public ICommand C_textHotSettingTemp;
+	public static String TEXT_textHotSettingTemp = "textHotSettingTemp";
+	
+	private Text textColdSettingTemp;
+	public ICommand C_textColdSettingTemp;
+	public static String TEXT_textColdSettingTemp = "textColdSettingTemp";
+
+	private Text textHotSettingStrok;
+	public ICommand C_textHotSettingStrok;
+	public static String TEXT_textHotSettingStrok = "textHotSettingStrok";
+
+	private Text textColdSettingStrok;
+	public ICommand C_textColdSettingStrok;
+	public static String TEXT_textColdSettingStrok = "textColdSettingStrok";
+		
+	private Text textSeatUInnerMargina;
+	public ICommand C_textSeatUInnerMargina;
+	public static String TEXT_textSeatUInnerMargina = "textSeatUInnerMargina";
+	
+	private Text textSeatLInnerMargina;
+	public ICommand C_textSeatLInnerMargina;
+	public static String TEXT_textSeatLInnerMargina = "textSeatLInnerMargina";
+	
+	private Text textSeatHeight;
+	public ICommand C_textSeatHeight;
+	public static String TEXT_textSeatHeight = "textSeatHeight";
+		
+	private Button btnRadiusConditionerConstant;
+	public ICommand C_btnRadiusConditionerConstant;
+	public static String BUTTON_btnRadiusConditionerConstant = "btnRadiusConditionerConstant";
+	
+	private Button btnRadiusConditionerFile;
+	public ICommand C_btnRadiusConditionerFile;
+	public static String BUTTON_btnRadiusConditionerFile = "btnRadiusConditionerFile";
+	
+	private Text textRadiusConditionerValue;
+	public ICommand C_textRadiusConditionerValue;
+	public static String TEXT_textRadiusConditionerValue = "textRadiusConditionerValue";
+	
+	private Text textRadiusConditionerPath; 
+	public ICommand C_textRadiusConditionerPath;
+	public static String TEXT_textRadiusConditionerPath = "textRadiusConditionerPath";
+	
+	private Button btnRadiusConditionerExplorer;
+	public ICommand C_btnRadiusConditionerExplorer;
+	public static String BUTTON_btnRadiusConditionerExplorer = "btnRadiusConditionerExplorer";
+	
+	
+	private Button btnHeightConditionerConstant;
+	public ICommand C_btnHeightConditionerConstant;
+	public static String BUTTON_btnHeightConditionerConstant = "btnHeightConditionerConstant";
+	
+	private Button btnHeightConditionerFile;
+	public ICommand C_btnHeightConditionerFile;
+	public static String BUTTON_btnHeightConditionerFile = "btnHeightConditionerFile";
+	
+	private Text textHeightConditionerValue;
+	public ICommand C_textHeightConditionerValue;
+	public static String TEXT_textHeightConditionerValue = "textHeightConditionerValue";
+	
+	private Text textHeightConditionerPath; 
+	public ICommand C_textHeightConditionerPath;
+	public static String TEXT_textHeightConditionerPath = "textHeightConditionerPath";
+	
+	private Button btnHeightConditionerExplorer;
+	public ICommand C_btnHeightConditionerExplorer;
+	public static String BUTTON_btnHeightConditionerExplorer = "btnHeightConditionerExplorer";
+	
 	
 	
 	//////////////////////////////////////////////////////////////////////////
@@ -451,6 +520,278 @@ public class Mediator {
 
 	public void setC_tableViewerCoilTable(ICommand c_tableViewerCoilTable) {
 		C_tableViewerCoilTable = c_tableViewerCoilTable;
+	}
+
+	public Text getTextHotSettingTemp() {
+		return textHotSettingTemp;
+	}
+
+	public void setTextHotSettingTemp(Text textHotSettingTemp) {
+		this.textHotSettingTemp = textHotSettingTemp;
+	}
+
+	public ICommand getC_textHotSettingTemp() {
+		return C_textHotSettingTemp;
+	}
+
+	public void setC_textHotSettingTemp(ICommand c_textHotSettingTemp) {
+		C_textHotSettingTemp = c_textHotSettingTemp;
+	}
+
+	public Text getTextColdSettingTemp() {
+		return textColdSettingTemp;
+	}
+
+	public void setTextColdSettingTemp(Text textColdSettingTemp) {
+		this.textColdSettingTemp = textColdSettingTemp;
+	}
+
+	public ICommand getC_textColdSettingTemp() {
+		return C_textColdSettingTemp;
+	}
+
+	public void setC_textColdSettingTemp(ICommand c_textColdSettingTemp) {
+		C_textColdSettingTemp = c_textColdSettingTemp;
+	}
+
+	public Text getTextHotSettingStrok() {
+		return textHotSettingStrok;
+	}
+
+	public void setTextHotSettingStrok(Text textHotSettingStrok) {
+		this.textHotSettingStrok = textHotSettingStrok;
+	}
+
+	public ICommand getC_textHotSettingStrok() {
+		return C_textHotSettingStrok;
+	}
+
+	public void setC_textHotSettingStrok(ICommand c_textHotSettingStrok) {
+		C_textHotSettingStrok = c_textHotSettingStrok;
+	}
+
+	public Text getTextColdSettingStrok() {
+		return textColdSettingStrok;
+	}
+
+	public void setTextColdSettingStrok(Text textColdSettingStrok) {
+		this.textColdSettingStrok = textColdSettingStrok;
+	}
+
+	public ICommand getC_textColdSettingStrok() {
+		return C_textColdSettingStrok;
+	}
+
+	public void setC_textColdSettingStrok(ICommand c_textColdSettingStrok) {
+		C_textColdSettingStrok = c_textColdSettingStrok;
+	}
+
+	public Text getTextSeatUInnerMargina() {
+		return textSeatUInnerMargina;
+	}
+
+	public void setTextSeatUInnerMargina(Text textSeatUInnerMargina) {
+		this.textSeatUInnerMargina = textSeatUInnerMargina;
+	}
+
+	public ICommand getC_textSeatUInnerMargina() {
+		return C_textSeatUInnerMargina;
+	}
+
+	public void setC_textSeatUInnerMargina(ICommand c_textSeatUInnerMargina) {
+		C_textSeatUInnerMargina = c_textSeatUInnerMargina;
+	}
+
+	public Text getTextSeatLInnerMargina() {
+		return textSeatLInnerMargina;
+	}
+
+	public void setTextSeatLInnerMargina(Text textSeatLInnerMargina) {
+		this.textSeatLInnerMargina = textSeatLInnerMargina;
+	}
+
+	public ICommand getC_textSeatLInnerMargina() {
+		return C_textSeatLInnerMargina;
+	}
+
+	public void setC_textSeatLInnerMargina(ICommand c_textSeatLInnerMargina) {
+		C_textSeatLInnerMargina = c_textSeatLInnerMargina;
+	}
+
+	public Text getTextSeatHeight() {
+		return textSeatHeight;
+	}
+
+	public void setTextSeatHeight(Text textSeatHeight) {
+		this.textSeatHeight = textSeatHeight;
+	}
+
+	public ICommand getC_textSeatHeight() {
+		return C_textSeatHeight;
+	}
+
+	public void setC_textSeatHeight(ICommand c_textSeatHeight) {
+		C_textSeatHeight = c_textSeatHeight;
+	}
+
+	public Button getBtnRadiusConditionerConstant() {
+		return btnRadiusConditionerConstant;
+	}
+
+	public void setBtnRadiusConditionerConstant(Button btnRadiusConditionerConstant) {
+		this.btnRadiusConditionerConstant = btnRadiusConditionerConstant;
+	}
+
+	public ICommand getC_btnRadiusConditionerConstant() {
+		return C_btnRadiusConditionerConstant;
+	}
+
+	public void setC_btnRadiusConditionerConstant(ICommand c_btnRadiusConditionerConstant) {
+		C_btnRadiusConditionerConstant = c_btnRadiusConditionerConstant;
+	}
+
+	public Button getBtnRadiusConditionerFile() {
+		return btnRadiusConditionerFile;
+	}
+
+	public void setBtnRadiusConditionerFile(Button btnRadiusConditionerFile) {
+		this.btnRadiusConditionerFile = btnRadiusConditionerFile;
+	}
+
+	public ICommand getC_btnRadiusConditionerFile() {
+		return C_btnRadiusConditionerFile;
+	}
+
+	public void setC_btnRadiusConditionerFile(ICommand c_btnRadiusConditionerFile) {
+		C_btnRadiusConditionerFile = c_btnRadiusConditionerFile;
+	}
+
+	public Text getTextRadiusConditionerValue() {
+		return textRadiusConditionerValue;
+	}
+
+	public void setTextRadiusConditionerValue(Text textRadiusConditionerValue) {
+		this.textRadiusConditionerValue = textRadiusConditionerValue;
+	}
+
+	public ICommand getC_textRadiusConditionerValue() {
+		return C_textRadiusConditionerValue;
+	}
+
+	public void setC_textRadiusConditionerValue(ICommand c_textRadiusConditionerValue) {
+		C_textRadiusConditionerValue = c_textRadiusConditionerValue;
+	}
+
+	public Text getTextRadiusConditionerPath() {
+		return textRadiusConditionerPath;
+	}
+
+	public void setTextRadiusConditionerPath(Text textRadiusConditionerPath) {
+		this.textRadiusConditionerPath = textRadiusConditionerPath;
+	}
+
+	public ICommand getC_textRadiusConditionerPath() {
+		return C_textRadiusConditionerPath;
+	}
+
+	public void setC_textRadiusConditionerPath(ICommand c_textRadiusConditionerPath) {
+		C_textRadiusConditionerPath = c_textRadiusConditionerPath;
+	}
+
+	public Button getBtnRadiusConditionerExplorer() {
+		return btnRadiusConditionerExplorer;
+	}
+
+	public void setBtnRadiusConditionerExplorer(Button btnRadiusConditionerExplorer) {
+		this.btnRadiusConditionerExplorer = btnRadiusConditionerExplorer;
+	}
+
+	public ICommand getC_btnRadiusConditionerExplorer() {
+		return C_btnRadiusConditionerExplorer;
+	}
+
+	public void setC_btnRadiusConditionerExplorer(ICommand c_btnRadiusConditionerExplorer) {
+		C_btnRadiusConditionerExplorer = c_btnRadiusConditionerExplorer;
+	}
+
+	public Button getBtnHeightConditionerConstant() {
+		return btnHeightConditionerConstant;
+	}
+
+	public void setBtnHeightConditionerConstant(Button btnHeightConditionerConstant) {
+		this.btnHeightConditionerConstant = btnHeightConditionerConstant;
+	}
+
+	public ICommand getC_btnHeightConditionerConstant() {
+		return C_btnHeightConditionerConstant;
+	}
+
+	public void setC_btnHeightConditionerConstant(ICommand c_btnHeightConditionerConstant) {
+		C_btnHeightConditionerConstant = c_btnHeightConditionerConstant;
+	}
+
+	public Button getBtnHeightConditionerFile() {
+		return btnHeightConditionerFile;
+	}
+
+	public void setBtnHeightConditionerFile(Button btnHeightConditionerFile) {
+		this.btnHeightConditionerFile = btnHeightConditionerFile;
+	}
+
+	public ICommand getC_btnHeightConditionerFile() {
+		return C_btnHeightConditionerFile;
+	}
+
+	public void setC_btnHeightConditionerFile(ICommand c_btnHeightConditionerFile) {
+		C_btnHeightConditionerFile = c_btnHeightConditionerFile;
+	}
+
+	public Text getTextHeightConditionerValue() {
+		return textHeightConditionerValue;
+	}
+
+	public void setTextHeightConditionerValue(Text textHeightConditionerValue) {
+		this.textHeightConditionerValue = textHeightConditionerValue;
+	}
+
+	public ICommand getC_textHeightConditionerValue() {
+		return C_textHeightConditionerValue;
+	}
+
+	public void setC_textHeightConditionerValue(ICommand c_textHeightConditionerValue) {
+		C_textHeightConditionerValue = c_textHeightConditionerValue;
+	}
+
+	public Text getTextHeightConditionerPath() {
+		return textHeightConditionerPath;
+	}
+
+	public void setTextHeightConditionerPath(Text textHeightConditionerPath) {
+		this.textHeightConditionerPath = textHeightConditionerPath;
+	}
+
+	public ICommand getC_textHeightConditionerPath() {
+		return C_textHeightConditionerPath;
+	}
+
+	public void setC_textHeightConditionerPath(ICommand c_textHeightConditionerPath) {
+		C_textHeightConditionerPath = c_textHeightConditionerPath;
+	}
+
+	public Button getBtnHeightConditionerExplorer() {
+		return btnHeightConditionerExplorer;
+	}
+
+	public void setBtnHeightConditionerExplorer(Button btnHeightConditionerExplorer) {
+		this.btnHeightConditionerExplorer = btnHeightConditionerExplorer;
+	}
+
+	public ICommand getC_btnHeightConditionerExplorer() {
+		return C_btnHeightConditionerExplorer;
+	}
+
+	public void setC_btnHeightConditionerExplorer(ICommand c_btnHeightConditionerExplorer) {
+		C_btnHeightConditionerExplorer = c_btnHeightConditionerExplorer;
 	}
 
 }

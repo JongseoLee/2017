@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 import com.js.ens.coil.customWidget.TableData_Coil;
 import com.js.ens.coil.customWidget.TableViewerLabelProvider_Coil;
@@ -67,7 +68,7 @@ public class MainController {
 		
 		dlg.setFilterNames(extNames);
 		dlg.setFilterExtensions(extType);
-		// Á¤ÇØÁø À§Ä¡¿¡¼­ ÆÄÀÏ ºê¶ó¿ìÀú ¿ÀÇÂµÊ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Âµï¿½
 		//dlg.setFilterPath(this.getAppPath());
 		
 		dlg.setFilterNames(extNames);
@@ -90,9 +91,10 @@ public class MainController {
 		for(String line : fileDataList){
 			ArrayList<String> tokens = new ArrayList<String>();			
 			tokens = myUtil.splitData(line, ",");
-			
+			//System.out.println("=>" + tokens.get(0));
 			if(tokens.get(0).trim().equals(CoilDataLabel.ProductName)){
 				this.coilDBObj.setProductName(tokens.get(1));
+				//System.out.println("tokens :" + tokens.get(1));
 				med.getTextProductName().setText(this.coilDBObj.getProductName());
 			}else if(tokens.get(0).trim().equals(CoilDataLabel.LineDiameter)){
 				this.coilDBObj.setLineDiameter(tokens.get(1));
@@ -135,6 +137,43 @@ public class MainController {
 		}catch(Exception e){
 			System.out.println("ERROR - Coil data table");
 		}
+	}
+
+
+	
+	
+	public void ChangeProcessStep1() {
+		// TODO Auto-generated method stub
+		med.getStackLayout().topControl = med.getCompositeStep1();
+		med.getCompositeBottom().layout();
+		
+		med.getLblModeling().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
+		med.getLblSimulationAndExportResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		med.getLblShowResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		
+	}
+
+
+	public void ChangeProcessStep2() {
+		// TODO Auto-generated method stub
+		med.getStackLayout().topControl = med.getCompositeStep2();
+		med.getCompositeBottom().layout();
+		
+		med.getLblModeling().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		med.getLblSimulationAndExportResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
+		med.getLblShowResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+	}
+
+
+	public void ChangeProcessStep3() {
+		// TODO Auto-generated method stub
+		//med.getStackLayout().topControl = med.getCompositeStep3();
+		//med.getCompositeBottom().layout();
+		
+		med.getLblModeling().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		med.getLblSimulationAndExportResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		med.getLblShowResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
+		
 	}
 	
 }

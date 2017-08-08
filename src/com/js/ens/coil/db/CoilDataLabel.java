@@ -10,5 +10,4 @@ public class CoilDataLabel {
 	public static String UpperInnerDiameter="어퍼 내경";
 	public static String LowerInnerDiameter="로워 내경";
 	public static String TotalNumber="총권수";
-
 }
