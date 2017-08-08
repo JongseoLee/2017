@@ -1,0 +1,9 @@
+/bin
+/.project
+/.settings/org.eclipse.jdt.core.prefs
+/META-INF/MANIFEST.MF
+/build.properties
+/icons/alt_window_16.gif
+/icons/alt_window_32.gif
+/plugin.xml
+/.classpath
