@@ -1,11 +1,13 @@
 package com.js.ens.coil.core;
 
 
+import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.swt.widgets.Text;
 
 import com.js.ens.coil.customWidget.ICommand;
@@ -189,7 +191,61 @@ public class Mediator {
 	public ICommand C_btnHeightConditionerExplorer;
 	public static String BUTTON_btnHeightConditionerExplorer = "btnHeightConditionerExplorer";
 	
+	//////////////////////////////////////////////////////////////////////////
+	// step2
+	private Text textRadiusTolerance;
+	public ICommand C_textRadiusTolerance;
+	public static String TEXT_textRadiusTolerance = "textRadiusTolerance";
 	
+	private Text textHeightTolerance;
+	public ICommand C_textHeightTolerance;
+	public static String TEXT_textHeightTolerance = "textHeightTolerance";
+	
+	private Text textMaximumIterationNumber;
+	public ICommand C_textMaximumIterationNumber;
+	public static String TEXT_textMaximumIterationNumber = "textMaximumIterationNumber";
+	
+	private Button btnStartSimulation;
+	public ICommand C_btnStartSimulation;
+	public static String BUTTON_btnStartSimulation = "btnStartSimulation";
+	
+	private ProgressBar progressBarSimulationIteration;
+	public ICommand C_progressBarSimulationIteration;
+	public static String PROGRESSBAR_progressBarSimulationIteration = "progressBarSimulationIteration";
+	
+	private Button btnReadLog;
+	public ICommand C_btnReadLog;
+	public static String BUTTON_btnReadLog = "btnReadLog";
+	
+	private Text textLogEditor;
+	public ICommand C_textLogEditor;
+	public static String TEXT_textLogEditor = "textLogEditor";
+	
+	//////////////////////////////////////////////////////////////////////////
+	// step3
+	private ComboViewer comboViewerSelectGraph;
+	public ICommand C_comboViewerSelectGraph;
+	public static String COMBOVIEWER_comboViewerSelectGraph = "comboViewerSelectGraph";
+	
+	private Button btnShowGraphWindow;
+	public ICommand C_btnShowGraphWindow;
+	public static String BUTTON_btnShowGraphWindow = "btnShowGraphWindow";
+	
+	private ComboViewer comboViewerSelectImage;
+	public ICommand C_comboViewerSelectImage;
+	public static String COMBOVIEWER_comboViewerSelectImage = "comboViewerSelectImage";
+	
+	private Button btnShowImageWindow;
+	public ICommand C_btnShowImageWindow;
+	public static String BUTTON_btnShowImageWindow = "btnShowImageWindow";
+	
+	private ComboViewer comboViewerSelectTableData;
+	public ICommand C_comboViewerSelectTableData;
+	public static String COMBOVIEWER_comboViewerSelectTableData = "comboViewerSelectTableData";
+	
+	private Button btnShowTableData;
+	public ICommand C_btnShowTableData;
+	public static String BUTTON_btnShowTableData = "btnShowTableData";
 	
 	//////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////
@@ -792,6 +848,218 @@ public class Mediator {
 
 	public void setC_btnHeightConditionerExplorer(ICommand c_btnHeightConditionerExplorer) {
 		C_btnHeightConditionerExplorer = c_btnHeightConditionerExplorer;
+	}
+
+	public Text getTextRadiusTolerance() {
+		return textRadiusTolerance;
+	}
+
+	public void setTextRadiusTolerance(Text textRadiusTolerance) {
+		this.textRadiusTolerance = textRadiusTolerance;
+	}
+
+	public ICommand getC_textRadiusTolerance() {
+		return C_textRadiusTolerance;
+	}
+
+	public void setC_textRadiusTolerance(ICommand c_textRadiusTolerance) {
+		C_textRadiusTolerance = c_textRadiusTolerance;
+	}
+
+	public Text getTextHeightTolerance() {
+		return textHeightTolerance;
+	}
+
+	public void setTextHeightTolerance(Text textHeightTolerance) {
+		this.textHeightTolerance = textHeightTolerance;
+	}
+
+	public ICommand getC_textHeightTolerance() {
+		return C_textHeightTolerance;
+	}
+
+	public void setC_textHeightTolerance(ICommand c_textHeightTolerance) {
+		C_textHeightTolerance = c_textHeightTolerance;
+	}
+
+	public Text getTextMaximumIterationNumber() {
+		return textMaximumIterationNumber;
+	}
+
+	public void setTextMaximumIterationNumber(Text textMaximumIterationNumber) {
+		this.textMaximumIterationNumber = textMaximumIterationNumber;
+	}
+
+	public ICommand getC_textMaximumIterationNumber() {
+		return C_textMaximumIterationNumber;
+	}
+
+	public void setC_textMaximumIterationNumber(
+			ICommand c_textMaximumIterationNumber) {
+		C_textMaximumIterationNumber = c_textMaximumIterationNumber;
+	}
+
+	public Button getBtnStartSimulation() {
+		return btnStartSimulation;
+	}
+
+	public void setBtnStartSimulation(Button btnStartSimulation) {
+		this.btnStartSimulation = btnStartSimulation;
+	}
+
+	public ICommand getC_btnStartSimulation() {
+		return C_btnStartSimulation;
+	}
+
+	public void setC_btnStartSimulation(ICommand c_btnStartSimulation) {
+		C_btnStartSimulation = c_btnStartSimulation;
+	}
+
+	public ProgressBar getProgressBarSimulationIteration() {
+		return progressBarSimulationIteration;
+	}
+
+	public void setProgressBarSimulationIteration(
+			ProgressBar progressBarSimulationIteration) {
+		this.progressBarSimulationIteration = progressBarSimulationIteration;
+	}
+
+	public ICommand getC_progressBarSimulationIteration() {
+		return C_progressBarSimulationIteration;
+	}
+
+	public void setC_progressBarSimulationIteration(
+			ICommand c_progressBarSimulationIteration) {
+		C_progressBarSimulationIteration = c_progressBarSimulationIteration;
+	}
+
+	public Button getBtnReadLog() {
+		return btnReadLog;
+	}
+
+	public void setBtnReadLog(Button btnReadLog) {
+		this.btnReadLog = btnReadLog;
+	}
+
+	public ICommand getC_btnReadLog() {
+		return C_btnReadLog;
+	}
+
+	public void setC_btnReadLog(ICommand c_btnReadLog) {
+		C_btnReadLog = c_btnReadLog;
+	}
+
+	public Text getTextLogEditor() {
+		return textLogEditor;
+	}
+
+	public void setTextLogEditor(Text textLogEditor) {
+		this.textLogEditor = textLogEditor;
+	}
+
+	public ICommand getC_textLogEditor() {
+		return C_textLogEditor;
+	}
+
+	public void setC_textLogEditor(ICommand c_textLogEditor) {
+		C_textLogEditor = c_textLogEditor;
+	}
+
+	public ComboViewer getComboViewerSelectGraph() {
+		return comboViewerSelectGraph;
+	}
+
+	public void setComboViewerSelectGraph(ComboViewer comboViewerSelectGraph) {
+		this.comboViewerSelectGraph = comboViewerSelectGraph;
+	}
+
+	public ICommand getC_comboViewerSelectGraph() {
+		return C_comboViewerSelectGraph;
+	}
+
+	public void setC_comboViewerSelectGraph(ICommand c_comboViewerSelectGraph) {
+		C_comboViewerSelectGraph = c_comboViewerSelectGraph;
+	}
+
+	public Button getBtnShowGraphWindow() {
+		return btnShowGraphWindow;
+	}
+
+	public void setBtnShowGraphWindow(Button btnShowGraphWindow) {
+		this.btnShowGraphWindow = btnShowGraphWindow;
+	}
+
+	public ICommand getC_btnShowGraphWindow() {
+		return C_btnShowGraphWindow;
+	}
+
+	public void setC_btnShowGraphWindow(ICommand c_btnShowGraphWindow) {
+		C_btnShowGraphWindow = c_btnShowGraphWindow;
+	}
+
+	public ComboViewer getComboViewerSelectImage() {
+		return comboViewerSelectImage;
+	}
+
+	public void setComboViewerSelectImage(ComboViewer comboViewerSelectImage) {
+		this.comboViewerSelectImage = comboViewerSelectImage;
+	}
+
+	public ICommand getC_comboViewerSelectImage() {
+		return C_comboViewerSelectImage;
+	}
+
+	public void setC_comboViewerSelectImage(ICommand c_comboViewerSelectImage) {
+		C_comboViewerSelectImage = c_comboViewerSelectImage;
+	}
+
+	public Button getBtnShowImageWindow() {
+		return btnShowImageWindow;
+	}
+
+	public void setBtnShowImageWindow(Button btnShowImageWindow) {
+		this.btnShowImageWindow = btnShowImageWindow;
+	}
+
+	public ICommand getC_btnShowImageWindow() {
+		return C_btnShowImageWindow;
+	}
+
+	public void setC_btnShowImageWindow(ICommand c_btnShowImageWindow) {
+		C_btnShowImageWindow = c_btnShowImageWindow;
+	}
+
+	public ComboViewer getComboViewerSelectTableData() {
+		return comboViewerSelectTableData;
+	}
+
+	public void setComboViewerSelectTableData(ComboViewer comboViewerSelectTableData) {
+		this.comboViewerSelectTableData = comboViewerSelectTableData;
+	}
+
+	public ICommand getC_comboViewerSelectTableData() {
+		return C_comboViewerSelectTableData;
+	}
+
+	public void setC_comboViewerSelectTableData(
+			ICommand c_comboViewerSelectTableData) {
+		C_comboViewerSelectTableData = c_comboViewerSelectTableData;
+	}
+
+	public Button getBtnShowTableData() {
+		return btnShowTableData;
+	}
+
+	public void setBtnShowTableData(Button btnShowTableData) {
+		this.btnShowTableData = btnShowTableData;
+	}
+
+	public ICommand getC_btnShowTableData() {
+		return C_btnShowTableData;
+	}
+
+	public void setC_btnShowTableData(ICommand c_btnShowTableData) {
+		C_btnShowTableData = c_btnShowTableData;
 	}
 
 }

@@ -63,6 +63,17 @@ public class HandlerText implements Listener {
 			med.getC_textHeightConditionerPath().execute();
 		}
 		
+		else if(event.widget == med.getTextRadiusTolerance()){
+			med.getC_textRadiusTolerance().execute();
+		}else if(event.widget == med.getTextHeightTolerance()){
+			med.getC_textHeightTolerance().execute();
+		}else if(event.widget == med.getTextMaximumIterationNumber()){
+			med.getC_textMaximumIterationNumber().execute();
+		}else if(event.widget == med.getTextLogEditor()){
+			med.getC_textLogEditor().execute();
+		}
+		
+		
 	}
 
 }

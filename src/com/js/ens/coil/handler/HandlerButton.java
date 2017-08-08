@@ -32,9 +32,17 @@ public class HandlerButton implements Listener {
 			med.getC_btnHeightConditionerFile().execute();
 		}else if(event.widget == med.getBtnHeightConditionerExplorer()){
 			med.getC_btnHeightConditionerExplorer().execute();
+		}else if(event.widget == med.getBtnStartSimulation()){
+			med.getC_btnStartSimulation().execute();
+		}else if(event.widget == med.getBtnReadLog()){
+			med.getC_btnReadLog().execute();
+		}else if(event.widget == med.getBtnShowGraphWindow()){
+			med.getC_btnShowGraphWindow().execute();
+		}else if(event.widget == med.getBtnShowImageWindow()){
+			med.getC_btnShowImageWindow().execute();
+		}else if(event.widget == med.getBtnShowTableData()){
+			med.getC_btnShowTableData().execute();
 		}
-		
-		
 	}
 
 }

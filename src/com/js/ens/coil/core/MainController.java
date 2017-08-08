@@ -7,6 +7,12 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.wb.swt.SWTResourceManager;
 
+import com.js.ens.coil.customWidget.ComboData_selectGraph;
+import com.js.ens.coil.customWidget.ComboData_selectImage;
+import com.js.ens.coil.customWidget.ComboData_selectTableData;
+import com.js.ens.coil.customWidget.ComboViewerLabelProvider_SelectGraph;
+import com.js.ens.coil.customWidget.ComboViewerLabelProvider_SelectImage;
+import com.js.ens.coil.customWidget.ComboViewerLabelProvider_SelectTableData;
 import com.js.ens.coil.customWidget.TableData_Coil;
 import com.js.ens.coil.customWidget.TableViewerLabelProvider_Coil;
 import com.js.ens.coil.db.CoilDB;
@@ -40,7 +46,7 @@ public class MainController {
 	
 	
 	public MainController(){
-		
+		this.coilDBObj = new CoilDB(); 
 	}
 	
 	
@@ -81,40 +87,44 @@ public class MainController {
 	}
 	
 	private void readCoilDataFile(){
+		
+		CoilDataLabel coilDataIndeObj = new CoilDataLabel();
+		
 		Reader reader = new Reader(this.csvFilePath);
 		reader.running();
 		ArrayList<String> fileDataList = new ArrayList<String>();
 		fileDataList = reader.getFileDataList();
 		
-		this.coilDBObj = new CoilDB(); 
+		
 
 		for(String line : fileDataList){
 			ArrayList<String> tokens = new ArrayList<String>();			
 			tokens = myUtil.splitData(line, ",");
 			//System.out.println("=>" + tokens.get(0));
-			if(tokens.get(0).trim().equals(CoilDataLabel.ProductName)){
+			//System.out.println(coilDataIndeObj.getLabel(CoilDataLabel.ProductName));
+			if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabel.ProductName))){
 				this.coilDBObj.setProductName(tokens.get(1));
 				//System.out.println("tokens :" + tokens.get(1));
 				med.getTextProductName().setText(this.coilDBObj.getProductName());
-			}else if(tokens.get(0).trim().equals(CoilDataLabel.LineDiameter)){
+			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabel.LineDiameter))){
 				this.coilDBObj.setLineDiameter(tokens.get(1));
 				med.getTextLineDiameter().setText(this.coilDBObj.getLineDiameter());
-			}else if(tokens.get(0).trim().equals(CoilDataLabel.CenterDiameter)){
+			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabel.CenterDiameter))){
 				this.coilDBObj.setCenterDiameter(tokens.get(1));
 				med.getTextCenterDiameter().setText(this.coilDBObj.getCenterDiameter());
-			}else if(tokens.get(0).trim().equals(CoilDataLabel.InnerDiameter)){
+			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabel.InnerDiameter))){
 				this.coilDBObj.setInnerDiameter(tokens.get(1));
 				med.getTextInnerDiameter().setText(this.coilDBObj.getInnerDiameter());
-			}else if(tokens.get(0).trim().equals(CoilDataLabel.OuterDiameter)){
+			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabel.OuterDiameter))){
 				this.coilDBObj.setOuterDiameter(tokens.get(1));
 				med.getTextOuterDiameter().setText(this.coilDBObj.getOuterDiameter());
-			}else if(tokens.get(0).trim().equals(CoilDataLabel.UpperInnerDiameter)){
+			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabel.UpperInnerDiameter))){
 				this.coilDBObj.setUpperInnerDiameter(tokens.get(1));
 				med.getTextUpperInnerDiameter().setText(this.coilDBObj.getUpperInnerDiameter());
-			}else if(tokens.get(0).trim().equals(CoilDataLabel.LowerInnerDiameter)){
+			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabel.LowerInnerDiameter))){
 				this.coilDBObj.setLowerInnerDiameter(tokens.get(1));
 				med.getTextLowerInnerDiameter().setText(this.coilDBObj.getLowerInnerDiameter());
-			}else if(tokens.get(0).trim().equals(CoilDataLabel.TotalNumber)){
+			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabel.TotalNumber))){
 				this.coilDBObj.setTotalNumber(tokens.get(1));
 				med.getTextTotalNumber().setText(this.coilDBObj.getTotalNumber());
 				
@@ -139,7 +149,71 @@ public class MainController {
 		}
 	}
 
-
+	public void UpdateSelectGrpahData(){
+		///////////////////////////////////////////////////////////////
+		// DEMO Data --> todo... access graph data folder
+		if(!this.coilDBObj.getGraphDataList().isEmpty()){
+			this.coilDBObj.getGraphDataList().clear();
+		}
+		for(int i = 0; i<10 ;i++){
+			ComboData_selectGraph obj = new ComboData_selectGraph();
+			obj.setName("Graph - "+(i+1));
+			this.coilDBObj.add_GraphDataCombo(obj);
+		}
+		//
+		///////////////////////////////////////////////////////////////
+		try{
+			med.getComboViewerSelectGraph().setLabelProvider(new ComboViewerLabelProvider_SelectGraph());
+			med.getComboViewerSelectGraph().setContentProvider(new ArrayContentProvider());
+			med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList());
+		}catch(Exception e){
+			System.out.println("ERROR - Graph data");
+		}
+	}
+	
+	public void UpdateSelectImageData(){
+		///////////////////////////////////////////////////////////////
+		// DEMO Data --> todo... access Image data folder
+		if(!this.coilDBObj.getImageDataList().isEmpty()){
+			this.coilDBObj.getImageDataList().clear();
+		}
+		for(int i = 0; i<10 ;i++){
+			ComboData_selectImage obj = new ComboData_selectImage();
+			obj.setName("image - "+(i+1));
+			this.coilDBObj.add_ImageDataCombo(obj);
+		}
+		//
+		///////////////////////////////////////////////////////////////
+		try{
+			med.getComboViewerSelectImage().setLabelProvider(new ComboViewerLabelProvider_SelectImage());
+			med.getComboViewerSelectImage().setContentProvider(new ArrayContentProvider());
+			med.getComboViewerSelectImage().setInput(this.coilDBObj.getImageDataList());
+		}catch(Exception e){
+			System.out.println("ERROR - Image data");
+		}
+	}
+	
+	public void UpdateSelectTableData(){
+		///////////////////////////////////////////////////////////////
+		// DEMO Data --> todo... access Image data folder
+		if(!this.coilDBObj.getTabelDataList().isEmpty()){
+			this.coilDBObj.getTabelDataList().clear();
+		}
+		for(int i = 0; i<10 ;i++){
+			ComboData_selectTableData obj = new ComboData_selectTableData();
+			obj.setName("table Data - "+(i+1));
+			this.coilDBObj.add_TableDataCombo(obj);
+		}
+		//
+		///////////////////////////////////////////////////////////////
+		try{
+			med.getComboViewerSelectTableData().setLabelProvider(new ComboViewerLabelProvider_SelectTableData());
+			med.getComboViewerSelectTableData().setContentProvider(new ArrayContentProvider());
+			med.getComboViewerSelectTableData().setInput(this.coilDBObj.getTabelDataList());
+		}catch(Exception e){
+			System.out.println("ERROR - Table data select Table Data");
+		}
+	}
 	
 	
 	public void ChangeProcessStep1() {
@@ -167,13 +241,38 @@ public class MainController {
 
 	public void ChangeProcessStep3() {
 		// TODO Auto-generated method stub
-		//med.getStackLayout().topControl = med.getCompositeStep3();
-		//med.getCompositeBottom().layout();
+		med.getStackLayout().topControl = med.getCompositeStep3();
+		med.getCompositeBottom().layout();
 		
 		med.getLblModeling().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		med.getLblSimulationAndExportResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		med.getLblShowResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
 		
+		// load combo data - graph
+		this.UpdateSelectGrpahData();
+		// load combo data - image
+		this.UpdateSelectImageData();
+		// load combo data - tableData
+		this.UpdateSelectTableData();
+		
+	}
+
+
+	public void Combo_selectGraph() {
+		// TODO Auto-generated method stub
+		System.out.println(med.getComboViewerSelectGraph().getCombo().getText());
+	}
+
+
+	public void Combo_selectImage() {
+		// TODO Auto-generated method stub
+		System.out.println(med.getComboViewerSelectImage().getCombo().getText());
+	}
+
+
+	public void Combo_selectTableData() {
+		// TODO Auto-generated method stub
+		System.out.println(med.getComboViewerSelectTableData().getCombo().getText());
 	}
 	
 }

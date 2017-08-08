@@ -18,11 +18,14 @@ import com.js.ens.coil.core.MainController;
 import com.js.ens.coil.core.Mediator;
 import com.js.ens.coil.core.UILabel;
 import com.js.ens.coil.customWidget.CustomButton;
+import com.js.ens.coil.customWidget.CustomComboViewer;
 import com.js.ens.coil.customWidget.CustomLabel;
+import com.js.ens.coil.customWidget.CustomProgressBar;
 import com.js.ens.coil.customWidget.CustomTableViewer;
 import com.js.ens.coil.customWidget.CustomText;
 import com.js.ens.coil.customWidget.TableColumnLabel;
 import com.js.ens.coil.handler.HandlerButton;
+import com.js.ens.coil.handler.HandlerComboViewer;
 import com.js.ens.coil.handler.HandlerLabel;
 import com.js.ens.coil.handler.HandlerTableViewer;
 import com.js.ens.coil.handler.HandlerText;
@@ -39,6 +42,9 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.ProgressBar;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.jface.viewers.ComboViewer;
 
 public class View extends ViewPart {
 	public static final String ID = "com.js.ens.coil.view";
@@ -72,6 +78,14 @@ public class View extends ViewPart {
 	private Text textRadiusConditionerPath;
 	private Text textHeightConditionerValue;
 	private Text textHeightConditionerPath;
+	private Text textRadiusTolerance;
+	private Text textHeightTolerance;
+	private Text textMaximumIterationNumber;
+	private Text textLogEditor;
+	private Combo comboSelectGraph;
+	private Combo comboSelectImage;
+	private Combo comboSelectTableData;
+	
 	
 	
 	
@@ -215,7 +229,12 @@ public class View extends ViewPart {
 		}else{
 			grpCoil.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
 		}
-		grpCoil.setLayout(new FormLayout());
+		FormLayout fl_grpCoil = new FormLayout();
+		fl_grpCoil.marginTop = 5;
+		fl_grpCoil.marginRight = 5;
+		fl_grpCoil.marginLeft = 5;
+		fl_grpCoil.marginBottom = 5;
+		grpCoil.setLayout(fl_grpCoil);
 		FormData fd_grpCoil = new FormData();
 		fd_grpCoil.top = new FormAttachment(0, 10);
 		fd_grpCoil.left = new FormAttachment(0, 10);
@@ -244,7 +263,7 @@ public class View extends ViewPart {
 		FormData fd_textCoilFilePath = new FormData();
 		fd_textCoilFilePath.top = new FormAttachment(lblSelectCoilData, 6);
 		fd_textCoilFilePath.left = new FormAttachment(0, 10);
-		fd_textCoilFilePath.right = new FormAttachment(100,-60);
+		fd_textCoilFilePath.right = new FormAttachment(100,-40);
 		textCoilFilePath.setLayoutData(fd_textCoilFilePath);
 		
 		Button btnExplorer = new Button(grpCoil, SWT.NONE);
@@ -277,7 +296,7 @@ public class View extends ViewPart {
 		Label lblProductName = new Label(grpCoil, SWT.NONE);
 		FormData fd_lblProductName = new FormData();
 		fd_lblProductName.top = new FormAttachment(lblCoilData, 6);
-		fd_lblProductName.left = new FormAttachment(lblCoilData, 5, SWT.LEFT);
+		fd_lblProductName.left = new FormAttachment(lblCoilData, 0, SWT.LEFT);
 		fd_lblProductName.right = new FormAttachment(0,110);
 		lblProductName.setLayoutData(fd_lblProductName);
 		lblProductName.setText(LabelDatas.getLabel(UILabel.ProductName));
@@ -289,7 +308,7 @@ public class View extends ViewPart {
 		c_textProductName.setCustomWidget_textProductName();
 		FormData fd_textProductName = new FormData();
 		fd_textProductName.top = new FormAttachment(lblProductName, -2, SWT.TOP);
-		fd_textProductName.left = new FormAttachment(lblProductName, 6);
+		fd_textProductName.left = new FormAttachment(lblProductName, 0);
 		fd_textProductName.right = new FormAttachment(lblProductName,75,SWT.RIGHT);
 		textProductName.setLayoutData(fd_textProductName);
 		
@@ -308,7 +327,7 @@ public class View extends ViewPart {
 		c_textLineDiameter.setCustomWidget_textLineDiameter();
 		FormData fd_textLineDiameter = new FormData();
 		fd_textLineDiameter.top = new FormAttachment(textProductName, 0, SWT.TOP);
-		fd_textLineDiameter.left = new FormAttachment(lblLineDiameter, 6);
+		fd_textLineDiameter.left = new FormAttachment(lblLineDiameter, 0);
 		fd_textLineDiameter.right = new FormAttachment(lblLineDiameter, 75, SWT.RIGHT);
 		textLineDiameter.setLayoutData(fd_textLineDiameter);
 		
@@ -463,12 +482,17 @@ public class View extends ViewPart {
 		
 		
 		Group grpSettingProcessInformation = new Group(compositeStep1, SWT.NONE);
-		if(myUtil.checkOS().equals("windows")){
+		if(myUtil.checkOS().equals("window")){
 			grpSettingProcessInformation.setFont(SWTResourceManager.getFont("Arial", 9, SWT.BOLD));
 		}else {
 			grpSettingProcessInformation.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
 		}
-		grpSettingProcessInformation.setLayout(new FormLayout());
+		FormLayout fl_grpSettingProcessInformation = new FormLayout();
+		fl_grpSettingProcessInformation.marginTop = 5;
+		fl_grpSettingProcessInformation.marginRight = 5;
+		fl_grpSettingProcessInformation.marginLeft = 5;
+		fl_grpSettingProcessInformation.marginBottom = 5;
+		grpSettingProcessInformation.setLayout(fl_grpSettingProcessInformation);
 		FormData fd_grpSettingProcessInformation = new FormData();
 		fd_grpSettingProcessInformation.top = new FormAttachment(0, 10);
 		fd_grpSettingProcessInformation.left = new FormAttachment(grpCoil, 6);
@@ -611,12 +635,17 @@ public class View extends ViewPart {
 		textSeatHeight.setLayoutData(fd_textSeatHeight);
 		
 		Group grpInitialConditioner = new Group(compositeStep1, SWT.NONE);
-		if(myUtil.checkOS().equals("windows")){
+		if(myUtil.checkOS().equals("window")){
 			grpInitialConditioner.setFont(SWTResourceManager.getFont("Arial", 9, SWT.BOLD));
 		}else {
 			grpInitialConditioner.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
 		}
-		grpInitialConditioner.setLayout(new FormLayout());
+		FormLayout fl_grpInitialConditioner = new FormLayout();
+		fl_grpInitialConditioner.marginTop = 5;
+		fl_grpInitialConditioner.marginLeft = 5;
+		fl_grpInitialConditioner.marginRight = 5;
+		fl_grpInitialConditioner.marginBottom = 5;
+		grpInitialConditioner.setLayout(fl_grpInitialConditioner);
 		FormData fd_grpInitialConditioner = new FormData();
 		fd_grpInitialConditioner.top = new FormAttachment(grpSettingProcessInformation, 6);
 		fd_grpInitialConditioner.left = new FormAttachment(grpSettingProcessInformation, 0,SWT.LEFT);
@@ -686,7 +715,7 @@ public class View extends ViewPart {
 		FormData fd_textRadiusConditionerPath = new FormData();
 		fd_textRadiusConditionerPath.top = new FormAttachment(btnRadiusConditionerFile, 2);
 		fd_textRadiusConditionerPath.left = new FormAttachment(btnRadiusConditionerConstant, 0,SWT.LEFT);
-		fd_textRadiusConditionerPath.right = new FormAttachment(100, -50);
+		fd_textRadiusConditionerPath.right = new FormAttachment(100, -30);
 		textRadiusConditionerPath.setLayoutData(fd_textRadiusConditionerPath);
 		
 		Button btnRadiusConditionerExplorer = new Button(compositeRadiusConditioner, SWT.NONE);
@@ -761,7 +790,7 @@ public class View extends ViewPart {
 		FormData fd_textHeightConditionerPath = new FormData();
 		fd_textHeightConditionerPath.top = new FormAttachment(btnHeightConditionerFile, 2);
 		fd_textHeightConditionerPath.left = new FormAttachment(btnHeightConditionerConstant, 0,SWT.LEFT);
-		fd_textHeightConditionerPath.right = new FormAttachment(100, -50);
+		fd_textHeightConditionerPath.right = new FormAttachment(100, -30);
 		textHeightConditionerPath.setLayoutData(fd_textHeightConditionerPath);
 		
 		Button btnHeightConditionerExplorer = new Button(compositeHeightConditioner, SWT.NONE);
@@ -780,12 +809,320 @@ public class View extends ViewPart {
 		////////////=> Simulation and Export result
 		////////////=> Simulation and Export result
 		////////////=> Simulation and Export result
-		Composite compositeStep2 = new Composite(compositeBottom, SWT.NONE);
+		compositeStep2 = new Composite(compositeBottom, SWT.NONE);
 		med.setCompositeStep2(compositeStep2);
 		compositeStep2.setLayout(new FormLayout());
 		
+		Group grpAnalysisOptions = new Group(compositeStep2, SWT.NONE);
+		if(myUtil.checkOS().equals("window")){
+			grpAnalysisOptions.setFont(SWTResourceManager.getFont("Arial", 9, SWT.BOLD));
+		}else {
+			grpAnalysisOptions.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
+		}
+		FormLayout fl_grpAnalysisOptions = new FormLayout();
+		fl_grpAnalysisOptions.marginTop = 5;
+		fl_grpAnalysisOptions.marginRight = 5;
+		fl_grpAnalysisOptions.marginLeft = 5;
+		fl_grpAnalysisOptions.marginBottom = 5;
+		grpAnalysisOptions.setLayout(fl_grpAnalysisOptions);
+		FormData fd_grpAnalysisOptions = new FormData();
+		fd_grpAnalysisOptions.top = new FormAttachment(0, 10);
+		fd_grpAnalysisOptions.left = new FormAttachment(0, 10);
+		fd_grpAnalysisOptions.right = new FormAttachment(100, -10);
+		fd_grpAnalysisOptions.bottom = new FormAttachment(100, -10);
+		grpAnalysisOptions.setLayoutData(fd_grpAnalysisOptions);
+		grpAnalysisOptions.setText(LabelDatas.getLabel(UILabel.AnalysisOptions));
+		
+		Label lblRadiusTolerance = new Label(grpAnalysisOptions, SWT.NONE);
+		FormData fd_lblRadiusTolerance = new FormData();
+		fd_lblRadiusTolerance.top = new FormAttachment(0, 10);
+		fd_lblRadiusTolerance.left = new FormAttachment(0, 10);
+		fd_lblRadiusTolerance.right = new FormAttachment(0,200);
+		lblRadiusTolerance.setLayoutData(fd_lblRadiusTolerance);
+		lblRadiusTolerance.setText(LabelDatas.getLabel(UILabel.RadiusTolerance));
+		
+		textRadiusTolerance = new Text(grpAnalysisOptions, SWT.BORDER);
+		med.setTextRadiusTolerance(textRadiusTolerance);
+		CustomText c_textRadiusTolerance = new CustomText(Mediator.TEXT_textRadiusTolerance,med);
+		med.setC_textRadiusTolerance(c_textRadiusTolerance);
+		c_textRadiusTolerance.setCustomWidget_textRadiusTolerance();
+		FormData fd_textRadiusTolerance = new FormData();
+		fd_textRadiusTolerance.top = new FormAttachment(lblRadiusTolerance, -2, SWT.TOP);
+		fd_textRadiusTolerance.left = new FormAttachment(lblRadiusTolerance, 0);
+		fd_textRadiusTolerance.right = new FormAttachment(lblRadiusTolerance,120,SWT.RIGHT);
+		textRadiusTolerance.setLayoutData(fd_textRadiusTolerance);
+		
+		Label lblHeightTolerance = new Label(grpAnalysisOptions, SWT.NONE);
+		FormData fd_lblHeightTolerance = new FormData();
+		fd_lblHeightTolerance.top = new FormAttachment(lblRadiusTolerance, 12);
+		fd_lblHeightTolerance.left = new FormAttachment(lblRadiusTolerance, 0, SWT.LEFT);
+		fd_lblHeightTolerance.right = new FormAttachment(lblRadiusTolerance, 0, SWT.RIGHT);
+		lblHeightTolerance.setLayoutData(fd_lblHeightTolerance);
+		lblHeightTolerance.setText(LabelDatas.getLabel(UILabel.HeightTolerance));
+		
+		textHeightTolerance = new Text(grpAnalysisOptions, SWT.BORDER);
+		med.setTextHeightTolerance(textHeightTolerance);
+		CustomText c_textHeightTolerance = new CustomText(Mediator.TEXT_textHeightTolerance, med);
+		med.setC_textHeightTolerance(c_textHeightTolerance);
+		c_textHeightTolerance.setCustomWidget_textHeightTolerance();
+		FormData fd_textHeightTolerance = new FormData();
+		fd_textHeightTolerance.top = new FormAttachment(lblHeightTolerance, -2, SWT.TOP);
+		fd_textHeightTolerance.left = new FormAttachment(textRadiusTolerance, 0, SWT.LEFT);
+		fd_textHeightTolerance.right = new FormAttachment(textRadiusTolerance, 0,SWT.RIGHT);
+		textHeightTolerance.setLayoutData(fd_textHeightTolerance);
+		
+		Label lblMaximumIterationNumber = new Label(grpAnalysisOptions, SWT.NONE);
+		FormData fd_lblMaximumIterationNumber = new FormData();
+		fd_lblMaximumIterationNumber.top = new FormAttachment(lblHeightTolerance, 12);
+		fd_lblMaximumIterationNumber.left = new FormAttachment(lblRadiusTolerance, 0, SWT.LEFT);
+		fd_lblMaximumIterationNumber.right = new FormAttachment(lblRadiusTolerance, 0, SWT.RIGHT);
+		lblMaximumIterationNumber.setLayoutData(fd_lblMaximumIterationNumber);
+		lblMaximumIterationNumber.setText(LabelDatas.getLabel(UILabel.MaximumIterationNumber));
+		
+		textMaximumIterationNumber = new Text(grpAnalysisOptions, SWT.BORDER);
+		med.setTextMaximumIterationNumber(textMaximumIterationNumber);
+		CustomText c_textMaximumIterationNumber = new CustomText(Mediator.TEXT_textMaximumIterationNumber,med);
+		med.setC_textMaximumIterationNumber(c_textMaximumIterationNumber);
+		c_textMaximumIterationNumber.setCustomWidget_textMaximumIterationNumber();
+		FormData fd_textMaximumIterationNumber = new FormData();
+		fd_textMaximumIterationNumber.top = new FormAttachment(lblMaximumIterationNumber, -2, SWT.TOP);
+		fd_textMaximumIterationNumber.left = new FormAttachment(textRadiusTolerance, 0, SWT.LEFT);
+		fd_textMaximumIterationNumber.right = new FormAttachment(textRadiusTolerance, 0,SWT.RIGHT);
+		textMaximumIterationNumber.setLayoutData(fd_textMaximumIterationNumber);
+		
+		Label lblSimulationIteration = new Label(grpAnalysisOptions, SWT.NONE);
+		if(myUtil.checkOS().equals("window")){
+			lblSimulationIteration.setFont(SWTResourceManager.getFont("Arial", 9, SWT.BOLD));
+		}else {
+			lblSimulationIteration.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
+		}
+		FormData fd_lblSimulationIteration = new FormData();
+		fd_lblSimulationIteration.top = new FormAttachment(lblMaximumIterationNumber, 40);
+		fd_lblSimulationIteration.left = new FormAttachment(lblRadiusTolerance, 0, SWT.LEFT);
+		fd_lblSimulationIteration.right = new FormAttachment(lblRadiusTolerance, 0, SWT.RIGHT);
+		lblSimulationIteration.setLayoutData(fd_lblSimulationIteration);
+		lblSimulationIteration.setText(LabelDatas.getLabel(UILabel.SimulationIteration));
+		
+		Button btnStartSimulation = new Button(grpAnalysisOptions, SWT.NONE);
+		med.setBtnStartSimulation(btnStartSimulation);
+		CustomButton c_btnStartSimulation = new CustomButton(Mediator.BUTTON_btnStartSimulation,med);
+		med.setC_btnStartSimulation(c_btnStartSimulation);
+		c_btnStartSimulation.setCustomWidget_btnStartSimulation();
+		FormData fd_btnStartSimulation = new FormData();
+		fd_btnStartSimulation.top = new FormAttachment(lblSimulationIteration, -2, SWT.TOP);
+		//fd_btnStartSimulation.left = new FormAttachment(textRadiusTolerance, 0, SWT.LEFT);
+		//fd_btnStartSimulation.right = new FormAttachment(textRadiusTolerance, 0, SWT.RIGHT);
+		fd_btnStartSimulation.left = new FormAttachment(100,-140);
+		fd_btnStartSimulation.right = new FormAttachment(100,-10);
+		btnStartSimulation.setLayoutData(fd_btnStartSimulation);
+		btnStartSimulation.setText(LabelDatas.getLabel(UILabel.StartSimulation));
+		
+		ProgressBar progressBarSimulationIteration = new ProgressBar(grpAnalysisOptions, SWT.NONE);
+		med.setProgressBarSimulationIteration(progressBarSimulationIteration);
+		CustomProgressBar c_progressBarSimulationIteration = new CustomProgressBar(Mediator.PROGRESSBAR_progressBarSimulationIteration, med);
+		med.setC_progressBarSimulationIteration(c_progressBarSimulationIteration);
+		c_progressBarSimulationIteration.setCustomWidget_progressBarSimulationIteration();
+		FormData fd_progressBarSimulationIteration = new FormData();
+		fd_progressBarSimulationIteration.top = new FormAttachment(lblSimulationIteration, 20);
+		fd_progressBarSimulationIteration.left = new FormAttachment(0, 10);
+		fd_progressBarSimulationIteration.right = new FormAttachment(100, -10);
+		progressBarSimulationIteration.setLayoutData(fd_progressBarSimulationIteration);
+		
+		Label lblCheckError = new Label(grpAnalysisOptions, SWT.NONE);
+		if(myUtil.checkOS().equals("window")){
+			lblCheckError.setFont(SWTResourceManager.getFont("Arial", 9, SWT.BOLD));
+		}else {
+			lblCheckError.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
+		}
+		FormData fd_lblCheckError = new FormData();
+		fd_lblCheckError.top = new FormAttachment(progressBarSimulationIteration, 40);
+		fd_lblCheckError.left = new FormAttachment(lblRadiusTolerance, 0, SWT.LEFT);
+		lblCheckError.setLayoutData(fd_lblCheckError);
+		lblCheckError.setText(LabelDatas.getLabel(UILabel.CheckError));
+		
+		Button btnReadLog = new Button(grpAnalysisOptions, SWT.NONE);
+		med.setBtnReadLog(btnReadLog);
+		CustomButton c_btnReadLog = new CustomButton(Mediator.BUTTON_btnReadLog, med);
+		med.setC_btnReadLog(c_btnReadLog);
+		c_btnReadLog.setCustomWidget_btnReadLog();
+		FormData fd_btnReadLog = new FormData();
+		fd_btnReadLog.top = new FormAttachment(lblCheckError, 0, SWT.TOP);
+		//fd_btnReadLog.left = new FormAttachment(textRadiusTolerance, 0, SWT.LEFT);
+		//fd_btnReadLog.right = new FormAttachment(textRadiusTolerance, 0, SWT.RIGHT);
+		fd_btnReadLog.left = new FormAttachment(btnStartSimulation, 0, SWT.LEFT);
+		fd_btnReadLog.right = new FormAttachment(btnStartSimulation, 0, SWT.RIGHT);
+		btnReadLog.setLayoutData(fd_btnReadLog);
+		btnReadLog.setText(LabelDatas.getLabel(UILabel.ReadLog));
+		
+		textLogEditor = new Text(grpAnalysisOptions, SWT.BORDER | SWT.MULTI);
+		med.setTextLogEditor(textLogEditor);
+		CustomText c_textLogEditor = new CustomText(Mediator.TEXT_textLogEditor, med);
+		med.setC_textLogEditor(c_textLogEditor);
+		c_textLogEditor.setCustomWidget_textLogEditor();
+		FormData fd_textLogEditor = new FormData();
+		fd_textLogEditor.top = new FormAttachment(lblCheckError, 20);
+		fd_textLogEditor.left = new FormAttachment(lblRadiusTolerance, 0, SWT.LEFT);
+		fd_textLogEditor.right = new FormAttachment(100, -10);
+		fd_textLogEditor.bottom = new FormAttachment(100, -10);
+		textLogEditor.setLayoutData(fd_textLogEditor);
 		
 		
+		////////////=> Show Result
+		////////////=> Show Result
+		////////////=> Show Result
+		compositeStep3 = new Composite(compositeBottom, SWT.NONE);
+		med.setCompositeStep3(compositeStep3);
+		compositeStep3.setLayout(new FormLayout());
+		
+		Group grpDisplayResultCoil = new Group(compositeStep3, SWT.NONE);
+		if(myUtil.checkOS().equals("window")){
+			grpDisplayResultCoil.setFont(SWTResourceManager.getFont("Arial", 9, SWT.BOLD));
+		}else {
+			grpDisplayResultCoil.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
+		}
+		FormLayout fl_grpDisplayResultCoil = new FormLayout();
+		fl_grpDisplayResultCoil.marginTop = 5;
+		fl_grpDisplayResultCoil.marginRight = 5;
+		fl_grpDisplayResultCoil.marginLeft = 5;
+		fl_grpDisplayResultCoil.marginBottom = 5;
+		grpDisplayResultCoil.setLayout(fl_grpDisplayResultCoil);
+		FormData fd_grpDisplayResultCoil = new FormData();
+		fd_grpDisplayResultCoil.top = new FormAttachment(0, 10);
+		fd_grpDisplayResultCoil.left = new FormAttachment(0, 10);
+		fd_grpDisplayResultCoil.right = new FormAttachment(100, -10);
+		fd_grpDisplayResultCoil.bottom = new FormAttachment(100, -10);
+		grpDisplayResultCoil.setLayoutData(fd_grpDisplayResultCoil);
+		grpDisplayResultCoil.setText(LabelDatas.getLabel(UILabel.DisplayResultCoilData));
+		
+		Label lblSelectGraph = new Label(grpDisplayResultCoil, SWT.NONE);
+		FormData fd_lblSelectGraph = new FormData();
+		fd_lblSelectGraph.top = new FormAttachment(0, 10);
+		fd_lblSelectGraph.left = new FormAttachment(0, 10);
+		fd_lblSelectGraph.right = new FormAttachment(0,150);
+		lblSelectGraph.setLayoutData(fd_lblSelectGraph);
+		lblSelectGraph.setText(LabelDatas.getLabel(UILabel.SelectGraph));
+		
+		ComboViewer comboViewerSelectGraph = new ComboViewer(grpDisplayResultCoil, SWT.NONE | SWT.READ_ONLY);
+		med.setComboViewerSelectGraph(comboViewerSelectGraph);
+		CustomComboViewer c_comboViewerSelectGraph = new CustomComboViewer(Mediator.COMBOVIEWER_comboViewerSelectGraph,med);
+		med.setC_comboViewerSelectGraph(c_comboViewerSelectGraph);
+		c_comboViewerSelectGraph.setCustomWidget_comboViewerSelectGraph();
+		comboSelectGraph = comboViewerSelectGraph.getCombo();
+		FormData fd_comboViewerSelectGraph = new FormData();
+		fd_comboViewerSelectGraph.top = new FormAttachment(lblSelectGraph, -2, SWT.TOP);
+		fd_comboViewerSelectGraph.left = new FormAttachment(lblSelectGraph, 0);
+		fd_comboViewerSelectGraph.right = new FormAttachment(lblSelectGraph, 400,SWT.RIGHT);
+		comboSelectGraph.setLayoutData(fd_comboViewerSelectGraph);
+		
+		Button btnShowGraphWindow = new Button(grpDisplayResultCoil, SWT.NONE);
+		med.setBtnShowGraphWindow(btnShowGraphWindow);
+		CustomButton c_btnShowGraphWindow = new CustomButton(Mediator.BUTTON_btnShowGraphWindow,med);
+		med.setC_btnShowGraphWindow(c_btnShowGraphWindow);
+		c_btnShowGraphWindow.setCustomWidget_btnShowGraphWindow();
+		FormData fd_btnShowGraphWindow = new FormData();
+		fd_btnShowGraphWindow.top = new FormAttachment(comboSelectGraph, 0, SWT.TOP);
+		fd_btnShowGraphWindow.left = new FormAttachment(comboSelectGraph, 10);
+		fd_btnShowGraphWindow.right = new FormAttachment(comboSelectGraph, 150, SWT.RIGHT); 
+		btnShowGraphWindow.setLayoutData(fd_btnShowGraphWindow);
+		btnShowGraphWindow.setText(LabelDatas.getLabel(UILabel.ShowPopupWindow_1));
+		
+		Label lblSelectImage = new Label(grpDisplayResultCoil, SWT.NONE);
+		FormData fd_lblSelectImage = new FormData();
+		fd_lblSelectImage.top = new FormAttachment(lblSelectGraph, 12);
+		fd_lblSelectImage.left = new FormAttachment(lblSelectGraph, 0, SWT.LEFT);
+		fd_lblSelectImage.right = new FormAttachment(lblSelectGraph, 0, SWT.RIGHT);
+		lblSelectImage.setLayoutData(fd_lblSelectImage);
+		lblSelectImage.setText(LabelDatas.getLabel(UILabel.SelectImage));
+		
+		ComboViewer comboViewerSelectImage = new ComboViewer(grpDisplayResultCoil, SWT.NONE | SWT.READ_ONLY);
+		med.setComboViewerSelectImage(comboViewerSelectImage);
+		CustomComboViewer c_comboViewerSelectImage = new CustomComboViewer(Mediator.COMBOVIEWER_comboViewerSelectImage,med);
+		med.setC_comboViewerSelectImage(c_comboViewerSelectImage);
+		c_comboViewerSelectImage.setCustomWidget_comboViewerSelectImage();
+		comboSelectImage = comboViewerSelectImage.getCombo();
+		FormData fd_comboViewerSelectImage = new FormData();
+		fd_comboViewerSelectImage.top = new FormAttachment(lblSelectImage, -2, SWT.TOP);
+		fd_comboViewerSelectImage.left = new FormAttachment(comboSelectGraph, 0, SWT.LEFT);
+		fd_comboViewerSelectImage.right = new FormAttachment(comboSelectGraph, 0,SWT.RIGHT);
+		comboSelectImage.setLayoutData(fd_comboViewerSelectImage);
+		
+		Button btnShowImageWindow = new Button(grpDisplayResultCoil, SWT.NONE);
+		med.setBtnShowImageWindow(btnShowImageWindow);
+		CustomButton c_btnShowImageWindow = new CustomButton(Mediator.BUTTON_btnShowImageWindow,med);
+		med.setC_btnShowImageWindow(c_btnShowImageWindow);
+		c_btnShowImageWindow.setCustomWidget_btnShowImageWindow();
+		FormData fd_btnShowImageWindow = new FormData();
+		fd_btnShowImageWindow.top = new FormAttachment(comboSelectImage, 0, SWT.TOP);
+		fd_btnShowImageWindow.left = new FormAttachment(btnShowGraphWindow, 0, SWT.LEFT);
+		fd_btnShowImageWindow.right = new FormAttachment(btnShowGraphWindow, 0, SWT.RIGHT); 
+		btnShowImageWindow.setLayoutData(fd_btnShowImageWindow);
+		btnShowImageWindow.setText(LabelDatas.getLabel(UILabel.ShowPopupWindow_2));
+		
+		Label lblSelectTableData = new Label(grpDisplayResultCoil, SWT.NONE);
+		FormData fd_lblSelectTableData = new FormData();
+		fd_lblSelectTableData.top = new FormAttachment(lblSelectImage, 12);
+		fd_lblSelectTableData.left = new FormAttachment(lblSelectGraph, 0, SWT.LEFT);
+		fd_lblSelectTableData.right = new FormAttachment(lblSelectGraph, 0, SWT.RIGHT);
+		lblSelectTableData.setLayoutData(fd_lblSelectTableData);
+		lblSelectTableData.setText(LabelDatas.getLabel(UILabel.SelectTableData));
+		
+		ComboViewer comboViewerSelectTableData = new ComboViewer(grpDisplayResultCoil, SWT.NONE | SWT.READ_ONLY);
+		med.setComboViewerSelectTableData(comboViewerSelectTableData);
+		CustomComboViewer c_comboViewerSelectTableData = new CustomComboViewer(Mediator.COMBOVIEWER_comboViewerSelectTableData,med);
+		med.setC_comboViewerSelectTableData(c_comboViewerSelectTableData);
+		c_comboViewerSelectTableData.setCustomWidget_comboViewerSelectTableData();
+		comboSelectTableData = comboViewerSelectTableData.getCombo();
+		FormData fd_comboViewerSelectTableData = new FormData();
+		fd_comboViewerSelectTableData.top = new FormAttachment(lblSelectTableData, -2, SWT.TOP);
+		fd_comboViewerSelectTableData.left = new FormAttachment(comboSelectGraph, 0, SWT.LEFT);
+		fd_comboViewerSelectTableData.right = new FormAttachment(comboSelectGraph, 0, SWT.RIGHT);
+		comboSelectTableData.setLayoutData(fd_comboViewerSelectTableData);
+		
+		Button btnShowTableData = new Button(grpDisplayResultCoil, SWT.NONE);
+		med.setBtnShowTableData(btnShowTableData);
+		CustomButton c_btnShowTableData = new CustomButton(Mediator.BUTTON_btnShowTableData,med);
+		med.setC_btnShowTableData(c_btnShowTableData);
+		c_btnShowTableData.setCustomWidget_btnShowTableData();
+		FormData fd_btnShowTableData = new FormData();
+		fd_btnShowTableData.top = new FormAttachment(comboSelectTableData, 0, SWT.TOP);
+		fd_btnShowTableData.left = new FormAttachment(btnShowGraphWindow, 0, SWT.LEFT);
+		fd_btnShowTableData.right = new FormAttachment(btnShowGraphWindow, 0, SWT.RIGHT); 
+		btnShowTableData.setLayoutData(fd_btnShowTableData);
+		btnShowTableData.setText(LabelDatas.getLabel(UILabel.Show));
+		
+		
+		// graph area
+		Composite compositeGraph = new Composite(grpDisplayResultCoil, SWT.BORDER);
+		compositeGraph.setLayout(new FormLayout());
+		FormData fd_compositeGraph = new FormData();
+		fd_compositeGraph.top = new FormAttachment(lblSelectTableData, 30);
+		fd_compositeGraph.left = new FormAttachment(lblSelectGraph, 0, SWT.LEFT);
+		fd_compositeGraph.right = new FormAttachment(0,390);
+		fd_compositeGraph.bottom = new FormAttachment(100,-10);
+		compositeGraph.setLayoutData(fd_compositeGraph);
+		
+		Label lblGraphArea = new Label(compositeGraph, SWT.NONE);
+		FormData fd_lblGraphArea = new FormData();
+		fd_lblGraphArea.top = new FormAttachment(0,10);
+		fd_lblGraphArea.left = new FormAttachment(0,10);
+		lblGraphArea.setLayoutData(fd_lblGraphArea);
+		lblGraphArea.setText("Display Graph");
+		
+		Composite compositeImage = new Composite(grpDisplayResultCoil, SWT.BORDER);
+		compositeImage.setLayout(new FormLayout());
+		FormData fd_compositeImage = new FormData();
+		fd_compositeImage.top = new FormAttachment(compositeGraph, 0,SWT.TOP);
+		fd_compositeImage.left = new FormAttachment(compositeGraph, 5, SWT.RIGHT);
+		fd_compositeImage.right = new FormAttachment(compositeGraph,395,SWT.RIGHT);
+		fd_compositeImage.bottom = new FormAttachment(compositeGraph, 0, SWT.BOTTOM);
+		compositeImage.setLayoutData(fd_compositeImage);
+		
+		Label lblImageArea = new Label(compositeImage, SWT.NONE);
+		FormData fd_lblImageArea = new FormData();
+		fd_lblImageArea.top = new FormAttachment(0,10);
+		fd_lblImageArea.left = new FormAttachment(0,10);
+		lblImageArea.setLayoutData(fd_lblImageArea);
+		lblImageArea.setText("Display Image");
 		
 		
 		this.init_WidgetSetting();
@@ -794,7 +1131,7 @@ public class View extends ViewPart {
 	}
 	
 	private void init_tableCoumn(){
-		// Editor Cell�� ���� property ����
+		// For Edit Cell Editor
 		String [] ColumnName = new String [] { TableColumnLabel.COL_0, 
 												TableColumnLabel.COL_1,
 												TableColumnLabel.COL_2};
@@ -827,7 +1164,11 @@ public class View extends ViewPart {
 		med.getBtnHeightConditionerConstant().addListener(SWT.Selection, handlerButton);
 		med.getBtnHeightConditionerFile().addListener(SWT.Selection, handlerButton);
 		med.getBtnHeightConditionerExplorer().addListener(SWT.Selection, handlerButton);
-		
+		med.getBtnStartSimulation().addListener(SWT.Selection, handlerButton);
+		med.getBtnReadLog().addListener(SWT.Selection, handlerButton);
+		med.getBtnShowGraphWindow().addListener(SWT.Selection, handlerButton);
+		med.getBtnShowImageWindow().addListener(SWT.Selection, handlerButton);
+		med.getBtnShowTableData().addListener(SWT.Selection, handlerButton);
 		
 		// Label 
 		HandlerLabel handlerLabel = new HandlerLabel();
@@ -858,11 +1199,18 @@ public class View extends ViewPart {
 		med.getTextRadiusConditionerPath().addListener(SWT.CHANGED, handlerText);
 		med.getTextHeightConditionerValue().addListener(SWT.CHANGED, handlerText);
 		med.getTextHeightConditionerPath().addListener(SWT.CHANGED, handlerText);
-		
+		med.getTextRadiusTolerance().addListener(SWT.CHANGED, handlerText);
+		med.getTextHeightTolerance().addListener(SWT.CHANGED, handlerText);
+		med.getTextMaximumIterationNumber().addListener(SWT.CHANGED, handlerText);
+		med.getTextLogEditor().addListener(SWT.CHANGED, handlerText);
 		// TableViewer
 		HandlerTableViewer handlerTableViewer = new HandlerTableViewer();
 		med.getTableViewerCoilTable().addSelectionChangedListener(handlerTableViewer);
-		
+		// ComboViewer
+		HandlerComboViewer handlerComboViewer = new HandlerComboViewer();
+		med.getComboViewerSelectGraph().addSelectionChangedListener(handlerComboViewer);
+		med.getComboViewerSelectImage().addSelectionChangedListener(handlerComboViewer);
+		med.getComboViewerSelectTableData().addSelectionChangedListener(handlerComboViewer);
 	}
 
 	@Override

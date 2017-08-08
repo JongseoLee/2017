@@ -70,6 +70,17 @@ public class CustomText implements ICommand {
 			System.out.println("Text("+Mediator.TEXT_textHeightConditionerPath +")"+med.getTextHeightConditionerPath().getText());
 		}
 		
+		else if(this.widgetName.equals(Mediator.TEXT_textRadiusTolerance)){
+			System.out.println("Text("+Mediator.TEXT_textRadiusTolerance +")"+med.getTextRadiusTolerance().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textHeightTolerance)){
+			System.out.println("Text("+Mediator.TEXT_textHeightTolerance +")"+med.getTextHeightTolerance().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textMaximumIterationNumber)){
+			System.out.println("Text("+Mediator.TEXT_textMaximumIterationNumber +")"+med.getTextMaximumIterationNumber().getText());
+		}else if(this.widgetName.equals(Mediator.TEXT_textLogEditor)){
+			System.out.println("Text("+Mediator.TEXT_textLogEditor +")"+med.getTextLogEditor().getText());
+		}
+		
+		
 		
 
 	}
@@ -142,7 +153,16 @@ public class CustomText implements ICommand {
 		this.text =med.getTextHeightConditionerPath();
 	}
 
-
+	public void setCustomWidget_textRadiusTolerance(){
+		this.text = med.getTextRadiusTolerance();
+	}
+	public void setCustomWidget_textHeightTolerance(){
+		this.text = med.getTextHeightTolerance();
+	}public void setCustomWidget_textMaximumIterationNumber(){
+		this.text = med.getTextMaximumIterationNumber();
+	}public void setCustomWidget_textLogEditor(){
+		this.text = med.getTextLogEditor();
+	}
 	
 	
 }

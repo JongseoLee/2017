@@ -41,21 +41,29 @@ public class UILabel {
 	public static String CoilData = "CoilData";
 	private String base_CoilData = "Coil data";
 	public static String ProductName = "ProductName";
-	private String base_ProductName = "Á¦Ç°¸í";
+	//private String base_ProductName = "ì œí’ˆëª…";
+	private String base_ProductName = "Product Name";
 	public static String LineDiameter = "LineDiameter";
-	private String base_LineDiameter = "¼±°æ";
+	//private String base_LineDiameter = "ì„ ê²½(mm)";
+	private String base_LineDiameter = "Line Diameter";
 	public static String CenterDiameter = "CenterDiameter";
-	private String base_CenterDiameter = "ÄÚÀÏÁß½É°æ(mm)";
+	//private String base_CenterDiameter = "ì½”ì¼ì¤‘ì‹¬ê²½(mm)";
+	private String base_CenterDiameter = "Center Diameter(mm)";
 	public static String InnerDiameter = "InnerDiameter";
-	private String base_InnerDiameter = "ÄÚÀÏ ³»°æ(mm)";
+	//private String base_InnerDiameter = "ì½”ì¼ ë‚´ê²½(mm)";
+	private String base_InnerDiameter = "Inner Diameter(mm)";
 	public static String OuterDiameter = "OuterDiameter";
-	private String base_OuterDiameter = "ÄÚÀÏ ¿Ü°æ(mm)";
+	//private String base_OuterDiameter = "ì½”ì¼ ì™¸ê²½(mm)";
+	private String base_OuterDiameter = "Outer Diameter(mm)";
 	public static String UpperInnerDiameter = "UpperInnerDiameter";
-	private String base_UpperInnerDiameter = "¾îÆÛ ³»°æ(mm)";
+	//private String base_UpperInnerDiameter = "ì–´í¼ ë‚´ê²½(mm)";
+	private String base_UpperInnerDiameter = "U. Inner Diameter(mm)";
 	public static String LowerInnerDiameter = "LowerInnerDiameter";
-	private String base_LowerInnerDiameter = "·Î¿ö ³»°æ(mm)";
+	//private String base_LowerInnerDiameter = "ë¡œì›Œ ë‚´ê²½(mm)";
+	private String base_LowerInnerDiameter = "L. Inner Diameter(mm)";
 	public static String TotalNumber = "TotalNumber";
-	private String base_TotalNumber = "ÃÑ±Ç¼ö";
+	//private String base_TotalNumber = "ì´ê¶Œìˆ˜";
+	private String base_TotalNumber = "Total Number";
 	public static String CoilGeoDataTable = "CoilGeoDataTable";
 	private String base_CoilGeoDataTable = "Coil geometry data table";
 	public static String ColumnTheta = "ColumnTheta";
@@ -122,8 +130,8 @@ public class UILabel {
 	private String base_SelectImage = "Select Image";	
 	public static String ShowPopupWindow_2 = "ShowPopupWindow_2";
 	private String base_ShowPopupWindow_2 = "Show popup window";
-	public static String ShowTableData = "ShowTableData";
-	private String base_ShowTableData = "Show table Data";
+	public static String SelectTableData = "SelectTableData";
+	private String base_SelectTableData = "Select table Data";
 	public static String Show = "Show";
 	private String base_Show = "Show";
 	
@@ -192,7 +200,7 @@ public class UILabel {
 		this.BaseUILabelMap.put("ShowPopupWindow_1", this.base_ShowPopupWindow_1);
 		this.BaseUILabelMap.put("SelectImage", this.base_SelectImage);
 		this.BaseUILabelMap.put("ShowPopupWindow_2", this.base_ShowPopupWindow_2);
-		this.BaseUILabelMap.put("ShowTableData", this.base_ShowTableData);
+		this.BaseUILabelMap.put("SelectTableData", this.base_SelectTableData);
 		this.BaseUILabelMap.put("Show", this.base_Show);
 	}
 	

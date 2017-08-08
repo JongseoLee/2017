@@ -44,6 +44,20 @@ public class CustomButton implements ICommand {
 			System.out.println("Click btn : " + Mediator.BUTTON_btnHeightConditionerExplorer);
 		}
 		
+		else if(this.widgetName.equals(Mediator.BUTTON_btnStartSimulation)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnStartSimulation);
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnReadLog)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnReadLog);
+		}
+		
+		else if(this.widgetName.equals(Mediator.BUTTON_btnShowGraphWindow)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnShowGraphWindow);
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnShowImageWindow)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnShowImageWindow);
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnShowTableData)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnShowTableData);
+		}
+		
 	}
 	
 	////////////////////////////////////////////////
@@ -81,5 +95,25 @@ public class CustomButton implements ICommand {
 	
 	public void setCustomWidget_btnHeightConditionerExplorer(){
 		this.button = med.getBtnHeightConditionerExplorer();
+	}
+	
+	public void setCustomWidget_btnStartSimulation(){
+		this.button = med.getBtnStartSimulation();
+	}
+	
+	public void setCustomWidget_btnReadLog(){
+		this.button = med.getBtnReadLog();
+	}
+	
+	public void setCustomWidget_btnShowGraphWindow(){
+		this.button = med.getBtnShowGraphWindow();
+	}
+	
+	public void setCustomWidget_btnShowImageWindow(){
+		this.button = med.getBtnShowImageWindow();
+	}
+	
+	public void setCustomWidget_btnShowTableData(){
+		this.button = med.getBtnShowTableData();
 	}
 }

@@ -2,6 +2,9 @@ package com.js.ens.coil.db;
 
 import java.util.ArrayList;
 
+import com.js.ens.coil.customWidget.ComboData_selectGraph;
+import com.js.ens.coil.customWidget.ComboData_selectImage;
+import com.js.ens.coil.customWidget.ComboData_selectTableData;
 import com.js.ens.coil.customWidget.TableData_Coil;
 
 public class CoilDB {
@@ -16,16 +19,39 @@ public class CoilDB {
 	private String TotalNumber;
 	
 	private ArrayList<TableData_Coil> GeometryDataTableList;
+	private ArrayList<ComboData_selectGraph> graphDataList;
+	private ArrayList<ComboData_selectImage> imageDataList;
+	private ArrayList<ComboData_selectTableData> tabelDataList;
 	
 	
 	public CoilDB() {
 		// TODO Auto-generated constructor stub
 		this.GeometryDataTableList = new ArrayList<TableData_Coil>();
+		this.graphDataList = new ArrayList<ComboData_selectGraph>();
+		this.imageDataList = new ArrayList<ComboData_selectImage>();
+		this.tabelDataList = new ArrayList<ComboData_selectTableData>();
 	}
 	
 	public void add_CoilDataTable(TableData_Coil obj){
 		this.GeometryDataTableList.add(obj);
 	}
+	
+	public void add_GraphDataCombo(ComboData_selectGraph obj){
+		this.graphDataList.add(obj);
+	}
+	
+	public void add_ImageDataCombo(ComboData_selectImage obj){
+		this.imageDataList.add(obj);
+	}
+	
+	public void add_TableDataCombo(ComboData_selectTableData obj){
+		this.tabelDataList.add(obj);
+	}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -117,6 +143,30 @@ public class CoilDB {
 
 	public void setGeometryDataTableList(ArrayList<TableData_Coil> geometryDataTableList) {
 		GeometryDataTableList = geometryDataTableList;
+	}
+
+	public ArrayList<ComboData_selectGraph> getGraphDataList() {
+		return graphDataList;
+	}
+
+	public void setGraphDataList(ArrayList<ComboData_selectGraph> graphDataList) {
+		this.graphDataList = graphDataList;
+	}
+
+	public ArrayList<ComboData_selectImage> getImageDataList() {
+		return imageDataList;
+	}
+
+	public void setImageDataList(ArrayList<ComboData_selectImage> imageDataList) {
+		this.imageDataList = imageDataList;
+	}
+
+	public ArrayList<ComboData_selectTableData> getTabelDataList() {
+		return tabelDataList;
+	}
+
+	public void setTabelDataList(ArrayList<ComboData_selectTableData> tabelDataList) {
+		this.tabelDataList = tabelDataList;
 	}
 
 }
