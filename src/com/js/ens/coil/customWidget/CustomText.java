@@ -24,60 +24,84 @@ public class CustomText implements ICommand {
 		// TODO Auto-generated method stub
 		if(this.widgetName.equals(Mediator.TEXT_textCoilFilePath)){
 			System.out.println("Text("+Mediator.TEXT_textCoilFilePath+")"+med.getTextCoilFilePath().getText());
+			MC.Text_Modify_CoilFilePath();
 		}
 		
 		else if(this.widgetName.equals(Mediator.TEXT_textProductName)){
 			System.out.println("Text("+Mediator.TEXT_textProductName +")"+med.getTextProductName().getText());
+			MC.Text_Modify_ProductName();
 		}else if(this.widgetName.equals(Mediator.TEXT_textLineDiameter)){
 			System.out.println("Text("+Mediator.TEXT_textLineDiameter +")"+med.getTextLineDiameter().getText());
+			MC.Text_Modify_LineDiameter();
 		}else if(this.widgetName.equals(Mediator.TEXT_textCenterDiameter)){
 			System.out.println("Text("+Mediator.TEXT_textCenterDiameter +")"+med.getTextCenterDiameter().getText());
+			MC.Text_Modify_CenterDiameter();
 		}else if(this.widgetName.equals(Mediator.TEXT_textInnerDiameter)){
 			System.out.println("Text("+Mediator.TEXT_textInnerDiameter +")"+med.getTextInnerDiameter().getText());
+			MC.Text_Modify_InnerDiameter();
 		}else if(this.widgetName.equals(Mediator.TEXT_textOuterDiameter)){
 			System.out.println("Text("+Mediator.TEXT_textOuterDiameter +")"+med.getTextOuterDiameter().getText());
+			MC.Text_Modify_OuterDiameter();
 		}else if(this.widgetName.equals(Mediator.TEXT_textUpperInnerDiameter)){
 			System.out.println("Text("+Mediator.TEXT_textUpperInnerDiameter +")"+med.getTextUpperInnerDiameter().getText());
+			MC.Text_Modify_UpperInnerDiameter();
 		}else if(this.widgetName.equals(Mediator.TEXT_textLowerInnerDiameter)){
 			System.out.println("Text("+Mediator.TEXT_textLowerInnerDiameter +")"+med.getTextLowerInnerDiameter().getText());
+			MC.Text_Modify_LowerInnerDiameter();
 		}else if(this.widgetName.equals(Mediator.TEXT_textTotalNumber)){
 			System.out.println("Text("+Mediator.TEXT_textTotalNumber +")"+med.getTextTotalNumber().getText());
+			MC.Text_Modify_TotalNumer();
 		}
 		
 		else if(this.widgetName.equals(Mediator.TEXT_textHotSettingTemp)){
 			System.out.println("Text("+Mediator.TEXT_textHotSettingTemp +")"+med.getTextHotSettingTemp().getText());
+			MC.Text_Modify_HotSettingTemp();
 		}else if(this.widgetName.equals(Mediator.TEXT_textColdSettingTemp)){
 			System.out.println("Text("+Mediator.TEXT_textColdSettingTemp +")"+med.getTextColdSettingTemp().getText());
-		}else if(this.widgetName.equals(Mediator.TEXT_textHotSettingStrok)){
-			System.out.println("Text("+Mediator.TEXT_textHotSettingStrok +")"+med.getTextHotSettingStrok().getText());
-		}else if(this.widgetName.equals(Mediator.TEXT_textColdSettingStrok)){
-			System.out.println("Text("+Mediator.TEXT_textColdSettingStrok +")"+med.getTextColdSettingStrok().getText());
+			MC.Text_Modify_ColdSettingTemp();
+		}else if(this.widgetName.equals(Mediator.TEXT_textHotSettingHeight)){
+			System.out.println("Text("+Mediator.TEXT_textHotSettingHeight +")"+med.getTextHotSettingHeight().getText());
+			MC.Text_Modify_HotSettingHeight();
+		}else if(this.widgetName.equals(Mediator.TEXT_textColdSettingHeight)){
+			System.out.println("Text("+Mediator.TEXT_textColdSettingHeight +")"+med.getTextColdSettingHeight().getText());
+			MC.Text_Modify_ColdSettingHeight();
 		}else if(this.widgetName.equals(Mediator.TEXT_textSeatUInnerMargina)){
 			System.out.println("Text("+Mediator.TEXT_textSeatUInnerMargina +")"+med.getTextSeatUInnerMargina().getText());
+			MC.Text_Modify_SeatUInnerMargina();
 		}else if(this.widgetName.equals(Mediator.TEXT_textSeatLInnerMargina)){
 			System.out.println("Text("+Mediator.TEXT_textSeatLInnerMargina +")"+med.getTextSeatLInnerMargina().getText());
+			MC.Text_Modify_SeatLInnerMargina();
 		}else if(this.widgetName.equals(Mediator.TEXT_textSeatHeight)){
 			System.out.println("Text("+Mediator.TEXT_textSeatHeight +")"+med.getTextSeatHeight().getText());
+			MC.Text_Modify_SeatHeight();
 		}
 		
 		else if(this.widgetName.equals(Mediator.TEXT_textRadiusConditionerValue)){
 			System.out.println("Text("+Mediator.TEXT_textRadiusConditionerValue +")"+med.getTextRadiusConditionerValue().getText());
+			MC.Text_Modify_RadiusConditionerValue();
 		}else if(this.widgetName.equals(Mediator.TEXT_textRadiusConditionerPath)){
 			System.out.println("Text("+Mediator.TEXT_textRadiusConditionerPath +")"+med.getTextRadiusConditionerPath().getText());
+			MC.Text_Modify_RadiusConditionerPath();
 		}else if(this.widgetName.equals(Mediator.TEXT_textHeightConditionerValue)){
 			System.out.println("Text("+Mediator.TEXT_textHeightConditionerValue +")"+med.getTextHeightConditionerValue().getText());
+			MC.Text_Modify_HeightConditionerValue();
 		}else if(this.widgetName.equals(Mediator.TEXT_textHeightConditionerPath)){
 			System.out.println("Text("+Mediator.TEXT_textHeightConditionerPath +")"+med.getTextHeightConditionerPath().getText());
+			MC.Text_Modify_HeightConditionerPath();
 		}
 		
 		else if(this.widgetName.equals(Mediator.TEXT_textRadiusTolerance)){
 			System.out.println("Text("+Mediator.TEXT_textRadiusTolerance +")"+med.getTextRadiusTolerance().getText());
+			MC.Text_Modify_RadiusTolerance();
 		}else if(this.widgetName.equals(Mediator.TEXT_textHeightTolerance)){
 			System.out.println("Text("+Mediator.TEXT_textHeightTolerance +")"+med.getTextHeightTolerance().getText());
+			MC.Text_Modify_HeightTolerance();
 		}else if(this.widgetName.equals(Mediator.TEXT_textMaximumIterationNumber)){
 			System.out.println("Text("+Mediator.TEXT_textMaximumIterationNumber +")"+med.getTextMaximumIterationNumber().getText());
+			MC.Text_Modify_MaximumIterationNumber();
 		}else if(this.widgetName.equals(Mediator.TEXT_textLogEditor)){
 			System.out.println("Text("+Mediator.TEXT_textLogEditor +")"+med.getTextLogEditor().getText());
+			MC.Text_Modify_LogEditor();
 		}
 		
 		
@@ -124,11 +148,11 @@ public class CustomText implements ICommand {
 	public void setCustomWidget_textColdSettingTemp(){
 		this.text = med.getTextColdSettingTemp();
 	}
-	public void setCustomWidget_textHotSettingStrok(){
-		this.text = med.getTextHotSettingStrok();
+	public void setCustomWidget_textHotSettingHeight(){
+		this.text = med.getTextHotSettingHeight();
 	}
-	public void setCustomWidget_textColdSettingStrok(){
-		this.text = med.getTextColdSettingStrok();
+	public void setCustomWidget_textColdSettingHeight(){
+		this.text = med.getTextColdSettingHeight();
 	}
 	public void setCustomWidget_textSeatUInnerMargina(){
 		this.text = med.getTextSeatUInnerMargina();

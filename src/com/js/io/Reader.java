@@ -24,6 +24,11 @@ public class Reader {
 		this.readFile();
 	}
 	
+	public void running_utf8(){
+		this.initReader_UTF8();
+		this.readFile();
+	}
+	
 	private void initReader(){
 		try {
 			// UTF8 -> MS949 �ѱ� label ������ ����
@@ -38,6 +43,25 @@ public class Reader {
 			e.printStackTrace();
 		}
 	}
+	
+	private void initReader_UTF8(){
+		try {
+			// UTF8 -> MS949 �ѱ� label ������ ����
+			this.reader = new BufferedReader(new InputStreamReader(new FileInputStream(this.filePath),"UTF8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error - Encoding ");
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error - File Not Found");
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
 	
 	public void readFile(){
 		String line = null;

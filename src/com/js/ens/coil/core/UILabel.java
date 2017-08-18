@@ -79,10 +79,10 @@ public class UILabel {
 	private String base_HotSettingTemp = "Hot Setting Temp.(C)";
 	public static String ColdSettingTemp = "ColdSettingTemp";
 	private String base_ColdSettingTemp = "Cold Setting Temp.(C)";
-	public static String HotSettingStrok = "HotSettingStrok";
-	private String base_HotSettingStrok = "Hot Setting Strok(C)";
-	public static String ColdSettingStrok = "ColdSettingStrok";
-	private String base_ColdSettingStrok = "Cold Setting Strok(C)";
+	public static String HotSettingHeight = "HotSettingHeight";
+	private String base_HotSettingHeight = "Hot Setting Height(mm)";
+	public static String ColdSettingHeight = "ColdSettingHeight";
+	private String base_ColdSettingHeight = "Cold Setting Height(mm)";
 	public static String SeatUInnerMargina = "SeatUInnerMargina";
 	private String base_SeatUInnerMargina = "Seat U. Inner Margina(mm)";
 	public static String SeatLInnerMargina = "SeatLInnerMargina";
@@ -142,7 +142,7 @@ public class UILabel {
 	public UILabel(){
 		this.UILabelMap = new HashMap<String,String>();
 		this.BaseUILabelMap = new HashMap<String,String>();
-		this.UILabelPath = myUtil.setPath(myUtil.setPath(MC.getAppPath(),"config"),"label.ini");
+		this.UILabelPath = myUtil.setPath(myUtil.setPath(MC.getAppPath(),AppFolder.CONFIG),AppFolder.LabelFile);
 		this.readUILabel_base();
 		this.readUILabelFile();
 	}
@@ -174,8 +174,8 @@ public class UILabel {
 		this.BaseUILabelMap.put("SettingProcessInformation", this.base_SettingProcessInformation);
 		this.BaseUILabelMap.put("HotSettingTemp", this.base_HotSettingTemp);
 		this.BaseUILabelMap.put("ColdSettingTemp", this.base_ColdSettingTemp);
-		this.BaseUILabelMap.put("HotSettingStrok", this.base_HotSettingStrok);
-		this.BaseUILabelMap.put("ColdSettingStrok", this.base_ColdSettingStrok);
+		this.BaseUILabelMap.put("HotSettingHeight", this.base_HotSettingHeight);
+		this.BaseUILabelMap.put("ColdSettingHeight", this.base_ColdSettingHeight);
 		this.BaseUILabelMap.put("SeatUInnerMargina", this.base_SeatUInnerMargina);
 		this.BaseUILabelMap.put("SeatLInnerMargina", this.base_SeatLInnerMargina);
 		this.BaseUILabelMap.put("SeatHeight", this.base_SeatHeight);

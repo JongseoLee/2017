@@ -534,8 +534,11 @@ public class myUtil {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
-		
-		
 	} 
+	
+	public static void CleareObj (Object obj){
+		System.out.println("Clear : "+obj.getClass().toString());
+		obj = null;
+		System.gc();
+	}
 }

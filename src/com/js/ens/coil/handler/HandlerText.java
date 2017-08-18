@@ -41,10 +41,10 @@ public class HandlerText implements Listener {
 			med.getC_textHotSettingTemp().execute();
 		}else if(event.widget == med.getTextColdSettingTemp()){
 			med.getC_textColdSettingTemp().execute();
-		}else if(event.widget == med.getTextHotSettingStrok()){
-			med.getC_textHotSettingStrok().execute();
-		}else if(event.widget == med.getTextColdSettingStrok()){
-			med.getC_textColdSettingStrok().execute();
+		}else if(event.widget == med.getTextHotSettingHeight()){
+			med.getC_textHotSettingHeight().execute();
+		}else if(event.widget == med.getTextColdSettingHeight()){
+			med.getC_textColdSettingHeight().execute();
 		}else if(event.widget == med.getTextSeatUInnerMargina()){
 			med.getC_textSeatUInnerMargina().execute();
 		}else if(event.widget == med.getTextSeatLInnerMargina()){

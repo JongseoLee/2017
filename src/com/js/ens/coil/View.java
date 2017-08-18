@@ -1,17 +1,10 @@
 package com.js.ens.coil;
 
-import java.util.*;
 
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 import com.js.ens.coil.core.MainController;
@@ -40,7 +33,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Table;
-import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.swt.widgets.Combo;
@@ -69,8 +61,8 @@ public class View extends ViewPart {
 	private Table tableCoilTable;
 	private Text textHotSettingTemp;
 	private Text textColdSettingTemp;
-	private Text textHotSettingStrok;
-	private Text textColdSettingStrok;
+	private Text textHotSettingHeight;
+	private Text textColdSettingHeight;
 	private Text textSeatUInnerMargina;
 	private Text textSeatLInnerMargina;
 	private Text textSeatHeight;
@@ -539,47 +531,47 @@ public class View extends ViewPart {
 		fd_textColdSettingTemp.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
 		textColdSettingTemp.setLayoutData(fd_textColdSettingTemp);
 		
-		Label lblHotSettingStrok = new Label(grpSettingProcessInformation, SWT.NONE);
-		FormData fd_lblHotSettingStrok = new FormData();
-		fd_lblHotSettingStrok.top = new FormAttachment(lblColdSettingTemp, 8);
-		fd_lblHotSettingStrok.left = new FormAttachment(lblHotSettingTemp, 0, SWT.LEFT);
-		fd_lblHotSettingStrok.right = new FormAttachment(lblHotSettingTemp, 0, SWT.RIGHT);
-		lblHotSettingStrok.setLayoutData(fd_lblHotSettingStrok);
-		lblHotSettingStrok.setText(LabelDatas.getLabel(UILabel.HotSettingStrok));
+		Label lblHotSettingHeight = new Label(grpSettingProcessInformation, SWT.NONE);
+		FormData fd_lblHotSettingHeight = new FormData();
+		fd_lblHotSettingHeight.top = new FormAttachment(lblColdSettingTemp, 8);
+		fd_lblHotSettingHeight.left = new FormAttachment(lblHotSettingTemp, 0, SWT.LEFT);
+		fd_lblHotSettingHeight.right = new FormAttachment(lblHotSettingTemp, 0, SWT.RIGHT);
+		lblHotSettingHeight.setLayoutData(fd_lblHotSettingHeight);
+		lblHotSettingHeight.setText(LabelDatas.getLabel(UILabel.HotSettingHeight));
 		
-		textHotSettingStrok = new Text(grpSettingProcessInformation, SWT.BORDER);
-		med.setTextHotSettingStrok(textHotSettingStrok);
-		CustomText c_textHotSettingStrok = new CustomText(Mediator.TEXT_textHotSettingStrok,med);
-		med.setC_textHotSettingStrok(c_textHotSettingStrok);
-		c_textHotSettingStrok.setCustomWidget_textHotSettingStrok();
-		FormData fd_textHotSettingStrok = new FormData();
-		fd_textHotSettingStrok.top = new FormAttachment(lblHotSettingStrok, -2, SWT.TOP);
-		fd_textHotSettingStrok.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
-		fd_textHotSettingStrok.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
-		textHotSettingStrok.setLayoutData(fd_textHotSettingStrok);
+		textHotSettingHeight = new Text(grpSettingProcessInformation, SWT.BORDER);
+		med.setTextHotSettingHeight(textHotSettingHeight);
+		CustomText c_textHotSettingHeight = new CustomText(Mediator.TEXT_textHotSettingHeight,med);
+		med.setC_textHotSettingHeight(c_textHotSettingHeight);
+		c_textHotSettingHeight.setCustomWidget_textHotSettingHeight();
+		FormData fd_textHotSettingHeight = new FormData();
+		fd_textHotSettingHeight.top = new FormAttachment(lblHotSettingHeight, -2, SWT.TOP);
+		fd_textHotSettingHeight.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
+		fd_textHotSettingHeight.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
+		textHotSettingHeight.setLayoutData(fd_textHotSettingHeight);
 		
-		Label lblColdSettingStrok = new Label(grpSettingProcessInformation, SWT.NONE);
-		FormData fd_lblColdSettingStrok = new FormData();
-		fd_lblColdSettingStrok.top = new FormAttachment(lblHotSettingStrok, 8);
-		fd_lblColdSettingStrok.left = new FormAttachment(lblHotSettingTemp, 0, SWT.LEFT);
-		fd_lblColdSettingStrok.right = new FormAttachment(lblHotSettingTemp, 0, SWT.RIGHT);
-		lblColdSettingStrok.setLayoutData(fd_lblColdSettingStrok);
-		lblColdSettingStrok.setText(LabelDatas.getLabel(UILabel.ColdSettingStrok));
+		Label lblColdSettingHeight = new Label(grpSettingProcessInformation, SWT.NONE);
+		FormData fd_lblColdSettingHeight = new FormData();
+		fd_lblColdSettingHeight.top = new FormAttachment(lblHotSettingHeight, 8);
+		fd_lblColdSettingHeight.left = new FormAttachment(lblHotSettingTemp, 0, SWT.LEFT);
+		fd_lblColdSettingHeight.right = new FormAttachment(lblHotSettingTemp, 0, SWT.RIGHT);
+		lblColdSettingHeight.setLayoutData(fd_lblColdSettingHeight);
+		lblColdSettingHeight.setText(LabelDatas.getLabel(UILabel.ColdSettingHeight));
 		
-		textColdSettingStrok = new Text(grpSettingProcessInformation, SWT.BORDER);
-		med.setTextColdSettingStrok(textColdSettingStrok);
-		CustomText c_textColdSettingStrok = new CustomText(Mediator.TEXT_textColdSettingStrok,med);
-		med.setC_textColdSettingStrok(c_textColdSettingStrok);
-		c_textColdSettingStrok.setCustomWidget_textColdSettingStrok();
-		FormData fd_textColdSettingStrok = new FormData();
-		fd_textColdSettingStrok.top = new FormAttachment(lblColdSettingStrok, -2, SWT.TOP);
-		fd_textColdSettingStrok.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
-		fd_textColdSettingStrok.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
-		textColdSettingStrok.setLayoutData(fd_textColdSettingStrok);
+		textColdSettingHeight = new Text(grpSettingProcessInformation, SWT.BORDER);
+		med.setTextColdSettingHeight(textColdSettingHeight);
+		CustomText c_textColdSettingHeight = new CustomText(Mediator.TEXT_textColdSettingHeight,med);
+		med.setC_textColdSettingHeight(c_textColdSettingHeight);
+		c_textColdSettingHeight.setCustomWidget_textColdSettingHeight();
+		FormData fd_textColdSettingHeight = new FormData();
+		fd_textColdSettingHeight.top = new FormAttachment(lblColdSettingHeight, -2, SWT.TOP);
+		fd_textColdSettingHeight.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
+		fd_textColdSettingHeight.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
+		textColdSettingHeight.setLayoutData(fd_textColdSettingHeight);
 		
 		Label lblSeatUInnerMargina = new Label(grpSettingProcessInformation, SWT.NONE);
 		FormData fd_lblSeatUInnerMargina = new FormData();
-		fd_lblSeatUInnerMargina.top = new FormAttachment(lblColdSettingStrok, 8);
+		fd_lblSeatUInnerMargina.top = new FormAttachment(lblColdSettingHeight, 8);
 		fd_lblSeatUInnerMargina.left = new FormAttachment(lblHotSettingTemp, 0, SWT.LEFT);
 		fd_lblSeatUInnerMargina.right = new FormAttachment(lblHotSettingTemp, 0, SWT.RIGHT);
 		lblSeatUInnerMargina.setLayoutData(fd_lblSeatUInnerMargina);
@@ -715,7 +707,7 @@ public class View extends ViewPart {
 		FormData fd_textRadiusConditionerPath = new FormData();
 		fd_textRadiusConditionerPath.top = new FormAttachment(btnRadiusConditionerFile, 2);
 		fd_textRadiusConditionerPath.left = new FormAttachment(btnRadiusConditionerConstant, 0,SWT.LEFT);
-		fd_textRadiusConditionerPath.right = new FormAttachment(100, -30);
+		fd_textRadiusConditionerPath.right = new FormAttachment(100, -40);
 		textRadiusConditionerPath.setLayoutData(fd_textRadiusConditionerPath);
 		
 		Button btnRadiusConditionerExplorer = new Button(compositeRadiusConditioner, SWT.NONE);
@@ -790,7 +782,7 @@ public class View extends ViewPart {
 		FormData fd_textHeightConditionerPath = new FormData();
 		fd_textHeightConditionerPath.top = new FormAttachment(btnHeightConditionerFile, 2);
 		fd_textHeightConditionerPath.left = new FormAttachment(btnHeightConditionerConstant, 0,SWT.LEFT);
-		fd_textHeightConditionerPath.right = new FormAttachment(100, -30);
+		fd_textHeightConditionerPath.right = new FormAttachment(100, -40);
 		textHeightConditionerPath.setLayoutData(fd_textHeightConditionerPath);
 		
 		Button btnHeightConditionerExplorer = new Button(compositeHeightConditioner, SWT.NONE);
@@ -1151,6 +1143,11 @@ public class View extends ViewPart {
 	
 	private void init_WidgetSetting(){
 		this.stackLayout.topControl = compositeStep1;
+		med.getCompositeTop().setEnabled(false);
+		med.getCompositeBottom().setEnabled(false);
+		//med.getCompositeStep1().setEnabled(false);
+		//med.getCompositeStep2().setEnabled(false);
+		//med.getCompositeStep3().setEnabled(false);
 	}
 	
 	private void init_WidgetEvent(){
@@ -1190,8 +1187,8 @@ public class View extends ViewPart {
 		med.getTextTotalNumber().addListener(SWT.CHANGED, handlerText);
 		med.getTextHotSettingTemp().addListener(SWT.CHANGED, handlerText);
 		med.getTextColdSettingTemp().addListener(SWT.CHANGED, handlerText);
-		med.getTextHotSettingStrok().addListener(SWT.CHANGED, handlerText);
-		med.getTextColdSettingStrok().addListener(SWT.CHANGED, handlerText);
+		med.getTextHotSettingHeight().addListener(SWT.CHANGED, handlerText);
+		med.getTextColdSettingHeight().addListener(SWT.CHANGED, handlerText);
 		med.getTextSeatUInnerMargina().addListener(SWT.CHANGED, handlerText);
 		med.getTextSeatLInnerMargina().addListener(SWT.CHANGED, handlerText);
 		med.getTextSeatHeight().addListener(SWT.CHANGED, handlerText);

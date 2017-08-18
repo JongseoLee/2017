@@ -24,6 +24,6 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setInitialSize(new Point(830, 800));
 		configurer.setShowCoolBar(false);
 		configurer.setShowStatusLine(false);
-		configurer.setTitle("Coil Analysis");
+		configurer.setTitle("Simcos - Simulation for Coil spring");
 	}
 }
