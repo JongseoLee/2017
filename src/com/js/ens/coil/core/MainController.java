@@ -46,6 +46,7 @@ public class MainController {
 	
 	// Preferences values
 	private String MarcPath;
+	private String MentatPath;
 	private String TextEditorPath;
 	private String ExcelPath;
 	private String Command;
@@ -570,6 +571,7 @@ public class MainController {
 	
 	public void Setting_Preferences_Run(){
 		this.MarcPath = this.getPreferencesObj().getPreferencesValue(Preferences.MarcPath);
+		this.MentatPath = this.getPreferencesObj().getPreferencesValue(Preferences.MentatPath);
 		this.TextEditorPath = this.getPreferencesObj().getPreferencesValue(Preferences.TextEditorPath);
 		this.ExcelPath = this.getPreferencesObj().getPreferencesValue(Preferences.ExcelPath);
 		this.Command = this.getPreferencesObj().getPreferencesValue(Preferences.Command);
@@ -597,11 +599,13 @@ public class MainController {
 	private void getPreferencesData(){
 		// Load Preferences data 
 		this.MarcPath = this.getPreferencesObj().getPreferencesValue(Preferences.MarcPath);
+		this.MentatPath = this.getPreferencesObj().getPreferencesValue(Preferences.MentatPath);
 		this.TextEditorPath = this.getPreferencesObj().getPreferencesValue(Preferences.TextEditorPath);
 		this.ExcelPath = this.getPreferencesObj().getPreferencesValue(Preferences.ExcelPath);
 		this.Command = this.getPreferencesObj().getPreferencesValue(Preferences.Command);
 		
 		System.out.println(this.MarcPath);
+		System.out.println(this.MentatPath);
 		System.out.println(this.TextEditorPath);
 		System.out.println(this.ExcelPath);
 		System.out.println(this.Command);

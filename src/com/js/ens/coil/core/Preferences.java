@@ -21,6 +21,7 @@ public class Preferences {
 	private String preferencePath;
 	
 	public static String MarcPath = "MarcPath";
+	public static String MentatPath ="MentatPath";
 	public static String TextEditorPath = "TextEditorPath";
 	public static String ExcelPath = "ExcelPath";
 	public static String Command = "Command";
@@ -60,6 +61,8 @@ public class Preferences {
 	public void setPreferencesValue(String key, String value){
 		if(key.equals(MarcPath)){
 			this.preferencesMap.put(MarcPath, value);
+		}else if(key.equals(MentatPath)){
+			this.preferencesMap.put(MentatPath, value);
 		}else if(key.equals(TextEditorPath)){
 			this.preferencesMap.put(TextEditorPath, value);
 		}else if(key.equals(ExcelPath)){
@@ -78,6 +81,7 @@ public class Preferences {
 		outputDataList.add("#");
 		outputDataList.add("#######################################################");
 		outputDataList.add("MarcPath="+this.preferencesMap.get(this.MarcPath));
+		outputDataList.add("MentatPath="+this.preferencesMap.get(this.MentatPath));
 		outputDataList.add("TextEditorPath="+this.preferencesMap.get(this.TextEditorPath));
 		outputDataList.add("ExcelPath="+this.preferencesMap.get(this.ExcelPath));
 		outputDataList.add("Command="+this.preferencesMap.get(this.Command));
