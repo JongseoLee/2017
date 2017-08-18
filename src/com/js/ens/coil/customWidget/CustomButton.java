@@ -24,38 +24,48 @@ public class CustomButton implements ICommand {
 	public void execute() {
 		// TODO Auto-generated method stub
 		if(this.widgetName.equals(Mediator.BUTTON_btnStepSave)){
-			// Call MC method
 			System.out.println("Click btn : " + Mediator.BUTTON_btnStepSave);
-		}else if(this.widgetName.equals(Mediator.BUTTON_btnExplorer)){
-			// Call MC method
-			System.out.println("Click btn : " + Mediator.BUTTON_btnExplorer);
 			MC.Button_StepSave();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnExplorer)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnExplorer);
+			MC.Button_FileExplorer_CoilData();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnRadiusConditionerConstant)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnRadiusConditionerConstant);
+			MC.Button_RadiusConditionerConstant();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnRadiusConditionerFile)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnRadiusConditionerFile);
+			MC.Button_RadiusConditionerFile();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnRadiusConditionerExplorer)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnRadiusConditionerExplorer);
+			MC.Button_RadiusConditioner_FileExplorer();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnHeightConditionerConstant)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnHeightConditionerConstant);
+			MC.Button_HeightConditionerConstant();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnHeightConditionerFile)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnHeightConditionerFile);
+			MC.Button_HeightConditonerFile();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnHeightConditionerExplorer)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnHeightConditionerExplorer);
+			MC.Button_HeightConditioner_FileExplorer();
 		}
 		
 		else if(this.widgetName.equals(Mediator.BUTTON_btnStartSimulation)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnStartSimulation);
+			MC.Button_StartSimulation();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnReadLog)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnReadLog);
+			MC.Button_ReadLog();
 		}
 		
 		else if(this.widgetName.equals(Mediator.BUTTON_btnShowGraphWindow)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnShowGraphWindow);
+			MC.Button_ShowGraphWindow();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnShowImageWindow)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnShowImageWindow);
+			MC.Button_ShowImageWindow();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnShowTableData)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnShowTableData);
+			MC.Button_ShowTableData();
 		}
 		
 	}

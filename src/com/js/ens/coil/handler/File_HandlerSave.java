@@ -7,17 +7,14 @@ import org.eclipse.core.commands.IHandler;
 
 import com.js.ens.coil.core.MainController;
 
-
-
-public class File_HandlerNew extends AbstractHandler implements IHandler {
+public class File_HandlerSave extends AbstractHandler implements IHandler {
 	private MainController MC = MainController.getInstatnce();
 	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// TODO Auto-generated method stub
-		//MC.executeFileNew();
-		System.out.println("File menu New");
-		MC.File_New();
+		System.out.println("File menu Save");
+		MC.File_Save();
 		return null;
 	}
 

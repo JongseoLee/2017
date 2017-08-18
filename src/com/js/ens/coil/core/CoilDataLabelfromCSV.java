@@ -1,14 +1,13 @@
-package com.js.ens.coil.db;
+package com.js.ens.coil.core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.js.ens.coil.core.MainController;
 import com.js.io.Reader;
 import com.js.util.myUtil;
 
-public class CoilDataLabel {
+public class CoilDataLabelfromCSV {
 	public static String ProductName="ProductName";
 	public static String LineDiameter="LineDiameter";
 	public static String CenterDiameter="CenterDiameter";
@@ -17,23 +16,24 @@ public class CoilDataLabel {
 	public static String UpperInnerDiameter="UpperInnerDiameter";
 	public static String LowerInnerDiameter="LowerInnerDiameter";
 	public static String TotalNumber="TotalNumber";
+	public static String CompletedProduct="CompletedProduct";
 	
 	private MainController MC = MainController.getInstatnce();
 	
 	private Map<String,String> CoilDesignIndexMap;
 	private String CoilDesignIndexPath;
 	
-	public CoilDataLabel(){
+	public CoilDataLabelfromCSV(){
 		this.CoilDesignIndexMap = new HashMap<String,String>();
-		this.CoilDesignIndexPath = myUtil.setPath(myUtil.setPath(MC.getAppPath(),"config"),"coil_design_index.ini");
-		System.out.println(this.CoilDesignIndexPath);
+		this.CoilDesignIndexPath = myUtil.setPath(myUtil.setPath(MC.getAppPath(),AppFolder.CONFIG),AppFolder.CoilDesignIndexFile);
+		//System.out.println(this.CoilDesignIndexPath);
 		this.readIndexFile();
 	}
 	
 	private void readIndexFile(){
 		try{
 			Reader reader = new Reader(this.CoilDesignIndexPath);
-			reader.running();
+			reader.running_utf8();
 			for(String line : reader.getFileDataList()){
 				String data = line.trim();
 				if(data.contains("=")){
@@ -44,7 +44,6 @@ public class CoilDataLabel {
 			}
 		}catch(Exception e){
 		}
-		myUtil.printMapData(CoilDesignIndexMap);
 	}
 	
 	public String getLabel(String key){

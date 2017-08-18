@@ -26,9 +26,28 @@ public class Writer {
 		this.writeFile();
 	}
 	
+	public void running_utf8(ArrayList<String> outputDataList){
+		this.outputDataList = outputDataList;
+		this.initWriter_UTF8();
+		this.writeFile();
+	}
 	private void initWriter(){
 		try {
 			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.outputFilePath),"MS949"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error - Encoding ");
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error - File Not Found");
+			e.printStackTrace();
+		}
+	}
+	
+	private void initWriter_UTF8(){
+		try {
+			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.outputFilePath),"UTF8"));
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Error - Encoding ");

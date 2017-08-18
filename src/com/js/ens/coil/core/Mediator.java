@@ -130,13 +130,13 @@ public class Mediator {
 	public ICommand C_textColdSettingTemp;
 	public static String TEXT_textColdSettingTemp = "textColdSettingTemp";
 
-	private Text textHotSettingStrok;
-	public ICommand C_textHotSettingStrok;
-	public static String TEXT_textHotSettingStrok = "textHotSettingStrok";
+	private Text textHotSettingHeight;
+	public ICommand C_textHotSettingHeight;
+	public static String TEXT_textHotSettingHeight = "textHotSettingHeight";
 
-	private Text textColdSettingStrok;
-	public ICommand C_textColdSettingStrok;
-	public static String TEXT_textColdSettingStrok = "textColdSettingStrok";
+	private Text textColdSettingHeight;
+	public ICommand C_textColdSettingHeight;
+	public static String TEXT_textColdSettingHeight = "textColdSettingHeight";
 		
 	private Text textSeatUInnerMargina;
 	public ICommand C_textSeatUInnerMargina;
@@ -426,6 +426,7 @@ public class Mediator {
 		C_btnExplorer = c_btnExplorer;
 	}
 
+	/*
 	public static String getBUTTON_btnExplorer() {
 		return BUTTON_btnExplorer;
 	}
@@ -433,7 +434,9 @@ public class Mediator {
 	public static void setBUTTON_btnExplorer(String bUTTON_btnExplorer) {
 		BUTTON_btnExplorer = bUTTON_btnExplorer;
 	}
-
+	//*/
+	 
+	 
 	public Text getTextProductName() {
 		return textProductName;
 	}
@@ -610,36 +613,36 @@ public class Mediator {
 		C_textColdSettingTemp = c_textColdSettingTemp;
 	}
 
-	public Text getTextHotSettingStrok() {
-		return textHotSettingStrok;
+	public Text getTextHotSettingHeight() {
+		return textHotSettingHeight;
 	}
 
-	public void setTextHotSettingStrok(Text textHotSettingStrok) {
-		this.textHotSettingStrok = textHotSettingStrok;
+	public void setTextHotSettingHeight(Text textHotSettingHeight) {
+		this.textHotSettingHeight = textHotSettingHeight;
 	}
 
-	public ICommand getC_textHotSettingStrok() {
-		return C_textHotSettingStrok;
+	public ICommand getC_textHotSettingHeight() {
+		return C_textHotSettingHeight;
 	}
 
-	public void setC_textHotSettingStrok(ICommand c_textHotSettingStrok) {
-		C_textHotSettingStrok = c_textHotSettingStrok;
+	public void setC_textHotSettingHeight(ICommand c_textHotSettingHeight) {
+		C_textHotSettingHeight = c_textHotSettingHeight;
 	}
 
-	public Text getTextColdSettingStrok() {
-		return textColdSettingStrok;
+	public Text getTextColdSettingHeight() {
+		return textColdSettingHeight;
 	}
 
-	public void setTextColdSettingStrok(Text textColdSettingStrok) {
-		this.textColdSettingStrok = textColdSettingStrok;
+	public void setTextColdSettingHeight(Text textColdSettingHeight) {
+		this.textColdSettingHeight = textColdSettingHeight;
 	}
 
-	public ICommand getC_textColdSettingStrok() {
-		return C_textColdSettingStrok;
+	public ICommand getC_textColdSettingHeight() {
+		return C_textColdSettingHeight;
 	}
 
-	public void setC_textColdSettingStrok(ICommand c_textColdSettingStrok) {
-		C_textColdSettingStrok = c_textColdSettingStrok;
+	public void setC_textColdSettingHeight(ICommand c_textColdSettingHeight) {
+		C_textColdSettingHeight = c_textColdSettingHeight;
 	}
 
 	public Text getTextSeatUInnerMargina() {
