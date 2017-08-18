@@ -266,6 +266,7 @@ public class View extends ViewPart {
 		FormData fd_btnExplorer = new FormData();
 		fd_btnExplorer.top = new FormAttachment(textCoilFilePath, -2, SWT.TOP);
 		fd_btnExplorer.left = new FormAttachment(textCoilFilePath, 5);
+		fd_btnExplorer.right = new FormAttachment(100,0);
 		btnExplorer.setLayoutData(fd_btnExplorer);
 		btnExplorer.setText("...");
 		

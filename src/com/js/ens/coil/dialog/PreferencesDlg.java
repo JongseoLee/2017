@@ -32,6 +32,7 @@ public class PreferencesDlg extends Dialog {
 	private MainController MC = MainController.getInstatnce();
 	
 	private String MarcPath;
+	private String MentatPath;
 	private String TextEditorPath;
 	private String ExcelPath;
 	private String Command;
@@ -39,6 +40,7 @@ public class PreferencesDlg extends Dialog {
 	private Map<String,String> PreferencesMap = new HashMap<String,String>();
 	
 	private Text textMarcPath;
+	private Text textMentatPath;
 	private Text textTextEditorPath;
 	private Text textExcelPath;
 	private Text textCommand;
@@ -126,9 +128,58 @@ public class PreferencesDlg extends Dialog {
 		btnMarcPathFileExplorer.setLayoutData(fd_btnMarcPathFileExplorer);
 		btnMarcPathFileExplorer.setText("...");
 		
+		Label lblMentatPath = new Label(container, SWT.NONE);
+		FormData fd_lblMentatPath = new FormData();
+		fd_lblMentatPath.top = new FormAttachment(textMarcPath, 20);
+		fd_lblMentatPath.left = new FormAttachment(lblMarcPath, 0, SWT.LEFT);
+		lblMentatPath.setLayoutData(fd_lblMentatPath);
+		lblMentatPath.setText("Mentat path");
+		
+		textMentatPath = new Text(container, SWT.BORDER);
+		textMentatPath.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				Text text = (Text)e.getSource();
+				MentatPath = text.getText().trim();
+			}
+		});
+		FormData fd_textMentatPath = new FormData();
+		fd_textMentatPath.top = new FormAttachment(lblMentatPath, 6);
+		fd_textMentatPath.left = new FormAttachment(textMarcPath, 0, SWT.LEFT);
+		fd_textMentatPath.right = new FormAttachment(textMarcPath, 0, SWT.RIGHT);
+		textMentatPath.setLayoutData(fd_textMentatPath);
+		textMentatPath.setText(MC.getPreferencesObj().getPreferencesValue(Preferences.MentatPath));
+		
+		final Button btnMentatPathFileExplorer = new Button(container, SWT.NONE);
+		btnMentatPathFileExplorer.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				FileDialog dlg = new FileDialog(btnMentatPathFileExplorer.getShell(),SWT.OPEN);
+				dlg.setText("Select Mentat execution file.");
+				
+				String [] extNames = {"All(*.*)"};
+				String [] extType = {"*.*"};
+				
+				dlg.setFilterNames(extNames);
+				dlg.setFilterExtensions(extType);
+				// Open ProjectFolder.
+				//dlg.setFilterPath(this.getAppPath());
+				
+				dlg.setFilterNames(extNames);
+				String path = dlg.open();
+				if (path != null){
+					textMentatPath.setText(path);
+				}
+			}
+		});
+		FormData fd_btnMentatPathFileExplorer = new FormData();
+		fd_btnMentatPathFileExplorer.top = new FormAttachment(textMentatPath, -2, SWT.TOP);
+		fd_btnMentatPathFileExplorer.left = new FormAttachment(textMentatPath, 5, SWT.RIGHT);
+		btnMentatPathFileExplorer.setLayoutData(fd_btnMentatPathFileExplorer);
+		btnMentatPathFileExplorer.setText("...");
+		
 		Label lblTexteditorPath = new Label(container, SWT.NONE);
 		FormData fd_lblTexteditorPath = new FormData();
-		fd_lblTexteditorPath.top = new FormAttachment(textMarcPath, 20);
+		fd_lblTexteditorPath.top = new FormAttachment(textMentatPath, 20);
 		fd_lblTexteditorPath.left = new FormAttachment(lblMarcPath, 0, SWT.LEFT);
 		lblTexteditorPath.setLayoutData(fd_lblTexteditorPath);
 		lblTexteditorPath.setText("TextEditor path");
@@ -259,9 +310,7 @@ public class PreferencesDlg extends Dialog {
 		btnOk.addSelectionListener(new SelectionAdapter(){
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
 				running();					
-				
 			}
 		});
 		createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
@@ -272,13 +321,14 @@ public class PreferencesDlg extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(450, 450);
+		return new Point(450, 550);
 	}
 	
 	private void running(){
 		MC.getPreferencesObj().setPreferencesValue(Preferences.MarcPath, this.MarcPath);
+		MC.getPreferencesObj().setPreferencesValue(Preferences.MentatPath, this.MentatPath);
 		MC.getPreferencesObj().setPreferencesValue(Preferences.TextEditorPath, this.TextEditorPath);
-		MC.getPreferencesObj().setPreferencesValue(Preferences.ExcelPath, this.TextEditorPath);
+		MC.getPreferencesObj().setPreferencesValue(Preferences.ExcelPath, this.ExcelPath);
 		MC.getPreferencesObj().setPreferencesValue(Preferences.Command, this.Command);
 		MC.Setting_Preferences_Run();
 	}
