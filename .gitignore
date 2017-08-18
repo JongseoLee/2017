@@ -24,3 +24,6 @@ icons/eclipse64.png
 META-INF/MANIFEST.MF
 plugin.xml
 >>>>>>> b73edd4705581d2c24177d3d68534058e225ec0b
+/icons
+/META-INF
+/Coil.product
