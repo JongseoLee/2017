@@ -615,11 +615,13 @@ public class MainController {
 		this.ExcelPath = this.getPreferencesObj().getPreferencesValue(Preferences.ExcelPath);
 		this.Command = this.getPreferencesObj().getPreferencesValue(Preferences.Command);
 		
+		/*
 		System.out.println(this.MarcPath);
 		System.out.println(this.MentatPath);
 		System.out.println(this.TextEditorPath);
 		System.out.println(this.ExcelPath);
 		System.out.println(this.Command);
+		*/
 	}
 	
 	private String FileExplorer_CoilData(){
