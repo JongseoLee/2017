@@ -21,20 +21,20 @@ public class HandlerText implements Listener {
 		
 		else if(event.widget == med.getTextProductName()){
 			med.getC_textProductName().execute();
-		}else if(event.widget == med.getTextLineDiameter()){
-			med.getC_textLineDiameter().execute();
+		}else if(event.widget == med.getTextWireDiameter()){
+			med.getC_textWireDiameter().execute();
 		}else if(event.widget == med.getTextCenterDiameter()){
 			med.getC_textCenterDiameter().execute();
-		}else if(event.widget == med.getTextInnerDiameter()){
-			med.getC_textInnerDiameter().execute();
-		}else if(event.widget == med.getTextOuterDiameter()){
-			med.getC_textOuterDiameter().execute();
+		}else if(event.widget == med.getTextInternalDiameter()){
+			med.getC_textInternalDiameter().execute();
+		}else if(event.widget == med.getTextExternalDiameter()){
+			med.getC_textExternalDiameter().execute();
 		}else if(event.widget == med.getTextUpperInnerDiameter()){
 			med.getC_textUpperInnerDiameter().execute();
 		}else if(event.widget == med.getTextLowerInnerDiameter()){
 			med.getC_textLowerInnerDiameter().execute();
-		}else if(event.widget == med.getTextTotalNumber()){
-			med.getC_textTotalNumber().execute();
+		}else if(event.widget == med.getTextTotalTurns()){
+			med.getC_textTotalTurns().execute();
 		}
 		
 		else if(event.widget == med.getTextHotSettingTemp()){

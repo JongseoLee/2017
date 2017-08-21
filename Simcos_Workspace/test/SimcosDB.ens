@@ -1,0 +1,41 @@
+#######################################################
+#
+# Simcos - Simulation for Coil spring Database
+#
+# Save Time : 2017-08-20 10:51:10
+# 
+#######################################################
+// Base 
+ProjectName=test
+ProjectFolderPath=/Users/jslee/CodeFactory/Git/2017/2017/Simcos_Workspace/test
+// Coil data
+ProductName=TL_r3
+LineDiameter=13.8
+CenterDiameter=160.5
+InnerDiameter=146.7
+OuterDiameter=174.3
+UpperInnerDiameter=93
+LowerInnerDiameter=97
+TotalNumber=5
+// coil_design.csv
+CoilDesingFilePath=/Users/jslee/CodeFactory/Git/2017/2017/config/coil_design.csv
+CoilDesingUserFilePath=/Users/jslee/CodeFactory/Git/2017/2017/Simcos_Workspace/test/SimcosData/coil_design.csv
+// Setting Process Information
+HotSettingTemp=350
+ColdSettingTemp=0
+HotSettingHeight=350
+ColdSettingHeight=0
+SeatUIneerMargina=1.0
+SeatLIneerMargina=1.0
+SeatHeight=70.0
+// Initial conditioner
+RadiusConditionerType=Constant
+RadiusConditionerConstant=10.0
+RadiusConditionerFile=0
+HeightConditionerType=Constant
+HeightConditionerConstant=10.0
+HeightConditionerFile=0
+// Simulation Data
+RadiusTolerance=null
+HeightTolerance=null
+MaximumIterationNumber=null

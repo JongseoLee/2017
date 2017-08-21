@@ -51,13 +51,13 @@ public class View extends ViewPart {
 	private Composite compositeStep3;
 	private Text textCoilFilePath;
 	private Text textProductName;
-	private Text textLineDiameter;
+	private Text textWireDiameter;
 	private Text textCenterDiameter;
-	private Text textInnerDiameter;
-	private Text textOuterDiameter;
+	private Text textInternalDiameter;
+	private Text textExternalDiameter;
 	private Text textUpperInnerDiameter;
 	private Text textLowerInnerDiameter;
-	private Text textTotalNumber;
+	private Text textTotalTurns;
 	private Table tableCoilTable;
 	private Text textHotSettingTemp;
 	private Text textColdSettingTemp;
@@ -305,24 +305,24 @@ public class View extends ViewPart {
 		fd_textProductName.right = new FormAttachment(lblProductName,75,SWT.RIGHT);
 		textProductName.setLayoutData(fd_textProductName);
 		
-		Label lblLineDiameter = new Label(grpCoil, SWT.NONE);
-		FormData fd_lblLineDiameter = new FormData();
-		fd_lblLineDiameter.top = new FormAttachment(lblProductName, 0, SWT.TOP);
-		fd_lblLineDiameter.left = new FormAttachment(textProductName, 10);
-		fd_lblLineDiameter.right = new FormAttachment(textProductName,110,SWT.RIGHT);
-		lblLineDiameter.setLayoutData(fd_lblLineDiameter);
-		lblLineDiameter.setText(LabelDatas.getLabel(UILabel.LineDiameter));
+		Label lblWireDiameter = new Label(grpCoil, SWT.NONE);
+		FormData fd_lblWireDiameter = new FormData();
+		fd_lblWireDiameter.top = new FormAttachment(lblProductName, 0, SWT.TOP);
+		fd_lblWireDiameter.left = new FormAttachment(textProductName, 10);
+		fd_lblWireDiameter.right = new FormAttachment(textProductName,110,SWT.RIGHT);
+		lblWireDiameter.setLayoutData(fd_lblWireDiameter);
+		lblWireDiameter.setText(LabelDatas.getLabel(UILabel.WireDiameter));
 		
-		textLineDiameter = new Text(grpCoil, SWT.BORDER);
-		med.setTextLineDiameter(textLineDiameter);
-		CustomText c_textLineDiameter = new CustomText(Mediator.TEXT_textLineDiameter,med);
-		med.setC_textLineDiameter(c_textLineDiameter);
-		c_textLineDiameter.setCustomWidget_textLineDiameter();
-		FormData fd_textLineDiameter = new FormData();
-		fd_textLineDiameter.top = new FormAttachment(textProductName, 0, SWT.TOP);
-		fd_textLineDiameter.left = new FormAttachment(lblLineDiameter, 0);
-		fd_textLineDiameter.right = new FormAttachment(lblLineDiameter, 75, SWT.RIGHT);
-		textLineDiameter.setLayoutData(fd_textLineDiameter);
+		textWireDiameter = new Text(grpCoil, SWT.BORDER);
+		med.setTextWireDiameter(textWireDiameter);
+		CustomText c_textWireDiameter = new CustomText(Mediator.TEXT_textWireDiameter,med);
+		med.setC_textWireDiameter(c_textWireDiameter);
+		c_textWireDiameter.setCustomWidget_textWireDiameter();
+		FormData fd_textWireDiameter = new FormData();
+		fd_textWireDiameter.top = new FormAttachment(textProductName, 0, SWT.TOP);
+		fd_textWireDiameter.left = new FormAttachment(lblWireDiameter, 0);
+		fd_textWireDiameter.right = new FormAttachment(lblWireDiameter, 75, SWT.RIGHT);
+		textWireDiameter.setLayoutData(fd_textWireDiameter);
 		
 		
 		
@@ -345,51 +345,51 @@ public class View extends ViewPart {
 		fd_textCenterDiameter.right = new FormAttachment(textProductName, 0,SWT.RIGHT);
 		textCenterDiameter.setLayoutData(fd_textCenterDiameter);
 		
-		Label lblInnerDiameter = new Label(grpCoil, SWT.NONE);
-		FormData fd_lblInnerDiameter = new FormData();
-		fd_lblInnerDiameter.top = new FormAttachment(lblCenterDiameter, 0, SWT.TOP);
-		fd_lblInnerDiameter.left = new FormAttachment(lblLineDiameter, 0,SWT.LEFT);
-		fd_lblInnerDiameter.right = new FormAttachment(lblLineDiameter, 0,SWT.RIGHT);
-		lblInnerDiameter.setLayoutData(fd_lblInnerDiameter);
-		lblInnerDiameter.setText(LabelDatas.getLabel(UILabel.InnerDiameter));
+		Label lblInternalDiameter = new Label(grpCoil, SWT.NONE);
+		FormData fd_lblInternalDiameter = new FormData();
+		fd_lblInternalDiameter.top = new FormAttachment(lblCenterDiameter, 0, SWT.TOP);
+		fd_lblInternalDiameter.left = new FormAttachment(lblWireDiameter, 0,SWT.LEFT);
+		fd_lblInternalDiameter.right = new FormAttachment(lblWireDiameter, 0,SWT.RIGHT);
+		lblInternalDiameter.setLayoutData(fd_lblInternalDiameter);
+		lblInternalDiameter.setText(LabelDatas.getLabel(UILabel.InternalDiameter));
 		
-		textInnerDiameter = new Text(grpCoil, SWT.BORDER);
-		med.setTextInnerDiameter(textInnerDiameter);
-		CustomText c_textInnerDiameter = new CustomText(Mediator.TEXT_textInnerDiameter, med);
-		med.setC_textInnerDiameter(c_textInnerDiameter);
-		c_textInnerDiameter.setCustomWidget_textInnerDiameter();
-		FormData fd_textInnerDiameter = new FormData();
-		fd_textInnerDiameter.top = new FormAttachment(lblCenterDiameter, -2, SWT.TOP);
-		fd_textInnerDiameter.left = new FormAttachment(textLineDiameter, 0, SWT.LEFT);
-		fd_textInnerDiameter.right = new FormAttachment(textLineDiameter, 0,SWT.RIGHT);
-		textInnerDiameter.setLayoutData(fd_textInnerDiameter);
+		textInternalDiameter = new Text(grpCoil, SWT.BORDER);
+		med.setTextInternalDiameter(textInternalDiameter);
+		CustomText c_textInternalDiameter = new CustomText(Mediator.TEXT_textInternalDiameter, med);
+		med.setC_textInternalDiameter(c_textInternalDiameter);
+		c_textInternalDiameter.setCustomWidget_textInternalDiameter();
+		FormData fd_textInternalDiameter = new FormData();
+		fd_textInternalDiameter.top = new FormAttachment(lblCenterDiameter, -2, SWT.TOP);
+		fd_textInternalDiameter.left = new FormAttachment(textWireDiameter, 0, SWT.LEFT);
+		fd_textInternalDiameter.right = new FormAttachment(textWireDiameter, 0,SWT.RIGHT);
+		textInternalDiameter.setLayoutData(fd_textInternalDiameter);
 		
 		
 		
-		Label lblOuterDiameter = new Label(grpCoil, SWT.NONE);
-		FormData fd_lblOuterDiameter = new FormData();
-		fd_lblOuterDiameter.top = new FormAttachment(lblCenterDiameter, 8);
-		fd_lblOuterDiameter.left = new FormAttachment(lblCenterDiameter, 0, SWT.LEFT);
-		fd_lblOuterDiameter.right = new FormAttachment(lblCenterDiameter, 0, SWT.RIGHT);
-		lblOuterDiameter.setLayoutData(fd_lblOuterDiameter);
-		lblOuterDiameter.setText(LabelDatas.getLabel(UILabel.OuterDiameter));
+		Label lblExternalDiameter = new Label(grpCoil, SWT.NONE);
+		FormData fd_lblExternalDiameter = new FormData();
+		fd_lblExternalDiameter.top = new FormAttachment(lblCenterDiameter, 8);
+		fd_lblExternalDiameter.left = new FormAttachment(lblCenterDiameter, 0, SWT.LEFT);
+		fd_lblExternalDiameter.right = new FormAttachment(lblCenterDiameter, 0, SWT.RIGHT);
+		lblExternalDiameter.setLayoutData(fd_lblExternalDiameter);
+		lblExternalDiameter.setText(LabelDatas.getLabel(UILabel.ExternalDiameter));
 		
-		textOuterDiameter = new Text(grpCoil, SWT.BORDER);
-		med.setTextOuterDiameter(textOuterDiameter);
-		CustomText c_textOuterDiameter = new CustomText(Mediator.TEXT_textOuterDiameter,med);
-		med.setC_textOuterDiameter(c_textOuterDiameter);
-		c_textOuterDiameter.setCustomWidget_textOuterDiameter();
-		FormData fd_textOuterDiameter = new FormData();
-		fd_textOuterDiameter.top = new FormAttachment(lblOuterDiameter, -2, SWT.TOP);
-		fd_textOuterDiameter.left = new FormAttachment(textProductName, 0, SWT.LEFT);
-		fd_textOuterDiameter.right = new FormAttachment(textProductName, 0,SWT.RIGHT);
-		textOuterDiameter.setLayoutData(fd_textOuterDiameter);
+		textExternalDiameter = new Text(grpCoil, SWT.BORDER);
+		med.setTextExternalDiameter(textExternalDiameter);
+		CustomText c_textExternalDiameter = new CustomText(Mediator.TEXT_textExternalDiameter,med);
+		med.setC_textExternalDiameter(c_textExternalDiameter);
+		c_textExternalDiameter.setCustomWidget_textExternalDiameter();
+		FormData fd_textExternalDiameter = new FormData();
+		fd_textExternalDiameter.top = new FormAttachment(lblExternalDiameter, -2, SWT.TOP);
+		fd_textExternalDiameter.left = new FormAttachment(textProductName, 0, SWT.LEFT);
+		fd_textExternalDiameter.right = new FormAttachment(textProductName, 0,SWT.RIGHT);
+		textExternalDiameter.setLayoutData(fd_textExternalDiameter);
 		
 		Label lblUpperInnerDiameter = new Label(grpCoil, SWT.NONE);
 		FormData fd_lblUpperInnerDiameter = new FormData();
-		fd_lblUpperInnerDiameter.top = new FormAttachment(lblOuterDiameter, 0, SWT.TOP);
-		fd_lblUpperInnerDiameter.left = new FormAttachment(lblLineDiameter, 0, SWT.LEFT);
-		fd_lblUpperInnerDiameter.right = new FormAttachment(lblLineDiameter, 0,SWT.RIGHT);
+		fd_lblUpperInnerDiameter.top = new FormAttachment(lblExternalDiameter, 0, SWT.TOP);
+		fd_lblUpperInnerDiameter.left = new FormAttachment(lblWireDiameter, 0, SWT.LEFT);
+		fd_lblUpperInnerDiameter.right = new FormAttachment(lblWireDiameter, 0,SWT.RIGHT);
 		lblUpperInnerDiameter.setLayoutData(fd_lblUpperInnerDiameter);
 		lblUpperInnerDiameter.setText(LabelDatas.getLabel(UILabel.UpperInnerDiameter));
 		
@@ -399,18 +399,18 @@ public class View extends ViewPart {
 		med.setC_textUpperInnerDiameter(c_textUpperInnerDiameter);
 		c_textUpperInnerDiameter.setCustomWidget_textUpperInnerDiameter();
 		FormData fd_textUpperInnerDiameter = new FormData();
-		fd_textUpperInnerDiameter.top = new FormAttachment(lblOuterDiameter, -2, SWT.TOP);
-		fd_textUpperInnerDiameter.left = new FormAttachment(textLineDiameter, 0, SWT.LEFT);
-		fd_textUpperInnerDiameter.right = new FormAttachment(textLineDiameter,0,SWT.RIGHT);
+		fd_textUpperInnerDiameter.top = new FormAttachment(lblExternalDiameter, -2, SWT.TOP);
+		fd_textUpperInnerDiameter.left = new FormAttachment(textWireDiameter, 0, SWT.LEFT);
+		fd_textUpperInnerDiameter.right = new FormAttachment(textWireDiameter,0,SWT.RIGHT);
 		textUpperInnerDiameter.setLayoutData(fd_textUpperInnerDiameter);
 		
 		
 		
 		Label lblLowerInnerDiameter = new Label(grpCoil, SWT.NONE);
 		FormData fd_lblLowerInnerDiameter = new FormData();
-		fd_lblLowerInnerDiameter.top = new FormAttachment(lblOuterDiameter, 8);
-		fd_lblLowerInnerDiameter.left = new FormAttachment(lblOuterDiameter, 0, SWT.LEFT);
-		fd_lblLowerInnerDiameter.right = new FormAttachment(lblOuterDiameter, 0, SWT.RIGHT);
+		fd_lblLowerInnerDiameter.top = new FormAttachment(lblExternalDiameter, 8);
+		fd_lblLowerInnerDiameter.left = new FormAttachment(lblExternalDiameter, 0, SWT.LEFT);
+		fd_lblLowerInnerDiameter.right = new FormAttachment(lblExternalDiameter, 0, SWT.RIGHT);
 		lblLowerInnerDiameter.setLayoutData(fd_lblLowerInnerDiameter);
 		lblLowerInnerDiameter.setText(LabelDatas.getLabel(UILabel.LowerInnerDiameter));
 		
@@ -425,24 +425,24 @@ public class View extends ViewPart {
 		fd_textLowerInnerDiameter.right = new FormAttachment(textProductName, 0,SWT.RIGHT);
 		textLowerInnerDiameter.setLayoutData(fd_textLowerInnerDiameter);
 		
-		Label lblTotalNumber = new Label(grpCoil, SWT.NONE);
-		FormData fd_lblTotalNumber = new FormData();
-		fd_lblTotalNumber.top = new FormAttachment(lblLowerInnerDiameter, 0, SWT.TOP);
-		fd_lblTotalNumber.left = new FormAttachment(lblLineDiameter, 0, SWT.LEFT);
-		fd_lblTotalNumber.right = new FormAttachment(lblLineDiameter, 0,SWT.RIGHT);
-		lblTotalNumber.setLayoutData(fd_lblTotalNumber);
-		lblTotalNumber.setText(LabelDatas.getLabel(UILabel.TotalNumber));
+		Label lblTotalTurns = new Label(grpCoil, SWT.NONE);
+		FormData fd_lblTotalTurns = new FormData();
+		fd_lblTotalTurns.top = new FormAttachment(lblLowerInnerDiameter, 0, SWT.TOP);
+		fd_lblTotalTurns.left = new FormAttachment(lblWireDiameter, 0, SWT.LEFT);
+		fd_lblTotalTurns.right = new FormAttachment(lblWireDiameter, 0,SWT.RIGHT);
+		lblTotalTurns.setLayoutData(fd_lblTotalTurns);
+		lblTotalTurns.setText(LabelDatas.getLabel(UILabel.TotalTurns));
 		
-		textTotalNumber = new Text(grpCoil, SWT.BORDER);
-		med.setTextTotalNumber(textTotalNumber);
-		CustomText c_textTotalNumber = new CustomText(Mediator.TEXT_textTotalNumber,med);
-		med.setC_textTotalNumber(c_textTotalNumber);
-		c_textTotalNumber.setCustomWidget_textTotalNumber();
-		FormData fd_textTotalNumber = new FormData();
-		fd_textTotalNumber.top = new FormAttachment(lblLowerInnerDiameter, -2, SWT.TOP);
-		fd_textTotalNumber.left = new FormAttachment(textLineDiameter, 0, SWT.LEFT);
-		fd_textTotalNumber.right = new FormAttachment(textLineDiameter, 0,SWT.RIGHT);
-		textTotalNumber.setLayoutData(fd_textTotalNumber);
+		textTotalTurns = new Text(grpCoil, SWT.BORDER);
+		med.setTextTotalTurns(textTotalTurns);
+		CustomText c_textTotalTurns = new CustomText(Mediator.TEXT_textTotalTurns,med);
+		med.setC_textTotalTurns(c_textTotalTurns);
+		c_textTotalTurns.setCustomWidget_textTotalTurns();
+		FormData fd_textTotalTurns = new FormData();
+		fd_textTotalTurns.top = new FormAttachment(lblLowerInnerDiameter, -2, SWT.TOP);
+		fd_textTotalTurns.left = new FormAttachment(textWireDiameter, 0, SWT.LEFT);
+		fd_textTotalTurns.right = new FormAttachment(textWireDiameter, 0,SWT.RIGHT);
+		textTotalTurns.setLayoutData(fd_textTotalTurns);
 		
 		Label lblCoilGeoDataTable = new Label(grpCoil, SWT.NONE);
 		if(myUtil.checkOS().equals("window")){
@@ -1179,13 +1179,13 @@ public class View extends ViewPart {
 		HandlerText handlerText = new HandlerText();
 		med.getTextCoilFilePath().addListener(SWT.CHANGED, handlerText);
 		med.getTextProductName().addListener(SWT.CHANGED, handlerText);
-		med.getTextLineDiameter().addListener(SWT.CHANGED, handlerText);
+		med.getTextWireDiameter().addListener(SWT.CHANGED, handlerText);
 		med.getTextCenterDiameter().addListener(SWT.CHANGED, handlerText);
-		med.getTextInnerDiameter().addListener(SWT.CHANGED, handlerText);
-		med.getTextOuterDiameter().addListener(SWT.CHANGED, handlerText);
+		med.getTextInternalDiameter().addListener(SWT.CHANGED, handlerText);
+		med.getTextExternalDiameter().addListener(SWT.CHANGED, handlerText);
 		med.getTextUpperInnerDiameter().addListener(SWT.CHANGED, handlerText);
 		med.getTextLowerInnerDiameter().addListener(SWT.CHANGED, handlerText);
-		med.getTextTotalNumber().addListener(SWT.CHANGED, handlerText);
+		med.getTextTotalTurns().addListener(SWT.CHANGED, handlerText);
 		med.getTextHotSettingTemp().addListener(SWT.CHANGED, handlerText);
 		med.getTextColdSettingTemp().addListener(SWT.CHANGED, handlerText);
 		med.getTextHotSettingHeight().addListener(SWT.CHANGED, handlerText);

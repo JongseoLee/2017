@@ -1,0 +1,41 @@
+#######################################################
+#
+# Simcos - Simulation for Coil spring Database
+#
+# Save Time : 2017-08-20 15:13:02
+# 
+#######################################################
+// Base 
+ProjectName=123123
+ProjectFolderPath=/Users/jslee/CodeFactory/Git/2017/2017/Simcos_Workspace/123123
+// Coil data
+ProductName=%ProductName%
+WireDiameter=%WireDiameter%
+CenterDiameter=%CenterDiameter%
+InternalDiameter=%InternalDiameter%
+ExternalDiameter=%ExternalDiameter%
+UpperInnerDiameter=%UpperInnerDiameter%
+LowerInnerDiameter=%LowerInnerDiameter%
+TotalTurns=%TotalTurns%
+// coil_design.csv
+CoilDesingFilePath=%CoilDesingFilePath%
+CoilDesingUserFilePath=%CoilDesingUserFilePath%
+// Setting Process Information
+HotSettingTemp=%HotSettingTemp%
+ColdSettingTemp=%ColdSettingTemp%
+HotSettingHeight=%HotSettingHeight%
+ColdSettingHeight=%ColdSettingHeight%
+SeatUIneerMargina=%SeatUIneerMargina%
+SeatLIneerMargina=%SeatLIneerMargina%
+SeatHeight=%SeatHeight%
+// Initial conditioner
+RadiusConditionerType=%RadiusConditionerType%
+RadiusConditionerConstant=%RadiusConditionerConstant%
+RadiusConditionerFile=%RadiusConditionerFile%
+HeightConditionerType=%HeightConditionerType%
+HeightConditionerConstant=%HeightConditionerConstant%
+HeightConditionerFile=%HeightConditionerFile%
+// Simulation Data
+RadiusTolerance=%RadiusTolerance%
+HeightTolerance=%HeightTolerance%
+MaximumIterationNumber=%MaximumIterationNumber%

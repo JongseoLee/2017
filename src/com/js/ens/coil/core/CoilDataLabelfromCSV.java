@@ -9,13 +9,13 @@ import com.js.util.myUtil;
 
 public class CoilDataLabelfromCSV {
 	public static String ProductName="ProductName";
-	public static String LineDiameter="LineDiameter";
+	public static String WireDiameter="WireDiameter";
 	public static String CenterDiameter="CenterDiameter";
-	public static String InnerDiameter="InnerDiameter";
-	public static String OuterDiameter="OuterDiameter";
+	public static String InternalDiameter="InternalDiameter";
+	public static String ExternalDiameter="ExternalDiameter";
 	public static String UpperInnerDiameter="UpperInnerDiameter";
 	public static String LowerInnerDiameter="LowerInnerDiameter";
-	public static String TotalNumber="TotalNumber";
+	public static String TotalTurns="TotalTurns";
 	public static String CompletedProduct="CompletedProduct";
 	
 	private MainController MC = MainController.getInstatnce();

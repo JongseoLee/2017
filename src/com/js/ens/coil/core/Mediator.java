@@ -90,21 +90,21 @@ public class Mediator {
 	public ICommand C_textProductName;
 	public static String TEXT_textProductName = "textProductName";
 	
-	private Text textLineDiameter;
-	public ICommand C_textLineDiameter;
-	public static String TEXT_textLineDiameter = "textLineDiameter";
+	private Text textWireDiameter;
+	public ICommand C_textWireDiameter;
+	public static String TEXT_textWireDiameter = "textWireDiameter";
 	
 	private Text textCenterDiameter;
 	public ICommand C_textCenterDiameter;
 	public static String TEXT_textCenterDiameter = "textCenterDiameter";
 	
-	private Text textInnerDiameter;
-	public ICommand C_textInnerDiameter;
-	public static String TEXT_textInnerDiameter = "textInnerDiameter";
+	private Text textInternalDiameter;
+	public ICommand C_textInternalDiameter;
+	public static String TEXT_textInternalDiameter = "textInternalDiameter";
 	
-	private Text textOuterDiameter;
-	public ICommand C_textOuterDiameter;
-	public static String TEXT_textOuterDiameter = "textOuterDiameter";
+	private Text textExternalDiameter;
+	public ICommand C_textExternalDiameter;
+	public static String TEXT_textExternalDiameter = "textExternalDiameter";
 	
 	private Text textUpperInnerDiameter;
 	public ICommand C_textUpperInnerDiameter;
@@ -114,9 +114,9 @@ public class Mediator {
 	public ICommand C_textLowerInnerDiameter;
 	public static String TEXT_textLowerInnerDiameter = "textLowerInnerDiameter";
 	
-	private Text textTotalNumber;
-	public ICommand C_textTotalNumber;
-	public static String TEXT_textTotalNumber = "textTotalNumber";
+	private Text textTotalTurns;
+	public ICommand C_textTotalTurns;
+	public static String TEXT_textTotalTurns = "textTotalTurns";
 	
 	private TableViewer tableViewerCoilTable;
 	public ICommand C_tableViewerCoilTable;
@@ -453,20 +453,20 @@ public class Mediator {
 		C_textProductName = c_textProductName;
 	}
 
-	public Text getTextLineDiameter() {
-		return textLineDiameter;
+	public Text getTextWireDiameter() {
+		return textWireDiameter;
 	}
 
-	public void setTextLineDiameter(Text textLineDiameter) {
-		this.textLineDiameter = textLineDiameter;
+	public void setTextWireDiameter(Text textWireDiameter) {
+		this.textWireDiameter = textWireDiameter;
 	}
 
-	public ICommand getC_textLineDiameter() {
-		return C_textLineDiameter;
+	public ICommand getC_textWireDiameter() {
+		return C_textWireDiameter;
 	}
 
-	public void setC_textLineDiameter(ICommand c_textLineDiameter) {
-		C_textLineDiameter = c_textLineDiameter;
+	public void setC_textWireDiameter(ICommand c_textWireDiameter) {
+		C_textWireDiameter = c_textWireDiameter;
 	}
 
 	public Text getTextCenterDiameter() {
@@ -485,36 +485,36 @@ public class Mediator {
 		C_textCenterDiameter = c_textCenterDiameter;
 	}
 
-	public Text getTextInnerDiameter() {
-		return textInnerDiameter;
+	public Text getTextInternalDiameter() {
+		return textInternalDiameter;
 	}
 
-	public void setTextInnerDiameter(Text textInnerDiameter) {
-		this.textInnerDiameter = textInnerDiameter;
+	public void setTextInternalDiameter(Text textInternalDiameter) {
+		this.textInternalDiameter = textInternalDiameter;
 	}
 
-	public ICommand getC_textInnerDiameter() {
-		return C_textInnerDiameter;
+	public ICommand getC_textInternalDiameter() {
+		return C_textInternalDiameter;
 	}
 
-	public void setC_textInnerDiameter(ICommand c_textInnerDiameter) {
-		C_textInnerDiameter = c_textInnerDiameter;
+	public void setC_textInternalDiameter(ICommand c_textInternalDiameter) {
+		C_textInternalDiameter = c_textInternalDiameter;
 	}
 
-	public Text getTextOuterDiameter() {
-		return textOuterDiameter;
+	public Text getTextExternalDiameter() {
+		return textExternalDiameter;
 	}
 
-	public void setTextOuterDiameter(Text textOuterDiameter) {
-		this.textOuterDiameter = textOuterDiameter;
+	public void setTextExternalDiameter(Text textExternalDiameter) {
+		this.textExternalDiameter = textExternalDiameter;
 	}
 
-	public ICommand getC_textOuterDiameter() {
-		return C_textOuterDiameter;
+	public ICommand getC_textExternalDiameter() {
+		return C_textExternalDiameter;
 	}
 
-	public void setC_textOuterDiameter(ICommand c_textOuterDiameter) {
-		C_textOuterDiameter = c_textOuterDiameter;
+	public void setC_textExternalDiameter(ICommand c_textExternalDiameter) {
+		C_textExternalDiameter = c_textExternalDiameter;
 	}
 
 	public Text getTextUpperInnerDiameter() {
@@ -549,20 +549,20 @@ public class Mediator {
 		C_textLowerInnerDiameter = c_textLowerInnerDiameter;
 	}
 
-	public Text getTextTotalNumber() {
-		return textTotalNumber;
+	public Text getTextTotalTurns() {
+		return textTotalTurns;
 	}
 
-	public void setTextTotalNumber(Text textTotalNumber) {
-		this.textTotalNumber = textTotalNumber;
+	public void setTextTotalTurns(Text textTotalTurns) {
+		this.textTotalTurns = textTotalTurns;
 	}
 
-	public ICommand getC_textTotalNumber() {
-		return C_textTotalNumber;
+	public ICommand getC_textTotalTurns() {
+		return C_textTotalTurns;
 	}
 
-	public void setC_textTotalNumber(ICommand c_textTotalNumber) {
-		C_textTotalNumber = c_textTotalNumber;
+	public void setC_textTotalTurns(ICommand c_textTotalTurns) {
+		C_textTotalTurns = c_textTotalTurns;
 	}
 
 	public TableViewer getTableViewerCoilTable() {

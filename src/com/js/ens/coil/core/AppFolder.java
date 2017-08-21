@@ -24,6 +24,7 @@ public class AppFolder {
 	public static String coilDesignCSVFileName = "coil_design.csv";
 	public static String mainProcFileName = "main_dwku.proc";
 	public static String pythonScriptFileName = "iterative_reverse_setting_0721.py";
+	public static String pythonScriptInputDataFileName = "init.dat";
 	
 	// member variable
 	private String userWorkspace;

@@ -1,0 +1,2309 @@
+Marc Mentat (C)Copyright 1994-2015, MSC Software Corporation, all rights reserved
+Executing procedure file main_dwku.proc...
+Command > | Created by Marc Mentat 2014.2.0 (64bit)
+Command > *prog_option compatibility:prog_version:ment2014.2
+Command > *prog_analysis_class structural
+Command > *prog_use_current_job on
+Command > *set_default_length_unit millimeter
+Command > *set_model_length_unit millimeter
+Command > |
+Command > *py_file_run iterative_reverse_setting_0721.py
+*new_model yes
+*eval hset_stroke 225.000000 
+*eval hset_temp 300.000000 
+*eval cnt_beam_start 1000001 
+*define mat_name posh1s125
+*define coil_name TL_r3 
+*eval wire_dia 13.800000 
+*eval coil_dia 160.500000 
+*eval coil_int_dia 146.700000 
+*eval coil_ext_dia 174.300000 
+*eval coil_up_dia 93.000000 
+*eval coil_low_dia 97.000000 
+*eval coil_turn_no 5.000000 
+*define c_turn 5.000000 
+*define adiv 0.125000
+*define c_dat_no 41 
+*define e_div 6.000000
+*eval tdiv 48
+*eval ndiv 240
+*eval efac 1.000000
+*define sc_name TL_r3_1 
+*new_model yes
+*clear_geometry *system_reset
+*set_curve_max_depth 15 
+*set_curve_type interpolate  
+*add_curves 
+point(54.400000,0.000000,0.000000) 
+Point 1 added.
+point(38.678741,38.678741,4.980000) 
+Point 2 added.
+point(-0.000000,54.440000,9.470000) 
+Point 3 added.
+point(-38.332259,38.332259,11.400000) 
+Point 4 added.
+point(-54.690000,-0.000000,11.240000) 
+Point 5 added.
+point(-39.322208,-39.322208,9.760000) 
+Point 6 added.
+point(0.000000,-57.100000,13.200000) 
+Point 7 added.
+point(42.214275,-42.214275,23.650000) 
+Point 8 added.
+point(65.839996,0.023271,35.510000) 
+Point 9 added.
+point(51.946907,51.983641,46.110000) 
+Point 10 added.
+point(-0.028923,81.829995,55.930000) 
+Point 11 added.
+point(-63.584291,63.539358,68.170000) 
+Point 12 added.
+point(-91.799994,-0.032447,82.860000) 
+Point 13 added.
+point(-60.641245,-60.684128,97.930000) 
+Point 14 added.
+point(0.026884,-76.059995,112.020000) 
+Point 15 added.
+point(48.644918,-48.610543,123.860000) 
+Point 16 added.
+point(67.109983,0.047441,134.020000) 
+Point 17 added.
+point(51.002875,51.075035,144.070000) 
+Point 18 added.
+point(-0.058235,82.379979,154.840000) 
+Point 19 added.
+point(-64.816752,64.725178,167.660000) 
+Point 20 added.
+point(-93.639977,-0.066195,181.840000) 
+Point 21 added.
+point(-61.142682,-61.229187,195.620000) 
+Point 22 added.
+point(0.053492,-75.669981,207.480000) 
+Point 23 added.
+point(48.067707,-47.999796,218.020000) 
+Point 24 added.
+point(66.539963,0.070556,228.220000) 
+Point 25 added.
+point(50.751721,50.859466,239.660000) 
+Point 26 added.
+point(-0.086091,81.189954,253.400000) 
+Point 27 added.
+point(-63.261106,63.127089,269.840000) 
+Point 28 added.
+point(-90.959949,-0.096451,284.310000) 
+Point 29 added.
+point(-60.577142,-60.705745,294.040000) 
+Point 30 added.
+point(0.082835,-78.119956,300.400000) 
+Point 31 added.
+point(50.215317,-50.108937,307.270000) 
+Point 32 added.
+point(65.299935,0.092322,317.680000) 
+Point 33 added.
+point(43.969243,44.093748,332.580000) 
+Point 34 added.
+point(-0.085140,60.219940,349.630000) 
+Point 35 added.
+point(-40.560300,40.445772,361.640000) 
+Point 36 added.
+point(-55.959944,-0.079117,365.390000) 
+Point 37 added.
+point(-39.647872,-39.760140,362.680000) 
+Point 38 added.
+point(0.080149,-56.689943,356.700000) 
+Point 39 added.
+point(40.107112,-39.993864,353.180000) 
+Point 40 added.
+point(54.785702,-12.164754,352.980000) 
+Point 41 added.
+# 
+Curve 1 added.
+*sweep_all *remove_unused_points 
+Deleting 2 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+Deleting 39 unused points !
+*set_curve_type tangent 
+*add_curves 1 10.0 
+Curve 2 added.
+*system_align 
+ 54.400000 , 0.000000 , 0.000000 
+ 52.989829 , 16.712150 , 1.741328 
+ 54.400000 , 0.000000 , 1.741328 
+*set_curve_type arc_cpp *add_curves 
+ 0.0 0.0 0.0 
+ 6.900000 0.0,0.0 
+ 0.0, 6.900000 , 0.0 
+Curve 3 added.
+*set_curve_type line *add_curves 
+point(0.0,0.0,0.0) 
+Point 88 added.
+point(6.900000,0.0,0.0)
+Point 89 added.
+Curve 4 added.
+point(0.0,0.0,0.0) 
+Point 90 added.
+point(0.0,6.900000,0.0)
+Point 91 added.
+Curve 5 added.
+*sweep_all 
+Deleting 4 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*set_curve_div_type_fix_ndiv *set_curve_div_num 4 
+*apply_curve_divisions  3 # 
+*set_curve_div_type_fix_ndiv *set_curve_div_num 3 
+*apply_curve_divisions  4 5 # 
+*af_planar_quadmesh  3 4 5 # 
+Quad meshing complete (8 elements)
+*detach_nodes all_existing *detach_edges all_existing *detach_faces all_existing 
+*duplicate_reset *set_duplicate_repetitions 3 
+*set_duplicate_rotation z 90 
+*duplicate_elements all_existing *sweep_all
+Deleting 15 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*move_reset *set_move_rotations 0 90 0 
+*move_elements all_existing 
+*store_elements section_el all_existing 
+*system_reset 
+*add_surface 
+point(39.600000,0.000000,-14.800000) 
+Point 91 added.
+point(69.200000,0.000000,-14.800000) 
+Point 92 added.
+point(69.200000,0.000000,14.800000) 
+Point 93 added.
+point(39.600000,0.000000,14.800000) 
+Point 94 added.
+Surface 1 added.
+*duplicate_reset 
+*set_duplicate_rotations 0.0,0.0,180.000000 
+*set_duplicate_translations 0.0,0.0,11.240000 
+*duplicate_surfaces 1 # 
+*duplicate_reset 
+*set_duplicate_rotations 0.0,0.0,1620.000000 
+*set_duplicate_translations 0.0,0.0,365.390000 
+*duplicate_surfaces 1 # 
+*intersect_curves_surface 2  1 #
+1 Intersection found and 2 new curves added.
+*intersect_curves_surface 3  7 #
+1 Intersection found and 2 new curves added.
+*select_elements_class quad4 
+*expand_reset *expand_shift 
+*set_expand_repetitions 24 
+*expand_elements_curve  6 all_selected 
+*define tqt_div 24 
+*set_expand_repetitions 192 
+*expand_elements_curve  8 all_selected 
+*define ct_div 192 
+*expand_remove *set_expand_repetitions 24 
+*expand_elements_curve  9 all_selected 
+*define bqt_div 24 
+*elements_solid *regenerate *fill_view
+*remove_surfaces all_existing 
+*define t_cnt_elem 240 
+*eval s_h 365.390000 
+*eval wire_dia 13.800000 
+*define coil_h 365.390000
+*define U_seat_Rad 54.210000
+*define L_seat_Rad 55.960000
+*select_clear *visible_selected 
+*system_reset *system_rotate 90 0 0 
+*set_curve_type line *add_curves 
+point(170.0/2.0,-wire_dia/2.0-10.0,0.0) point(170/2.0,-wire_dia/2.0,0.0) 
+Point 194 added.
+Point 195 added.
+Curve 10 added.
+point(170.0/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) 
+Point 196 added.
+Point 197 added.
+Curve 11 added.
+point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0+60.0,0.0) 
+Point 198 added.
+Point 199 added.
+Curve 12 added.
+point(U_seat_Rad/2.0-wire_dia/2.0,-wire_dia/2.0+60.0,0.0) point(0.0,-wire_dia/2.0+60.0,0.0) 
+Point 200 added.
+Point 201 added.
+Curve 13 added.
+*set_curve_type fillet *add_curves 12 13  10.0 
+*revolve_curves all_visible 
+*store_surfaces Upper_seat all_visible
+*select_clear *visible_selected 
+*flip_surfaces 6 # 
+*set_curve_type line *add_curves 
+point(170.0/2.0,s_h+wire_dia/2.0+10.0,0.0) point(170.0/2.0,s_h+wire_dia/2.0,0.0) 
+Point 338 added.
+Point 339 added.
+Curve 17 added.
+point(170.0/2.0,s_h+wire_dia/2.0,0.0)   point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) 
+Point 340 added.
+Point 341 added.
+Curve 18 added.
+point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-60.0,0.0) 
+Point 342 added.
+Point 343 added.
+Curve 19 added.
+point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-60.0,0.0) point(0.0,s_h+wire_dia/2.0-60.0,0.0) 
+Point 344 added.
+Point 345 added.
+Curve 20 added.
+*set_curve_type fillet *add_curves 19 20  10.0 
+*revolve_curves all_visible 
+*store_surfaces Lower_seat all_visible 
+*flip_surfaces all_visible 
+*select_clear *invisible_selected 
+*set_sweep_tolerance 0.01 *sweep_all 
+Deleting 123 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 231 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate surfaces!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*system_reset *show_view 2 
+*fill_view 
+*undefine s_h 
+*duplicate_reset *duplicate_curves 6 8 9 # 
+*select_curves  6 8 9 # *visible_selected 
+*sub_divisions 24 1 1 
+*subdivide_curves_real 6 # 
+*sub_divisions 192 1 1 
+*subdivide_curves_real 8 # 
+*sub_divisions 24 1 1 
+*subdivide_curves_real 9 # 
+@set($convert_entities,curves) *set_convert_uvdiv u 1
+*convert_curves all_visible 
+*set_sweep_tolerance 0.01 *sweep_all  
+Deleting 480 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 3825 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate surfaces!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*prog_param renumber:start 1000001
+*renumber_node_list all_visible 
+*renumber_element_list all_visible 
+*store_elements spring_center all_visible 
+*store_elements spring_solid all_invisible 
+*new_geometry *geometry_type mech_three_beam_ela @popdown(geom_new_popmenu) @popdown(geom_new_structural_pm) 
+Popmenu geom_new_popmenu does not exist or is not popped up.
+Popmenu geom_new_structural_pm does not exist or is not popped up.
+*geometry_name spring_center_dummy_beam 
+*geometry_param diameter 13.800000 
+*geometry_vector orientx 0 0 1 
+*geometry_param cont_radius 13.800000 
+*add_geometry_elements spring_center 
+*invisible_selected
+*set_merge_renumber off 
+*merge_models posh1s125 *save_as_model TL_r3_1  yes
+Model file posh1s125.mud opened for reading.
+Model saved to TL_r3_1.mud.
+*add_mater_elements spring_solid 
+*copy_mater *mater_name Center_dyummy_mat 
+*mater_param structural:youngs_modulus 0.01 
+*mater_option structural:plasticity:off *add_mater_elements spring_center 
+*set_element_class line2 
+*add_elements  1000001 1000025 
+Element 1000241 added.
+*sub_divisions 2 1 1 
+*subdivide_elements  1000241 # 
+*add_elements  1000243  1000013 
+Element 1000244 added.
+*move_reset *set_move_scale_factors 0.0 0.0 1.0 
+*move_nodes 1000243 # 
+*duplicate_reset 
+*set_duplicate_translation z 351.859948 
+*duplicate_nodes 1000243 # 
+*add_elements 1000245 1000229 
+Element 1000245 added.
+*add_elements 1000245  1000241 
+Element 1000246 added.
+*add_elements 1000245  1000217 
+Element 1000247 added.
+*edit_geometry spring_center_dummy_beam *copy_geometry 
+*geometry_name cntr_dummy 
+*geometry_param diameter 1 
+*add_geometry_elements 1000242 to 1000247 
+*edit_mater Center_dyummy_mat 
+*add_mater_elements 1000242 to 1000247 
+*sweep_nodes all_existing 
+Deleting 2 duplicate nodes !
+Deleting 0 collapsed elements !
+*new_cbody mesh *contact_option state:solid *contact_option skip_structural:off 
+*contact_body_name spring *add_contact_body_elements spring_solid 
+*new_cbody geometry *contact_option geometry_nodes:off 
+*contact_body_name Upper_seat *add_contact_body_surfaces Upper_seat 
+*new_cbody geometry *contact_option geometry_nodes:off 
+*contact_body_name Lower_Seat *add_contact_body_surfaces Lower_seat 
+*new_md_table 1 1 *set_md_table_type 1 time *table_name Seat_move 
+*table_add 0 1 1 1 1 -1 2 -1 2 0 3 0 *table_fit
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+*edit_contact_body Lower_seat *cbody_param_table vz Seat_move 
+ERROR: Couldn't find contact body "Lower_seat"!
+*contact_value vz -225.000000 
+*new_interact mesh:mesh *interact_option state_1:solid *interact_option state_2:solid 
+*interact_name Fr_0.1 *interact_param friction 0.1 
+*new_interact mesh:geometry *interact_option state_1:solid 
+*interact_name Fr_0.1_seat *interact_param friction 0.1 
+*new_contact_table 
+*ctable_entry spring spring *contact_table_option spring spring contact:on
+*prog_string ctable:old_interact Fr_0.1 *ctable_entry_interact spring spring 
+*ctable_entry spring Upper_seat *contact_table_option spring Upper_seat contact:on 
+*prog_string ctable:old_interact Fr_0.1_seat *ctable_entry_interact spring Upper_seat 
+*ctable_entry spring Lower_Seat *contact_table_option spring Lower_Seat contact:on 
+*prog_string ctable:old_interact Fr_0.1_seat *ctable_entry_interact spring Lower_Seat 
+*new_icond *icond_type state_variable @popdown(icond_new_pm) 
+Popmenu icond_new_pm does not exist or is not popped up.
+*icond_name hset_temp 
+*icond_dof var *icond_dof_value var *icond_dof_value var 400 
+*add_icond_elements all_existing 
+*new_apply *apply_type gravity_load @popdown(apply_new_pm) 
+Popmenu apply_new_pm does not exist or is not popped up.
+*apply_name gravity 
+*apply_dof z *apply_dof_value z -9800 
+*add_apply_elements spring_solid 
+*new_apply *apply_type fixed_displacement @popdown(apply_new_pm) 
+Popmenu apply_new_pm does not exist or is not popped up.
+*apply_name End_Fix_Y 
+*apply_dof y *apply_dof_value y 0.0 
+*add_apply_nodes 1000001 #
+*new_loadcase *loadcase_type struc:dyn_trans 
+*loadcase_name setting 
+*loadcase_ctable ctable1 
+*loadcase_value nsteps 50 
+*loadcase_value dyn_contact_pro_fact 0.5 
+*loadcase_value maxrec 30 
+*copy_loadcase *loadcase_name return 
+*loadcase_value nsteps 30 
+*loadcase_option error:relabs
+*loadcase_value force 0.1 
+*loadcase_value minforce  0.01 
+*loadcase_value maxforce 0.01 
+*prog_use_current_job on *new_job *job_class structural 
+*add_job_loadcases setting *add_job_loadcases return 
+*job_option strain:large *add_post_tensor stress *add_post_tensor strain *add_post_tensor el_strain *add_post_tensor pl_strain 
+*job_contact_table ctable1 
+*job_option frictype:coulomb_bilinear 
+*element_type 7 spring_solid 
+Number of unchanged elements: 0
+*element_type 98 spring_center 
+Number of unchanged elements: 0
+*save_model 
+Model file TL_r3_1.mud opened for writing.
+Model saved to TL_r3_1.
+*save_model yes 
+Model file TL_r3_1.mud opened for writing.
+Model saved to TL_r3_1.
+Command not found!
+
+*write_marc TL_r3_1_job1.dat yes
+INFO: Analysis dimension is derived from element class hex8.
+INFO: Assuming 3-D analysis!
+INFO: Element type 98 has been set for 6 element(s).
+INFO: Found 0 errors and 0 warnings.
+*system_command C:\MSC.Software\Marc\2014.2.0\marc2014.2\tools\run_marc -j TL_r3_1_job1 -b n -v n
+*set_deformed off *set_showmag off 
+*set_deformed off 
+*post_open TL_r3_1_job1.t16 *post_skip_to 0 *post_rezone 
+File TL_r3_1_job1.t16 does not exist!
+*save_as_model TL_r3_1_formed_rezoned yes 
+Model saved to TL_r3_1_formed_rezoned.mud.
+*post_close 
+*open_model TL_r3_1_formed_rezoned 
+File is Mentat, version unknown.
+Model file TL_r3_1_formed_rezoned.mud opened for reading.
+Model TL_r3_1_formed_rezoned opened.
+*move_reset 
+*set_move_translation x 0.000000
+*set_move_translation y 0.000000
+*set_move_translation z 0.000000
+*move_model 
+*save_as_model TL_r3_1_formed_rezoned_align yes 
+Model saved to TL_r3_1_formed_rezoned_align.mud.
+*set_deformed off 
+*post_open TL_r3_1_job1.t16 *post_skip_to_last *post_rezone 
+File TL_r3_1_job1.t16 does not exist!
+*save_as_model TL_r3_1_set_rezoned yes 
+Model saved to TL_r3_1_set_rezoned.mud.
+*post_close 
+*open_model TL_r3_1_set_rezoned  
+File is Mentat, version unknown.
+Model file TL_r3_1_set_rezoned.mud opened for reading.
+Model TL_r3_1_set_rezoned opened.
+*move_reset 
+*set_move_translation x 0.000000
+*set_move_translation y 0.000000
+*set_move_translation z 0.0
+*move_model
+*move_reset *set_move_point 0.000000 0.000000 5.620013 
+*set_move_rotation x 0.000000   *move_model
+*move_reset *set_move_point 0.000000 0.000000 5.620013 
+*set_move_rotation y 0.000000   *move_model
+*move_reset *set_move_rotation z 0.000000   *move_model
+*move_reset *set_move_translation z -0.000000
+*move_model
+*save_as_model TL_r3_1_set_rezoned_align yes 
+Model saved to TL_r3_1_set_rezoned_align.mud.
+*open_model TL_r3_1_formed_rezoned_align 
+File is Mentat, version unknown.
+Model file TL_r3_1_formed_rezoned_align.mud opened for reading.
+Model TL_r3_1_formed_rezoned_align opened.
+*open_model TL_r3_1_set_rezoned_align 
+File is Mentat, version unknown.
+Model file TL_r3_1_set_rezoned_align.mud opened for reading.
+Model TL_r3_1_set_rezoned_align opened.
+*define sc_name TL_r3_2 
+*new_model yes
+*clear_geometry *system_reset
+*set_curve_max_depth 15 
+*set_curve_type interpolate  
+*add_curves 
+point(54.200000,0.000000,0.000000) 
+Point 1 added.
+point(38.417759,38.417759,3.750259) 
+Point 2 added.
+point(-0.000000,54.331478,7.501778) 
+Point 3 added.
+point(-38.148348,38.148348,9.390465) 
+Point 4 added.
+point(-54.190002,-0.000000,9.810005) 
+Point 5 added.
+point(-38.994289,-38.994289,9.154649) 
+Point 6 added.
+point(0.000000,-56.782926,13.934751) 
+Point 7 added.
+point(42.114043,-42.114043,24.328763) 
+Point 8 added.
+point(65.107826,0.023013,34.942790) 
+Point 9 added.
+point(51.408548,51.444902,43.688220) 
+Point 10 added.
+point(-0.028650,81.058292,51.625991) 
+Point 11 added.
+point(-63.379392,63.334605,62.210750) 
+Point 12 added.
+point(-92.110522,-0.032557,75.906312) 
+Point 13 added.
+point(-61.098313,-61.141520,90.426740) 
+Point 14 added.
+point(0.026867,-76.012935,103.952617) 
+Point 15 added.
+point(48.148297,-48.114273,114.921832) 
+Point 16 added.
+point(65.698055,0.046443,124.708703) 
+Point 17 added.
+point(49.929005,49.999645,134.088790) 
+Point 18 added.
+point(-0.057168,80.870812,144.205299) 
+Point 19 added.
+point(-64.454925,64.363862,155.900248) 
+Point 20 added.
+point(-94.042295,-0.066479,168.583539) 
+Point 21 added.
+point(-61.857951,-61.945468,180.766504) 
+Point 22 added.
+point(0.054233,-76.718431,191.781132) 
+Point 23 added.
+point(48.234601,-48.166454,201.659855) 
+Point 24 added.
+point(65.550730,0.069508,211.459668) 
+Point 25 added.
+point(49.518429,49.623556,222.342779) 
+Point 26 added.
+point(-0.084039,79.254990,235.899188) 
+Point 27 added.
+point(-62.150607,62.018943,251.453268) 
+Point 28 added.
+point(-90.353431,-0.095807,265.047744) 
+Point 29 added.
+point(-61.159578,-61.289418,274.379729) 
+Point 30 added.
+point(0.084045,-79.260512,280.387710) 
+Point 31 added.
+point(50.988333,-50.880315,286.105403) 
+Point 32 added.
+point(66.084644,0.093432,294.612078) 
+Point 33 added.
+point(44.072683,44.197481,307.866256) 
+Point 34 added.
+point(-0.085566,60.520916,324.299926) 
+Point 35 added.
+point(-40.794107,40.678919,337.627621) 
+Point 36 added.
+point(-55.779050,-0.078861,342.930307) 
+Point 37 added.
+point(-39.041808,-39.152360,341.852388) 
+Point 38 added.
+point(0.079209,-56.025082,337.135871) 
+Point 39 added.
+point(39.752979,-39.640731,333.177429) 
+Point 40 added.
+point(54.258160,-12.047617,332.590243) 
+Point 41 added.
+# 
+Curve 1 added.
+*sweep_all *remove_unused_points 
+Deleting 2 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+Deleting 39 unused points !
+*set_curve_type tangent 
+*add_curves 1 10.0 
+Curve 2 added.
+*system_align 
+ 54.200000 , 0.000000 , 0.000000 
+ 52.706870 , 16.557058 , 1.250251 
+ 54.200000 , 0.000000 , 1.250251 
+*set_curve_type arc_cpp *add_curves 
+ 0.0 0.0 0.0 
+ 6.900000 0.0,0.0 
+ 0.0, 6.900000 , 0.0 
+Curve 3 added.
+*set_curve_type line *add_curves 
+point(0.0,0.0,0.0) 
+Point 88 added.
+point(6.900000,0.0,0.0)
+Point 89 added.
+Curve 4 added.
+point(0.0,0.0,0.0) 
+Point 90 added.
+point(0.0,6.900000,0.0)
+Point 91 added.
+Curve 5 added.
+*sweep_all 
+Deleting 4 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*set_curve_div_type_fix_ndiv *set_curve_div_num 4 
+*apply_curve_divisions  3 # 
+*set_curve_div_type_fix_ndiv *set_curve_div_num 3 
+*apply_curve_divisions  4 5 # 
+*af_planar_quadmesh  3 4 5 # 
+Quad meshing complete (8 elements)
+*detach_nodes all_existing *detach_edges all_existing *detach_faces all_existing 
+*duplicate_reset *set_duplicate_repetitions 3 
+*set_duplicate_rotation z 90 
+*duplicate_elements all_existing *sweep_all
+Deleting 15 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*move_reset *set_move_rotations 0 90 0 
+*move_elements all_existing 
+*store_elements section_el all_existing 
+*system_reset 
+*add_surface 
+point(39.400000,0.000000,-14.800000) 
+Point 91 added.
+point(69.000000,0.000000,-14.800000) 
+Point 92 added.
+point(69.000000,0.000000,14.800000) 
+Point 93 added.
+point(39.400000,0.000000,14.800000) 
+Point 94 added.
+Surface 1 added.
+*duplicate_reset 
+*set_duplicate_rotations 0.0,0.0,180.000000 
+*set_duplicate_translations 0.0,0.0,9.810005 
+*duplicate_surfaces 1 # 
+*duplicate_reset 
+*set_duplicate_rotations 0.0,0.0,1620.000000 
+*set_duplicate_translations 0.0,0.0,342.930307 
+*duplicate_surfaces 1 # 
+*intersect_curves_surface 2  1 #
+1 Intersection found and 2 new curves added.
+*intersect_curves_surface 3  7 #
+1 Intersection found and 2 new curves added.
+*select_elements_class quad4 
+*expand_reset *expand_shift 
+*set_expand_repetitions 24 
+*expand_elements_curve  6 all_selected 
+*define tqt_div 24 
+*set_expand_repetitions 192 
+*expand_elements_curve  8 all_selected 
+*define ct_div 192 
+*expand_remove *set_expand_repetitions 24 
+*expand_elements_curve  9 all_selected 
+*define bqt_div 24 
+*elements_solid *regenerate *fill_view
+*remove_surfaces all_existing 
+*define t_cnt_elem 240 
+*eval s_h 342.930307 
+*eval wire_dia 13.800000 
+*define coil_h 342.930307
+*define U_seat_Rad 53.949911
+*define L_seat_Rad 55.291682
+*select_clear *visible_selected 
+*system_reset *system_rotate 90 0 0 
+*set_curve_type line *add_curves 
+point(170.0/2.0,-wire_dia/2.0-10.0,0.0) point(170/2.0,-wire_dia/2.0,0.0) 
+Point 194 added.
+Point 195 added.
+Curve 10 added.
+point(170.0/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) 
+Point 196 added.
+Point 197 added.
+Curve 11 added.
+point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0+60.0,0.0) 
+Point 198 added.
+Point 199 added.
+Curve 12 added.
+point(U_seat_Rad/2.0-wire_dia/2.0,-wire_dia/2.0+60.0,0.0) point(0.0,-wire_dia/2.0+60.0,0.0) 
+Point 200 added.
+Point 201 added.
+Curve 13 added.
+*set_curve_type fillet *add_curves 12 13  10.0 
+*revolve_curves all_visible 
+*store_surfaces Upper_seat all_visible
+*select_clear *visible_selected 
+*flip_surfaces 6 # 
+*set_curve_type line *add_curves 
+point(170.0/2.0,s_h+wire_dia/2.0+10.0,0.0) point(170.0/2.0,s_h+wire_dia/2.0,0.0) 
+Point 338 added.
+Point 339 added.
+Curve 17 added.
+point(170.0/2.0,s_h+wire_dia/2.0,0.0)   point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) 
+Point 340 added.
+Point 341 added.
+Curve 18 added.
+point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-60.0,0.0) 
+Point 342 added.
+Point 343 added.
+Curve 19 added.
+point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-60.0,0.0) point(0.0,s_h+wire_dia/2.0-60.0,0.0) 
+Point 344 added.
+Point 345 added.
+Curve 20 added.
+*set_curve_type fillet *add_curves 19 20  10.0 
+*revolve_curves all_visible 
+*store_surfaces Lower_seat all_visible 
+*flip_surfaces all_visible 
+*select_clear *invisible_selected 
+*set_sweep_tolerance 0.01 *sweep_all 
+Deleting 123 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 231 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate surfaces!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*system_reset *show_view 2 
+*fill_view 
+*undefine s_h 
+*duplicate_reset *duplicate_curves 6 8 9 # 
+*select_curves  6 8 9 # *visible_selected 
+*sub_divisions 24 1 1 
+*subdivide_curves_real 6 # 
+*sub_divisions 192 1 1 
+*subdivide_curves_real 8 # 
+*sub_divisions 24 1 1 
+*subdivide_curves_real 9 # 
+@set($convert_entities,curves) *set_convert_uvdiv u 1
+*convert_curves all_visible 
+*set_sweep_tolerance 0.01 *sweep_all  
+Deleting 480 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 3818 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate surfaces!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*prog_param renumber:start 1000001
+*renumber_node_list all_visible 
+*renumber_element_list all_visible 
+*store_elements spring_center all_visible 
+*store_elements spring_solid all_invisible 
+*new_geometry *geometry_type mech_three_beam_ela @popdown(geom_new_popmenu) @popdown(geom_new_structural_pm) 
+Popmenu geom_new_popmenu does not exist or is not popped up.
+Popmenu geom_new_structural_pm does not exist or is not popped up.
+*geometry_name spring_center_dummy_beam 
+*geometry_param diameter 13.800000 
+*geometry_vector orientx 0 0 1 
+*geometry_param cont_radius 13.800000 
+*add_geometry_elements spring_center 
+*invisible_selected
+*set_merge_renumber off 
+*merge_models posh1s125 *save_as_model TL_r3_2  yes
+Model file posh1s125.mud opened for reading.
+Model saved to TL_r3_2.mud.
+*add_mater_elements spring_solid 
+*copy_mater *mater_name Center_dyummy_mat 
+*mater_param structural:youngs_modulus 0.01 
+*mater_option structural:plasticity:off *add_mater_elements spring_center 
+*set_element_class line2 
+*add_elements  1000001 1000025 
+Element 1000241 added.
+*sub_divisions 2 1 1 
+*subdivide_elements  1000241 # 
+*add_elements  1000243  1000013 
+Element 1000244 added.
+*move_reset *set_move_scale_factors 0.0 0.0 1.0 
+*move_nodes 1000243 # 
+*duplicate_reset 
+*set_duplicate_translation z 332.914991 
+*duplicate_nodes 1000243 # 
+*add_elements 1000245 1000229 
+Element 1000245 added.
+*add_elements 1000245  1000241 
+Element 1000246 added.
+*add_elements 1000245  1000217 
+Element 1000247 added.
+*edit_geometry spring_center_dummy_beam *copy_geometry 
+*geometry_name cntr_dummy 
+*geometry_param diameter 1 
+*add_geometry_elements 1000242 to 1000247 
+*edit_mater Center_dyummy_mat 
+*add_mater_elements 1000242 to 1000247 
+*sweep_nodes all_existing 
+Deleting 2 duplicate nodes !
+Deleting 0 collapsed elements !
+*new_cbody mesh *contact_option state:solid *contact_option skip_structural:off 
+*contact_body_name spring *add_contact_body_elements spring_solid 
+*new_cbody geometry *contact_option geometry_nodes:off 
+*contact_body_name Upper_seat *add_contact_body_surfaces Upper_seat 
+*new_cbody geometry *contact_option geometry_nodes:off 
+*contact_body_name Lower_Seat *add_contact_body_surfaces Lower_seat 
+*new_md_table 1 1 *set_md_table_type 1 time *table_name Seat_move 
+*table_add 0 1 1 1 1 -1 2 -1 2 0 3 0 *table_fit
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+*edit_contact_body Lower_seat *cbody_param_table vz Seat_move 
+ERROR: Couldn't find contact body "Lower_seat"!
+*contact_value vz -225.000000 
+*new_interact mesh:mesh *interact_option state_1:solid *interact_option state_2:solid 
+*interact_name Fr_0.1 *interact_param friction 0.1 
+*new_interact mesh:geometry *interact_option state_1:solid 
+*interact_name Fr_0.1_seat *interact_param friction 0.1 
+*new_contact_table 
+*ctable_entry spring spring *contact_table_option spring spring contact:on
+*prog_string ctable:old_interact Fr_0.1 *ctable_entry_interact spring spring 
+*ctable_entry spring Upper_seat *contact_table_option spring Upper_seat contact:on 
+*prog_string ctable:old_interact Fr_0.1_seat *ctable_entry_interact spring Upper_seat 
+*ctable_entry spring Lower_Seat *contact_table_option spring Lower_Seat contact:on 
+*prog_string ctable:old_interact Fr_0.1_seat *ctable_entry_interact spring Lower_Seat 
+*new_icond *icond_type state_variable @popdown(icond_new_pm) 
+Popmenu icond_new_pm does not exist or is not popped up.
+*icond_name hset_temp 
+*icond_dof var *icond_dof_value var *icond_dof_value var 400 
+*add_icond_elements all_existing 
+*new_apply *apply_type gravity_load @popdown(apply_new_pm) 
+Popmenu apply_new_pm does not exist or is not popped up.
+*apply_name gravity 
+*apply_dof z *apply_dof_value z -9800 
+*add_apply_elements spring_solid 
+*new_apply *apply_type fixed_displacement @popdown(apply_new_pm) 
+Popmenu apply_new_pm does not exist or is not popped up.
+*apply_name End_Fix_Y 
+*apply_dof y *apply_dof_value y 0.0 
+*add_apply_nodes 1000001 #
+*new_loadcase *loadcase_type struc:dyn_trans 
+*loadcase_name setting 
+*loadcase_ctable ctable1 
+*loadcase_value nsteps 50 
+*loadcase_value dyn_contact_pro_fact 0.5 
+*loadcase_value maxrec 30 
+*copy_loadcase *loadcase_name return 
+*loadcase_value nsteps 30 
+*loadcase_option error:relabs
+*loadcase_value force 0.1 
+*loadcase_value minforce  0.01 
+*loadcase_value maxforce 0.01 
+*prog_use_current_job on *new_job *job_class structural 
+*add_job_loadcases setting *add_job_loadcases return 
+*job_option strain:large *add_post_tensor stress *add_post_tensor strain *add_post_tensor el_strain *add_post_tensor pl_strain 
+*job_contact_table ctable1 
+*job_option frictype:coulomb_bilinear 
+*element_type 7 spring_solid 
+Number of unchanged elements: 0
+*element_type 98 spring_center 
+Number of unchanged elements: 0
+*save_model 
+Model file TL_r3_2.mud opened for writing.
+Model saved to TL_r3_2.
+*save_model yes 
+Model file TL_r3_2.mud opened for writing.
+Model saved to TL_r3_2.
+Command not found!
+
+*write_marc TL_r3_2_job1.dat yes
+INFO: Analysis dimension is derived from element class hex8.
+INFO: Assuming 3-D analysis!
+INFO: Element type 98 has been set for 6 element(s).
+INFO: Found 0 errors and 0 warnings.
+*system_command C:\MSC.Software\Marc\2014.2.0\marc2014.2\tools\run_marc -j TL_r3_2_job1 -b n -v n
+*set_deformed off *set_showmag off 
+*set_deformed off 
+*post_open TL_r3_2_job1.t16 *post_skip_to 0 *post_rezone 
+File TL_r3_2_job1.t16 does not exist!
+*save_as_model TL_r3_2_formed_rezoned yes 
+Model saved to TL_r3_2_formed_rezoned.mud.
+*post_close 
+*open_model TL_r3_2_formed_rezoned 
+File is Mentat, version unknown.
+Model file TL_r3_2_formed_rezoned.mud opened for reading.
+Model TL_r3_2_formed_rezoned opened.
+*move_reset 
+*set_move_translation x 0.000000
+*set_move_translation y 0.000000
+*set_move_translation z 0.000000
+*move_model 
+*save_as_model TL_r3_2_formed_rezoned_align yes 
+Model saved to TL_r3_2_formed_rezoned_align.mud.
+*set_deformed off 
+*post_open TL_r3_2_job1.t16 *post_skip_to_last *post_rezone 
+File TL_r3_2_job1.t16 does not exist!
+*save_as_model TL_r3_2_set_rezoned yes 
+Model saved to TL_r3_2_set_rezoned.mud.
+*post_close 
+*open_model TL_r3_2_set_rezoned  
+File is Mentat, version unknown.
+Model file TL_r3_2_set_rezoned.mud opened for reading.
+Model TL_r3_2_set_rezoned opened.
+*move_reset 
+*set_move_translation x 0.000000
+*set_move_translation y 0.000000
+*set_move_translation z 0.0
+*move_model
+*move_reset *set_move_point 0.000000 0.000000 4.905010 
+*set_move_rotation x 0.000000   *move_model
+*move_reset *set_move_point 0.000000 0.000000 4.905010 
+*set_move_rotation y 0.000000   *move_model
+*move_reset *set_move_rotation z 0.000000   *move_model
+*move_reset *set_move_translation z -0.000000
+*move_model
+*save_as_model TL_r3_2_set_rezoned_align yes 
+Model saved to TL_r3_2_set_rezoned_align.mud.
+*open_model TL_r3_2_formed_rezoned_align 
+File is Mentat, version unknown.
+Model file TL_r3_2_formed_rezoned_align.mud opened for reading.
+Model TL_r3_2_formed_rezoned_align opened.
+*open_model TL_r3_2_set_rezoned_align 
+File is Mentat, version unknown.
+Model file TL_r3_2_set_rezoned_align.mud opened for reading.
+Model TL_r3_2_set_rezoned_align opened.
+*define sc_name TL_r3_3 
+*new_model yes
+*clear_geometry *system_reset
+*set_curve_max_depth 15 
+*set_curve_type interpolate  
+*add_curves 
+point(54.200000,0.000000,0.000000) 
+Point 1 added.
+point(38.417251,38.417251,3.750019) 
+Point 2 added.
+point(-0.000000,54.331304,7.500954) 
+Point 3 added.
+point(-38.148359,38.148359,9.390306) 
+Point 4 added.
+point(-54.190001,-0.000000,9.810005) 
+Point 5 added.
+point(-38.993828,-38.993828,9.148357) 
+Point 6 added.
+point(0.000000,-56.781784,13.941841) 
+Point 7 added.
+point(42.119992,-42.119992,24.334135) 
+Point 8 added.
+point(65.101633,0.023010,34.945003) 
+Point 9 added.
+point(51.407739,51.444093,43.685857) 
+Point 10 added.
+point(-0.028649,81.055594,51.625543) 
+Point 11 added.
+point(-63.374201,63.329417,62.210186) 
+Point 12 added.
+point(-92.119960,-0.032560,75.905201) 
+Point 13 added.
+point(-61.104022,-61.147232,90.426545) 
+Point 14 added.
+point(0.026867,-76.011476,103.954723) 
+Point 15 added.
+point(48.149396,-48.115370,114.917146) 
+Point 16 added.
+point(65.685237,0.046433,124.710483) 
+Point 17 added.
+point(49.932772,50.003417,134.087225) 
+Point 18 added.
+point(-0.057166,80.867227,144.206084) 
+Point 19 added.
+point(-64.459995,64.368925,155.899629) 
+Point 20 added.
+point(-94.033487,-0.066473,168.581891) 
+Point 21 added.
+point(-61.854674,-61.942187,180.762066) 
+Point 22 added.
+point(0.054234,-76.720107,191.780105) 
+Point 23 added.
+point(48.230631,-48.162490,201.658233) 
+Point 24 added.
+point(65.554507,0.069512,211.461439) 
+Point 25 added.
+point(49.513342,49.618458,222.336520) 
+Point 26 added.
+point(-0.084046,79.261206,235.895068) 
+Point 27 added.
+point(-62.167807,62.036106,251.456966) 
+Point 28 added.
+point(-90.343457,-0.095797,265.041787) 
+Point 29 added.
+point(-61.153413,-61.283240,274.371891) 
+Point 30 added.
+point(0.084050,-79.265142,280.387929) 
+Point 31 added.
+point(50.990072,-50.882051,286.099100) 
+Point 32 added.
+point(66.088859,0.093438,294.614292) 
+Point 33 added.
+point(44.067488,44.192271,307.859953) 
+Point 34 added.
+point(-0.085573,60.526139,324.293794) 
+Point 35 added.
+point(-40.797055,40.681858,337.630392) 
+Point 36 added.
+point(-55.777815,-0.078860,342.933137) 
+Point 37 added.
+point(-39.038038,-39.148580,341.855518) 
+Point 38 added.
+point(0.079213,-56.027805,337.139093) 
+Point 39 added.
+point(39.753720,-39.641470,333.174872) 
+Point 40 added.
+point(54.258125,-12.047609,332.590162) 
+Point 41 added.
+# 
+Curve 1 added.
+*sweep_all *remove_unused_points 
+Deleting 2 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+Deleting 39 unused points !
+*set_curve_type tangent 
+*add_curves 1 10.0 
+Curve 2 added.
+*system_align 
+ 54.200000 , 0.000000 , 0.000000 
+ 52.706541 , 16.556748 , 1.250228 
+ 54.200000 , 0.000000 , 1.250228 
+*set_curve_type arc_cpp *add_curves 
+ 0.0 0.0 0.0 
+ 6.900000 0.0,0.0 
+ 0.0, 6.900000 , 0.0 
+Curve 3 added.
+*set_curve_type line *add_curves 
+point(0.0,0.0,0.0) 
+Point 88 added.
+point(6.900000,0.0,0.0)
+Point 89 added.
+Curve 4 added.
+point(0.0,0.0,0.0) 
+Point 90 added.
+point(0.0,6.900000,0.0)
+Point 91 added.
+Curve 5 added.
+*sweep_all 
+Deleting 4 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*set_curve_div_type_fix_ndiv *set_curve_div_num 4 
+*apply_curve_divisions  3 # 
+*set_curve_div_type_fix_ndiv *set_curve_div_num 3 
+*apply_curve_divisions  4 5 # 
+*af_planar_quadmesh  3 4 5 # 
+Quad meshing complete (8 elements)
+*detach_nodes all_existing *detach_edges all_existing *detach_faces all_existing 
+*duplicate_reset *set_duplicate_repetitions 3 
+*set_duplicate_rotation z 90 
+*duplicate_elements all_existing *sweep_all
+Deleting 15 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*move_reset *set_move_rotations 0 90 0 
+*move_elements all_existing 
+*store_elements section_el all_existing 
+*system_reset 
+*add_surface 
+point(39.400000,0.000000,-14.800000) 
+Point 91 added.
+point(69.000000,0.000000,-14.800000) 
+Point 92 added.
+point(69.000000,0.000000,14.800000) 
+Point 93 added.
+point(39.400000,0.000000,14.800000) 
+Point 94 added.
+Surface 1 added.
+*duplicate_reset 
+*set_duplicate_rotations 0.0,0.0,180.000000 
+*set_duplicate_translations 0.0,0.0,9.810005 
+*duplicate_surfaces 1 # 
+*duplicate_reset 
+*set_duplicate_rotations 0.0,0.0,1620.000000 
+*set_duplicate_translations 0.0,0.0,342.933137 
+*duplicate_surfaces 1 # 
+*intersect_curves_surface 2  1 #
+1 Intersection found and 2 new curves added.
+*intersect_curves_surface 3  7 #
+1 Intersection found and 2 new curves added.
+*select_elements_class quad4 
+*expand_reset *expand_shift 
+*set_expand_repetitions 24 
+*expand_elements_curve  6 all_selected 
+*define tqt_div 24 
+*set_expand_repetitions 192 
+*expand_elements_curve  8 all_selected 
+*define ct_div 192 
+*expand_remove *set_expand_repetitions 24 
+*expand_elements_curve  9 all_selected 
+*define bqt_div 24 
+*elements_solid *regenerate *fill_view
+*remove_surfaces all_existing 
+*define t_cnt_elem 240 
+*eval s_h 342.933137 
+*eval wire_dia 13.800000 
+*define coil_h 342.933137
+*define U_seat_Rad 53.949927
+*define L_seat_Rad 55.286343
+*select_clear *visible_selected 
+*system_reset *system_rotate 90 0 0 
+*set_curve_type line *add_curves 
+point(170.0/2.0,-wire_dia/2.0-10.0,0.0) point(170/2.0,-wire_dia/2.0,0.0) 
+Point 194 added.
+Point 195 added.
+Curve 10 added.
+point(170.0/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) 
+Point 196 added.
+Point 197 added.
+Curve 11 added.
+point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0+60.0,0.0) 
+Point 198 added.
+Point 199 added.
+Curve 12 added.
+point(U_seat_Rad/2.0-wire_dia/2.0,-wire_dia/2.0+60.0,0.0) point(0.0,-wire_dia/2.0+60.0,0.0) 
+Point 200 added.
+Point 201 added.
+Curve 13 added.
+*set_curve_type fillet *add_curves 12 13  10.0 
+*revolve_curves all_visible 
+*store_surfaces Upper_seat all_visible
+*select_clear *visible_selected 
+*flip_surfaces 6 # 
+*set_curve_type line *add_curves 
+point(170.0/2.0,s_h+wire_dia/2.0+10.0,0.0) point(170.0/2.0,s_h+wire_dia/2.0,0.0) 
+Point 338 added.
+Point 339 added.
+Curve 17 added.
+point(170.0/2.0,s_h+wire_dia/2.0,0.0)   point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) 
+Point 340 added.
+Point 341 added.
+Curve 18 added.
+point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-60.0,0.0) 
+Point 342 added.
+Point 343 added.
+Curve 19 added.
+point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-60.0,0.0) point(0.0,s_h+wire_dia/2.0-60.0,0.0) 
+Point 344 added.
+Point 345 added.
+Curve 20 added.
+*set_curve_type fillet *add_curves 19 20  10.0 
+*revolve_curves all_visible 
+*store_surfaces Lower_seat all_visible 
+*flip_surfaces all_visible 
+*select_clear *invisible_selected 
+*set_sweep_tolerance 0.01 *sweep_all 
+Deleting 123 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 231 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate surfaces!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*system_reset *show_view 2 
+*fill_view 
+*undefine s_h 
+*duplicate_reset *duplicate_curves 6 8 9 # 
+*select_curves  6 8 9 # *visible_selected 
+*sub_divisions 24 1 1 
+*subdivide_curves_real 6 # 
+*sub_divisions 192 1 1 
+*subdivide_curves_real 8 # 
+*sub_divisions 24 1 1 
+*subdivide_curves_real 9 # 
+@set($convert_entities,curves) *set_convert_uvdiv u 1
+*convert_curves all_visible 
+*set_sweep_tolerance 0.01 *sweep_all  
+Deleting 480 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 3818 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate surfaces!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*prog_param renumber:start 1000001
+*renumber_node_list all_visible 
+*renumber_element_list all_visible 
+*store_elements spring_center all_visible 
+*store_elements spring_solid all_invisible 
+*new_geometry *geometry_type mech_three_beam_ela @popdown(geom_new_popmenu) @popdown(geom_new_structural_pm) 
+Popmenu geom_new_popmenu does not exist or is not popped up.
+Popmenu geom_new_structural_pm does not exist or is not popped up.
+*geometry_name spring_center_dummy_beam 
+*geometry_param diameter 13.800000 
+*geometry_vector orientx 0 0 1 
+*geometry_param cont_radius 13.800000 
+*add_geometry_elements spring_center 
+*invisible_selected
+*set_merge_renumber off 
+*merge_models posh1s125 *save_as_model TL_r3_3  yes
+Model file posh1s125.mud opened for reading.
+Model saved to TL_r3_3.mud.
+*add_mater_elements spring_solid 
+*copy_mater *mater_name Center_dyummy_mat 
+*mater_param structural:youngs_modulus 0.01 
+*mater_option structural:plasticity:off *add_mater_elements spring_center 
+*set_element_class line2 
+*add_elements  1000001 1000025 
+Element 1000241 added.
+*sub_divisions 2 1 1 
+*subdivide_elements  1000241 # 
+*add_elements  1000243  1000013 
+Element 1000244 added.
+*move_reset *set_move_scale_factors 0.0 0.0 1.0 
+*move_nodes 1000243 # 
+*duplicate_reset 
+*set_duplicate_translation z 332.918283 
+*duplicate_nodes 1000243 # 
+*add_elements 1000245 1000229 
+Element 1000245 added.
+*add_elements 1000245  1000241 
+Element 1000246 added.
+*add_elements 1000245  1000217 
+Element 1000247 added.
+*edit_geometry spring_center_dummy_beam *copy_geometry 
+*geometry_name cntr_dummy 
+*geometry_param diameter 1 
+*add_geometry_elements 1000242 to 1000247 
+*edit_mater Center_dyummy_mat 
+*add_mater_elements 1000242 to 1000247 
+*sweep_nodes all_existing 
+Deleting 2 duplicate nodes !
+Deleting 0 collapsed elements !
+*new_cbody mesh *contact_option state:solid *contact_option skip_structural:off 
+*contact_body_name spring *add_contact_body_elements spring_solid 
+*new_cbody geometry *contact_option geometry_nodes:off 
+*contact_body_name Upper_seat *add_contact_body_surfaces Upper_seat 
+*new_cbody geometry *contact_option geometry_nodes:off 
+*contact_body_name Lower_Seat *add_contact_body_surfaces Lower_seat 
+*new_md_table 1 1 *set_md_table_type 1 time *table_name Seat_move 
+*table_add 0 1 1 1 1 -1 2 -1 2 0 3 0 *table_fit
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+*edit_contact_body Lower_seat *cbody_param_table vz Seat_move 
+ERROR: Couldn't find contact body "Lower_seat"!
+*contact_value vz -225.000000 
+*new_interact mesh:mesh *interact_option state_1:solid *interact_option state_2:solid 
+*interact_name Fr_0.1 *interact_param friction 0.1 
+*new_interact mesh:geometry *interact_option state_1:solid 
+*interact_name Fr_0.1_seat *interact_param friction 0.1 
+*new_contact_table 
+*ctable_entry spring spring *contact_table_option spring spring contact:on
+*prog_string ctable:old_interact Fr_0.1 *ctable_entry_interact spring spring 
+*ctable_entry spring Upper_seat *contact_table_option spring Upper_seat contact:on 
+*prog_string ctable:old_interact Fr_0.1_seat *ctable_entry_interact spring Upper_seat 
+*ctable_entry spring Lower_Seat *contact_table_option spring Lower_Seat contact:on 
+*prog_string ctable:old_interact Fr_0.1_seat *ctable_entry_interact spring Lower_Seat 
+*new_icond *icond_type state_variable @popdown(icond_new_pm) 
+Popmenu icond_new_pm does not exist or is not popped up.
+*icond_name hset_temp 
+*icond_dof var *icond_dof_value var *icond_dof_value var 400 
+*add_icond_elements all_existing 
+*new_apply *apply_type gravity_load @popdown(apply_new_pm) 
+Popmenu apply_new_pm does not exist or is not popped up.
+*apply_name gravity 
+*apply_dof z *apply_dof_value z -9800 
+*add_apply_elements spring_solid 
+*new_apply *apply_type fixed_displacement @popdown(apply_new_pm) 
+Popmenu apply_new_pm does not exist or is not popped up.
+*apply_name End_Fix_Y 
+*apply_dof y *apply_dof_value y 0.0 
+*add_apply_nodes 1000001 #
+*new_loadcase *loadcase_type struc:dyn_trans 
+*loadcase_name setting 
+*loadcase_ctable ctable1 
+*loadcase_value nsteps 50 
+*loadcase_value dyn_contact_pro_fact 0.5 
+*loadcase_value maxrec 30 
+*copy_loadcase *loadcase_name return 
+*loadcase_value nsteps 30 
+*loadcase_option error:relabs
+*loadcase_value force 0.1 
+*loadcase_value minforce  0.01 
+*loadcase_value maxforce 0.01 
+*prog_use_current_job on *new_job *job_class structural 
+*add_job_loadcases setting *add_job_loadcases return 
+*job_option strain:large *add_post_tensor stress *add_post_tensor strain *add_post_tensor el_strain *add_post_tensor pl_strain 
+*job_contact_table ctable1 
+*job_option frictype:coulomb_bilinear 
+*element_type 7 spring_solid 
+Number of unchanged elements: 0
+*element_type 98 spring_center 
+Number of unchanged elements: 0
+*save_model 
+Model file TL_r3_3.mud opened for writing.
+Model saved to TL_r3_3.
+*save_model yes 
+Model file TL_r3_3.mud opened for writing.
+Model saved to TL_r3_3.
+Command not found!
+
+*write_marc TL_r3_3_job1.dat yes
+INFO: Analysis dimension is derived from element class hex8.
+INFO: Assuming 3-D analysis!
+INFO: Element type 98 has been set for 6 element(s).
+INFO: Found 0 errors and 0 warnings.
+*system_command C:\MSC.Software\Marc\2014.2.0\marc2014.2\tools\run_marc -j TL_r3_3_job1 -b n -v n
+*set_deformed off *set_showmag off 
+*set_deformed off 
+*post_open TL_r3_3_job1.t16 *post_skip_to 0 *post_rezone 
+File TL_r3_3_job1.t16 does not exist!
+*save_as_model TL_r3_3_formed_rezoned yes 
+Model saved to TL_r3_3_formed_rezoned.mud.
+*post_close 
+*open_model TL_r3_3_formed_rezoned 
+File is Mentat, version unknown.
+Model file TL_r3_3_formed_rezoned.mud opened for reading.
+Model TL_r3_3_formed_rezoned opened.
+*move_reset 
+*set_move_translation x 0.000000
+*set_move_translation y 0.000000
+*set_move_translation z -0.000000
+*move_model 
+*save_as_model TL_r3_3_formed_rezoned_align yes 
+Model saved to TL_r3_3_formed_rezoned_align.mud.
+*set_deformed off 
+*post_open TL_r3_3_job1.t16 *post_skip_to_last *post_rezone 
+File TL_r3_3_job1.t16 does not exist!
+*save_as_model TL_r3_3_set_rezoned yes 
+Model saved to TL_r3_3_set_rezoned.mud.
+*post_close 
+*open_model TL_r3_3_set_rezoned  
+File is Mentat, version unknown.
+Model file TL_r3_3_set_rezoned.mud opened for reading.
+Model TL_r3_3_set_rezoned opened.
+*move_reset 
+*set_move_translation x 0.000000
+*set_move_translation y 0.000000
+*set_move_translation z 0.0
+*move_model
+*move_reset *set_move_point 0.000000 0.000000 4.905010 
+*set_move_rotation x 0.000000   *move_model
+*move_reset *set_move_point 0.000000 0.000000 4.905010 
+*set_move_rotation y 0.000000   *move_model
+*move_reset *set_move_rotation z 0.000000   *move_model
+*move_reset *set_move_translation z -0.000000
+*move_model
+*save_as_model TL_r3_3_set_rezoned_align yes 
+Model saved to TL_r3_3_set_rezoned_align.mud.
+*open_model TL_r3_3_formed_rezoned_align 
+File is Mentat, version unknown.
+Model file TL_r3_3_formed_rezoned_align.mud opened for reading.
+Model TL_r3_3_formed_rezoned_align opened.
+*open_model TL_r3_3_set_rezoned_align 
+File is Mentat, version unknown.
+Model file TL_r3_3_set_rezoned_align.mud opened for reading.
+Model TL_r3_3_set_rezoned_align opened.
+*define sc_name TL_r3_4 
+*new_model yes
+*clear_geometry *system_reset
+*set_curve_max_depth 15 
+*set_curve_type interpolate  
+*add_curves 
+point(54.200000,0.000000,0.000000) 
+Point 1 added.
+point(38.417251,38.417251,3.750018) 
+Point 2 added.
+point(-0.000000,54.331301,7.500952) 
+Point 3 added.
+point(-38.148360,38.148360,9.390303) 
+Point 4 added.
+point(-54.190000,-0.000000,9.810006) 
+Point 5 added.
+point(-38.993842,-38.993842,9.148121) 
+Point 6 added.
+point(0.000000,-56.781677,13.941989) 
+Point 7 added.
+point(42.120205,-42.120205,24.334089) 
+Point 8 added.
+point(65.101400,0.023010,34.945021) 
+Point 9 added.
+point(51.407763,51.444116,43.685838) 
+Point 10 added.
+point(-0.028649,81.055618,51.625559) 
+Point 11 added.
+point(-63.374102,63.329318,62.210197) 
+Point 12 added.
+point(-92.120080,-0.032560,75.905207) 
+Point 13 added.
+point(-61.104030,-61.147240,90.426536) 
+Point 14 added.
+point(0.026867,-76.011363,103.954799) 
+Point 15 added.
+point(48.149534,-48.115509,114.917021) 
+Point 16 added.
+point(65.684981,0.046433,124.710568) 
+Point 17 added.
+point(49.932919,50.003565,134.087188) 
+Point 18 added.
+point(-0.057166,80.867054,144.206113) 
+Point 19 added.
+point(-64.460101,64.369030,155.899620) 
+Point 20 added.
+point(-94.033469,-0.066473,168.581893) 
+Point 21 added.
+point(-61.854636,-61.942149,180.762043) 
+Point 22 added.
+point(0.054234,-76.720125,191.780128) 
+Point 23 added.
+point(48.230500,-48.162359,201.658197) 
+Point 24 added.
+point(65.554745,0.069512,211.461506) 
+Point 25 added.
+point(49.513186,49.618301,222.336413) 
+Point 26 added.
+point(-0.084046,79.261236,235.895058) 
+Point 27 added.
+point(-62.167997,62.036295,251.457038) 
+Point 28 added.
+point(-90.343293,-0.095797,265.041739) 
+Point 29 added.
+point(-61.153448,-61.283275,274.371915) 
+Point 30 added.
+point(0.084050,-79.265268,280.388034) 
+Point 31 added.
+point(50.990023,-50.882002,286.098962) 
+Point 32 added.
+point(66.088950,0.093438,294.614414) 
+Point 33 added.
+point(44.067313,44.192095,307.859850) 
+Point 34 added.
+point(-0.085573,60.526318,324.293783) 
+Point 35 added.
+point(-40.797066,40.681870,337.630470) 
+Point 36 added.
+point(-55.777805,-0.078860,342.933135) 
+Point 37 added.
+point(-39.037990,-39.148531,341.855511) 
+Point 38 added.
+point(0.079213,-56.027874,337.139096) 
+Point 39 added.
+point(39.753709,-39.641458,333.174823) 
+Point 40 added.
+point(54.258127,-12.047610,332.590163) 
+Point 41 added.
+# 
+Curve 1 added.
+*sweep_all *remove_unused_points 
+Deleting 2 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+Deleting 39 unused points !
+*set_curve_type tangent 
+*add_curves 1 10.0 
+Curve 2 added.
+*system_align 
+ 54.200000 , 0.000000 , 0.000000 
+ 52.706541 , 16.556748 , 1.250227 
+ 54.200000 , 0.000000 , 1.250227 
+*set_curve_type arc_cpp *add_curves 
+ 0.0 0.0 0.0 
+ 6.900000 0.0,0.0 
+ 0.0, 6.900000 , 0.0 
+Curve 3 added.
+*set_curve_type line *add_curves 
+point(0.0,0.0,0.0) 
+Point 88 added.
+point(6.900000,0.0,0.0)
+Point 89 added.
+Curve 4 added.
+point(0.0,0.0,0.0) 
+Point 90 added.
+point(0.0,6.900000,0.0)
+Point 91 added.
+Curve 5 added.
+*sweep_all 
+Deleting 4 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*set_curve_div_type_fix_ndiv *set_curve_div_num 4 
+*apply_curve_divisions  3 # 
+*set_curve_div_type_fix_ndiv *set_curve_div_num 3 
+*apply_curve_divisions  4 5 # 
+*af_planar_quadmesh  3 4 5 # 
+Quad meshing complete (8 elements)
+*detach_nodes all_existing *detach_edges all_existing *detach_faces all_existing 
+*duplicate_reset *set_duplicate_repetitions 3 
+*set_duplicate_rotation z 90 
+*duplicate_elements all_existing *sweep_all
+Deleting 15 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*move_reset *set_move_rotations 0 90 0 
+*move_elements all_existing 
+*store_elements section_el all_existing 
+*system_reset 
+*add_surface 
+point(39.400000,0.000000,-14.800000) 
+Point 91 added.
+point(69.000000,0.000000,-14.800000) 
+Point 92 added.
+point(69.000000,0.000000,14.800000) 
+Point 93 added.
+point(39.400000,0.000000,14.800000) 
+Point 94 added.
+Surface 1 added.
+*duplicate_reset 
+*set_duplicate_rotations 0.0,0.0,180.000000 
+*set_duplicate_translations 0.0,0.0,9.810006 
+*duplicate_surfaces 1 # 
+*duplicate_reset 
+*set_duplicate_rotations 0.0,0.0,1620.000000 
+*set_duplicate_translations 0.0,0.0,342.933135 
+*duplicate_surfaces 1 # 
+*intersect_curves_surface 2  1 #
+1 Intersection found and 2 new curves added.
+*intersect_curves_surface 3  7 #
+1 Intersection found and 2 new curves added.
+*select_elements_class quad4 
+*expand_reset *expand_shift 
+*set_expand_repetitions 24 
+*expand_elements_curve  6 all_selected 
+*define tqt_div 24 
+*set_expand_repetitions 192 
+*expand_elements_curve  8 all_selected 
+*define ct_div 192 
+*expand_remove *set_expand_repetitions 24 
+*expand_elements_curve  9 all_selected 
+*define bqt_div 24 
+*elements_solid *regenerate *fill_view
+*remove_surfaces all_existing 
+*define t_cnt_elem 240 
+*eval s_h 342.933135 
+*eval wire_dia 13.800000 
+*define coil_h 342.933135
+*define U_seat_Rad 53.949928
+*define L_seat_Rad 55.286274
+*select_clear *visible_selected 
+*system_reset *system_rotate 90 0 0 
+*set_curve_type line *add_curves 
+point(170.0/2.0,-wire_dia/2.0-10.0,0.0) point(170/2.0,-wire_dia/2.0,0.0) 
+Point 194 added.
+Point 195 added.
+Curve 10 added.
+point(170.0/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) 
+Point 196 added.
+Point 197 added.
+Curve 11 added.
+point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0+60.0,0.0) 
+Point 198 added.
+Point 199 added.
+Curve 12 added.
+point(U_seat_Rad/2.0-wire_dia/2.0,-wire_dia/2.0+60.0,0.0) point(0.0,-wire_dia/2.0+60.0,0.0) 
+Point 200 added.
+Point 201 added.
+Curve 13 added.
+*set_curve_type fillet *add_curves 12 13  10.0 
+*revolve_curves all_visible 
+*store_surfaces Upper_seat all_visible
+*select_clear *visible_selected 
+*flip_surfaces 6 # 
+*set_curve_type line *add_curves 
+point(170.0/2.0,s_h+wire_dia/2.0+10.0,0.0) point(170.0/2.0,s_h+wire_dia/2.0,0.0) 
+Point 338 added.
+Point 339 added.
+Curve 17 added.
+point(170.0/2.0,s_h+wire_dia/2.0,0.0)   point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) 
+Point 340 added.
+Point 341 added.
+Curve 18 added.
+point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-60.0,0.0) 
+Point 342 added.
+Point 343 added.
+Curve 19 added.
+point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-60.0,0.0) point(0.0,s_h+wire_dia/2.0-60.0,0.0) 
+Point 344 added.
+Point 345 added.
+Curve 20 added.
+*set_curve_type fillet *add_curves 19 20  10.0 
+*revolve_curves all_visible 
+*store_surfaces Lower_seat all_visible 
+*flip_surfaces all_visible 
+*select_clear *invisible_selected 
+*set_sweep_tolerance 0.01 *sweep_all 
+Deleting 123 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 231 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate surfaces!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*system_reset *show_view 2 
+*fill_view 
+*undefine s_h 
+*duplicate_reset *duplicate_curves 6 8 9 # 
+*select_curves  6 8 9 # *visible_selected 
+*sub_divisions 24 1 1 
+*subdivide_curves_real 6 # 
+*sub_divisions 192 1 1 
+*subdivide_curves_real 8 # 
+*sub_divisions 24 1 1 
+*subdivide_curves_real 9 # 
+@set($convert_entities,curves) *set_convert_uvdiv u 1
+*convert_curves all_visible 
+*set_sweep_tolerance 0.01 *sweep_all  
+Deleting 480 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 3818 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate surfaces!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*prog_param renumber:start 1000001
+*renumber_node_list all_visible 
+*renumber_element_list all_visible 
+*store_elements spring_center all_visible 
+*store_elements spring_solid all_invisible 
+*new_geometry *geometry_type mech_three_beam_ela @popdown(geom_new_popmenu) @popdown(geom_new_structural_pm) 
+Popmenu geom_new_popmenu does not exist or is not popped up.
+Popmenu geom_new_structural_pm does not exist or is not popped up.
+*geometry_name spring_center_dummy_beam 
+*geometry_param diameter 13.800000 
+*geometry_vector orientx 0 0 1 
+*geometry_param cont_radius 13.800000 
+*add_geometry_elements spring_center 
+*invisible_selected
+*set_merge_renumber off 
+*merge_models posh1s125 *save_as_model TL_r3_4  yes
+Model file posh1s125.mud opened for reading.
+Model saved to TL_r3_4.mud.
+*add_mater_elements spring_solid 
+*copy_mater *mater_name Center_dyummy_mat 
+*mater_param structural:youngs_modulus 0.01 
+*mater_option structural:plasticity:off *add_mater_elements spring_center 
+*set_element_class line2 
+*add_elements  1000001 1000025 
+Element 1000241 added.
+*sub_divisions 2 1 1 
+*subdivide_elements  1000241 # 
+*add_elements  1000243  1000013 
+Element 1000244 added.
+*move_reset *set_move_scale_factors 0.0 0.0 1.0 
+*move_nodes 1000243 # 
+*duplicate_reset 
+*set_duplicate_translation z 332.918286 
+*duplicate_nodes 1000243 # 
+*add_elements 1000245 1000229 
+Element 1000245 added.
+*add_elements 1000245  1000241 
+Element 1000246 added.
+*add_elements 1000245  1000217 
+Element 1000247 added.
+*edit_geometry spring_center_dummy_beam *copy_geometry 
+*geometry_name cntr_dummy 
+*geometry_param diameter 1 
+*add_geometry_elements 1000242 to 1000247 
+*edit_mater Center_dyummy_mat 
+*add_mater_elements 1000242 to 1000247 
+*sweep_nodes all_existing 
+Deleting 2 duplicate nodes !
+Deleting 0 collapsed elements !
+*new_cbody mesh *contact_option state:solid *contact_option skip_structural:off 
+*contact_body_name spring *add_contact_body_elements spring_solid 
+*new_cbody geometry *contact_option geometry_nodes:off 
+*contact_body_name Upper_seat *add_contact_body_surfaces Upper_seat 
+*new_cbody geometry *contact_option geometry_nodes:off 
+*contact_body_name Lower_Seat *add_contact_body_surfaces Lower_seat 
+*new_md_table 1 1 *set_md_table_type 1 time *table_name Seat_move 
+*table_add 0 1 1 1 1 -1 2 -1 2 0 3 0 *table_fit
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+*edit_contact_body Lower_seat *cbody_param_table vz Seat_move 
+ERROR: Couldn't find contact body "Lower_seat"!
+*contact_value vz -225.000000 
+*new_interact mesh:mesh *interact_option state_1:solid *interact_option state_2:solid 
+*interact_name Fr_0.1 *interact_param friction 0.1 
+*new_interact mesh:geometry *interact_option state_1:solid 
+*interact_name Fr_0.1_seat *interact_param friction 0.1 
+*new_contact_table 
+*ctable_entry spring spring *contact_table_option spring spring contact:on
+*prog_string ctable:old_interact Fr_0.1 *ctable_entry_interact spring spring 
+*ctable_entry spring Upper_seat *contact_table_option spring Upper_seat contact:on 
+*prog_string ctable:old_interact Fr_0.1_seat *ctable_entry_interact spring Upper_seat 
+*ctable_entry spring Lower_Seat *contact_table_option spring Lower_Seat contact:on 
+*prog_string ctable:old_interact Fr_0.1_seat *ctable_entry_interact spring Lower_Seat 
+*new_icond *icond_type state_variable @popdown(icond_new_pm) 
+Popmenu icond_new_pm does not exist or is not popped up.
+*icond_name hset_temp 
+*icond_dof var *icond_dof_value var *icond_dof_value var 400 
+*add_icond_elements all_existing 
+*new_apply *apply_type gravity_load @popdown(apply_new_pm) 
+Popmenu apply_new_pm does not exist or is not popped up.
+*apply_name gravity 
+*apply_dof z *apply_dof_value z -9800 
+*add_apply_elements spring_solid 
+*new_apply *apply_type fixed_displacement @popdown(apply_new_pm) 
+Popmenu apply_new_pm does not exist or is not popped up.
+*apply_name End_Fix_Y 
+*apply_dof y *apply_dof_value y 0.0 
+*add_apply_nodes 1000001 #
+*new_loadcase *loadcase_type struc:dyn_trans 
+*loadcase_name setting 
+*loadcase_ctable ctable1 
+*loadcase_value nsteps 50 
+*loadcase_value dyn_contact_pro_fact 0.5 
+*loadcase_value maxrec 30 
+*copy_loadcase *loadcase_name return 
+*loadcase_value nsteps 30 
+*loadcase_option error:relabs
+*loadcase_value force 0.1 
+*loadcase_value minforce  0.01 
+*loadcase_value maxforce 0.01 
+*prog_use_current_job on *new_job *job_class structural 
+*add_job_loadcases setting *add_job_loadcases return 
+*job_option strain:large *add_post_tensor stress *add_post_tensor strain *add_post_tensor el_strain *add_post_tensor pl_strain 
+*job_contact_table ctable1 
+*job_option frictype:coulomb_bilinear 
+*element_type 7 spring_solid 
+Number of unchanged elements: 0
+*element_type 98 spring_center 
+Number of unchanged elements: 0
+*save_model 
+Model file TL_r3_4.mud opened for writing.
+Model saved to TL_r3_4.
+*save_model yes 
+Model file TL_r3_4.mud opened for writing.
+Model saved to TL_r3_4.
+Command not found!
+
+*write_marc TL_r3_4_job1.dat yes
+INFO: Analysis dimension is derived from element class hex8.
+INFO: Assuming 3-D analysis!
+INFO: Element type 98 has been set for 6 element(s).
+INFO: Found 0 errors and 0 warnings.
+*system_command C:\MSC.Software\Marc\2014.2.0\marc2014.2\tools\run_marc -j TL_r3_4_job1 -b n -v n
+*set_deformed off *set_showmag off 
+*set_deformed off 
+*post_open TL_r3_4_job1.t16 *post_skip_to 0 *post_rezone 
+File TL_r3_4_job1.t16 does not exist!
+*save_as_model TL_r3_4_formed_rezoned yes 
+Model saved to TL_r3_4_formed_rezoned.mud.
+*post_close 
+*open_model TL_r3_4_formed_rezoned 
+File is Mentat, version unknown.
+Model file TL_r3_4_formed_rezoned.mud opened for reading.
+Model TL_r3_4_formed_rezoned opened.
+*move_reset 
+*set_move_translation x 0.000000
+*set_move_translation y 0.000000
+*set_move_translation z -0.000000
+*move_model 
+*save_as_model TL_r3_4_formed_rezoned_align yes 
+Model saved to TL_r3_4_formed_rezoned_align.mud.
+*set_deformed off 
+*post_open TL_r3_4_job1.t16 *post_skip_to_last *post_rezone 
+File TL_r3_4_job1.t16 does not exist!
+*save_as_model TL_r3_4_set_rezoned yes 
+Model saved to TL_r3_4_set_rezoned.mud.
+*post_close 
+*open_model TL_r3_4_set_rezoned  
+File is Mentat, version unknown.
+Model file TL_r3_4_set_rezoned.mud opened for reading.
+Model TL_r3_4_set_rezoned opened.
+*move_reset 
+*set_move_translation x 0.000000
+*set_move_translation y 0.000000
+*set_move_translation z 0.0
+*move_model
+*move_reset *set_move_point 0.000000 0.000000 4.905010 
+*set_move_rotation x 0.000000   *move_model
+*move_reset *set_move_point 0.000000 0.000000 4.905010 
+*set_move_rotation y 0.000000   *move_model
+*move_reset *set_move_rotation z 0.000000   *move_model
+*move_reset *set_move_translation z -0.000000
+*move_model
+*save_as_model TL_r3_4_set_rezoned_align yes 
+Model saved to TL_r3_4_set_rezoned_align.mud.
+*open_model TL_r3_4_formed_rezoned_align 
+File is Mentat, version unknown.
+Model file TL_r3_4_formed_rezoned_align.mud opened for reading.
+Model TL_r3_4_formed_rezoned_align opened.
+*open_model TL_r3_4_set_rezoned_align 
+File is Mentat, version unknown.
+Model file TL_r3_4_set_rezoned_align.mud opened for reading.
+Model TL_r3_4_set_rezoned_align opened.
+*define sc_name TL_r3_5 
+*new_model yes
+*clear_geometry *system_reset
+*set_curve_max_depth 15 
+*set_curve_type interpolate  
+*add_curves 
+point(54.200000,0.000000,0.000000) 
+Point 1 added.
+point(38.417251,38.417251,3.750019) 
+Point 2 added.
+point(-0.000000,54.331302,7.500952) 
+Point 3 added.
+point(-38.148359,38.148359,9.390304) 
+Point 4 added.
+point(-54.190001,-0.000000,9.810005) 
+Point 5 added.
+point(-38.993843,-38.993843,9.148112) 
+Point 6 added.
+point(0.000000,-56.781671,13.941995) 
+Point 7 added.
+point(42.120214,-42.120214,24.334085) 
+Point 8 added.
+point(65.101391,0.023010,34.945023) 
+Point 9 added.
+point(51.407764,51.444117,43.685836) 
+Point 10 added.
+point(-0.028649,81.055618,51.625559) 
+Point 11 added.
+point(-63.374100,63.329316,62.210198) 
+Point 12 added.
+point(-92.120083,-0.032560,75.905208) 
+Point 13 added.
+point(-61.104030,-61.147241,90.426535) 
+Point 14 added.
+point(0.026867,-76.011358,103.954802) 
+Point 15 added.
+point(48.149540,-48.115515,114.917017) 
+Point 16 added.
+point(65.684974,0.046433,124.710570) 
+Point 17 added.
+point(49.932923,50.003569,134.087187) 
+Point 18 added.
+point(-0.057166,80.867048,144.206114) 
+Point 19 added.
+point(-64.460103,64.369033,155.899621) 
+Point 20 added.
+point(-94.033469,-0.066473,168.581892) 
+Point 21 added.
+point(-61.854636,-61.942149,180.762043) 
+Point 22 added.
+point(0.054234,-76.720125,191.780129) 
+Point 23 added.
+point(48.230497,-48.162356,201.658196) 
+Point 24 added.
+point(65.554750,0.069512,211.461508) 
+Point 25 added.
+point(49.513182,49.618297,222.336410) 
+Point 26 added.
+point(-0.084046,79.261238,235.895058) 
+Point 27 added.
+point(-62.167999,62.036297,251.457038) 
+Point 28 added.
+point(-90.343291,-0.095797,265.041739) 
+Point 29 added.
+point(-61.153448,-61.283276,274.371915) 
+Point 30 added.
+point(0.084050,-79.265270,280.388037) 
+Point 31 added.
+point(50.990021,-50.881999,286.098959) 
+Point 32 added.
+point(66.088954,0.093438,294.614416) 
+Point 33 added.
+point(44.067307,44.192090,307.859846) 
+Point 34 added.
+point(-0.085573,60.526326,324.293785) 
+Point 35 added.
+point(-40.797064,40.681868,337.630470) 
+Point 36 added.
+point(-55.777804,-0.078860,342.933134) 
+Point 37 added.
+point(-39.037988,-39.148530,341.855511) 
+Point 38 added.
+point(0.079213,-56.027875,337.139097) 
+Point 39 added.
+point(39.753708,-39.641458,333.174822) 
+Point 40 added.
+point(54.258127,-12.047610,332.590163) 
+Point 41 added.
+# 
+Curve 1 added.
+*sweep_all *remove_unused_points 
+Deleting 2 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+Deleting 39 unused points !
+*set_curve_type tangent 
+*add_curves 1 10.0 
+Curve 2 added.
+*system_align 
+ 54.200000 , 0.000000 , 0.000000 
+ 52.706541 , 16.556748 , 1.250228 
+ 54.200000 , 0.000000 , 1.250228 
+*set_curve_type arc_cpp *add_curves 
+ 0.0 0.0 0.0 
+ 6.900000 0.0,0.0 
+ 0.0, 6.900000 , 0.0 
+Curve 3 added.
+*set_curve_type line *add_curves 
+point(0.0,0.0,0.0) 
+Point 88 added.
+point(6.900000,0.0,0.0)
+Point 89 added.
+Curve 4 added.
+point(0.0,0.0,0.0) 
+Point 90 added.
+point(0.0,6.900000,0.0)
+Point 91 added.
+Curve 5 added.
+*sweep_all 
+Deleting 4 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*set_curve_div_type_fix_ndiv *set_curve_div_num 4 
+*apply_curve_divisions  3 # 
+*set_curve_div_type_fix_ndiv *set_curve_div_num 3 
+*apply_curve_divisions  4 5 # 
+*af_planar_quadmesh  3 4 5 # 
+Quad meshing complete (8 elements)
+*detach_nodes all_existing *detach_edges all_existing *detach_faces all_existing 
+*duplicate_reset *set_duplicate_repetitions 3 
+*set_duplicate_rotation z 90 
+*duplicate_elements all_existing *sweep_all
+Deleting 15 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*move_reset *set_move_rotations 0 90 0 
+*move_elements all_existing 
+*store_elements section_el all_existing 
+*system_reset 
+*add_surface 
+point(39.400000,0.000000,-14.800000) 
+Point 91 added.
+point(69.000000,0.000000,-14.800000) 
+Point 92 added.
+point(69.000000,0.000000,14.800000) 
+Point 93 added.
+point(39.400000,0.000000,14.800000) 
+Point 94 added.
+Surface 1 added.
+*duplicate_reset 
+*set_duplicate_rotations 0.0,0.0,180.000000 
+*set_duplicate_translations 0.0,0.0,9.810005 
+*duplicate_surfaces 1 # 
+*duplicate_reset 
+*set_duplicate_rotations 0.0,0.0,1620.000000 
+*set_duplicate_translations 0.0,0.0,342.933134 
+*duplicate_surfaces 1 # 
+*intersect_curves_surface 2  1 #
+1 Intersection found and 2 new curves added.
+*intersect_curves_surface 3  7 #
+1 Intersection found and 2 new curves added.
+*select_elements_class quad4 
+*expand_reset *expand_shift 
+*set_expand_repetitions 24 
+*expand_elements_curve  6 all_selected 
+*define tqt_div 24 
+*set_expand_repetitions 192 
+*expand_elements_curve  8 all_selected 
+*define ct_div 192 
+*expand_remove *set_expand_repetitions 24 
+*expand_elements_curve  9 all_selected 
+*define bqt_div 24 
+*elements_solid *regenerate *fill_view
+*remove_surfaces all_existing 
+*define t_cnt_elem 240 
+*eval s_h 342.933134 
+*eval wire_dia 13.800000 
+*define coil_h 342.933134
+*define U_seat_Rad 53.949927
+*define L_seat_Rad 55.286273
+*select_clear *visible_selected 
+*system_reset *system_rotate 90 0 0 
+*set_curve_type line *add_curves 
+point(170.0/2.0,-wire_dia/2.0-10.0,0.0) point(170/2.0,-wire_dia/2.0,0.0) 
+Point 194 added.
+Point 195 added.
+Curve 10 added.
+point(170.0/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) 
+Point 196 added.
+Point 197 added.
+Curve 11 added.
+point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0+60.0,0.0) 
+Point 198 added.
+Point 199 added.
+Curve 12 added.
+point(U_seat_Rad/2.0-wire_dia/2.0,-wire_dia/2.0+60.0,0.0) point(0.0,-wire_dia/2.0+60.0,0.0) 
+Point 200 added.
+Point 201 added.
+Curve 13 added.
+*set_curve_type fillet *add_curves 12 13  10.0 
+*revolve_curves all_visible 
+*store_surfaces Upper_seat all_visible
+*select_clear *visible_selected 
+*flip_surfaces 6 # 
+*set_curve_type line *add_curves 
+point(170.0/2.0,s_h+wire_dia/2.0+10.0,0.0) point(170.0/2.0,s_h+wire_dia/2.0,0.0) 
+Point 338 added.
+Point 339 added.
+Curve 17 added.
+point(170.0/2.0,s_h+wire_dia/2.0,0.0)   point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) 
+Point 340 added.
+Point 341 added.
+Curve 18 added.
+point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-60.0,0.0) 
+Point 342 added.
+Point 343 added.
+Curve 19 added.
+point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-60.0,0.0) point(0.0,s_h+wire_dia/2.0-60.0,0.0) 
+Point 344 added.
+Point 345 added.
+Curve 20 added.
+*set_curve_type fillet *add_curves 19 20  10.0 
+*revolve_curves all_visible 
+*store_surfaces Lower_seat all_visible 
+*flip_surfaces all_visible 
+*select_clear *invisible_selected 
+*set_sweep_tolerance 0.01 *sweep_all 
+Deleting 123 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 231 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate surfaces!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*system_reset *show_view 2 
+*fill_view 
+*undefine s_h 
+*duplicate_reset *duplicate_curves 6 8 9 # 
+*select_curves  6 8 9 # *visible_selected 
+*sub_divisions 24 1 1 
+*subdivide_curves_real 6 # 
+*sub_divisions 192 1 1 
+*subdivide_curves_real 8 # 
+*sub_divisions 24 1 1 
+*subdivide_curves_real 9 # 
+@set($convert_entities,curves) *set_convert_uvdiv u 1
+*convert_curves all_visible 
+*set_sweep_tolerance 0.01 *sweep_all  
+Deleting 480 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Deleting 3818 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate surfaces!
+Deleting 0 duplicate points !
+Deleting 0 collapsed curves !
+Deleting 0 collapsed surfaces !
+Deleting 0 duplicate curves!
+*prog_param renumber:start 1000001
+*renumber_node_list all_visible 
+*renumber_element_list all_visible 
+*store_elements spring_center all_visible 
+*store_elements spring_solid all_invisible 
+*new_geometry *geometry_type mech_three_beam_ela @popdown(geom_new_popmenu) @popdown(geom_new_structural_pm) 
+Popmenu geom_new_popmenu does not exist or is not popped up.
+Popmenu geom_new_structural_pm does not exist or is not popped up.
+*geometry_name spring_center_dummy_beam 
+*geometry_param diameter 13.800000 
+*geometry_vector orientx 0 0 1 
+*geometry_param cont_radius 13.800000 
+*add_geometry_elements spring_center 
+*invisible_selected
+*set_merge_renumber off 
+*merge_models posh1s125 *save_as_model TL_r3_5  yes
+Model file posh1s125.mud opened for reading.
+Model saved to TL_r3_5.mud.
+*add_mater_elements spring_solid 
+*copy_mater *mater_name Center_dyummy_mat 
+*mater_param structural:youngs_modulus 0.01 
+*mater_option structural:plasticity:off *add_mater_elements spring_center 
+*set_element_class line2 
+*add_elements  1000001 1000025 
+Element 1000241 added.
+*sub_divisions 2 1 1 
+*subdivide_elements  1000241 # 
+*add_elements  1000243  1000013 
+Element 1000244 added.
+*move_reset *set_move_scale_factors 0.0 0.0 1.0 
+*move_nodes 1000243 # 
+*duplicate_reset 
+*set_duplicate_translation z 332.918288 
+*duplicate_nodes 1000243 # 
+*add_elements 1000245 1000229 
+Element 1000245 added.
+*add_elements 1000245  1000241 
+Element 1000246 added.
+*add_elements 1000245  1000217 
+Element 1000247 added.
+*edit_geometry spring_center_dummy_beam *copy_geometry 
+*geometry_name cntr_dummy 
+*geometry_param diameter 1 
+*add_geometry_elements 1000242 to 1000247 
+*edit_mater Center_dyummy_mat 
+*add_mater_elements 1000242 to 1000247 
+*sweep_nodes all_existing 
+Deleting 2 duplicate nodes !
+Deleting 0 collapsed elements !
+*new_cbody mesh *contact_option state:solid *contact_option skip_structural:off 
+*contact_body_name spring *add_contact_body_elements spring_solid 
+*new_cbody geometry *contact_option geometry_nodes:off 
+*contact_body_name Upper_seat *add_contact_body_surfaces Upper_seat 
+*new_cbody geometry *contact_option geometry_nodes:off 
+*contact_body_name Lower_Seat *add_contact_body_surfaces Lower_seat 
+*new_md_table 1 1 *set_md_table_type 1 time *table_name Seat_move 
+*table_add 0 1 1 1 1 -1 2 -1 2 0 3 0 *table_fit
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+Table data point added.
+*edit_contact_body Lower_seat *cbody_param_table vz Seat_move 
+ERROR: Couldn't find contact body "Lower_seat"!
+*contact_value vz -225.000000 
+*new_interact mesh:mesh *interact_option state_1:solid *interact_option state_2:solid 
+*interact_name Fr_0.1 *interact_param friction 0.1 
+*new_interact mesh:geometry *interact_option state_1:solid 
+*interact_name Fr_0.1_seat *interact_param friction 0.1 
+*new_contact_table 
+*ctable_entry spring spring *contact_table_option spring spring contact:on
+*prog_string ctable:old_interact Fr_0.1 *ctable_entry_interact spring spring 
+*ctable_entry spring Upper_seat *contact_table_option spring Upper_seat contact:on 
+*prog_string ctable:old_interact Fr_0.1_seat *ctable_entry_interact spring Upper_seat 
+*ctable_entry spring Lower_Seat *contact_table_option spring Lower_Seat contact:on 
+*prog_string ctable:old_interact Fr_0.1_seat *ctable_entry_interact spring Lower_Seat 
+*new_icond *icond_type state_variable @popdown(icond_new_pm) 
+Popmenu icond_new_pm does not exist or is not popped up.
+*icond_name hset_temp 
+*icond_dof var *icond_dof_value var *icond_dof_value var 400 
+*add_icond_elements all_existing 
+*new_apply *apply_type gravity_load @popdown(apply_new_pm) 
+Popmenu apply_new_pm does not exist or is not popped up.
+*apply_name gravity 
+*apply_dof z *apply_dof_value z -9800 
+*add_apply_elements spring_solid 
+*new_apply *apply_type fixed_displacement @popdown(apply_new_pm) 
+Popmenu apply_new_pm does not exist or is not popped up.
+*apply_name End_Fix_Y 
+*apply_dof y *apply_dof_value y 0.0 
+*add_apply_nodes 1000001 #
+*new_loadcase *loadcase_type struc:dyn_trans 
+*loadcase_name setting 
+*loadcase_ctable ctable1 
+*loadcase_value nsteps 50 
+*loadcase_value dyn_contact_pro_fact 0.5 
+*loadcase_value maxrec 30 
+*copy_loadcase *loadcase_name return 
+*loadcase_value nsteps 30 
+*loadcase_option error:relabs
+*loadcase_value force 0.1 
+*loadcase_value minforce  0.01 
+*loadcase_value maxforce 0.01 
+*prog_use_current_job on *new_job *job_class structural 
+*add_job_loadcases setting *add_job_loadcases return 
+*job_option strain:large *add_post_tensor stress *add_post_tensor strain *add_post_tensor el_strain *add_post_tensor pl_strain 
+*job_contact_table ctable1 
+*job_option frictype:coulomb_bilinear 
+*element_type 7 spring_solid 
+Number of unchanged elements: 0
+*element_type 98 spring_center 
+Number of unchanged elements: 0
+*save_model 
+Model file TL_r3_5.mud opened for writing.
+Model saved to TL_r3_5.
+*save_model yes 
+Model file TL_r3_5.mud opened for writing.
+Model saved to TL_r3_5.
+Command not found!
+
+*write_marc TL_r3_5_job1.dat yes
+INFO: Analysis dimension is derived from element class hex8.
+INFO: Assuming 3-D analysis!
+INFO: Element type 98 has been set for 6 element(s).
+INFO: Found 0 errors and 0 warnings.
+*system_command C:\MSC.Software\Marc\2014.2.0\marc2014.2\tools\run_marc -j TL_r3_5_job1 -b n -v n
+*set_deformed off *set_showmag off 
+*set_deformed off 
+*post_open TL_r3_5_job1.t16 *post_skip_to 0 *post_rezone 
+File TL_r3_5_job1.t16 does not exist!
+*save_as_model TL_r3_5_formed_rezoned yes 
+Model saved to TL_r3_5_formed_rezoned.mud.
+*post_close 
+*open_model TL_r3_5_formed_rezoned 
+File is Mentat, version unknown.
+Model file TL_r3_5_formed_rezoned.mud opened for reading.
+Model TL_r3_5_formed_rezoned opened.
+*move_reset 
+*set_move_translation x 0.000000
+*set_move_translation y 0.000000
+*set_move_translation z -0.000000
+*move_model 
+*save_as_model TL_r3_5_formed_rezoned_align yes 
+Model saved to TL_r3_5_formed_rezoned_align.mud.
+*set_deformed off 
+*post_open TL_r3_5_job1.t16 *post_skip_to_last *post_rezone 
+File TL_r3_5_job1.t16 does not exist!
+*save_as_model TL_r3_5_set_rezoned yes 
+Model saved to TL_r3_5_set_rezoned.mud.
+*post_close 
+*open_model TL_r3_5_set_rezoned  
+File is Mentat, version unknown.
+Model file TL_r3_5_set_rezoned.mud opened for reading.
+Model TL_r3_5_set_rezoned opened.
+*move_reset 
+*set_move_translation x 0.000000
+*set_move_translation y 0.000000
+*set_move_translation z 0.0
+*move_model
+*move_reset *set_move_point 0.000000 0.000000 4.905010 
+*set_move_rotation x 0.000000   *move_model
+*move_reset *set_move_point 0.000000 0.000000 4.905010 
+*set_move_rotation y 0.000000   *move_model
+*move_reset *set_move_rotation z 0.000000   *move_model
+*move_reset *set_move_translation z -0.000000
+*move_model
+*save_as_model TL_r3_5_set_rezoned_align yes 
+Model saved to TL_r3_5_set_rezoned_align.mud.
+*open_model TL_r3_5_formed_rezoned_align 
+File is Mentat, version unknown.
+Model file TL_r3_5_formed_rezoned_align.mud opened for reading.
+Model TL_r3_5_formed_rezoned_align opened.
+*open_model TL_r3_5_set_rezoned_align 
+File is Mentat, version unknown.
+Model file TL_r3_5_set_rezoned_align.mud opened for reading.
+Model TL_r3_5_set_rezoned_align opened.
+Procedure file main_dwku.proc closed.
+Command > *save_model *quit yes
+Model file TL_r3_5_set_rezoned_align.mud opened for writing.
+Model saved to TL_r3_5_set_rezoned_align.

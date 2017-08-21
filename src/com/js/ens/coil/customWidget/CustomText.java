@@ -30,27 +30,27 @@ public class CustomText implements ICommand {
 		else if(this.widgetName.equals(Mediator.TEXT_textProductName)){
 			System.out.println("Text("+Mediator.TEXT_textProductName +")"+med.getTextProductName().getText());
 			MC.Text_Modify_ProductName();
-		}else if(this.widgetName.equals(Mediator.TEXT_textLineDiameter)){
-			System.out.println("Text("+Mediator.TEXT_textLineDiameter +")"+med.getTextLineDiameter().getText());
-			MC.Text_Modify_LineDiameter();
+		}else if(this.widgetName.equals(Mediator.TEXT_textWireDiameter)){
+			System.out.println("Text("+Mediator.TEXT_textWireDiameter +")"+med.getTextWireDiameter().getText());
+			MC.Text_Modify_WireDiameter();
 		}else if(this.widgetName.equals(Mediator.TEXT_textCenterDiameter)){
 			System.out.println("Text("+Mediator.TEXT_textCenterDiameter +")"+med.getTextCenterDiameter().getText());
 			MC.Text_Modify_CenterDiameter();
-		}else if(this.widgetName.equals(Mediator.TEXT_textInnerDiameter)){
-			System.out.println("Text("+Mediator.TEXT_textInnerDiameter +")"+med.getTextInnerDiameter().getText());
-			MC.Text_Modify_InnerDiameter();
-		}else if(this.widgetName.equals(Mediator.TEXT_textOuterDiameter)){
-			System.out.println("Text("+Mediator.TEXT_textOuterDiameter +")"+med.getTextOuterDiameter().getText());
-			MC.Text_Modify_OuterDiameter();
+		}else if(this.widgetName.equals(Mediator.TEXT_textInternalDiameter)){
+			System.out.println("Text("+Mediator.TEXT_textInternalDiameter +")"+med.getTextInternalDiameter().getText());
+			MC.Text_Modify_InternalDiameter();
+		}else if(this.widgetName.equals(Mediator.TEXT_textExternalDiameter)){
+			System.out.println("Text("+Mediator.TEXT_textExternalDiameter +")"+med.getTextExternalDiameter().getText());
+			MC.Text_Modify_ExternalDiameter();
 		}else if(this.widgetName.equals(Mediator.TEXT_textUpperInnerDiameter)){
 			System.out.println("Text("+Mediator.TEXT_textUpperInnerDiameter +")"+med.getTextUpperInnerDiameter().getText());
 			MC.Text_Modify_UpperInnerDiameter();
 		}else if(this.widgetName.equals(Mediator.TEXT_textLowerInnerDiameter)){
 			System.out.println("Text("+Mediator.TEXT_textLowerInnerDiameter +")"+med.getTextLowerInnerDiameter().getText());
 			MC.Text_Modify_LowerInnerDiameter();
-		}else if(this.widgetName.equals(Mediator.TEXT_textTotalNumber)){
-			System.out.println("Text("+Mediator.TEXT_textTotalNumber +")"+med.getTextTotalNumber().getText());
-			MC.Text_Modify_TotalNumer();
+		}else if(this.widgetName.equals(Mediator.TEXT_textTotalTurns)){
+			System.out.println("Text("+Mediator.TEXT_textTotalTurns +")"+med.getTextTotalTurns().getText());
+			MC.Text_Modify_TotalTurns();
 		}
 		
 		else if(this.widgetName.equals(Mediator.TEXT_textHotSettingTemp)){
@@ -120,17 +120,17 @@ public class CustomText implements ICommand {
 	public void setCustomWidget_textProductName(){
 		this.text = med.getTextProductName();
 	}
-	public void setCustomWidget_textLineDiameter(){
-		this.text = med.getTextLineDiameter();
+	public void setCustomWidget_textWireDiameter(){
+		this.text = med.getTextWireDiameter();
 	}
 	public void setCustomWidget_textCenterDiameter(){
 		this.text = med.getTextCenterDiameter();
 	}
-	public void setCustomWidget_textInnerDiameter(){
-		this.text = med.getTextInnerDiameter();
+	public void setCustomWidget_textInternalDiameter(){
+		this.text = med.getTextInternalDiameter();
 	}
-	public void setCustomWidget_textOuterDiameter(){
-		this.text = med.getTextOuterDiameter();
+	public void setCustomWidget_textExternalDiameter(){
+		this.text = med.getTextExternalDiameter();
 	}
 	public void setCustomWidget_textUpperInnerDiameter(){
 		this.text = med.getTextUpperInnerDiameter();
@@ -138,8 +138,8 @@ public class CustomText implements ICommand {
 	public void setCustomWidget_textLowerInnerDiameter(){
 		this.text = med.getTextLowerInnerDiameter();
 	}
-	public void setCustomWidget_textTotalNumber(){
-		this.text = med.getTextTotalNumber();
+	public void setCustomWidget_textTotalTurns(){
+		this.text = med.getTextTotalTurns();
 	}
 	
 	public void setCustomWidget_textHotSettingTemp(){

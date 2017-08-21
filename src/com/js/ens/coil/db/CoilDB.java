@@ -23,13 +23,13 @@ public class CoilDB {
 	
 	// Step1. Modeling 
 	private String ProductName = "null";
-	private String LineDiameter = "null";
+	private String WireDiameter = "null";
 	private String CenterDiameter = "null";
-	private String InnerDiameter = "null";
-	private String OuterDiameter = "null";
+	private String InternalDiameter = "null";
+	private String ExternalDiameter = "null";
 	private String UpperInnerDiameter = "null";
 	private String LowerInnerDiameter = "null";
-	private String TotalNumber = "null";
+	private String TotalTurns = "null";
 	
 	private String CoilDesingFilePath = "null";
 	private String CoilDesingUserFilePath = "null";
@@ -77,13 +77,13 @@ public class CoilDB {
 		System.out.println("dbFilePath          : "+dbFilePath);
 		System.out.println("-------------------------------------------------------");
 		System.out.println("ProductName         : "+ProductName);
-		System.out.println("LineDiameter        : "+LineDiameter);
+		System.out.println("WireDiameter        : "+WireDiameter);
 		System.out.println("CenterDiameter      : "+CenterDiameter);
-		System.out.println("InnerDiameter       : "+InnerDiameter);
-		System.out.println("OuterDiameter       : "+OuterDiameter);
+		System.out.println("InternalDiameter    : "+InternalDiameter);
+		System.out.println("ExternalDiameter    : "+ExternalDiameter);
 		System.out.println("UpperInnerDiameter  : "+UpperInnerDiameter);
 		System.out.println("LowerInnerDiameter  : "+LowerInnerDiameter);
-		System.out.println("TotalNumber         : "+TotalNumber);
+		System.out.println("TotalTurns          : "+TotalTurns);
 		System.out.println("-------------------------------------------------------");
 		System.out.println("CoilDesingFilePath     : "+CoilDesingFilePath);
 		System.out.println("CoilDesingUserFilePath : "+CoilDesingUserFilePath);
@@ -149,13 +149,13 @@ public class CoilDB {
 	}
 
 
-	public String getLineDiameter() {
-		return LineDiameter;
+	public String getWireDiameter() {
+		return WireDiameter;
 	}
 
 
-	public void setLineDiameter(String lineDiameter) {
-		LineDiameter = lineDiameter;
+	public void setWireDiameter(String wireDiameter) {
+		WireDiameter = wireDiameter;
 	}
 
 
@@ -169,23 +169,23 @@ public class CoilDB {
 	}
 
 
-	public String getInnerDiameter() {
-		return InnerDiameter;
+	public String getInternalDiameter() {
+		return InternalDiameter;
 	}
 
 
-	public void setInnerDiameter(String innerDiameter) {
-		InnerDiameter = innerDiameter;
+	public void setInternalDiameter(String internalDiameter) {
+		InternalDiameter = internalDiameter;
 	}
 
 
-	public String getOuterDiameter() {
-		return OuterDiameter;
+	public String getExternalDiameter() {
+		return ExternalDiameter;
 	}
 
 
-	public void setOuterDiameter(String outerDiameter) {
-		OuterDiameter = outerDiameter;
+	public void setExternalDiameter(String externalDiameter) {
+		ExternalDiameter = externalDiameter;
 	}
 
 
@@ -209,13 +209,13 @@ public class CoilDB {
 	}
 
 
-	public String getTotalNumber() {
-		return TotalNumber;
+	public String getTotalTurns() {
+		return TotalTurns;
 	}
 
 
-	public void setTotalNumber(String totalNumber) {
-		TotalNumber = totalNumber;
+	public void setTotalTurns(String totalTurns) {
+		TotalTurns = totalTurns;
 	}
 
 

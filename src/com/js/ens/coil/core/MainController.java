@@ -244,6 +244,17 @@ public class MainController {
 	}
 	
 	public void Button_StartSimulation(){
+		WriteSimcosDB dbObj = new WriteSimcosDB();
+		// Save All Data 
+		dbObj.saveDBFile(this.coilDBObj);
+		// create init.dat for python script
+		dbObj.createPythonScriptInput(this.coilDBObj);
+		myUtil.CleareObj(dbObj);
+		
+		// run mentat - pr main_dwku.proc
+		// this.MentatPath
+		this.preferencesObj.getPreferencesValue(Preferences.MentatPath);
+		
 		
 	}
 	
@@ -282,9 +293,9 @@ public class MainController {
 		this.coilDBObj.setProductName(data);
 	}
 	
-	public void Text_Modify_LineDiameter(){
-		String data = med.getTextLineDiameter().getText().trim();
-		this.coilDBObj.setLineDiameter(data);
+	public void Text_Modify_WireDiameter(){
+		String data = med.getTextWireDiameter().getText().trim();
+		this.coilDBObj.setWireDiameter(data);
 	}
 	
 	public void Text_Modify_CenterDiameter(){
@@ -292,14 +303,14 @@ public class MainController {
 		this.coilDBObj.setCenterDiameter(data);
 	}
 	
-	public void Text_Modify_InnerDiameter(){
-		String data = med.getTextInnerDiameter().getText().trim();
-		this.coilDBObj.setInnerDiameter(data);
+	public void Text_Modify_InternalDiameter(){
+		String data = med.getTextInternalDiameter().getText().trim();
+		this.coilDBObj.setInternalDiameter(data);
 	}
 	
-	public void Text_Modify_OuterDiameter(){
-		String data = med.getTextOuterDiameter().getText().trim();
-		this.coilDBObj.setOuterDiameter(data);
+	public void Text_Modify_ExternalDiameter(){
+		String data = med.getTextExternalDiameter().getText().trim();
+		this.coilDBObj.setExternalDiameter(data);
 		
 	}
 	
@@ -313,9 +324,9 @@ public class MainController {
 		this.coilDBObj.setLowerInnerDiameter(data);
 	}
 	
-	public void Text_Modify_TotalNumer(){
-		String data = med.getTextTotalNumber().getText().trim();
-		this.coilDBObj.setTotalNumber(data);
+	public void Text_Modify_TotalTurns(){
+		String data = med.getTextTotalTurns().getText().trim();
+		this.coilDBObj.setTotalTurns(data);
 	}
 	
 	public void Text_Modify_HotSettingTemp(){
@@ -647,27 +658,27 @@ public class MainController {
 			if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.ProductName))){
 				this.coilDBObj.setProductName(tokens.get(1));
 				med.getTextProductName().setText(this.coilDBObj.getProductName());
-			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.LineDiameter))){
-				this.coilDBObj.setLineDiameter(tokens.get(1));
-				med.getTextLineDiameter().setText(this.coilDBObj.getLineDiameter());
+			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.WireDiameter))){
+				this.coilDBObj.setWireDiameter(tokens.get(1));
+				med.getTextWireDiameter().setText(this.coilDBObj.getWireDiameter());
 			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.CenterDiameter))){
 				this.coilDBObj.setCenterDiameter(tokens.get(1));
 				med.getTextCenterDiameter().setText(this.coilDBObj.getCenterDiameter());
-			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.InnerDiameter))){
-				this.coilDBObj.setInnerDiameter(tokens.get(1));
-				med.getTextInnerDiameter().setText(this.coilDBObj.getInnerDiameter());
-			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.OuterDiameter))){
-				this.coilDBObj.setOuterDiameter(tokens.get(1));
-				med.getTextOuterDiameter().setText(this.coilDBObj.getOuterDiameter());
+			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.InternalDiameter))){
+				this.coilDBObj.setInternalDiameter(tokens.get(1));
+				med.getTextInternalDiameter().setText(this.coilDBObj.getInternalDiameter());
+			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.ExternalDiameter))){
+				this.coilDBObj.setExternalDiameter(tokens.get(1));
+				med.getTextExternalDiameter().setText(this.coilDBObj.getExternalDiameter());
 			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.UpperInnerDiameter))){
 				this.coilDBObj.setUpperInnerDiameter(tokens.get(1));
 				med.getTextUpperInnerDiameter().setText(this.coilDBObj.getUpperInnerDiameter());
 			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.LowerInnerDiameter))){
 				this.coilDBObj.setLowerInnerDiameter(tokens.get(1));
 				med.getTextLowerInnerDiameter().setText(this.coilDBObj.getLowerInnerDiameter());
-			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.TotalNumber))){
-				this.coilDBObj.setTotalNumber(tokens.get(1));
-				med.getTextTotalNumber().setText(this.coilDBObj.getTotalNumber());
+			}else if(tokens.get(0).trim().equals(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.TotalTurns))){
+				this.coilDBObj.setTotalTurns(tokens.get(1));
+				med.getTextTotalTurns().setText(this.coilDBObj.getTotalTurns());
 				
 			}else if(tokens.size() == 5 && myUtil.CheckFloatValue(tokens.get(0))){
 				TableData_Coil obj = new TableData_Coil();
@@ -743,13 +754,13 @@ public class MainController {
 		
 		ArrayList<String> outputDataList = new ArrayList<String>();
 		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.ProductName)+","+this.coilDBObj.getProductName());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.LineDiameter)+","+this.coilDBObj.getLineDiameter());
+		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.WireDiameter)+","+this.coilDBObj.getWireDiameter());
 		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.CenterDiameter)+","+this.coilDBObj.getCenterDiameter());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.InnerDiameter)+","+this.coilDBObj.getInnerDiameter());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.OuterDiameter)+","+this.coilDBObj.getOuterDiameter());
+		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.InternalDiameter)+","+this.coilDBObj.getInternalDiameter());
+		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.ExternalDiameter)+","+this.coilDBObj.getExternalDiameter());
 		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.UpperInnerDiameter)+","+this.coilDBObj.getUpperInnerDiameter());
 		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.LowerInnerDiameter)+","+this.coilDBObj.getLowerInnerDiameter());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.TotalNumber)+","+this.coilDBObj.getTotalNumber());
+		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.TotalTurns)+","+this.coilDBObj.getTotalTurns());
 		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.CompletedProduct));
 		outputDataList.add("X,Y,Z,R,THETA(TURN)");
 		
@@ -860,13 +871,13 @@ public class MainController {
 	private void SaveStep1(){
 		// Coil data 
 		this.coilDBObj.setProductName(med.getTextProductName().getText().trim());
-		this.coilDBObj.setInnerDiameter(med.getTextInnerDiameter().getText().trim());
+		this.coilDBObj.setWireDiameter(med.getTextWireDiameter().getText().trim());
 		this.coilDBObj.setCenterDiameter(med.getTextCenterDiameter().getText().trim());
-		this.coilDBObj.setInnerDiameter(med.getTextInnerDiameter().getText().trim());
-		this.coilDBObj.setOuterDiameter(med.getTextOuterDiameter().getText().trim());
+		this.coilDBObj.setInternalDiameter(med.getTextInternalDiameter().getText().trim());
+		this.coilDBObj.setExternalDiameter(med.getTextExternalDiameter().getText().trim());
 		this.coilDBObj.setUpperInnerDiameter(med.getTextUpperInnerDiameter().getText().trim());
 		this.coilDBObj.setLowerInnerDiameter(med.getTextLowerInnerDiameter().getText().trim());
-		this.coilDBObj.setTotalNumber(med.getTextTotalNumber().getText().trim());
+		this.coilDBObj.setTotalTurns(med.getTextTotalTurns().getText().trim());
 		// Setting Process Information 
 		this.coilDBObj.setHotSettingTemp(med.getTextHotSettingTemp().getText().trim());
 		this.coilDBObj.setColdSettingTemp(med.getTextColdSettingTemp().getText().trim());

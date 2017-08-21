@@ -43,27 +43,27 @@ public class UILabel {
 	public static String ProductName = "ProductName";
 	//private String base_ProductName = "제품명";
 	private String base_ProductName = "Product Name";
-	public static String LineDiameter = "LineDiameter";
-	//private String base_LineDiameter = "선경(mm)";
-	private String base_LineDiameter = "Line Diameter";
+	public static String WireDiameter = "WireDiameter";
+	//private String base_WireDiameter = "선경(mm)";
+	private String base_WireDiameter = "Wire Diameter";
 	public static String CenterDiameter = "CenterDiameter";
 	//private String base_CenterDiameter = "코일중심경(mm)";
 	private String base_CenterDiameter = "Center Diameter(mm)";
-	public static String InnerDiameter = "InnerDiameter";
-	//private String base_InnerDiameter = "코일 내경(mm)";
-	private String base_InnerDiameter = "Inner Diameter(mm)";
-	public static String OuterDiameter = "OuterDiameter";
-	//private String base_OuterDiameter = "코일 외경(mm)";
-	private String base_OuterDiameter = "Outer Diameter(mm)";
+	public static String InternalDiameter = "InternalDiameter";
+	//private String base_InternalDiameter = "코일 내경(mm)";
+	private String base_InternalDiameter = "Internal Diameter(mm)";
+	public static String ExternalDiameter = "ExternalDiameter";
+	//private String base_ExternalDiameter = "코일 외경(mm)";
+	private String base_ExternalDiameter = "External Diameter(mm)";
 	public static String UpperInnerDiameter = "UpperInnerDiameter";
 	//private String base_UpperInnerDiameter = "어퍼 내경(mm)";
 	private String base_UpperInnerDiameter = "U. Inner Diameter(mm)";
 	public static String LowerInnerDiameter = "LowerInnerDiameter";
 	//private String base_LowerInnerDiameter = "로워 내경(mm)";
 	private String base_LowerInnerDiameter = "L. Inner Diameter(mm)";
-	public static String TotalNumber = "TotalNumber";
-	//private String base_TotalNumber = "총권수";
-	private String base_TotalNumber = "Total Number";
+	public static String TotalTurns = "TotalTurns";
+	//private String base_TotalTurns = "총권수";
+	private String base_TotalTurns = "Total Turns";
 	public static String CoilGeoDataTable = "CoilGeoDataTable";
 	private String base_CoilGeoDataTable = "Coil geometry data table";
 	public static String ColumnTheta = "ColumnTheta";
@@ -100,6 +100,12 @@ public class UILabel {
 	private String base_File ="File";
 	public static String HeightConditioner = "HeightConditioner";
 	private String base_HeightConditioner = "Height Conditioner(%)";
+
+	public static String RadiusConditionerConstant = "RadiusConditionerConstant";
+	public static String RadiusConditionerFile = "RadiusConditionerFile";
+	public static String HeightConditionerConstant = "HeightConditionerConstant";
+	public static String HeightConditionerFile = "HeightConditionerFile";
+	
 	
 	// Step2
 	public static String AnalysisOptions = "AnalysisOptions";
@@ -158,13 +164,13 @@ public class UILabel {
 		this.BaseUILabelMap.put("SelectCoilData", this.base_SelectCoilData);
 		this.BaseUILabelMap.put("CoilData", this.base_CoilData);
 		this.BaseUILabelMap.put("ProductName",this.base_ProductName);
-		this.BaseUILabelMap.put("LineDiameter",this.base_LineDiameter);
+		this.BaseUILabelMap.put("WireDiameter",this.base_WireDiameter);
 		this.BaseUILabelMap.put("CenterDiameter",this.base_CenterDiameter);
-		this.BaseUILabelMap.put("InnerDiameter",this.base_InnerDiameter);
-		this.BaseUILabelMap.put("OuterDiameter",this.base_OuterDiameter);
+		this.BaseUILabelMap.put("InternalDiameter",this.base_InternalDiameter);
+		this.BaseUILabelMap.put("ExternalDiameter",this.base_ExternalDiameter);
 		this.BaseUILabelMap.put("UpperInnerDiameter",this.base_UpperInnerDiameter);
 		this.BaseUILabelMap.put("LowerInnerDiameter",this.base_LowerInnerDiameter);
-		this.BaseUILabelMap.put("TotalNumber",this.base_TotalNumber);
+		this.BaseUILabelMap.put("TotalTurns",this.base_TotalTurns);
 		
 		this.BaseUILabelMap.put("CoilGeoDataTable",this.base_CoilGeoDataTable);
 		this.BaseUILabelMap.put("ColumnTheta",this.base_ColumnTheta);
