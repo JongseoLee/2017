@@ -149,47 +149,35 @@ public class Mediator {
 	private Text textSeatHeight;
 	public ICommand C_textSeatHeight;
 	public static String TEXT_textSeatHeight = "textSeatHeight";
-		
-	private Button btnRadiusConditionerConstant;
-	public ICommand C_btnRadiusConditionerConstant;
-	public static String BUTTON_btnRadiusConditionerConstant = "btnRadiusConditionerConstant";
-	
-	private Button btnRadiusConditionerFile;
-	public ICommand C_btnRadiusConditionerFile;
-	public static String BUTTON_btnRadiusConditionerFile = "btnRadiusConditionerFile";
-	
-	private Text textRadiusConditionerValue;
-	public ICommand C_textRadiusConditionerValue;
-	public static String TEXT_textRadiusConditionerValue = "textRadiusConditionerValue";
-	
-	private Text textRadiusConditionerPath; 
-	public ICommand C_textRadiusConditionerPath;
-	public static String TEXT_textRadiusConditionerPath = "textRadiusConditionerPath";
-	
-	private Button btnRadiusConditionerExplorer;
-	public ICommand C_btnRadiusConditionerExplorer;
-	public static String BUTTON_btnRadiusConditionerExplorer = "btnRadiusConditionerExplorer";
 	
 	
-	private Button btnHeightConditionerConstant;
-	public ICommand C_btnHeightConditionerConstant;
-	public static String BUTTON_btnHeightConditionerConstant = "btnHeightConditionerConstant";
+	private Button btnInitialConditionerConstant;
+	public ICommand C_btnInitialConditionerConstant;
+	public static String BUTTON_btnInitialConditionerConstant = "btnInitialConditionerConstant";
 	
-	private Button btnHeightConditionerFile;
-	public ICommand C_btnHeightConditionerFile;
-	public static String BUTTON_btnHeightConditionerFile = "btnHeightConditionerFile";
+	private Button btnInitialConditionerFile;
+	public ICommand C_btnInitialConditionerFile;
+	public static String BUTTON_btnInitialConditionerFile = "btnInitialConditionerFile";
 	
-	private Text textHeightConditionerValue;
-	public ICommand C_textHeightConditionerValue;
-	public static String TEXT_textHeightConditionerValue = "textHeightConditionerValue";
+	private Text textInitialConditionerValue;
+	public ICommand C_textInitialConditionerValue;
+	public static String TEXT_textInitialConditionerValue = "textInitialConditionerValue";
 	
-	private Text textHeightConditionerPath; 
-	public ICommand C_textHeightConditionerPath;
-	public static String TEXT_textHeightConditionerPath = "textHeightConditionerPath";
+	private Text textInitialConditionerPath;
+	public ICommand C_textInitialConditionerPath;
+	public static String TEXT_textInitialConditionerPath = "textInitialConditionerPath";
 	
-	private Button btnHeightConditionerExplorer;
-	public ICommand C_btnHeightConditionerExplorer;
-	public static String BUTTON_btnHeightConditionerExplorer = "btnHeightConditionerExplorer";
+	private Button btnInitialConditionerExplorer;
+	public ICommand C_btnInitialConditionerExplorer;
+	public static String BUTTON_btnInitialConditionerExplorer = "btnInitialConditionerExplorer";
+	
+	private Text textMaterialDBPath;
+	public ICommand C_textMaterialDBPath;
+	public static String TEXT_textMaterialDBPath = "textMaterialDBPath";
+	
+	private Button btnMaterialDBExplorer;
+	public ICommand C_btnMaterialDBExplorer;
+	public static String BUTTON_btnMaterialDBExplorer = "btnMaterialDBExplorer";
 	
 	//////////////////////////////////////////////////////////////////////////
 	// step2
@@ -204,6 +192,8 @@ public class Mediator {
 	private Text textMaximumIterationNumber;
 	public ICommand C_textMaximumIterationNumber;
 	public static String TEXT_textMaximumIterationNumber = "textMaximumIterationNumber";
+	
+	private Label lblSimulationStatus;
 	
 	private Button btnStartSimulation;
 	public ICommand C_btnStartSimulation;
@@ -693,6 +683,41 @@ public class Mediator {
 		C_textSeatHeight = c_textSeatHeight;
 	}
 
+	public Button getBtnInitialConditionerConstant() {
+		return btnInitialConditionerConstant;
+	}
+
+	public void setBtnInitialConditionerConstant(
+			Button btnInitialConditionerConstant) {
+		this.btnInitialConditionerConstant = btnInitialConditionerConstant;
+	}
+
+	public ICommand getC_btnInitialConditionerConstant() {
+		return C_btnInitialConditionerConstant;
+	}
+
+	public void setC_btnInitialConditionerConstant(
+			ICommand c_btnInitialConditionerConstant) {
+		C_btnInitialConditionerConstant = c_btnInitialConditionerConstant;
+	}
+
+	public Button getBtnInitialConditionerFile() {
+		return btnInitialConditionerFile;
+	}
+
+	public void setBtnInitialConditionerFile(Button btnInitialConditionerFile) {
+		this.btnInitialConditionerFile = btnInitialConditionerFile;
+	}
+
+	public ICommand getC_btnInitialConditionerFile() {
+		return C_btnInitialConditionerFile;
+	}
+
+	public void setC_btnInitialConditionerFile(ICommand c_btnInitialConditionerFile) {
+		C_btnInitialConditionerFile = c_btnInitialConditionerFile;
+	}
+	
+	/*
 	public Button getBtnRadiusConditionerConstant() {
 		return btnRadiusConditionerConstant;
 	}
@@ -852,6 +877,91 @@ public class Mediator {
 	public void setC_btnHeightConditionerExplorer(ICommand c_btnHeightConditionerExplorer) {
 		C_btnHeightConditionerExplorer = c_btnHeightConditionerExplorer;
 	}
+	// */
+	
+	public Text getTextInitialConditionerValue() {
+		return textInitialConditionerValue;
+	}
+
+	public void setTextInitialConditionerValue(Text textInitialConditionerValue) {
+		this.textInitialConditionerValue = textInitialConditionerValue;
+	}
+
+	public ICommand getC_textInitialConditionerValue() {
+		return C_textInitialConditionerValue;
+	}
+
+	public void setC_textInitialConditionerValue(
+			ICommand c_textInitialConditionerValue) {
+		C_textInitialConditionerValue = c_textInitialConditionerValue;
+	}
+
+	public Text getTextInitialConditionerPath() {
+		return textInitialConditionerPath;
+	}
+
+	public void setTextInitialConditionerPath(Text textInitialConditionerPath) {
+		this.textInitialConditionerPath = textInitialConditionerPath;
+	}
+
+	public ICommand getC_textInitialConditionerPath() {
+		return C_textInitialConditionerPath;
+	}
+
+	public void setC_textInitialConditionerPath(
+			ICommand c_textInitialConditionerPath) {
+		C_textInitialConditionerPath = c_textInitialConditionerPath;
+	}
+
+	public Button getBtnInitialConditionerExplorer() {
+		return btnInitialConditionerExplorer;
+	}
+
+	public void setBtnInitialConditionerExplorer(
+			Button btnInitialConditionerExplorer) {
+		this.btnInitialConditionerExplorer = btnInitialConditionerExplorer;
+	}
+
+	public ICommand getC_btnInitialConditionerExplorer() {
+		return C_btnInitialConditionerExplorer;
+	}
+
+	public void setC_btnInitialConditionerExplorer(
+			ICommand c_btnInitialConditionerExplorer) {
+		C_btnInitialConditionerExplorer = c_btnInitialConditionerExplorer;
+	}
+
+	public Text getTextMaterialDBPath() {
+		return textMaterialDBPath;
+	}
+
+	public void setTextMaterialDBPath(Text textMaterialDBPath) {
+		this.textMaterialDBPath = textMaterialDBPath;
+	}
+
+	public ICommand getC_textMaterialDBPath() {
+		return C_textMaterialDBPath;
+	}
+
+	public void setC_textMaterialDBPath(ICommand c_textMaterialDBPath) {
+		C_textMaterialDBPath = c_textMaterialDBPath;
+	}
+
+	public Button getBtnMaterialDBExplorer() {
+		return btnMaterialDBExplorer;
+	}
+
+	public void setBtnMaterialDBExplorer(Button btnMaterialDBExplorer) {
+		this.btnMaterialDBExplorer = btnMaterialDBExplorer;
+	}
+
+	public ICommand getC_btnMaterialDBExplorer() {
+		return C_btnMaterialDBExplorer;
+	}
+
+	public void setC_btnMaterialDBExplorer(ICommand c_btnMaterialDBExplorer) {
+		C_btnMaterialDBExplorer = c_btnMaterialDBExplorer;
+	}
 
 	public Text getTextRadiusTolerance() {
 		return textRadiusTolerance;
@@ -900,6 +1010,14 @@ public class Mediator {
 	public void setC_textMaximumIterationNumber(
 			ICommand c_textMaximumIterationNumber) {
 		C_textMaximumIterationNumber = c_textMaximumIterationNumber;
+	}
+
+	public Label getLblSimulationStatus() {
+		return lblSimulationStatus;
+	}
+
+	public void setLblSimulationStatus(Label lblSimulationStatus) {
+		this.lblSimulationStatus = lblSimulationStatus;
 	}
 
 	public Button getBtnStartSimulation() {

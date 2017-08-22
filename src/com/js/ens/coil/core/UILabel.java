@@ -92,14 +92,13 @@ public class UILabel {
 	
 	public static String InitialConditioner = "InitialConditioner";
 	private String base_InitialConditioner = "Initial conditioner";
-	public static String RadiusConditioner = "RadiusConditioner";
-	private String base_RadiusConditioner = "Radius Conditioner(%)";
 	public static String Constant = "Constant";
 	private String base_Constant = "Constant";
 	public static String File = "File";
 	private String base_File ="File";
-	public static String HeightConditioner = "HeightConditioner";
-	private String base_HeightConditioner = "Height Conditioner(%)";
+	
+	public static String MaterialDatabase = "MaterialDatabase";
+	private String base_MaterialDatabase="Material Database";
 
 	public static String RadiusConditionerConstant = "RadiusConditionerConstant";
 	public static String RadiusConditionerFile = "RadiusConditionerFile";
@@ -118,10 +117,12 @@ public class UILabel {
 	private String base_MaximumIterationNumber = "Maximum Iteration Number";
 	public static String SimulationIteration = "SimulationIteration";
 	private String base_SimulationIteration = "Simulation Iteration";
+	public static String SimulationStatus = "SimulationStatus";
+	private String base_SimulationStatus = "Ready";
 	public static String StartSimulation = "StartSimulation";
 	private String base_StartSimulation = "Start Simulation";
-	public static String CheckError = "CheckError";
-	private String base_CheckError = "Check Error";
+	public static String CheckStatus = "CheckStatus";
+	private String base_CheckStatus = "Check Status";
 	public static String ReadLog = "ReadLog";
 	private String base_ReadLog = "Read Log";	
 	
@@ -187,18 +188,19 @@ public class UILabel {
 		this.BaseUILabelMap.put("SeatHeight", this.base_SeatHeight);
 	
 		this.BaseUILabelMap.put("InitialConditioner", this.base_InitialConditioner);
-		this.BaseUILabelMap.put("RadiusConditioner", this.base_RadiusConditioner);
 		this.BaseUILabelMap.put("Constant", this.base_Constant);
 		this.BaseUILabelMap.put("File",this.base_File);
-		this.BaseUILabelMap.put("HeightConditioner", this.base_HeightConditioner);
+
+		this.BaseUILabelMap.put("MaterialDatabase", this.base_MaterialDatabase);
 		
 		this.BaseUILabelMap.put("AnalysisOptions", this.base_AnalysisOptions);
 		this.BaseUILabelMap.put("RadiusTolerance", this.base_RadiusTolerance);
 		this.BaseUILabelMap.put("HeightTolerance", this.base_HeightTolerance);
 		this.BaseUILabelMap.put("MaximumIterationNumber", this.base_MaximumIterationNumber);
 		this.BaseUILabelMap.put("SimulationIteration", this.base_SimulationIteration);
+		this.BaseUILabelMap.put("SimulationStatus", this.base_SimulationStatus);
 		this.BaseUILabelMap.put("StartSimulation", this.base_StartSimulation);
-		this.BaseUILabelMap.put("CheckError", this.base_CheckError);
+		this.BaseUILabelMap.put("CheckStatus", this.base_CheckStatus);
 		this.BaseUILabelMap.put("ReadLog", this.base_ReadLog);
 		
 		this.BaseUILabelMap.put("DisplayResultCoilData", this.base_DisplayResultCoilData);

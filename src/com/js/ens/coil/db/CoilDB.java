@@ -15,12 +15,14 @@ public class CoilDB {
 	public static String STEP1 = "STEP1";
 	public static String STEP2 = "STEP2";
 	public static String STEP3 = "STEP3";
+	public static String COIL_GEOMETRY_TYPE_OPEN = "open";
+	public static String COIL_GEOMETRY_TYPE_NEW = "new";
 	
 	// Base 
 	private String projectName = "null";
 	private String projectFolderPath = "null";
 	private String dbFilePath = "null";
-	
+	private String CenterBeamNodeStart = "null";
 	// Step1. Modeling 
 	private String ProductName = "null";
 	private String WireDiameter = "null";
@@ -31,8 +33,8 @@ public class CoilDB {
 	private String LowerInnerDiameter = "null";
 	private String TotalTurns = "null";
 	
-	private String CoilDesingFilePath = "null";
-	private String CoilDesingUserFilePath = "null";
+	private String CoilDesignFilePath = "null";
+	private String CoilDesignUserFilePath = "null";
 	private ArrayList<TableData_Coil> GeometryDataTableList;
 	
 	private String HotSettingTemp = "null";
@@ -43,12 +45,21 @@ public class CoilDB {
 	private String SeatLIneerMargina = "null";
 	private String SeatHeight = "null";
 	
+	private String InitialConditionerType = "null";	//constant, file
+	private String InitialConditionerConstant = "null";
+	private String InitialConditionerFile = "null";
+	
+	private String MaterialDB = "null";
+	
+	/*
 	private String RadiusConditionerType = "null";	//constant, file
 	private String RadiusConditionerConstant = "null";
 	private String RadiusConditionerFile = "null";
 	private String HeightConditionerType = "null";	//constant, file
 	private String HeightConditionerConstant = "null";
 	private String HeightConditionerFile = "null";
+	// */
+	
 	
 	// Step2. Simulation and Export Result
 	private String RadiusTolerance = "null";
@@ -75,6 +86,7 @@ public class CoilDB {
 		System.out.println("projectName         : "+projectName);
 		System.out.println("projectFolderPath   : "+projectFolderPath);
 		System.out.println("dbFilePath          : "+dbFilePath);
+		System.out.println("CenterBeamNodeStart : "+CenterBeamNodeStart);
 		System.out.println("-------------------------------------------------------");
 		System.out.println("ProductName         : "+ProductName);
 		System.out.println("WireDiameter        : "+WireDiameter);
@@ -85,8 +97,8 @@ public class CoilDB {
 		System.out.println("LowerInnerDiameter  : "+LowerInnerDiameter);
 		System.out.println("TotalTurns          : "+TotalTurns);
 		System.out.println("-------------------------------------------------------");
-		System.out.println("CoilDesingFilePath     : "+CoilDesingFilePath);
-		System.out.println("CoilDesingUserFilePath : "+CoilDesingUserFilePath);
+		System.out.println("CoilDesignFilePath     : "+CoilDesignFilePath);
+		System.out.println("CoilDesignUserFilePath : "+CoilDesignUserFilePath);
 		if(this.GeometryDataTableList.size() > 0){
 			System.out.println("Geometry Data");
 			System.out.println(String.format("%-8s%-8s%-8s", "Theta","Radius", "Height"));
@@ -103,12 +115,11 @@ public class CoilDB {
 		System.out.println("SeatLIneerMargina   : "+SeatLIneerMargina);
 		System.out.println("SeatHeight          : "+SeatHeight);
 		System.out.println("-------------------------------------------------------");
-		System.out.println("RadiusConditionerType       : "+RadiusConditionerType);
-		System.out.println("RadiusConditionerConstant   : "+RadiusConditionerConstant);
-		System.out.println("RadiusConditionerFile       : "+RadiusConditionerFile);
-		System.out.println("HeightConditionerType       : "+HeightConditionerType);
-		System.out.println("HeightConditionerConstant   : "+HeightConditionerConstant);
-		System.out.println("HeightConditionerFile       : "+HeightConditionerFile);
+		System.out.println("InitialConditionerType       : "+InitialConditionerType);
+		System.out.println("InitialConditionerConstant   : "+InitialConditionerConstant);
+		System.out.println("InitialConditionerFile       : "+InitialConditionerFile);
+		System.out.println("-------------------------------------------------------");
+		System.out.println("MaterialDB           : "+MaterialDB);
 		System.out.println("-------------------------------------------------------");
 		System.out.println("RadiusTolerance         : "+RadiusTolerance);
 		System.out.println("HeightTolerance         : "+HeightTolerance);
@@ -145,7 +156,12 @@ public class CoilDB {
 
 
 	public void setProductName(String productName) {
-		ProductName = productName;
+		if(productName.length() == 0){
+			ProductName = "null";
+		}else{
+			ProductName = productName;
+		}
+		
 	}
 
 
@@ -155,7 +171,11 @@ public class CoilDB {
 
 
 	public void setWireDiameter(String wireDiameter) {
-		WireDiameter = wireDiameter;
+		if(wireDiameter.length() == 0){
+			WireDiameter = "null";
+		}else{
+			WireDiameter = wireDiameter;
+		}
 	}
 
 
@@ -165,7 +185,11 @@ public class CoilDB {
 
 
 	public void setCenterDiameter(String centerDiameter) {
-		CenterDiameter = centerDiameter;
+		if(centerDiameter.length() == 0){
+			CenterDiameter = "null";
+		}else{
+			CenterDiameter = centerDiameter;
+		}
 	}
 
 
@@ -175,7 +199,11 @@ public class CoilDB {
 
 
 	public void setInternalDiameter(String internalDiameter) {
-		InternalDiameter = internalDiameter;
+		if(internalDiameter.length() == 0){
+			InternalDiameter = "null";
+		}else{
+			InternalDiameter = internalDiameter;
+		}
 	}
 
 
@@ -185,7 +213,11 @@ public class CoilDB {
 
 
 	public void setExternalDiameter(String externalDiameter) {
-		ExternalDiameter = externalDiameter;
+		if(externalDiameter.length() == 0){
+			ExternalDiameter = "null";
+		}else{
+			ExternalDiameter = externalDiameter;
+		}
 	}
 
 
@@ -195,7 +227,11 @@ public class CoilDB {
 
 
 	public void setUpperInnerDiameter(String upperInnerDiameter) {
-		UpperInnerDiameter = upperInnerDiameter;
+		if(upperInnerDiameter.length() == 0){
+			UpperInnerDiameter = "null";
+		}else{
+			UpperInnerDiameter = upperInnerDiameter;
+		}
 	}
 
 
@@ -205,7 +241,11 @@ public class CoilDB {
 
 
 	public void setLowerInnerDiameter(String lowerInnerDiameter) {
-		LowerInnerDiameter = lowerInnerDiameter;
+		if(lowerInnerDiameter.length() == 0){
+			LowerInnerDiameter = "null";
+		}else {
+			LowerInnerDiameter = lowerInnerDiameter;
+		}
 	}
 
 
@@ -215,7 +255,11 @@ public class CoilDB {
 
 
 	public void setTotalTurns(String totalTurns) {
-		TotalTurns = totalTurns;
+		if(totalTurns.length() == 0){
+			TotalTurns = "null";
+		}else {
+			TotalTurns = totalTurns;
+		}
 	}
 
 
@@ -253,20 +297,20 @@ public class CoilDB {
 		this.tabelDataList = tabelDataList;
 	}
 
-	public String getCoilDesingFilePath() {
-		return CoilDesingFilePath;
+	public String getCoilDesignFilePath() {
+		return CoilDesignFilePath;
 	}
 
-	public void setCoilDesingFilePath(String coilDesingFilePath) {
-		CoilDesingFilePath = coilDesingFilePath;
+	public void setCoilDesignFilePath(String coilDesignFilePath) {
+		CoilDesignFilePath = coilDesignFilePath;
 	}
 
-	public String getCoilDesingUserFilePath() {
-		return CoilDesingUserFilePath;
+	public String getCoilDesignUserFilePath() {
+		return CoilDesignUserFilePath;
 	}
 
-	public void setCoilDesingUserFilePath(String coilDesingUserFilePath) {
-		CoilDesingUserFilePath = coilDesingUserFilePath;
+	public void setCoilDesignUserFilePath(String coilDesignUserFilePath) {
+		CoilDesignUserFilePath = coilDesignUserFilePath;
 	}
 
 	public String getHotSettingTemp() {
@@ -325,38 +369,30 @@ public class CoilDB {
 		SeatHeight = seatHeight;
 	}
 
-	public String getRadiusConditionerConstant() {
-		return RadiusConditionerConstant;
+	public String getInitialConditionerType() {
+		return InitialConditionerType;
 	}
 
-	public void setRadiusConditionerConstant(String radiusConditionerConstant) {
-		RadiusConditionerConstant = radiusConditionerConstant;
+	public void setInitialConditionerType(String initialConditionerType) {
+		InitialConditionerType = initialConditionerType;
 	}
 
-	public String getRadiusConditionerFile() {
-		return RadiusConditionerFile;
+	public String getInitialConditionerConstant() {
+		return InitialConditionerConstant;
 	}
 
-	public void setRadiusConditionerFile(String radiusConditionerFile) {
-		RadiusConditionerFile = radiusConditionerFile;
+	public void setInitialConditionerConstant(String initialConditionerConstant) {
+		InitialConditionerConstant = initialConditionerConstant;
 	}
 
-	public String getHeightConditionerConstant() {
-		return HeightConditionerConstant;
+	public String getInitialConditionerFile() {
+		return InitialConditionerFile;
 	}
 
-	public void setHeightConditionerConstant(String heightConditionerConstant) {
-		HeightConditionerConstant = heightConditionerConstant;
+	public void setInitialConditionerFile(String initialConditionerFile) {
+		InitialConditionerFile = initialConditionerFile;
 	}
-
-	public String getHeightConditionerFile() {
-		return HeightConditionerFile;
-	}
-
-	public void setHeightConditionerFile(String heightConditionerFile) {
-		HeightConditionerFile = heightConditionerFile;
-	}
-
+	
 	public String getRadiusTolerance() {
 		return RadiusTolerance;
 	}
@@ -398,22 +434,6 @@ public class CoilDB {
 		LogEditor = logEditor;
 	}
 
-	public String getRadiusConditionerType() {
-		return RadiusConditionerType;
-	}
-
-	public void setRadiusConditionerType(String radiusConditionerType) {
-		RadiusConditionerType = radiusConditionerType;
-	}
-
-	public String getHeightConditionerType() {
-		return HeightConditionerType;
-	}
-
-	public void setHeightConditionerType(String heightConditionerType) {
-		HeightConditionerType = heightConditionerType;
-	}
-
 	public String getProjectName() {
 		return projectName;
 	}
@@ -424,6 +444,22 @@ public class CoilDB {
 
 	public String getDbFilePath() {
 		return dbFilePath;
+	}
+
+	public String getCenterBeamNodeStart() {
+		return CenterBeamNodeStart;
+	}
+
+	public void setCenterBeamNodeStart(String centerBeamNodeStart) {
+		CenterBeamNodeStart = centerBeamNodeStart;
+	}
+
+	public String getMaterialDB() {
+		return MaterialDB;
+	}
+
+	public void setMaterialDB(String materialDB) {
+		MaterialDB = materialDB;
 	}
 
 }

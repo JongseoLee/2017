@@ -6,6 +6,7 @@ import com.js.ens.coil.core.AppFolder;
 import com.js.ens.coil.core.MainController;
 import com.js.ens.coil.core.Preferences;
 import com.js.ens.coil.core.UILabel;
+import com.js.ens.coil.customWidget.TableData_Coil;
 import com.js.io.Reader;
 import com.js.io.Writer;
 import com.js.util.myUtil;
@@ -17,6 +18,7 @@ public class WriteSimcosDB {
 	private final String Date = "%date%";
 	private final String ProjectName = "%projectName%";
 	private final String ProjectFolderPath="%projectFolderPath%";
+	private final String CenterBeamNodeStart="%CenterBeamNodeStart%";
 	// Coil data
 	private final String ProductName="%ProductName%";
 	private final String WireDiameter="%WireDiameter%";
@@ -27,8 +29,10 @@ public class WriteSimcosDB {
 	private final String LowerInnerDiameter="%LowerInnerDiameter%";
 	private final String TotalTurns="%TotalTurns%";
 	// coil_design.csv
-	private final String CoilDesingFilePath="%CoilDesingFilePath%";
-	private final String CoilDesingUserFilePath="%CoilDesingUserFilePath%";
+	private final String CoilDesignFilePath="%CoilDesignFilePath%";
+	private final String CoilDesignUserFilePath="%CoilDesignUserFilePath%";
+	private final String CoilGeometryData_start="CoilGeometryData_start";
+	private final String CoilGeometryData_end="CoilGeometryData_end";
 	// Setting Process Information
 	private final String HotSettingTemp="%HotSettingTemp%";
 	private final String ColdSettingTemp="%ColdSettingTemp%";
@@ -38,12 +42,11 @@ public class WriteSimcosDB {
 	private final String SeatLIneerMargina="%SeatLIneerMargina%";
 	private final String SeatHeight="%SeatHeight%";
 	// Initial conditioner
-	private final String RadiusConditionerType="%RadiusConditionerType%";
-	private final String RadiusConditionerConstant="%RadiusConditionerConstant%";
-	private final String RadiusConditionerFile="%RadiusConditionerFile%";
-	private final String HeightConditionerType="%HeightConditionerType%";
-	private final String HeightConditionerConstant="%HeightConditionerConstant%";
-	private final String HeightConditionerFile="%HeightConditionerFile%";
+	private final String InitialConditionerType="%InitialConditionerType%";
+	private final String InitialConditionerConstant="%InitialConditionerConstant%";
+	private final String InitialConditionerFile="%InitialConditionerFile%";
+	// Material Database
+	private final String MaterialDB ="%MaterialDB%";
 	// Simulation Data
 	private final String RadiusTolerance="%RadiusTolerance%";
 	private final String HeightTolerance="%HeightTolerance%";
@@ -52,7 +55,6 @@ public class WriteSimcosDB {
 	private CoilDB CObj;
 	private ArrayList<String> dbTemplateFileDataList;
 	private ArrayList<String> outputDataList;
-	private ArrayList<String> pythonInputDataList;
 	
 	public WriteSimcosDB() {
 		// TODO Auto-generated constructor stub
@@ -75,8 +77,16 @@ public class WriteSimcosDB {
 			}else if(line.contains(this.ProjectFolderPath)){
 				String newLine = line.replace(this.ProjectFolderPath, this.CObj.getProjectFolderPath());
 				this.outputDataList.add(newLine);
+			}else if(line.contains(this.CenterBeamNodeStart)){
+				String newLine = line.replace(this.CenterBeamNodeStart, this.CObj.getCenterBeamNodeStart());
+				this.outputDataList.add(newLine);
 			}else {
-				this.outputDataList.add(line);
+				if(line.contains("%")){
+					
+				}else{
+					this.outputDataList.add(line);
+				}
+				
 			}
 		}
 		this.writeDBFile();
@@ -97,6 +107,9 @@ public class WriteSimcosDB {
 				this.outputDataList.add(newLine);
 			}else if(line.contains(this.ProjectFolderPath)){
 				String newLine = line.replace(this.ProjectFolderPath, this.CObj.getProjectFolderPath());
+				this.outputDataList.add(newLine);
+			}else if(line.contains(this.CenterBeamNodeStart)){
+				String newLine = line.replace(this.CenterBeamNodeStart, this.CObj.getCenterBeamNodeStart());
 				this.outputDataList.add(newLine);
 			}
 			
@@ -126,12 +139,19 @@ public class WriteSimcosDB {
 				this.outputDataList.add(newLine);
 			}
 			
-			else if(line.contains(this.CoilDesingFilePath)){
-				String newLine = line.replace(this.CoilDesingFilePath, this.CObj.getCoilDesingFilePath());
+			else if(line.contains(this.CoilDesignFilePath)){
+				String newLine = line.replace(this.CoilDesignFilePath, this.CObj.getCoilDesignFilePath());
 				this.outputDataList.add(newLine);
-			}else if(line.contains(this.CoilDesingUserFilePath)){
-				String newLine = line.replace(this.CoilDesingUserFilePath, this.CObj.getCoilDesingUserFilePath());
+			}else if(line.contains(this.CoilDesignUserFilePath)){
+				String newLine = line.replace(this.CoilDesignUserFilePath, this.CObj.getCoilDesignUserFilePath());
 				this.outputDataList.add(newLine);
+				if(!this.CObj.getCoilDesignUserFilePath().equals("null")){
+					this.outputDataList.add(this.CoilGeometryData_start);
+					for(String data : this.getCoilGeometryData()){
+						this.outputDataList.add(data);
+					}
+					this.outputDataList.add(this.CoilGeometryData_end);
+				}
 			}
 			
 			else if(line.contains(this.HotSettingTemp)){
@@ -157,23 +177,19 @@ public class WriteSimcosDB {
 				this.outputDataList.add(newLine);
 			}
 			
-			else if(line.contains(this.RadiusConditionerType)){
-				String newLine = line.replace(this.RadiusConditionerType, this.CObj.getRadiusConditionerType());
+			else if(line.contains(this.InitialConditionerType)){
+				String newLine = line.replace(this.InitialConditionerType, this.CObj.getInitialConditionerType());
 				this.outputDataList.add(newLine);
-			}else if(line.contains(this.RadiusConditionerConstant)){
-				String newLine = line.replace(this.RadiusConditionerConstant, this.CObj.getRadiusConditionerConstant());
+			}else if(line.contains(this.InitialConditionerConstant)){
+				String newLine = line.replace(this.InitialConditionerConstant, this.CObj.getInitialConditionerConstant());
 				this.outputDataList.add(newLine);
-			}else if(line.contains(this.RadiusConditionerFile)){
-				String newLine = line.replace(this.RadiusConditionerFile, this.CObj.getRadiusConditionerFile());
+			}else if(line.contains(this.InitialConditionerFile)){
+				String newLine = line.replace(this.InitialConditionerFile, this.CObj.getInitialConditionerFile());
 				this.outputDataList.add(newLine);
-			}else if(line.contains(this.HeightConditionerType)){
-				String newLine = line.replace(this.HeightConditionerType, this.CObj.getHeightConditionerType());
-				this.outputDataList.add(newLine);
-			}else if(line.contains(this.HeightConditionerConstant)){
-				String newLine = line.replace(this.HeightConditionerConstant, this.CObj.getHeightConditionerConstant());
-				this.outputDataList.add(newLine);
-			}else if(line.contains(this.HeightConditionerFile)){
-				String newLine = line.replace(this.HeightConditionerFile, this.CObj.getHeightConditionerFile());
+			}
+			
+			else if(line.contains(this.MaterialDB)){
+				String newLine = line.replace(this.MaterialDB, this.CObj.getMaterialDB());
 				this.outputDataList.add(newLine);
 			}
 			
@@ -195,47 +211,13 @@ public class WriteSimcosDB {
 		this.writeDBFile();
 	}
 	
-	public void createPythonScriptInput(CoilDB obj){
-		this.CObj = obj;
-		this.pythonInputDataList = new ArrayList<String>();
-		String outputFilePath = myUtil.setPath(myUtil.setPath(this.CObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),AppFolder.pythonScriptInputDataFileName);
-		
-		this.pythonInputDataList.add(UILabel.ProductName+"="+this.CObj.getProductName());
-		this.pythonInputDataList.add(UILabel.WireDiameter+"="+this.CObj.getWireDiameter());
-		this.pythonInputDataList.add(UILabel.CenterDiameter+"="+this.CObj.getCenterDiameter());
-		this.pythonInputDataList.add(UILabel.InternalDiameter+"="+this.CObj.getInternalDiameter());
-		this.pythonInputDataList.add(UILabel.ExternalDiameter+"="+this.CObj.getExternalDiameter());
-		this.pythonInputDataList.add(UILabel.UpperInnerDiameter+"="+this.CObj.getUpperInnerDiameter());
-		this.pythonInputDataList.add(UILabel.LowerInnerDiameter+"="+this.CObj.getLowerInnerDiameter());
-		this.pythonInputDataList.add(UILabel.TotalTurns+"="+this.CObj.getTotalTurns());
-		
-		this.pythonInputDataList.add(UILabel.HotSettingTemp+"="+this.CObj.getHotSettingTemp());
-		this.pythonInputDataList.add(UILabel.ColdSettingTemp+"="+this.CObj.getColdSettingTemp());
-		this.pythonInputDataList.add(UILabel.HotSettingHeight+"="+this.CObj.getHotSettingHeight());
-		this.pythonInputDataList.add(UILabel.ColdSettingHeight+"="+this.CObj.getColdSettingHeight());
-		this.pythonInputDataList.add(UILabel.SeatUInnerMargina+"="+this.CObj.getSeatUIneerMargina());
-		this.pythonInputDataList.add(UILabel.SeatLInnerMargina+"="+this.CObj.getSeatLIneerMargina());
-		this.pythonInputDataList.add(UILabel.SeatHeight+"="+this.CObj.getSeatHeight());
-		
-		this.pythonInputDataList.add(UILabel.RadiusConditionerConstant+"="+this.CObj.getRadiusConditionerConstant());
-		this.pythonInputDataList.add(UILabel.RadiusConditionerFile+"="+this.CObj.getRadiusConditionerFile());
-		this.pythonInputDataList.add(UILabel.HeightConditionerConstant+"="+this.CObj.getHeightConditionerConstant());
-		this.pythonInputDataList.add(UILabel.HeightConditionerFile+"="+this.CObj.getHeightConditionerFile());
-		
-		this.pythonInputDataList.add(UILabel.RadiusTolerance+"="+this.CObj.getRadiusTolerance());
-		this.pythonInputDataList.add(UILabel.HeightTolerance+"="+this.CObj.getHeightTolerance());
-		this.pythonInputDataList.add(UILabel.MaximumIterationNumber+"="+this.CObj.getMaximumIterationNumber());
-		
-		this.pythonInputDataList.add("ProjectFolderPath"+"="+this.CObj.getProjectFolderPath());
-		this.pythonInputDataList.add("ProjectResultFolderPath"+"="+myUtil.setPath(this.CObj.getProjectFolderPath(), AppFolder.RESULT));
-		this.pythonInputDataList.add("ProjectSolvingFolderPath"+"="+myUtil.setPath(this.CObj.getProjectFolderPath(),AppFolder.SIMCOS_DATA));
-		
-		this.pythonInputDataList.add("MarcPath"+"="+MC.getPreferencesObj().getPreferencesValue(Preferences.MarcPath));
-		
-		Writer writer = new Writer(outputFilePath);
-		writer.running(this.pythonInputDataList);
+	private ArrayList<String> getCoilGeometryData(){
+		ArrayList<String> result = new ArrayList<String>(); 
+		for(TableData_Coil obj : this.CObj.getGeometryDataTableList()){
+			result.add(obj.getSaveData());
+		}
+		return result;
 	}
-	
 	
 	
 	

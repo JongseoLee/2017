@@ -66,10 +66,14 @@ public class View extends ViewPart {
 	private Text textSeatUInnerMargina;
 	private Text textSeatLInnerMargina;
 	private Text textSeatHeight;
+	private Text textInitialConditionerValue;
+	private Text textInitialConditionerPath;
+	/*
 	private Text textRadiusConditionerValue;
 	private Text textRadiusConditionerPath;
 	private Text textHeightConditionerValue;
 	private Text textHeightConditionerPath;
+	//*/
 	private Text textRadiusTolerance;
 	private Text textHeightTolerance;
 	private Text textMaximumIterationNumber;
@@ -77,6 +81,7 @@ public class View extends ViewPart {
 	private Combo comboSelectGraph;
 	private Combo comboSelectImage;
 	private Combo comboSelectTableData;
+	private Text textMaterialDBPath;
 	
 	
 	
@@ -433,7 +438,7 @@ public class View extends ViewPart {
 		lblTotalTurns.setLayoutData(fd_lblTotalTurns);
 		lblTotalTurns.setText(LabelDatas.getLabel(UILabel.TotalTurns));
 		
-		textTotalTurns = new Text(grpCoil, SWT.BORDER);
+		textTotalTurns = new Text(grpCoil, SWT.BORDER | SWT.READ_ONLY);
 		med.setTextTotalTurns(textTotalTurns);
 		CustomText c_textTotalTurns = new CustomText(Mediator.TEXT_textTotalTurns,med);
 		med.setC_textTotalTurns(c_textTotalTurns);
@@ -494,6 +499,83 @@ public class View extends ViewPart {
 		grpSettingProcessInformation.setLayoutData(fd_grpSettingProcessInformation);
 		grpSettingProcessInformation.setText(LabelDatas.getLabel(UILabel.SettingProcessInformation));
 		
+		Label lblHotSettingHeight = new Label(grpSettingProcessInformation, SWT.NONE);
+		FormData fd_lblHotSettingHeight = new FormData();
+		fd_lblHotSettingHeight.top = new FormAttachment(0, 10);
+		fd_lblHotSettingHeight.left = new FormAttachment(0, 10);
+		fd_lblHotSettingHeight.right = new FormAttachment(0, 200);
+		lblHotSettingHeight.setLayoutData(fd_lblHotSettingHeight);
+		lblHotSettingHeight.setText(LabelDatas.getLabel(UILabel.HotSettingHeight));
+		
+		textHotSettingHeight = new Text(grpSettingProcessInformation, SWT.BORDER);
+		med.setTextHotSettingHeight(textHotSettingHeight);
+		CustomText c_textHotSettingHeight = new CustomText(Mediator.TEXT_textHotSettingHeight,med);
+		med.setC_textHotSettingHeight(c_textHotSettingHeight);
+		c_textHotSettingHeight.setCustomWidget_textHotSettingHeight();
+		FormData fd_textHotSettingHeight = new FormData();
+		fd_textHotSettingHeight.top = new FormAttachment(lblHotSettingHeight, -2, SWT.TOP);
+		fd_textHotSettingHeight.left = new FormAttachment(lblHotSettingHeight, 6);
+		fd_textHotSettingHeight.right = new FormAttachment(100,-10);
+		textHotSettingHeight.setLayoutData(fd_textHotSettingHeight);
+		
+		Label lblHotSettingTemp = new Label(grpSettingProcessInformation, SWT.NONE);
+		FormData fd_lblHotSettingTemp = new FormData();
+		fd_lblHotSettingTemp.top = new FormAttachment(lblHotSettingHeight, 8);
+		fd_lblHotSettingTemp.left = new FormAttachment(lblHotSettingHeight, 0, SWT.LEFT);
+		fd_lblHotSettingTemp.right = new FormAttachment(lblHotSettingHeight, 0, SWT.RIGHT);
+		lblHotSettingTemp.setLayoutData(fd_lblHotSettingTemp);
+		lblHotSettingTemp.setText(LabelDatas.getLabel(UILabel.HotSettingTemp));
+		
+		textHotSettingTemp = new Text(grpSettingProcessInformation, SWT.BORDER);
+		med.setTextHotSettingTemp(textHotSettingTemp);
+		CustomText c_textHotSettingTemp = new CustomText(Mediator.TEXT_textHotSettingTemp, med);
+		med.setC_textHotSettingTemp(c_textHotSettingTemp);
+		c_textHotSettingTemp.setCustomWidget_textHotSettingTemp();
+		FormData fd_textHotSettingTemp = new FormData();
+		fd_textHotSettingTemp.top = new FormAttachment(lblHotSettingTemp, -2, SWT.TOP);
+		fd_textHotSettingTemp.left = new FormAttachment(textHotSettingHeight, 0, SWT.LEFT);
+		fd_textHotSettingTemp.right = new FormAttachment(textHotSettingHeight, 0, SWT.RIGHT);
+		textHotSettingTemp.setLayoutData(fd_textHotSettingTemp);
+		
+		Label lblColdSettingHeight = new Label(grpSettingProcessInformation, SWT.NONE);
+		FormData fd_lblColdSettingHeight = new FormData();
+		fd_lblColdSettingHeight.top = new FormAttachment(lblHotSettingTemp, 8);
+		fd_lblColdSettingHeight.left = new FormAttachment(lblHotSettingHeight, 0, SWT.LEFT);
+		fd_lblColdSettingHeight.right = new FormAttachment(lblHotSettingHeight, 0, SWT.RIGHT);
+		lblColdSettingHeight.setLayoutData(fd_lblColdSettingHeight);
+		lblColdSettingHeight.setText(LabelDatas.getLabel(UILabel.ColdSettingHeight));
+		
+		textColdSettingHeight = new Text(grpSettingProcessInformation, SWT.BORDER);
+		med.setTextColdSettingHeight(textColdSettingHeight);
+		CustomText c_textColdSettingHeight = new CustomText(Mediator.TEXT_textColdSettingHeight,med);
+		med.setC_textColdSettingHeight(c_textColdSettingHeight);
+		c_textColdSettingHeight.setCustomWidget_textColdSettingHeight();
+		FormData fd_textColdSettingHeight = new FormData();
+		fd_textColdSettingHeight.top = new FormAttachment(lblColdSettingHeight, -2, SWT.TOP);
+		fd_textColdSettingHeight.left = new FormAttachment(textHotSettingHeight, 0, SWT.LEFT);
+		fd_textColdSettingHeight.right = new FormAttachment(textHotSettingHeight, 0, SWT.RIGHT);
+		textColdSettingHeight.setLayoutData(fd_textColdSettingHeight);
+		
+		Label lblColdSettingTemp = new Label(grpSettingProcessInformation, SWT.NONE);
+		FormData fd_lblColdSettingTemp = new FormData();
+		fd_lblColdSettingTemp.top = new FormAttachment(lblColdSettingHeight, 8);
+		fd_lblColdSettingTemp.left = new FormAttachment(lblHotSettingHeight, 0, SWT.LEFT);
+		fd_lblColdSettingTemp.right = new FormAttachment(lblHotSettingHeight, 0, SWT.RIGHT);
+		lblColdSettingTemp.setLayoutData(fd_lblColdSettingTemp);
+		lblColdSettingTemp.setText(LabelDatas.getLabel(UILabel.ColdSettingTemp));
+		
+		textColdSettingTemp = new Text(grpSettingProcessInformation, SWT.BORDER);
+		med.setTextColdSettingTemp(textColdSettingTemp);
+		CustomText c_textColdSettingTemp = new CustomText(Mediator.TEXT_textColdSettingTemp, med);
+		med.setC_textColdSettingTemp(c_textColdSettingTemp);
+		c_textColdSettingTemp.setCustomWidget_textColdSettingTemp();
+		FormData fd_textColdSettingTemp = new FormData();
+		fd_textColdSettingTemp.top = new FormAttachment(lblColdSettingTemp, -2, SWT.TOP);
+		fd_textColdSettingTemp.left = new FormAttachment(textHotSettingHeight, 0, SWT.LEFT);
+		fd_textColdSettingTemp.right = new FormAttachment(textHotSettingHeight, 0, SWT.RIGHT);
+		textColdSettingTemp.setLayoutData(fd_textColdSettingTemp);
+		
+		/*
 		Label lblHotSettingTemp = new Label(grpSettingProcessInformation, SWT.NONE);
 		FormData fd_lblHotSettingTemp = new FormData();
 		fd_lblHotSettingTemp.top = new FormAttachment(0, 10);
@@ -528,8 +610,8 @@ public class View extends ViewPart {
 		c_textColdSettingTemp.setCustomWidget_textColdSettingTemp();
 		FormData fd_textColdSettingTemp = new FormData();
 		fd_textColdSettingTemp.top = new FormAttachment(lblColdSettingTemp, -2, SWT.TOP);
-		fd_textColdSettingTemp.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
-		fd_textColdSettingTemp.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
+		fd_textColdSettingTemp.left = new FormAttachment(textHotSettingHeight, 0, SWT.LEFT);
+		fd_textColdSettingTemp.right = new FormAttachment(textHotSettingHeight, 0, SWT.RIGHT);
 		textColdSettingTemp.setLayoutData(fd_textColdSettingTemp);
 		
 		Label lblHotSettingHeight = new Label(grpSettingProcessInformation, SWT.NONE);
@@ -547,8 +629,8 @@ public class View extends ViewPart {
 		c_textHotSettingHeight.setCustomWidget_textHotSettingHeight();
 		FormData fd_textHotSettingHeight = new FormData();
 		fd_textHotSettingHeight.top = new FormAttachment(lblHotSettingHeight, -2, SWT.TOP);
-		fd_textHotSettingHeight.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
-		fd_textHotSettingHeight.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
+		fd_textHotSettingHeight.left = new FormAttachment(textHotSettingHeight, 0, SWT.LEFT);
+		fd_textHotSettingHeight.right = new FormAttachment(textHotSettingHeight, 0, SWT.RIGHT);
 		textHotSettingHeight.setLayoutData(fd_textHotSettingHeight);
 		
 		Label lblColdSettingHeight = new Label(grpSettingProcessInformation, SWT.NONE);
@@ -566,13 +648,13 @@ public class View extends ViewPart {
 		c_textColdSettingHeight.setCustomWidget_textColdSettingHeight();
 		FormData fd_textColdSettingHeight = new FormData();
 		fd_textColdSettingHeight.top = new FormAttachment(lblColdSettingHeight, -2, SWT.TOP);
-		fd_textColdSettingHeight.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
-		fd_textColdSettingHeight.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
+		fd_textColdSettingHeight.left = new FormAttachment(textHotSettingHeight, 0, SWT.LEFT);
+		fd_textColdSettingHeight.right = new FormAttachment(textHotSettingHeight, 0, SWT.RIGHT);
 		textColdSettingHeight.setLayoutData(fd_textColdSettingHeight);
-		
+		//*/
 		Label lblSeatUInnerMargina = new Label(grpSettingProcessInformation, SWT.NONE);
 		FormData fd_lblSeatUInnerMargina = new FormData();
-		fd_lblSeatUInnerMargina.top = new FormAttachment(lblColdSettingHeight, 8);
+		fd_lblSeatUInnerMargina.top = new FormAttachment(lblColdSettingTemp, 8);
 		fd_lblSeatUInnerMargina.left = new FormAttachment(lblHotSettingTemp, 0, SWT.LEFT);
 		fd_lblSeatUInnerMargina.right = new FormAttachment(lblHotSettingTemp, 0, SWT.RIGHT);
 		lblSeatUInnerMargina.setLayoutData(fd_lblSeatUInnerMargina);
@@ -643,160 +725,130 @@ public class View extends ViewPart {
 		fd_grpInitialConditioner.top = new FormAttachment(grpSettingProcessInformation, 6);
 		fd_grpInitialConditioner.left = new FormAttachment(grpSettingProcessInformation, 0,SWT.LEFT);
 		fd_grpInitialConditioner.right = new FormAttachment(grpSettingProcessInformation, 0,SWT.RIGHT);
-		fd_grpInitialConditioner.bottom = new FormAttachment(grpSettingProcessInformation, 260, SWT.BOTTOM);
+		fd_grpInitialConditioner.bottom = new FormAttachment(grpSettingProcessInformation, 120, SWT.BOTTOM);
 		grpInitialConditioner.setLayoutData(fd_grpInitialConditioner);
 		grpInitialConditioner.setText(LabelDatas.getLabel(UILabel.InitialConditioner));
 		
-		Label lblRadiusConditioner = new Label(grpInitialConditioner, SWT.NONE);
-		FormData fd_lblRadiusConditioner = new FormData();
-		fd_lblRadiusConditioner.top = new FormAttachment(0, 10);
-		fd_lblRadiusConditioner.left = new FormAttachment(0, 10);
-		fd_lblRadiusConditioner.right = new FormAttachment(0,170);
-		lblRadiusConditioner.setLayoutData(fd_lblRadiusConditioner);
-		lblRadiusConditioner.setText(LabelDatas.getLabel(UILabel.RadiusConditioner));
+		Composite compositeInitialConditioner = new Composite(grpInitialConditioner, SWT.NONE);
+		compositeInitialConditioner.setLayout(new FormLayout());
+		FormData fd_compositeInitialConditioner = new FormData();
+		fd_compositeInitialConditioner.top = new FormAttachment(0, 0);
+		fd_compositeInitialConditioner.left = new FormAttachment(0,0);
+		fd_compositeInitialConditioner.right = new FormAttachment(100, -10);
+		fd_compositeInitialConditioner.bottom = new FormAttachment(0,80);
+		compositeInitialConditioner.setLayoutData(fd_compositeInitialConditioner);
 		
-		Composite compositeRadiusConditioner = new Composite(grpInitialConditioner, SWT.NONE);
-		compositeRadiusConditioner.setLayout(new FormLayout());
-		FormData fd_compositeRadiusConditioner = new FormData();
-		fd_compositeRadiusConditioner.top = new FormAttachment(lblRadiusConditioner, 0);
-		fd_compositeRadiusConditioner.left = new FormAttachment(lblRadiusConditioner, 0, SWT.LEFT);
-		fd_compositeRadiusConditioner.right = new FormAttachment(100, -10);
-		fd_compositeRadiusConditioner.bottom = new FormAttachment(lblRadiusConditioner,80,SWT.BOTTOM);
-		compositeRadiusConditioner.setLayoutData(fd_compositeRadiusConditioner);
+		Button btnInitialConditionerConstant = new Button(compositeInitialConditioner, SWT.RADIO);
+		med.setBtnInitialConditionerConstant(btnInitialConditionerConstant);
+		CustomButton c_btnInitialConditionerConstant = new CustomButton(Mediator.BUTTON_btnInitialConditionerConstant, med);
+		med.setC_btnInitialConditionerConstant(c_btnInitialConditionerConstant);
+		c_btnInitialConditionerConstant.setCustomWidget_btnInitialConditionerConstant();
+		btnInitialConditionerConstant.setSelection(true);
+		FormData fd_btnInitialConditionerConstant = new FormData();
+		fd_btnInitialConditionerConstant.top = new FormAttachment(0, 6);
+		fd_btnInitialConditionerConstant.left = new FormAttachment(0, 10);
+		fd_btnInitialConditionerConstant.right = new FormAttachment(0,190);
+		btnInitialConditionerConstant.setLayoutData(fd_btnInitialConditionerConstant);
+		btnInitialConditionerConstant.setText(LabelDatas.getLabel(UILabel.Constant));
 		
-		Button btnRadiusConditionerConstant = new Button(compositeRadiusConditioner, SWT.RADIO);
-		med.setBtnRadiusConditionerConstant(btnRadiusConditionerConstant);
-		CustomButton c_btnRadiusConditionerConstant = new CustomButton(Mediator.BUTTON_btnRadiusConditionerConstant, med);
-		med.setC_btnRadiusConditionerConstant(c_btnRadiusConditionerConstant);
-		c_btnRadiusConditionerConstant.setCustomWidget_btnRadiusConditionerConstant();
-		btnRadiusConditionerConstant.setSelection(true);
-		FormData fd_btnRadiusConditionerConstant = new FormData();
-		fd_btnRadiusConditionerConstant.top = new FormAttachment(0, 6);
-		fd_btnRadiusConditionerConstant.left = new FormAttachment(0, 10);
-		fd_btnRadiusConditionerConstant.right = new FormAttachment(0,190);
-		btnRadiusConditionerConstant.setLayoutData(fd_btnRadiusConditionerConstant);
-		btnRadiusConditionerConstant.setText(LabelDatas.getLabel(UILabel.Constant));
+		Button btnInitialConditionerFile = new Button(compositeInitialConditioner, SWT.RADIO);
+		med.setBtnInitialConditionerFile(btnInitialConditionerFile);
+		CustomButton c_btnInitialConditionerFile = new CustomButton(Mediator.BUTTON_btnInitialConditionerFile, med);
+		med.setC_btnInitialConditionerFile(c_btnInitialConditionerFile);
+		c_btnInitialConditionerFile.setCustomWidget_btnInitialConditionerFile();
+		FormData fd_btnInitialConditionerFile = new FormData();
+		fd_btnInitialConditionerFile.top = new FormAttachment(btnInitialConditionerConstant, 6);
+		fd_btnInitialConditionerFile.left = new FormAttachment(btnInitialConditionerConstant, 0, SWT.LEFT);
+		fd_btnInitialConditionerFile.right = new FormAttachment(btnInitialConditionerConstant, 0, SWT.RIGHT);
+		btnInitialConditionerFile.setLayoutData(fd_btnInitialConditionerFile);
+		btnInitialConditionerFile.setText(LabelDatas.getLabel(UILabel.File));
 		
-		Button btnRadiusConditionerFile = new Button(compositeRadiusConditioner, SWT.RADIO);
-		med.setBtnRadiusConditionerFile(btnRadiusConditionerFile);
-		CustomButton c_btnRadiusConditionerFile = new CustomButton(Mediator.BUTTON_btnRadiusConditionerFile, med);
-		med.setC_btnRadiusConditionerFile(c_btnRadiusConditionerFile);
-		c_btnRadiusConditionerFile.setCustomWidget_btnRadiusConditionerFile();
-		FormData fd_btnRadiusConditionerFile = new FormData();
-		fd_btnRadiusConditionerFile.top = new FormAttachment(btnRadiusConditionerConstant, 6);
-		fd_btnRadiusConditionerFile.left = new FormAttachment(btnRadiusConditionerConstant, 0, SWT.LEFT);
-		fd_btnRadiusConditionerFile.right = new FormAttachment(btnRadiusConditionerConstant, 0, SWT.RIGHT);
-		btnRadiusConditionerFile.setLayoutData(fd_btnRadiusConditionerFile);
-		btnRadiusConditionerFile.setText(LabelDatas.getLabel(UILabel.File));
+		textInitialConditionerValue = new Text(compositeInitialConditioner, SWT.BORDER);
+		med.setTextInitialConditionerValue(textInitialConditionerValue);
+		CustomText c_textInitialConditionerValue = new CustomText(Mediator.TEXT_textInitialConditionerValue, med);
+		med.setC_textInitialConditionerValue(c_textInitialConditionerValue);
+		c_textInitialConditionerValue.setCustomWidget_textInitialConditionerValue();
+		FormData fd_textInitialConditionerValue = new FormData();
+		fd_textInitialConditionerValue.top = new FormAttachment(btnInitialConditionerConstant, -2, SWT.TOP);
+		fd_textInitialConditionerValue.left = new FormAttachment(btnInitialConditionerConstant, 6);
+		fd_textInitialConditionerValue.right = new FormAttachment(100,0);
+		textInitialConditionerValue.setLayoutData(fd_textInitialConditionerValue);
 		
-		textRadiusConditionerValue = new Text(compositeRadiusConditioner, SWT.BORDER);
-		med.setTextRadiusConditionerValue(textRadiusConditionerValue);
-		CustomText c_textRadiusConditionerValue = new CustomText(Mediator.TEXT_textRadiusConditionerValue, med);
-		med.setC_textRadiusConditionerValue(c_textRadiusConditionerValue);
-		c_textRadiusConditionerValue.setCustomWidget_textRadiusConditionerValue();
-		FormData fd_textRadiusConditionerValue = new FormData();
-		fd_textRadiusConditionerValue.top = new FormAttachment(btnRadiusConditionerConstant, -2, SWT.TOP);
-		fd_textRadiusConditionerValue.left = new FormAttachment(btnRadiusConditionerConstant, 6);
-		fd_textRadiusConditionerValue.right = new FormAttachment(100,0);
-		textRadiusConditionerValue.setLayoutData(fd_textRadiusConditionerValue);
+		textInitialConditionerPath = new Text(compositeInitialConditioner, SWT.BORDER);
+		med.setTextInitialConditionerPath(textInitialConditionerPath);
+		CustomText c_textInitialConditionerPath = new CustomText(Mediator.TEXT_textInitialConditionerPath, med);
+		med.setC_textInitialConditionerPath(c_textInitialConditionerPath);
+		c_textInitialConditionerPath.setCustomWidget_textInitialConditionerPath();
+		FormData fd_textInitialConditionerPath = new FormData();
+		fd_textInitialConditionerPath.top = new FormAttachment(btnInitialConditionerFile, 2);
+		fd_textInitialConditionerPath.left = new FormAttachment(btnInitialConditionerConstant, 0,SWT.LEFT);
+		fd_textInitialConditionerPath.right = new FormAttachment(100, -40);
+		textInitialConditionerPath.setLayoutData(fd_textInitialConditionerPath);
 		
-		textRadiusConditionerPath = new Text(compositeRadiusConditioner, SWT.BORDER);
-		med.setTextRadiusConditionerPath(textRadiusConditionerPath);
-		CustomText c_textRadiusConditionerPath = new CustomText(Mediator.TEXT_textRadiusConditionerPath, med);
-		med.setC_textRadiusConditionerPath(c_textRadiusConditionerPath);
-		c_textRadiusConditionerPath.setCustomWidget_textRadiusConditionerPath();
-		FormData fd_textRadiusConditionerPath = new FormData();
-		fd_textRadiusConditionerPath.top = new FormAttachment(btnRadiusConditionerFile, 2);
-		fd_textRadiusConditionerPath.left = new FormAttachment(btnRadiusConditionerConstant, 0,SWT.LEFT);
-		fd_textRadiusConditionerPath.right = new FormAttachment(100, -40);
-		textRadiusConditionerPath.setLayoutData(fd_textRadiusConditionerPath);
+		Button btnInitialConditionerExplorer = new Button(compositeInitialConditioner, SWT.NONE);
+		med.setBtnInitialConditionerExplorer(btnInitialConditionerExplorer);
+		CustomButton c_btnInitialConditionerExplorer = new CustomButton(Mediator.BUTTON_btnInitialConditionerExplorer, med);
+		med.setC_btnInitialConditionerExplorer(c_btnInitialConditionerExplorer);
+		c_btnInitialConditionerExplorer.setCustomWidget_btnInitialConditionerExplorer();
+		FormData fd_btnInitialConditionerExplorer = new FormData();
+		fd_btnInitialConditionerExplorer.top = new FormAttachment(textInitialConditionerPath, -2, SWT.TOP);
+		fd_btnInitialConditionerExplorer.left = new FormAttachment(textInitialConditionerPath, 5);
+		fd_btnInitialConditionerExplorer.right = new FormAttachment(textInitialConditionerValue, 0, SWT.RIGHT);
+		btnInitialConditionerExplorer.setLayoutData(fd_btnInitialConditionerExplorer);
+		btnInitialConditionerExplorer.setText("...");
 		
-		Button btnRadiusConditionerExplorer = new Button(compositeRadiusConditioner, SWT.NONE);
-		med.setBtnRadiusConditionerExplorer(btnRadiusConditionerExplorer);
-		CustomButton c_btnRadiusConditionerExplorer = new CustomButton(Mediator.BUTTON_btnRadiusConditionerExplorer, med);
-		med.setC_btnRadiusConditionerExplorer(c_btnRadiusConditionerExplorer);
-		c_btnRadiusConditionerExplorer.setCustomWidget_btnRadiusConditionerExplorer();
-		FormData fd_btnRadiusConditionerExplorer = new FormData();
-		fd_btnRadiusConditionerExplorer.top = new FormAttachment(textRadiusConditionerPath, -2, SWT.TOP);
-		fd_btnRadiusConditionerExplorer.left = new FormAttachment(textRadiusConditionerPath, 5);
-		fd_btnRadiusConditionerExplorer.right = new FormAttachment(textRadiusConditionerValue, 0, SWT.RIGHT);
-		btnRadiusConditionerExplorer.setLayoutData(fd_btnRadiusConditionerExplorer);
-		btnRadiusConditionerExplorer.setText("...");
+	
+		Group grpMaterialDatabase = new Group(compositeStep1, SWT.NONE);
+		if(myUtil.checkOS().equals("window")){
+			grpMaterialDatabase.setFont(SWTResourceManager.getFont("Arial", 9, SWT.BOLD));
+		}else {
+			grpMaterialDatabase.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
+		}
+		grpMaterialDatabase.setText(LabelDatas.getLabel(UILabel.MaterialDatabase));
+		FormLayout fl_grpMaterialDatabase = new FormLayout();
+		fl_grpMaterialDatabase.marginTop = 5;
+		fl_grpMaterialDatabase.marginRight = 5;
+		fl_grpMaterialDatabase.marginLeft = 5;
+		fl_grpMaterialDatabase.marginBottom = 5;
+		grpMaterialDatabase.setLayout(fl_grpMaterialDatabase);
+		FormData fd_grpMaterialDatabase = new FormData();
+		fd_grpMaterialDatabase.top = new FormAttachment(grpInitialConditioner, 6);
+		fd_grpMaterialDatabase.left = new FormAttachment(grpSettingProcessInformation, 0, SWT.LEFT);
+		fd_grpMaterialDatabase.right = new FormAttachment(grpSettingProcessInformation, 0, SWT.RIGHT);
+		fd_grpMaterialDatabase.bottom = new FormAttachment(grpInitialConditioner, 80,SWT.BOTTOM);
+		grpMaterialDatabase.setLayoutData(fd_grpMaterialDatabase);
+	
+		Composite composite = new Composite(grpMaterialDatabase, SWT.NONE);
+		composite.setLayout(new FormLayout());
+		FormData fd_composite = new FormData();
+		fd_composite.top = new FormAttachment(0);
+		fd_composite.left = new FormAttachment(0);
+		fd_composite.right = new FormAttachment(100, -10);
+		fd_composite.bottom = new FormAttachment(0, 40);
+		composite.setLayoutData(fd_composite);
 		
-		Label lblHeightConditioner = new Label(grpInitialConditioner, SWT.NONE);
-		FormData fd_lblHeightConditioner = new FormData();
-		fd_lblHeightConditioner.top = new FormAttachment(compositeRadiusConditioner, 6);
-		fd_lblHeightConditioner.left = new FormAttachment(lblRadiusConditioner, 0, SWT.LEFT);
-		lblHeightConditioner.setLayoutData(fd_lblHeightConditioner);
-		lblHeightConditioner.setText(LabelDatas.getLabel(UILabel.HeightConditioner));
+		textMaterialDBPath = new Text(composite, SWT.BORDER);
+		med.setTextMaterialDBPath(textMaterialDBPath);
+		CustomText c_textMaterialDBPath = new CustomText(Mediator.TEXT_textMaterialDBPath,med);
+		med.setC_textMaterialDBPath(c_textMaterialDBPath);
+		c_textMaterialDBPath.setCustomWidget_textMaterialDBPath();
+		FormData fd_textMaterialDBPath = new FormData();
+		fd_textMaterialDBPath.top = new FormAttachment(0, 10);
+		fd_textMaterialDBPath.left = new FormAttachment(0, 10);
+		fd_textMaterialDBPath.right = new FormAttachment(100,-40);
+		textMaterialDBPath.setLayoutData(fd_textMaterialDBPath);
 		
-		Composite compositeHeightConditioner = new Composite(grpInitialConditioner, SWT.NONE);
-		compositeHeightConditioner.setLayout(new FormLayout());
-		FormData fd_compositeHeightConditioner = new FormData();
-		fd_compositeHeightConditioner.top = new FormAttachment(lblHeightConditioner, 0);
-		fd_compositeHeightConditioner.left = new FormAttachment(lblHeightConditioner, 0, SWT.LEFT);
-		fd_compositeHeightConditioner.right = new FormAttachment(100, -10);
-		fd_compositeHeightConditioner.bottom = new FormAttachment(lblHeightConditioner,80,SWT.BOTTOM);
-		compositeHeightConditioner.setLayoutData(fd_compositeHeightConditioner);
-		
-		Button btnHeightConditionerConstant = new Button(compositeHeightConditioner, SWT.RADIO);
-		med.setBtnHeightConditionerConstant(btnHeightConditionerConstant);
-		CustomButton c_btnHeightConditionerConstant = new CustomButton(Mediator.BUTTON_btnHeightConditionerConstant, med);
-		med.setC_btnHeightConditionerConstant(c_btnHeightConditionerConstant);
-		c_btnHeightConditionerConstant.setCustomWidget_btnHeightConditionerConstant();
-		btnHeightConditionerConstant.setSelection(true);
-		FormData fd_btnHeightConditionerConstant = new FormData();
-		fd_btnHeightConditionerConstant.top = new FormAttachment(0, 6);
-		fd_btnHeightConditionerConstant.left = new FormAttachment(0, 10);
-		fd_btnHeightConditionerConstant.right = new FormAttachment(0,190);
-		btnHeightConditionerConstant.setLayoutData(fd_btnHeightConditionerConstant);
-		btnHeightConditionerConstant.setText(LabelDatas.getLabel(UILabel.Constant));
-		
-		Button btnHeightConditionerFile = new Button(compositeHeightConditioner, SWT.RADIO);
-		med.setBtnHeightConditionerFile(btnHeightConditionerFile);
-		CustomButton c_btnHeightConditionerFile = new CustomButton(Mediator.BUTTON_btnHeightConditionerFile, med);
-		med.setC_btnHeightConditionerFile(c_btnHeightConditionerFile);
-		c_btnHeightConditionerFile.setCustomWidget_btnHeightConditionerFile();
-		FormData fd_btnHeightConditionerFile = new FormData();
-		fd_btnHeightConditionerFile.top = new FormAttachment(btnHeightConditionerConstant, 6);
-		fd_btnHeightConditionerFile.left = new FormAttachment(btnHeightConditionerConstant, 0, SWT.LEFT);
-		fd_btnHeightConditionerFile.right = new FormAttachment(btnHeightConditionerConstant, 0, SWT.RIGHT);
-		btnHeightConditionerFile.setLayoutData(fd_btnHeightConditionerFile);
-		btnHeightConditionerFile.setText(LabelDatas.getLabel(UILabel.File));
-		
-		textHeightConditionerValue = new Text(compositeHeightConditioner, SWT.BORDER);
-		med.setTextHeightConditionerValue(textHeightConditionerValue);
-		CustomText c_textHeightConditionerValue = new CustomText(Mediator.TEXT_textHeightConditionerValue,med);
-		med.setC_textHeightConditionerValue(c_textHeightConditionerValue);
-		c_textHeightConditionerValue.setCustomWidget_textHeightConditionerValue();
-		FormData fd_textHeightConditionerValue = new FormData();
-		fd_textHeightConditionerValue.top = new FormAttachment(btnHeightConditionerConstant, -2, SWT.TOP);
-		fd_textHeightConditionerValue.left = new FormAttachment(btnHeightConditionerConstant, 6);
-		fd_textHeightConditionerValue.right = new FormAttachment(100,0);
-		textHeightConditionerValue.setLayoutData(fd_textHeightConditionerValue);
-		
-		textHeightConditionerPath = new Text(compositeHeightConditioner, SWT.BORDER);
-		med.setTextHeightConditionerPath(textHeightConditionerPath);
-		CustomText c_textHeightConditionerPath = new CustomText(Mediator.TEXT_textHeightConditionerPath,med);
-		med.setC_textHeightConditionerPath(c_textHeightConditionerPath);
-		c_textHeightConditionerPath.setCustomWidget_textHeightConditionerPath();
-		FormData fd_textHeightConditionerPath = new FormData();
-		fd_textHeightConditionerPath.top = new FormAttachment(btnHeightConditionerFile, 2);
-		fd_textHeightConditionerPath.left = new FormAttachment(btnHeightConditionerConstant, 0,SWT.LEFT);
-		fd_textHeightConditionerPath.right = new FormAttachment(100, -40);
-		textHeightConditionerPath.setLayoutData(fd_textHeightConditionerPath);
-		
-		Button btnHeightConditionerExplorer = new Button(compositeHeightConditioner, SWT.NONE);
-		med.setBtnHeightConditionerExplorer(btnHeightConditionerExplorer);
-		CustomButton c_btnHeightConditionerExplorer = new CustomButton(Mediator.BUTTON_btnHeightConditionerExplorer,med);
-		med.setC_btnHeightConditionerExplorer(c_btnHeightConditionerExplorer);
-		c_btnHeightConditionerExplorer.setCustomWidget_btnHeightConditionerExplorer();
-		FormData fd_btnHeightConditionerExplorer = new FormData();
-		fd_btnHeightConditionerExplorer.top = new FormAttachment(textHeightConditionerPath, -2, SWT.TOP);
-		fd_btnHeightConditionerExplorer.left = new FormAttachment(textHeightConditionerPath, 5);
-		fd_btnHeightConditionerExplorer.right = new FormAttachment(textHeightConditionerValue, 0, SWT.RIGHT);
-		btnHeightConditionerExplorer.setLayoutData(fd_btnHeightConditionerExplorer);
-		btnHeightConditionerExplorer.setText("...");
+		Button btnMaterialDBExplorer = new Button(composite, SWT.NONE);
+		med.setBtnMaterialDBExplorer(btnMaterialDBExplorer);
+		CustomButton c_btnMaterialDBExplorer = new CustomButton(Mediator.BUTTON_btnMaterialDBExplorer,med);
+		med.setC_btnMaterialDBExplorer(c_btnMaterialDBExplorer);
+		c_btnMaterialDBExplorer.setCustomWidget_btnMaterialDBExplorer();
+		FormData fd_btnMaterialDBExplorer = new FormData();
+		fd_btnMaterialDBExplorer.top = new FormAttachment(textMaterialDBPath, -2, SWT.TOP);
+		fd_btnMaterialDBExplorer.left = new FormAttachment(textMaterialDBPath, 5);
+		fd_btnMaterialDBExplorer.right = new FormAttachment(100,0);
+		btnMaterialDBExplorer.setLayoutData(fd_btnMaterialDBExplorer);
+		btnMaterialDBExplorer.setText("...");
 		
 		
 		////////////=> Simulation and Export result
@@ -896,6 +948,15 @@ public class View extends ViewPart {
 		lblSimulationIteration.setLayoutData(fd_lblSimulationIteration);
 		lblSimulationIteration.setText(LabelDatas.getLabel(UILabel.SimulationIteration));
 		
+		Label lblSimulationStatus = new Label(grpAnalysisOptions, SWT.NONE);
+		med.setLblSimulationStatus(lblSimulationStatus);
+		FormData fd_lblSimulationStatus = new FormData();
+		fd_lblSimulationStatus.top = new FormAttachment(lblSimulationIteration, 0, SWT.TOP);
+		fd_lblSimulationStatus.left = new FormAttachment(lblSimulationIteration, 0,SWT.RIGHT);
+		fd_lblSimulationStatus.right = new FormAttachment(lblSimulationIteration,100,SWT.RIGHT);
+		lblSimulationStatus.setLayoutData(fd_lblSimulationStatus);
+		lblSimulationStatus.setText(LabelDatas.getLabel(UILabel.SimulationStatus));
+		
 		Button btnStartSimulation = new Button(grpAnalysisOptions, SWT.NONE);
 		med.setBtnStartSimulation(btnStartSimulation);
 		CustomButton c_btnStartSimulation = new CustomButton(Mediator.BUTTON_btnStartSimulation,med);
@@ -921,17 +982,17 @@ public class View extends ViewPart {
 		fd_progressBarSimulationIteration.right = new FormAttachment(100, -10);
 		progressBarSimulationIteration.setLayoutData(fd_progressBarSimulationIteration);
 		
-		Label lblCheckError = new Label(grpAnalysisOptions, SWT.NONE);
+		Label lblCheckStatus = new Label(grpAnalysisOptions, SWT.NONE);
 		if(myUtil.checkOS().equals("window")){
-			lblCheckError.setFont(SWTResourceManager.getFont("Arial", 9, SWT.BOLD));
+			lblCheckStatus.setFont(SWTResourceManager.getFont("Arial", 9, SWT.BOLD));
 		}else {
-			lblCheckError.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
+			lblCheckStatus.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
 		}
-		FormData fd_lblCheckError = new FormData();
-		fd_lblCheckError.top = new FormAttachment(progressBarSimulationIteration, 40);
-		fd_lblCheckError.left = new FormAttachment(lblRadiusTolerance, 0, SWT.LEFT);
-		lblCheckError.setLayoutData(fd_lblCheckError);
-		lblCheckError.setText(LabelDatas.getLabel(UILabel.CheckError));
+		FormData fd_lblCheckStatus = new FormData();
+		fd_lblCheckStatus.top = new FormAttachment(progressBarSimulationIteration, 40);
+		fd_lblCheckStatus.left = new FormAttachment(lblRadiusTolerance, 0, SWT.LEFT);
+		lblCheckStatus.setLayoutData(fd_lblCheckStatus);
+		lblCheckStatus.setText(LabelDatas.getLabel(UILabel.CheckStatus));
 		
 		Button btnReadLog = new Button(grpAnalysisOptions, SWT.NONE);
 		med.setBtnReadLog(btnReadLog);
@@ -939,7 +1000,7 @@ public class View extends ViewPart {
 		med.setC_btnReadLog(c_btnReadLog);
 		c_btnReadLog.setCustomWidget_btnReadLog();
 		FormData fd_btnReadLog = new FormData();
-		fd_btnReadLog.top = new FormAttachment(lblCheckError, 0, SWT.TOP);
+		fd_btnReadLog.top = new FormAttachment(lblCheckStatus, 0, SWT.TOP);
 		//fd_btnReadLog.left = new FormAttachment(textRadiusTolerance, 0, SWT.LEFT);
 		//fd_btnReadLog.right = new FormAttachment(textRadiusTolerance, 0, SWT.RIGHT);
 		fd_btnReadLog.left = new FormAttachment(btnStartSimulation, 0, SWT.LEFT);
@@ -953,11 +1014,13 @@ public class View extends ViewPart {
 		med.setC_textLogEditor(c_textLogEditor);
 		c_textLogEditor.setCustomWidget_textLogEditor();
 		FormData fd_textLogEditor = new FormData();
-		fd_textLogEditor.top = new FormAttachment(lblCheckError, 20);
+		fd_textLogEditor.top = new FormAttachment(lblCheckStatus, 20);
 		fd_textLogEditor.left = new FormAttachment(lblRadiusTolerance, 0, SWT.LEFT);
 		fd_textLogEditor.right = new FormAttachment(100, -10);
 		fd_textLogEditor.bottom = new FormAttachment(100, -10);
 		textLogEditor.setLayoutData(fd_textLogEditor);
+		
+		
 		
 		
 		////////////=> Show Result
@@ -1156,25 +1219,20 @@ public class View extends ViewPart {
 		HandlerButton handlerButton = new HandlerButton();
 		med.getBtnStepSave().addListener(SWT.Selection, handlerButton);
 		med.getBtnExplorer().addListener(SWT.Selection, handlerButton);		
-		med.getBtnRadiusConditionerConstant().addListener(SWT.Selection, handlerButton);
-		med.getBtnRadiusConditionerFile().addListener(SWT.Selection, handlerButton);
-		med.getBtnRadiusConditionerExplorer().addListener(SWT.Selection, handlerButton);
-		med.getBtnHeightConditionerConstant().addListener(SWT.Selection, handlerButton);
-		med.getBtnHeightConditionerFile().addListener(SWT.Selection, handlerButton);
-		med.getBtnHeightConditionerExplorer().addListener(SWT.Selection, handlerButton);
+		med.getBtnInitialConditionerConstant().addListener(SWT.Selection, handlerButton);
+		med.getBtnInitialConditionerFile().addListener(SWT.Selection, handlerButton);
+		med.getBtnInitialConditionerExplorer().addListener(SWT.Selection, handlerButton);
+		med.getBtnMaterialDBExplorer().addListener(SWT.Selection, handlerButton);
 		med.getBtnStartSimulation().addListener(SWT.Selection, handlerButton);
 		med.getBtnReadLog().addListener(SWT.Selection, handlerButton);
 		med.getBtnShowGraphWindow().addListener(SWT.Selection, handlerButton);
 		med.getBtnShowImageWindow().addListener(SWT.Selection, handlerButton);
 		med.getBtnShowTableData().addListener(SWT.Selection, handlerButton);
-		
 		// Label 
 		HandlerLabel handlerLabel = new HandlerLabel();
-		//med.getLblProcessStep().addListener(SWT.MouseDoubleClick, handlerLabel);
 		med.getLblModeling().addListener(SWT.MouseDoubleClick, handlerLabel);
 		med.getLblSimulationAndExportResult().addListener(SWT.MouseDoubleClick, handlerLabel);
 		med.getLblShowResult().addListener(SWT.MouseDoubleClick, handlerLabel);
-		
 		// Text 
 		HandlerText handlerText = new HandlerText();
 		med.getTextCoilFilePath().addListener(SWT.CHANGED, handlerText);
@@ -1193,10 +1251,9 @@ public class View extends ViewPart {
 		med.getTextSeatUInnerMargina().addListener(SWT.CHANGED, handlerText);
 		med.getTextSeatLInnerMargina().addListener(SWT.CHANGED, handlerText);
 		med.getTextSeatHeight().addListener(SWT.CHANGED, handlerText);
-		med.getTextRadiusConditionerValue().addListener(SWT.CHANGED, handlerText);
-		med.getTextRadiusConditionerPath().addListener(SWT.CHANGED, handlerText);
-		med.getTextHeightConditionerValue().addListener(SWT.CHANGED, handlerText);
-		med.getTextHeightConditionerPath().addListener(SWT.CHANGED, handlerText);
+		med.getTextInitialConditionerValue().addListener(SWT.CHANGED, handlerText);
+		med.getTextInitialConditionerPath().addListener(SWT.CHANGED, handlerText);
+		med.getTextMaterialDBPath().addListener(SWT.CHANGED, handlerText);
 		med.getTextRadiusTolerance().addListener(SWT.CHANGED, handlerText);
 		med.getTextHeightTolerance().addListener(SWT.CHANGED, handlerText);
 		med.getTextMaximumIterationNumber().addListener(SWT.CHANGED, handlerText);

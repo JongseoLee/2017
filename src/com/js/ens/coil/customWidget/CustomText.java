@@ -76,19 +76,19 @@ public class CustomText implements ICommand {
 			MC.Text_Modify_SeatHeight();
 		}
 		
-		else if(this.widgetName.equals(Mediator.TEXT_textRadiusConditionerValue)){
-			System.out.println("Text("+Mediator.TEXT_textRadiusConditionerValue +")"+med.getTextRadiusConditionerValue().getText());
-			MC.Text_Modify_RadiusConditionerValue();
-		}else if(this.widgetName.equals(Mediator.TEXT_textRadiusConditionerPath)){
-			System.out.println("Text("+Mediator.TEXT_textRadiusConditionerPath +")"+med.getTextRadiusConditionerPath().getText());
-			MC.Text_Modify_RadiusConditionerPath();
-		}else if(this.widgetName.equals(Mediator.TEXT_textHeightConditionerValue)){
-			System.out.println("Text("+Mediator.TEXT_textHeightConditionerValue +")"+med.getTextHeightConditionerValue().getText());
-			MC.Text_Modify_HeightConditionerValue();
-		}else if(this.widgetName.equals(Mediator.TEXT_textHeightConditionerPath)){
-			System.out.println("Text("+Mediator.TEXT_textHeightConditionerPath +")"+med.getTextHeightConditionerPath().getText());
-			MC.Text_Modify_HeightConditionerPath();
+		else if(this.widgetName.equals(Mediator.TEXT_textInitialConditionerValue)){
+			System.out.println("Text("+Mediator.TEXT_textInitialConditionerValue +")"+med.getTextInitialConditionerValue().getText());
+			MC.Text_Modify_InitialConditionerValue();
+		}else if(this.widgetName.equals(Mediator.TEXT_textInitialConditionerPath)){
+			System.out.println("Text("+Mediator.TEXT_textInitialConditionerPath +")"+med.getTextInitialConditionerPath().getText());
+			MC.Text_Modify_InitialConditionerPath();
 		}
+		
+		else if(this.widgetName.equals(Mediator.TEXT_textMaterialDBPath)){
+			System.out.println("Text("+Mediator.TEXT_textMaterialDBPath +")"+med.getTextMaterialDBPath().getText());
+			MC.Text_Modify_MaterialDBPath();
+		}
+		
 		
 		else if(this.widgetName.equals(Mediator.TEXT_textRadiusTolerance)){
 			System.out.println("Text("+Mediator.TEXT_textRadiusTolerance +")"+med.getTextRadiusTolerance().getText());
@@ -164,27 +164,27 @@ public class CustomText implements ICommand {
 		this.text = med.getTextSeatHeight();
 	}
 	
-	public void setCustomWidget_textRadiusConditionerValue(){
-		this.text =med.getTextRadiusConditionerValue();
+	public void setCustomWidget_textInitialConditionerValue(){
+		this.text =med.getTextInitialConditionerValue();
 	}
-	public void setCustomWidget_textRadiusConditionerPath(){
-		this.text =med.getTextRadiusConditionerPath();
+	public void setCustomWidget_textInitialConditionerPath(){
+		this.text =med.getTextInitialConditionerPath();
 	}
-	public void setCustomWidget_textHeightConditionerValue(){
-		this.text =med.getTextHeightConditionerValue();
+	
+	public void setCustomWidget_textMaterialDBPath(){
+		this.text = med.getTextMaterialDBPath();
 	}
-	public void setCustomWidget_textHeightConditionerPath(){
-		this.text =med.getTextHeightConditionerPath();
-	}
-
+	
 	public void setCustomWidget_textRadiusTolerance(){
 		this.text = med.getTextRadiusTolerance();
 	}
 	public void setCustomWidget_textHeightTolerance(){
 		this.text = med.getTextHeightTolerance();
-	}public void setCustomWidget_textMaximumIterationNumber(){
+	}
+	public void setCustomWidget_textMaximumIterationNumber(){
 		this.text = med.getTextMaximumIterationNumber();
-	}public void setCustomWidget_textLogEditor(){
+	}
+	public void setCustomWidget_textLogEditor(){
 		this.text = med.getTextLogEditor();
 	}
 	

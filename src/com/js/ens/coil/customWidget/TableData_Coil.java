@@ -1,5 +1,9 @@
 package com.js.ens.coil.customWidget;
 
+import java.util.ArrayList;
+
+import com.js.util.myUtil;
+
 
 public class TableData_Coil {
 	
@@ -17,6 +21,17 @@ public class TableData_Coil {
 	
 	public String getSaveData(){
 		return this.x+","+this.y+","+this.Height+","+this.Radius+","+this.Theta;
+	}
+	
+	public void setCoilGeometry(String line){
+		ArrayList<String> tokens = new ArrayList<String>();
+		tokens = myUtil.splitData(line, ",");
+		this.x = tokens.get(0);
+		this.y = tokens.get(1);
+		this.Height = tokens.get(2);
+		this.Radius = tokens.get(3);
+		this.Theta = tokens.get(4);
+		myUtil.CleareObj(tokens);
 	}
 	
 	public String getAllData(){

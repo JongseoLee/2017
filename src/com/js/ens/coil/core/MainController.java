@@ -19,6 +19,8 @@ import com.js.ens.coil.customWidget.ComboViewerLabelProvider_SelectTableData;
 import com.js.ens.coil.customWidget.TableData_Coil;
 import com.js.ens.coil.customWidget.TableViewerLabelProvider_Coil;
 import com.js.ens.coil.db.CoilDB;
+import com.js.ens.coil.db.LoadSimcosDB;
+import com.js.ens.coil.db.WriteCoilParam;
 import com.js.ens.coil.db.WriteSimcosDB;
 import com.js.ens.coil.dialog.MessageDlg;
 import com.js.ens.coil.dialog.NewDlg;
@@ -140,12 +142,22 @@ public class MainController {
 	// Button event
 	//
 	public void Button_StepSave(){
-		if(this.CurrentStep.equals(CoilDB.STEP1)){
-			this.SaveStep1();	
-		}else if(this.CurrentStep.equals(CoilDB.STEP2)){
-			this.SaveStep2();
+		try{
+			if(this.CurrentStep.equals(CoilDB.STEP1)){
+				this.SaveStep1();	
+			}else if(this.CurrentStep.equals(CoilDB.STEP2)){
+				this.SaveStep2();
+			}
+			this.SaveSimcosDB();
+			String msg = "Success - save step ";
+			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
+			msgDlg.open();
+		}catch(Exception e){
+			String msg = "Error - save step ";
+			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
+			msgDlg.open();
 		}
-		this.SaveSimcosDB();
+		
 	}
 	
 	public void Button_FileExplorer_CoilData(){
@@ -153,108 +165,85 @@ public class MainController {
 		String CoilDesignFilePath = this.FileExplorer_CoilData();
 		if(myUtil.checkPath(CoilDesignFilePath)){
 			med.getTextCoilFilePath().setText(CoilDesignFilePath);
-			this.coilDBObj.setCoilDesingFilePath(CoilDesignFilePath);
-			this.readCoilDataFile();
+			this.coilDBObj.setCoilDesignFilePath(CoilDesignFilePath);
+			this.readCoilDataFile(CoilDB.COIL_GEOMETRY_TYPE_NEW);
 			this.UpdateCoilGeometryData();
 		}
 	}
 	
-	public void Button_RadiusConditionerConstant(){
+	public void Button_InitialConditionerConstant(){
 		// radio button
-		if(med.getBtnRadiusConditionerConstant().getSelection()){
+		if(med.getBtnInitialConditionerConstant().getSelection()){
 			// Select Constant type
-			this.coilDBObj.setRadiusConditionerType(CoilDB.CONSTANT_TYPE);
-			med.getTextRadiusConditionerValue().setEnabled(true);
-			med.getTextRadiusConditionerPath().setEnabled(false);
-			med.getBtnRadiusConditionerExplorer().setEnabled(false);
+			this.coilDBObj.setInitialConditionerType(CoilDB.CONSTANT_TYPE);
+			med.getTextInitialConditionerValue().setEnabled(true);
+			med.getTextInitialConditionerPath().setEnabled(false);
+			med.getBtnInitialConditionerExplorer().setEnabled(false);
 		}else{
 			// Select File type
-			this.coilDBObj.setRadiusConditionerType(CoilDB.FILE_TYPE);
-			med.getTextRadiusConditionerValue().setEnabled(false);
-			med.getTextRadiusConditionerPath().setEnabled(true);
-			med.getBtnRadiusConditionerExplorer().setEnabled(true);
+			this.coilDBObj.setInitialConditionerType(CoilDB.FILE_TYPE);
+			med.getTextInitialConditionerValue().setEnabled(false);
+			med.getTextInitialConditionerPath().setEnabled(true);
+			med.getBtnInitialConditionerExplorer().setEnabled(true);
 		}
 	}
 	
-	public void Button_RadiusConditionerFile(){
+	public void Button_InitialConditionerFile(){
 		// radio button
-		if(med.getBtnRadiusConditionerFile().getSelection()){
+		if(med.getBtnInitialConditionerFile().getSelection()){
 			// Select File Type
-			this.coilDBObj.setRadiusConditionerType(CoilDB.FILE_TYPE);
-			med.getTextRadiusConditionerValue().setEnabled(false);
-			med.getTextRadiusConditionerPath().setEnabled(true);
-			med.getBtnRadiusConditionerExplorer().setEnabled(true);
+			this.coilDBObj.setInitialConditionerType(CoilDB.FILE_TYPE);
+			med.getTextInitialConditionerValue().setEnabled(false);
+			med.getTextInitialConditionerPath().setEnabled(true);
+			med.getBtnInitialConditionerExplorer().setEnabled(true);
 		}else{
 			// Select Constant Type
-			this.coilDBObj.setRadiusConditionerType(CoilDB.CONSTANT_TYPE);
-			med.getTextRadiusConditionerValue().setEnabled(true);
-			med.getTextRadiusConditionerPath().setEnabled(false);
-			med.getBtnRadiusConditionerExplorer().setEnabled(false);
+			this.coilDBObj.setInitialConditionerType(CoilDB.CONSTANT_TYPE);
+			med.getTextInitialConditionerValue().setEnabled(true);
+			med.getTextInitialConditionerPath().setEnabled(false);
+			med.getBtnInitialConditionerExplorer().setEnabled(false);
+		}
+
+		
+	}
+	
+	public void Button_InitialConditioner_FileExplorer(){
+		String InitialConditionerFilePath = this.FileExplorer_InitialConditioner();
+		if(myUtil.checkPath(InitialConditionerFilePath)){
+			med.getTextInitialConditionerPath().setText(InitialConditionerFilePath);
+			this.coilDBObj.setInitialConditionerFile(InitialConditionerFilePath);
 		}
 	}
 	
-	public void Button_RadiusConditioner_FileExplorer(){
-		String RadiusConditionerFilePath = this.FileExplorer_RadiusConditioner();
-		if(myUtil.checkPath(RadiusConditionerFilePath)){
-			med.getTextRadiusConditionerPath().setText(RadiusConditionerFilePath);
-			this.coilDBObj.setRadiusConditionerFile(RadiusConditionerFilePath);
+	public void Button_MaterialDB_FileExplorer(){
+		String MaterialDBFilePath = this.FileExplorer_MaterialDB();
+		if(myUtil.checkPath(MaterialDBFilePath)){
+			med.getTextMaterialDBPath().setText(MaterialDBFilePath);
+			this.coilDBObj.setMaterialDB(MaterialDBFilePath);
 		}
 	}
 	
-	public void Button_HeightConditionerConstant(){
-		// radio button
-		if(med.getBtnHeightConditionerConstant().getSelection()){
-			// Select Constant Type
-			this.coilDBObj.setHeightConditionerType(CoilDB.CONSTANT_TYPE);
-			med.getTextHeightConditionerValue().setEnabled(true);
-			med.getTextHeightConditionerPath().setEnabled(false);
-			med.getBtnHeightConditionerExplorer().setEnabled(false);
-		}else{
-			// Select File Type
-			this.coilDBObj.setHeightConditionerType(CoilDB.FILE_TYPE);
-			med.getTextHeightConditionerValue().setEnabled(false);
-			med.getTextHeightConditionerPath().setEnabled(true);
-			med.getBtnHeightConditionerExplorer().setEnabled(true);
-		}
-	}
-	
-	public void Button_HeightConditonerFile(){
-		// radio button
-		if(med.getBtnHeightConditionerFile().getSelection()){
-			// Select File Type
-			this.coilDBObj.setHeightConditionerType(CoilDB.FILE_TYPE);
-			med.getTextHeightConditionerValue().setEnabled(false);
-			med.getTextHeightConditionerPath().setEnabled(true);
-			med.getBtnHeightConditionerExplorer().setEnabled(true);
-		}else{
-			// Select Constant Type
-			this.coilDBObj.setHeightConditionerType(CoilDB.CONSTANT_TYPE);
-			med.getTextHeightConditionerValue().setEnabled(true);
-			med.getTextHeightConditionerPath().setEnabled(false);
-			med.getBtnHeightConditionerExplorer().setEnabled(false);
-		}
-	}
-	
-	public void Button_HeightConditioner_FileExplorer(){
-		String HeightConditionerFilePath = this.FileExplorer_HeightConditioner();
-		if(myUtil.checkPath(HeightConditionerFilePath)){
-			med.getTextHeightConditionerPath().setText(HeightConditionerFilePath);
-			this.coilDBObj.setHeightConditionerFile(HeightConditionerFilePath);
-		}
-	}
 	
 	public void Button_StartSimulation(){
 		WriteSimcosDB dbObj = new WriteSimcosDB();
-		// Save All Data 
+		// Save All Data -> include coil_design.csv
 		dbObj.saveDBFile(this.coilDBObj);
-		// create init.dat for python script
-		dbObj.createPythonScriptInput(this.coilDBObj);
 		myUtil.CleareObj(dbObj);
+		// create coil_param.csv
+		//==> to do something......
+		this.writeCoilParam();
+		
+		// create coil_initial_conditioner.csv
+		//==> to do something......
+		
+		
 		
 		// run mentat - pr main_dwku.proc
-		// this.MentatPath
-		this.preferencesObj.getPreferencesValue(Preferences.MentatPath);
+		String runCMD = this.Command.replace("{MentatPath}", this.MentatPath);
 		
+		
+		// after read coil_itr.log file, update read log field and progressbar.
+		//==> to do something......
 		
 	}
 	
@@ -285,7 +274,7 @@ public class MainController {
 	//
 	public void Text_Modify_CoilFilePath(){
 		String data = med.getTextCoilFilePath().getText().trim();
-		this.coilDBObj.setCoilDesingFilePath(data);
+		this.coilDBObj.setCoilDesignFilePath(data);
 	}
 	
 	public void Text_Modify_ProductName(){
@@ -364,24 +353,20 @@ public class MainController {
 		this.coilDBObj.setSeatHeight(data);
 	}
 	
-	public void Text_Modify_RadiusConditionerValue(){
-		String data = med.getTextRadiusConditionerValue().getText().trim();
-		this.coilDBObj.setRadiusConditionerConstant(data);
+	public void Text_Modify_InitialConditionerValue(){
+		String data =med.getTextInitialConditionerValue().getText().trim();
+		this.coilDBObj.setInitialConditionerConstant(data);
 	}
 	
-	public void Text_Modify_RadiusConditionerPath(){
-		String data = med.getTextRadiusConditionerPath().getText().trim();
-		this.coilDBObj.setRadiusConditionerFile(data);
+	public void Text_Modify_InitialConditionerPath(){
+		String data = med.getTextInitialConditionerPath().getText().trim();
+		this.coilDBObj.setInitialConditionerFile(data);
+		
 	}
 	
-	public void Text_Modify_HeightConditionerValue(){
-		String data = med.getTextHeightConditionerValue().getText().trim();
-		this.coilDBObj.setHeightConditionerConstant(data);
-	}
-	
-	public void Text_Modify_HeightConditionerPath(){
-		String data = med.getTextHeightConditionerPath().getText().trim();
-		this.coilDBObj.setHeightConditionerFile(data);
+	public void Text_Modify_MaterialDBPath(){
+		String data = med.getTextMaterialDBPath().getText().trim();
+		this.coilDBObj.setMaterialDB(data);
 	}
 	
 	public void Text_Modify_RadiusTolerance(){
@@ -545,9 +530,47 @@ public class MainController {
 		
 	}
 	
-	public void File_Open_Run(){
-		this.preferencesObj = new Preferences();
-		this.getPreferencesData();
+	public void File_Open_Run(String SimcosDBFilePath){
+		if(this.isExistedProject(SimcosDBFilePath)){
+			// CoilDB init
+			if(this.coilDBObj != null){
+				myUtil.CleareObj(this.coilDBObj);
+				myUtil.CleareObj(this.initValueObj);
+				myUtil.CleareObj(this.appFolderObj);
+				myUtil.CleareObj(this.preferencesObj);
+				//System.out.println("DB Path : "+SimcosDBFilePath);
+			}
+			this.coilDBObj = new CoilDB();
+			this.initValueObj = new InitValue(this.AppPath);
+			this.appFolderObj = new AppFolder();
+			this.preferencesObj = new Preferences();
+			this.CurrentStep = CoilDB.STEP1;
+			
+			// Load SimcosDB File and setup value at UI
+			LoadSimcosDB loadDBObj = new LoadSimcosDB();
+			loadDBObj.readDBFile(this.coilDBObj, SimcosDBFilePath);
+			this.LoadCoilDB_UI();
+			
+			// load preferences data 
+			this.getPreferencesData();
+			
+			// Activation Widget
+			this.WidgetEnable();
+			
+			// Turn on Step1 Process Label
+			this.Label_Change_ProcessStep1(); 
+			/*
+			med.getLblModeling().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
+			med.getLblSimulationAndExportResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+			med.getLblShowResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+			*/
+		}else{
+			
+			String msg = "Check Project Folder.";
+			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
+			msgDlg.open();
+		}
+		
 	}
 
 	public void File_Save_Run(){
@@ -591,6 +614,39 @@ public class MainController {
 		
 	}
 	
+	//==================================================================================
+	private boolean isExistedProject(String dbFilePath){
+		// call file -> open 
+		//System.out.println("open db path : "+dbFilePath);
+		boolean result = false;
+		String parentPath = myUtil.getParentPath(dbFilePath);
+		String projectName = "null";
+		
+		Reader reader = new Reader(dbFilePath);
+		reader.running();
+		for(String line : reader.getFileDataList()){
+			if(line.contains(LoadSimcosDB.ProjectNameKey)){
+				ArrayList<String> tokens = new ArrayList<String>();
+				tokens = myUtil.splitData(line, "=");
+				projectName = tokens.get(1);
+				break;
+			}
+		}
+		
+		//String projectFolder = myUtil.setPath(parentPath, projectName);
+		System.out.println(projectName);
+		System.out.println(parentPath);
+		if(myUtil.checkPath(parentPath)){
+			// exist
+			result = true;
+		}else{
+			// not exist
+			result = false;
+		}
+		
+		return result;
+	}
+
 	//==================================================================================
 	private void copyScriptFile(){
 		String configFolder = myUtil.setPath(this.AppPath, AppFolder.CONFIG);
@@ -646,10 +702,16 @@ public class MainController {
 		}
 	}
 	
-	private void readCoilDataFile(){
+	private void readCoilDataFile(String type){
 		// Read Coil_design.csv process 2
 		CoilDataLabelfromCSV coilDataIndeObj = new CoilDataLabelfromCSV();
-		Reader reader = new Reader(this.coilDBObj.getCoilDesingFilePath());
+		String sourceFile = null;
+		if(type.equals(CoilDB.COIL_GEOMETRY_TYPE_OPEN)){
+			sourceFile = this.coilDBObj.getCoilDesignUserFilePath();
+		}else if(type.equals(CoilDB.COIL_GEOMETRY_TYPE_NEW)){
+			sourceFile = this.coilDBObj.getCoilDesignFilePath();
+		}
+		Reader reader = new Reader(sourceFile);
 		reader.running();
 		ArrayList<String> fileDataList = new ArrayList<String>();
 		fileDataList = reader.getFileDataList();
@@ -746,35 +808,42 @@ public class MainController {
 	}
 	
 	private void SaveCoilGeometryData(){
-		String SimcosFolder = myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA);
-		String coilDesingUserFilePath = myUtil.setPath(SimcosFolder,AppFolder.coilDesignCSVFileName);
-		this.coilDBObj.setCoilDesingUserFilePath(coilDesingUserFilePath);
-		
-		CoilDataLabelfromCSV coilDataIndeObj = new CoilDataLabelfromCSV();
-		coilDataIndeObj.getLabel(CoilDataLabelfromCSV.ProductName);
-		
-		
-		ArrayList<String> outputDataList = new ArrayList<String>();
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.ProductName)+","+this.coilDBObj.getProductName());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.WireDiameter)+","+this.coilDBObj.getWireDiameter());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.CenterDiameter)+","+this.coilDBObj.getCenterDiameter());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.InternalDiameter)+","+this.coilDBObj.getInternalDiameter());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.ExternalDiameter)+","+this.coilDBObj.getExternalDiameter());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.UpperInnerDiameter)+","+this.coilDBObj.getUpperInnerDiameter());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.LowerInnerDiameter)+","+this.coilDBObj.getLowerInnerDiameter());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.TotalTurns)+","+this.coilDBObj.getTotalTurns());
-		outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.CompletedProduct));
-		outputDataList.add("X,Y,Z,R,THETA(TURN)");
-		
-		for(TableData_Coil obj : this.coilDBObj.getGeometryDataTableList()){
-			outputDataList.add(obj.getSaveData());
+		if(!this.coilDBObj.getCoilDesignFilePath().equals("null")){
+			String SimcosFolder = myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA);
+			String coilDesingUserFilePath = myUtil.setPath(SimcosFolder,AppFolder.coilDesignCSVFileName);
+			this.coilDBObj.setCoilDesignUserFilePath(coilDesingUserFilePath);
+			
+			CoilDataLabelfromCSV coilDataIndeObj = new CoilDataLabelfromCSV();
+			coilDataIndeObj.getLabel(CoilDataLabelfromCSV.ProductName);
+			
+			
+			ArrayList<String> outputDataList = new ArrayList<String>();
+			outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.ProductName)+","+this.coilDBObj.getProductName());
+			outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.WireDiameter)+","+this.coilDBObj.getWireDiameter());
+			outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.CenterDiameter)+","+this.coilDBObj.getCenterDiameter());
+			outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.InternalDiameter)+","+this.coilDBObj.getInternalDiameter());
+			outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.ExternalDiameter)+","+this.coilDBObj.getExternalDiameter());
+			outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.UpperInnerDiameter)+","+this.coilDBObj.getUpperInnerDiameter());
+			outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.LowerInnerDiameter)+","+this.coilDBObj.getLowerInnerDiameter());
+			outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.TotalTurns)+","+this.coilDBObj.getTotalTurns());
+			outputDataList.add(coilDataIndeObj.getLabel(CoilDataLabelfromCSV.CompletedProduct));
+			outputDataList.add("X,Y,Z,R,THETA(TURN)");
+			
+			for(TableData_Coil obj : this.coilDBObj.getGeometryDataTableList()){
+				outputDataList.add(obj.getSaveData());
+			}
+			
+			Writer writer = new Writer(this.coilDBObj.getCoilDesignUserFilePath());
+			writer.running(outputDataList);
+			
+			// Delete object
+			myUtil.CleareObj(coilDataIndeObj);
 		}
-		
-		Writer writer = new Writer(this.coilDBObj.getCoilDesingUserFilePath());
-		writer.running(outputDataList);
-		
-		// Delete object
-		myUtil.CleareObj(coilDataIndeObj);
+	}
+	
+	private void writeCoilParam(){
+		WriteCoilParam obj = new WriteCoilParam();
+		obj.writeParamData(this.coilDBObj);
 	}
 	
 	//==================================================================================
@@ -788,49 +857,78 @@ public class MainController {
 		med.getTextSeatLInnerMargina().setText(this.initValueObj.getInitValue(InitValue.SeatLInnerMargina));
 		med.getTextSeatHeight().setText(this.initValueObj.getInitValue(InitValue.SeatHeight));
 		// Initial Conditioner
-		if(this.initValueObj.getInitValue(InitValue.RadiusConditionerType).equals(CoilDB.CONSTANT_TYPE)){
-			med.getBtnRadiusConditionerConstant().setSelection(true);
-			med.getBtnRadiusConditionerFile().setSelection(false);
-			med.getTextRadiusConditionerValue().setText(this.initValueObj.getInitValue(InitValue.RadiusConditionerConstant));
-			med.getTextRadiusConditionerValue().setEnabled(true);
-			med.getTextRadiusConditionerPath().setText(this.initValueObj.getInitValue(InitValue.RadiusConditionerFile));
-			med.getTextRadiusConditionerPath().setEnabled(false);
-			med.getBtnRadiusConditionerExplorer().setEnabled(false);
+		if(this.initValueObj.getInitValue(InitValue.InitialConditionerType).equals(CoilDB.CONSTANT_TYPE)){
+			med.getBtnInitialConditionerConstant().setSelection(true);
+			med.getBtnInitialConditionerFile().setSelection(false);
+			med.getTextInitialConditionerValue().setText(this.initValueObj.getInitValue(InitValue.InitialConditionerConstant));
+			med.getTextInitialConditionerValue().setEnabled(true);
+			med.getTextInitialConditionerPath().setText(this.initValueObj.getInitValue(InitValue.InitialConditionerFile));
+			med.getTextInitialConditionerPath().setEnabled(false);
+			med.getBtnInitialConditionerExplorer().setEnabled(false);
 		}else{
-			med.getBtnRadiusConditionerConstant().setSelection(false);
-			med.getBtnRadiusConditionerFile().setSelection(true);
-			med.getTextRadiusConditionerValue().setText(this.initValueObj.getInitValue(InitValue.RadiusConditionerConstant));
-			med.getTextRadiusConditionerValue().setEnabled(false);
-			med.getTextRadiusConditionerPath().setText(this.initValueObj.getInitValue(InitValue.RadiusConditionerFile));
-			med.getTextRadiusConditionerPath().setEnabled(true);
-			med.getBtnRadiusConditionerExplorer().setEnabled(true);			
+			med.getBtnInitialConditionerConstant().setSelection(false);
+			med.getBtnInitialConditionerFile().setSelection(true);
+			med.getTextInitialConditionerValue().setText(this.initValueObj.getInitValue(InitValue.InitialConditionerConstant));
+			med.getTextInitialConditionerValue().setEnabled(false);
+			med.getTextInitialConditionerPath().setText(this.initValueObj.getInitValue(InitValue.InitialConditionerFile));
+			med.getTextInitialConditionerPath().setEnabled(true);
+			med.getBtnInitialConditionerExplorer().setEnabled(true);			
 		}
-		if(this.initValueObj.getInitValue(InitValue.HeightConditionerType).equals(CoilDB.CONSTANT_TYPE)){
-			med.getBtnHeightConditionerConstant().setSelection(true);
-			med.getBtnHeightConditionerFile().setSelection(false);
-			med.getTextHeightConditionerValue().setText(this.initValueObj.getInitValue(InitValue.HeightConditionerConstant));
-			med.getTextHeightConditionerValue().setEnabled(true);
-			med.getTextHeightConditionerPath().setText(this.initValueObj.getInitValue(InitValue.HeightConditionerFile));
-			med.getTextHeightConditionerPath().setEnabled(false);
-			med.getBtnHeightConditionerExplorer().setEnabled(false);
-		}else{
-			med.getBtnHeightConditionerConstant().setSelection(false);
-			med.getBtnHeightConditionerFile().setSelection(true);
-			med.getTextHeightConditionerValue().setText(this.initValueObj.getInitValue(InitValue.HeightConditionerConstant));
-			med.getTextHeightConditionerValue().setEnabled(false);
-			med.getTextHeightConditionerPath().setText(this.initValueObj.getInitValue(InitValue.HeightConditionerFile));
-			med.getTextHeightConditionerPath().setEnabled(true);
-			med.getBtnHeightConditionerExplorer().setEnabled(true);
-		}
+		// Material Database 
+		med.getTextMaterialDBPath().setText(this.initValueObj.getInitValue(InitValue.MaterialDatabase));
 		// Analysis Options
 		med.getTextRadiusTolerance().setText(this.initValueObj.getInitValue(InitValue.RadiusTolerance));
 		med.getTextHeightTolerance().setText(this.initValueObj.getInitValue(InitValue.HeightTolerance));
 		med.getTextMaximumIterationNumber().setText(this.initValueObj.getInitValue(InitValue.MaximumIterationNumber));
 	}
+	
+	private void LoadCoilDB_UI(){
+		// Coil_design 
+		if(!this.coilDBObj.getCoilDesignUserFilePath().equals("null")){
+			this.readCoilDataFile(CoilDB.COIL_GEOMETRY_TYPE_OPEN);
+			this.UpdateCoilGeometryData();
+			med.getTextCoilFilePath().setText(this.coilDBObj.getCoilDesignFilePath());
+		}
+		// Setting Process Information 
+		med.getTextHotSettingTemp().setText(this.coilDBObj.getHotSettingTemp());
+		med.getTextColdSettingTemp().setText(this.coilDBObj.getColdSettingTemp());
+		med.getTextHotSettingHeight().setText(this.coilDBObj.getHotSettingHeight());
+		med.getTextColdSettingHeight().setText(this.coilDBObj.getColdSettingHeight());
+		med.getTextSeatUInnerMargina().setText(this.coilDBObj.getSeatUIneerMargina());
+		med.getTextSeatLInnerMargina().setText(this.coilDBObj.getSeatLIneerMargina());
+		med.getTextSeatHeight().setText(this.coilDBObj.getSeatHeight());
+		// Initial Conditioner
+		if(this.coilDBObj.getInitialConditionerType().equals(CoilDB.CONSTANT_TYPE)){
+			med.getBtnInitialConditionerConstant().setSelection(true);
+			med.getBtnInitialConditionerFile().setSelection(false);
+			med.getTextInitialConditionerValue().setText(this.coilDBObj.getInitialConditionerConstant());
+			med.getTextInitialConditionerValue().setEnabled(true);
+			med.getTextInitialConditionerPath().setText(this.coilDBObj.getInitialConditionerFile());
+			med.getTextInitialConditionerPath().setEnabled(false);
+			med.getBtnInitialConditionerExplorer().setEnabled(false);
+		}else{
+			med.getBtnInitialConditionerConstant().setSelection(false);
+			med.getBtnInitialConditionerFile().setSelection(true);
+			med.getTextInitialConditionerValue().setText(this.coilDBObj.getInitialConditionerConstant());
+			med.getTextInitialConditionerValue().setEnabled(false);
+			med.getTextInitialConditionerPath().setText(this.coilDBObj.getInitialConditionerFile());
+			med.getTextInitialConditionerPath().setEnabled(true);
+			med.getBtnInitialConditionerExplorer().setEnabled(true);			
+		}
+		
+		med.getTextMaterialDBPath().setText(this.coilDBObj.getMaterialDB());
+		
+		// Analysis Options
+		med.getTextRadiusTolerance().setText(this.coilDBObj.getRadiusTolerance());
+		med.getTextHeightTolerance().setText(this.coilDBObj.getHeightTolerance());
+		med.getTextMaximumIterationNumber().setText(this.coilDBObj.getMaximumIterationNumber());
+	}
+	
+	
 	//==================================================================================
-	private String FileExplorer_RadiusConditioner(){
+	private String FileExplorer_InitialConditioner(){
 		FileDialog dlg = new FileDialog(med.getBtnExplorer().getShell(),SWT.OPEN);
-		dlg.setText("Select Radius Conditioner File.");
+		dlg.setText("Select Initial Conditioner File.");
 		
 		String [] extNames = {"ALL(*.*)"};
 		String [] extType = {"*.*"};
@@ -849,9 +947,9 @@ public class MainController {
 		}
 	}
 	
-	private String FileExplorer_HeightConditioner(){
+	private String FileExplorer_MaterialDB(){
 		FileDialog dlg = new FileDialog(med.getBtnExplorer().getShell(),SWT.OPEN);
-		dlg.setText("Select Height Conditioner File.");
+		dlg.setText("Select Materila Database File.");
 		
 		String [] extNames = {"ALL(*.*)"};
 		String [] extType = {"*.*"};
@@ -869,8 +967,11 @@ public class MainController {
 			return path;
 		}
 	}
+	
 	//==================================================================================
 	private void SaveStep1(){
+		// CenterBeamNodeStart
+		this.coilDBObj.setCenterBeamNodeStart(this.initValueObj.getInitValue(InitValue.CenterBeamNodeStart));
 		// Coil data 
 		this.coilDBObj.setProductName(med.getTextProductName().getText().trim());
 		this.coilDBObj.setWireDiameter(med.getTextWireDiameter().getText().trim());
@@ -889,20 +990,14 @@ public class MainController {
 		this.coilDBObj.setSeatLIneerMargina(med.getTextSeatLInnerMargina().getText().trim());
 		this.coilDBObj.setSeatHeight(med.getTextSeatHeight().getText().trim());
 		// Initial Conditioner
-		if(med.getBtnRadiusConditionerConstant().getSelection()){
-			this.coilDBObj.setRadiusConditionerType(CoilDB.CONSTANT_TYPE);
+		if(med.getBtnInitialConditionerConstant().getSelection()){
+			this.coilDBObj.setInitialConditionerType(CoilDB.CONSTANT_TYPE);
 		}else{
-			this.coilDBObj.setRadiusConditionerType(CoilDB.FILE_TYPE);
+			this.coilDBObj.setInitialConditionerType(CoilDB.FILE_TYPE);
 		}
-		this.coilDBObj.setRadiusConditionerConstant(med.getTextRadiusConditionerValue().getText().trim());
-		this.coilDBObj.setRadiusConditionerFile(med.getTextRadiusConditionerPath().getText().trim());
-		if(med.getBtnHeightConditionerConstant().getSelection()){
-			this.coilDBObj.setHeightConditionerType(CoilDB.CONSTANT_TYPE);
-		}else{
-			this.coilDBObj.setHeightConditionerType(CoilDB.FILE_TYPE);
-		}
-		this.coilDBObj.setHeightConditionerConstant(med.getTextHeightConditionerValue().getText().trim());
-		this.coilDBObj.setHeightConditionerFile(med.getTextHeightConditionerPath().getText().trim());
+		this.coilDBObj.setInitialConditionerConstant(med.getTextInitialConditionerValue().getText().trim());
+		this.coilDBObj.setInitialConditionerFile(med.getTextInitialConditionerPath().getText().trim());
+		
 	}
 	
 	private void SaveStep2(){
