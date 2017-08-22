@@ -8,7 +8,7 @@ public class AppFolder {
 	// FolderName
 	public static String CONFIG = "Config";
 	public static String SCRIPT = "Script";
-	public static String MATERIALDB = "MaterialDB";
+	public static String MATERIAL_DB = "MaterialDB";
 	public static String SIMCOS_WORKSPACE = "Simcos_Workspace";
 	public static String SIMCOS_DATA = "SimcosData";
 	
@@ -26,8 +26,7 @@ public class AppFolder {
 	public static String coilDesignCSVFileName = "coil_design.csv";
 	public static String mainProcFileName = "main_dwku.proc";
 	public static String pythonScriptFileName = "iterative_reverse_setting_0721.py";
-	public static String materialFileName = "posh1s125.mud";
-	//public static String pythonScriptInputDataFileName = "init.dat";
+	public static String coilItrLogFileName = "coil_itr.log";
 	
 	// member variable
 	private String userWorkspace;
@@ -38,14 +37,8 @@ public class AppFolder {
 	
 	public void makeUserWorkspace(){
 		this.userWorkspace = MC.getCoilDBObj().getProjectFolderPath();
-		//String resultFolderPath = myUtil.setPath(this.userWorkspace, RESULT);
 		String simcosDataFolderPath = myUtil.setPath(this.userWorkspace, SIMCOS_DATA);
-		
-		//myUtil.makeDirectory(resultFolderPath);
 		myUtil.makeDirectory(simcosDataFolderPath);
 	}
-	
-	
-
 	
 }

@@ -51,16 +51,6 @@ public class CoilDB {
 	
 	private String MaterialDB = "null";
 	
-	/*
-	private String RadiusConditionerType = "null";	//constant, file
-	private String RadiusConditionerConstant = "null";
-	private String RadiusConditionerFile = "null";
-	private String HeightConditionerType = "null";	//constant, file
-	private String HeightConditionerConstant = "null";
-	private String HeightConditionerFile = "null";
-	// */
-	
-	
 	// Step2. Simulation and Export Result
 	private String RadiusTolerance = "null";
 	private String HeightTolerance = "null";
@@ -107,10 +97,10 @@ public class CoilDB {
 			}
 		}
 		System.out.println("-------------------------------------------------------");
-		System.out.println("HotSettingTemp      : "+HotSettingTemp);
-		System.out.println("ColdSettingTemp     : "+ColdSettingTemp);
 		System.out.println("HotSettingHeight    : "+HotSettingHeight);
+		System.out.println("HotSettingTemp      : "+HotSettingTemp);
 		System.out.println("ColdSettingHeight   : "+ColdSettingHeight);
+		System.out.println("ColdSettingTemp     : "+ColdSettingTemp);
 		System.out.println("SeatUIneerMargina   : "+SeatUIneerMargina);
 		System.out.println("SeatLIneerMargina   : "+SeatLIneerMargina);
 		System.out.println("SeatHeight          : "+SeatHeight);

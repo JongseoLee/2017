@@ -2,7 +2,6 @@ package com.js.ens.coil.core;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.swt.SWT;
@@ -46,6 +45,12 @@ public class MainController {
 	private String UserWorkspace;
 	private String CurrentStep = CoilDB.STEP1;
 	
+	//File Explorer current Directory
+	private String cPath_coilDesignData;
+	private String cPath_initialConditioner;
+	private String cPath_materialDB;
+	
+	
 	// Preferences values
 	private String MarcPath;
 	private String MentatPath;
@@ -70,7 +75,11 @@ public class MainController {
 		}else{
 			this.AppPath = "/Users/jslee/CodeFactory/Git/2017/2017";
 		}
-		this.BaseWorkspace = myUtil.setPath(this.AppPath, "Simcos_Workspace");
+		this.BaseWorkspace = myUtil.setPath(this.AppPath, AppFolder.SIMCOS_WORKSPACE);
+		
+		this.cPath_coilDesignData = myUtil.setPath(this.AppPath, AppFolder.CONFIG);
+		this.cPath_initialConditioner = myUtil.setPath(this.AppPath, AppFolder.CONFIG);
+		this.cPath_materialDB = myUtil.setPath(myUtil.setPath(this.AppPath, AppFolder.CONFIG),AppFolder.MATERIAL_DB);
 		
 	}
 		
@@ -164,7 +173,8 @@ public class MainController {
 		// Read Coil_design.csv process Start
 		String CoilDesignFilePath = this.FileExplorer_CoilData();
 		if(myUtil.checkPath(CoilDesignFilePath)){
-			med.getTextCoilFilePath().setText(CoilDesignFilePath);
+			String fileName = myUtil.getFileNameIncludeExtension(CoilDesignFilePath);
+			med.getTextCoilFilePath().setText(fileName);
 			this.coilDBObj.setCoilDesignFilePath(CoilDesignFilePath);
 			this.readCoilDataFile(CoilDB.COIL_GEOMETRY_TYPE_NEW);
 			this.UpdateCoilGeometryData();
@@ -210,7 +220,8 @@ public class MainController {
 	public void Button_InitialConditioner_FileExplorer(){
 		String InitialConditionerFilePath = this.FileExplorer_InitialConditioner();
 		if(myUtil.checkPath(InitialConditionerFilePath)){
-			med.getTextInitialConditionerPath().setText(InitialConditionerFilePath);
+			String fileName = myUtil.getFileNameIncludeExtension(InitialConditionerFilePath);
+			med.getTextInitialConditionerPath().setText(fileName);
 			this.coilDBObj.setInitialConditionerFile(InitialConditionerFilePath);
 		}
 	}
@@ -218,7 +229,8 @@ public class MainController {
 	public void Button_MaterialDB_FileExplorer(){
 		String MaterialDBFilePath = this.FileExplorer_MaterialDB();
 		if(myUtil.checkPath(MaterialDBFilePath)){
-			med.getTextMaterialDBPath().setText(MaterialDBFilePath);
+			String fileName = myUtil.getFileName(MaterialDBFilePath);
+			med.getTextMaterialDBPath().setText(fileName);
 			this.coilDBObj.setMaterialDB(MaterialDBFilePath);
 		}
 	}
@@ -232,11 +244,8 @@ public class MainController {
 		// create coil_param.csv
 		//==> to do something......
 		this.writeCoilParam();
-		
-		// create coil_initial_conditioner.csv
-		//==> to do something......
-		
-		
+		// copy select source files - MaterialDB, initial conditioner file
+		this.copySourceFileForModeling();
 		
 		// run mentat - pr main_dwku.proc
 		String runCMD = this.Command.replace("{MentatPath}", this.MentatPath);
@@ -248,7 +257,17 @@ public class MainController {
 	}
 	
 	public void Button_ReadLog(){
-		
+		String logFilePath = myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),AppFolder.coilItrLogFileName);
+		if(myUtil.checkPath(logFilePath)){
+			Reader reader = new Reader(logFilePath);
+			reader.running();
+			String data = "";
+			for(String line : reader.getFileDataList()){
+				data += line +"\n";
+			}
+			med.getTextLogEditor().setText(data);
+			med.getTextLogEditor().setSelection(data.length());
+		}
 	}
 	
 	public void Button_ShowGraphWindow(){
@@ -662,6 +681,19 @@ public class MainController {
 		myUtil.fileCopy(pyScript, destPyScriptPath);
 		myUtil.fileCopy(mainProc, destMainProcPath);
 	}
+	
+	private void copySourceFileForModeling(){
+		// MaterialDB, Initial Conditioner 
+		String SimcosDataFolder = myUtil.setPath(this.coilDBObj.getProjectFolderPath(),AppFolder.SIMCOS_DATA);
+		//String destPyScriptPath = myUtil.setPath(SimcosDataFolder, AppFolder.pythonScriptFileName);
+		//String destMainProcPath = myUtil.setPath(SimcosDataFolder, AppFolder.mainProcFileName);
+		
+		//String materialDBFile = "";
+		if(!this.coilDBObj.getMaterialDB().equals("null")){
+			
+		}
+		
+	}
 	//==================================================================================
 	private void getPreferencesData(){
 		// Load Preferences data 
@@ -691,13 +723,14 @@ public class MainController {
 		dlg.setFilterNames(extNames);
 		dlg.setFilterExtensions(extType);
 		// Open ProjectFolder.
-		//dlg.setFilterPath(this.getAppPath());
+		dlg.setFilterPath(this.cPath_coilDesignData);
 		
 		dlg.setFilterNames(extNames);
 		String path = dlg.open();
 		if (path == null){
 			return "Retry";
 		}else {
+			this.cPath_coilDesignData = myUtil.getParentPath(path);
 			return path;
 		}
 	}
@@ -808,6 +841,7 @@ public class MainController {
 	}
 	
 	private void SaveCoilGeometryData(){
+		// create coil_design.csv 
 		if(!this.coilDBObj.getCoilDesignFilePath().equals("null")){
 			String SimcosFolder = myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA);
 			String coilDesingUserFilePath = myUtil.setPath(SimcosFolder,AppFolder.coilDesignCSVFileName);
@@ -887,7 +921,7 @@ public class MainController {
 		if(!this.coilDBObj.getCoilDesignUserFilePath().equals("null")){
 			this.readCoilDataFile(CoilDB.COIL_GEOMETRY_TYPE_OPEN);
 			this.UpdateCoilGeometryData();
-			med.getTextCoilFilePath().setText(this.coilDBObj.getCoilDesignFilePath());
+			med.getTextCoilFilePath().setText(myUtil.getFileNameIncludeExtension(this.coilDBObj.getCoilDesignFilePath()));
 		}
 		// Setting Process Information 
 		med.getTextHotSettingTemp().setText(this.coilDBObj.getHotSettingTemp());
@@ -903,7 +937,7 @@ public class MainController {
 			med.getBtnInitialConditionerFile().setSelection(false);
 			med.getTextInitialConditionerValue().setText(this.coilDBObj.getInitialConditionerConstant());
 			med.getTextInitialConditionerValue().setEnabled(true);
-			med.getTextInitialConditionerPath().setText(this.coilDBObj.getInitialConditionerFile());
+			med.getTextInitialConditionerPath().setText(myUtil.getFileNameIncludeExtension(this.coilDBObj.getInitialConditionerFile()));
 			med.getTextInitialConditionerPath().setEnabled(false);
 			med.getBtnInitialConditionerExplorer().setEnabled(false);
 		}else{
@@ -911,12 +945,12 @@ public class MainController {
 			med.getBtnInitialConditionerFile().setSelection(true);
 			med.getTextInitialConditionerValue().setText(this.coilDBObj.getInitialConditionerConstant());
 			med.getTextInitialConditionerValue().setEnabled(false);
-			med.getTextInitialConditionerPath().setText(this.coilDBObj.getInitialConditionerFile());
+			med.getTextInitialConditionerPath().setText(myUtil.getFileNameIncludeExtension(this.coilDBObj.getInitialConditionerFile()));
 			med.getTextInitialConditionerPath().setEnabled(true);
 			med.getBtnInitialConditionerExplorer().setEnabled(true);			
 		}
 		
-		med.getTextMaterialDBPath().setText(this.coilDBObj.getMaterialDB());
+		med.getTextMaterialDBPath().setText(myUtil.getFileName(this.coilDBObj.getMaterialDB()));
 		
 		// Analysis Options
 		med.getTextRadiusTolerance().setText(this.coilDBObj.getRadiusTolerance());
@@ -936,13 +970,14 @@ public class MainController {
 		dlg.setFilterNames(extNames);
 		dlg.setFilterExtensions(extType);
 		// Open ProjectFolder.
-		//dlg.setFilterPath(this.getAppPath());
+		dlg.setFilterPath(this.cPath_initialConditioner);
 		
 		dlg.setFilterNames(extNames);
 		String path = dlg.open();
 		if (path == null){
 			return "Retry";
 		}else {
+			this.cPath_initialConditioner = myUtil.getParentPath(path);
 			return path;
 		}
 	}
@@ -957,13 +992,14 @@ public class MainController {
 		dlg.setFilterNames(extNames);
 		dlg.setFilterExtensions(extType);
 		// Open ProjectFolder.
-		//dlg.setFilterPath(this.getAppPath());
+		dlg.setFilterPath(this.cPath_materialDB);
 		
 		dlg.setFilterNames(extNames);
 		String path = dlg.open();
 		if (path == null){
 			return "Retry";
 		}else {
+			this.cPath_materialDB = myUtil.getParentPath(path);
 			return path;
 		}
 	}
@@ -996,7 +1032,7 @@ public class MainController {
 			this.coilDBObj.setInitialConditionerType(CoilDB.FILE_TYPE);
 		}
 		this.coilDBObj.setInitialConditionerConstant(med.getTextInitialConditionerValue().getText().trim());
-		this.coilDBObj.setInitialConditionerFile(med.getTextInitialConditionerPath().getText().trim());
+		
 		
 	}
 	

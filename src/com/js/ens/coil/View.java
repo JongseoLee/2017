@@ -253,6 +253,7 @@ public class View extends ViewPart {
 		lblSelectCoilData.setText(LabelDatas.getLabel(UILabel.SelectCoilData));
 		
 		textCoilFilePath = new Text(grpCoil, SWT.BORDER);
+		textCoilFilePath.setEditable(false);
 		med.setTextCoilFilePath(textCoilFilePath);
 		CustomText c_textCoilFilePath = new CustomText(Mediator.TEXT_textCoilFilePath,med);
 		med.setC_textCoilFilePath(c_textCoilFilePath);
@@ -262,6 +263,7 @@ public class View extends ViewPart {
 		fd_textCoilFilePath.left = new FormAttachment(0, 10);
 		fd_textCoilFilePath.right = new FormAttachment(100,-40);
 		textCoilFilePath.setLayoutData(fd_textCoilFilePath);
+		
 		
 		Button btnExplorer = new Button(grpCoil, SWT.NONE);
 		med.setBtnExplorer(btnExplorer);
@@ -438,7 +440,8 @@ public class View extends ViewPart {
 		lblTotalTurns.setLayoutData(fd_lblTotalTurns);
 		lblTotalTurns.setText(LabelDatas.getLabel(UILabel.TotalTurns));
 		
-		textTotalTurns = new Text(grpCoil, SWT.BORDER | SWT.READ_ONLY);
+		textTotalTurns = new Text(grpCoil, SWT.BORDER);
+		textTotalTurns.setEditable(false);
 		med.setTextTotalTurns(textTotalTurns);
 		CustomText c_textTotalTurns = new CustomText(Mediator.TEXT_textTotalTurns,med);
 		med.setC_textTotalTurns(c_textTotalTurns);
@@ -775,6 +778,7 @@ public class View extends ViewPart {
 		textInitialConditionerValue.setLayoutData(fd_textInitialConditionerValue);
 		
 		textInitialConditionerPath = new Text(compositeInitialConditioner, SWT.BORDER);
+		textInitialConditionerPath.setEditable(false);
 		med.setTextInitialConditionerPath(textInitialConditionerPath);
 		CustomText c_textInitialConditionerPath = new CustomText(Mediator.TEXT_textInitialConditionerPath, med);
 		med.setC_textInitialConditionerPath(c_textInitialConditionerPath);
@@ -828,6 +832,7 @@ public class View extends ViewPart {
 		composite.setLayoutData(fd_composite);
 		
 		textMaterialDBPath = new Text(composite, SWT.BORDER);
+		textMaterialDBPath.setEditable(false);
 		med.setTextMaterialDBPath(textMaterialDBPath);
 		CustomText c_textMaterialDBPath = new CustomText(Mediator.TEXT_textMaterialDBPath,med);
 		med.setC_textMaterialDBPath(c_textMaterialDBPath);
@@ -1235,7 +1240,7 @@ public class View extends ViewPart {
 		med.getLblShowResult().addListener(SWT.MouseDoubleClick, handlerLabel);
 		// Text 
 		HandlerText handlerText = new HandlerText();
-		med.getTextCoilFilePath().addListener(SWT.CHANGED, handlerText);
+		//med.getTextCoilFilePath().addListener(SWT.CHANGED, handlerText);
 		med.getTextProductName().addListener(SWT.CHANGED, handlerText);
 		med.getTextWireDiameter().addListener(SWT.CHANGED, handlerText);
 		med.getTextCenterDiameter().addListener(SWT.CHANGED, handlerText);
@@ -1243,7 +1248,7 @@ public class View extends ViewPart {
 		med.getTextExternalDiameter().addListener(SWT.CHANGED, handlerText);
 		med.getTextUpperInnerDiameter().addListener(SWT.CHANGED, handlerText);
 		med.getTextLowerInnerDiameter().addListener(SWT.CHANGED, handlerText);
-		med.getTextTotalTurns().addListener(SWT.CHANGED, handlerText);
+		//med.getTextTotalTurns().addListener(SWT.CHANGED, handlerText);
 		med.getTextHotSettingTemp().addListener(SWT.CHANGED, handlerText);
 		med.getTextColdSettingTemp().addListener(SWT.CHANGED, handlerText);
 		med.getTextHotSettingHeight().addListener(SWT.CHANGED, handlerText);
@@ -1252,8 +1257,8 @@ public class View extends ViewPart {
 		med.getTextSeatLInnerMargina().addListener(SWT.CHANGED, handlerText);
 		med.getTextSeatHeight().addListener(SWT.CHANGED, handlerText);
 		med.getTextInitialConditionerValue().addListener(SWT.CHANGED, handlerText);
-		med.getTextInitialConditionerPath().addListener(SWT.CHANGED, handlerText);
-		med.getTextMaterialDBPath().addListener(SWT.CHANGED, handlerText);
+		//med.getTextInitialConditionerPath().addListener(SWT.CHANGED, handlerText);
+		//med.getTextMaterialDBPath().addListener(SWT.CHANGED, handlerText);
 		med.getTextRadiusTolerance().addListener(SWT.CHANGED, handlerText);
 		med.getTextHeightTolerance().addListener(SWT.CHANGED, handlerText);
 		med.getTextMaximumIterationNumber().addListener(SWT.CHANGED, handlerText);

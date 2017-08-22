@@ -40,11 +40,11 @@ public class WriteCoilParam {
 		this.CObj = obj;
 		
 		this.outputDataList.add(this.Model+","+this.CObj.getProductName());
-		this.outputDataList.add(this.SpringDesingDataFile+","+this.CObj.getCoilDesignUserFilePath());
+		this.outputDataList.add(this.SpringDesingDataFile+","+myUtil.getFileNameIncludeExtension(this.CObj.getCoilDesignUserFilePath()));
 		if(this.CObj.getInitialConditionerType().equals(CoilDB.CONSTANT_TYPE)){
 			this.outputDataList.add(this.InitialConditionerFile+","+this.CObj.getInitialConditionerConstant());
 		}else{
-			this.outputDataList.add(this.InitialConditionerFile+","+this.CObj.getInitialConditionerFile());
+			this.outputDataList.add(this.InitialConditionerFile+","+myUtil.getFileNameIncludeExtension(this.CObj.getInitialConditionerFile()));
 		}
 		this.outputDataList.add(this.HotSettingHeight+","+this.CObj.getHotSettingHeight());
 		this.outputDataList.add(this.HotSettingTemperature+","+this.CObj.getHotSettingTemp());
@@ -54,7 +54,7 @@ public class WriteCoilParam {
 		this.outputDataList.add(this.ErrorRadiusTolerance+","+this.CObj.getRadiusTolerance());
 		this.outputDataList.add(this.ErrorHeightTolerance+","+this.CObj.getHeightTolerance());
 		this.outputDataList.add(this.MaxIterationNo+","+this.CObj.getMaximumIterationNumber());
-		this.outputDataList.add(this.MaterialName+","+this.CObj.getMaterialDB());
+		this.outputDataList.add(this.MaterialName+","+myUtil.getFileName(this.CObj.getMaterialDB()));
 		this.outputDataList.add(this.SeatUInnerMargina+","+this.CObj.getSeatUIneerMargina());
 		this.outputDataList.add(this.SeatLInnerMargina+","+this.CObj.getSeatLIneerMargina());
 		this.outputDataList.add(this.SeatHeight+","+this.CObj.getSeatHeight());

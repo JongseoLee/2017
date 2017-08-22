@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import com.js.ens.coil.core.AppFolder;
 import com.js.ens.coil.core.MainController;
-import com.js.ens.coil.core.Preferences;
-import com.js.ens.coil.core.UILabel;
 import com.js.ens.coil.customWidget.TableData_Coil;
 import com.js.io.Reader;
 import com.js.io.Writer;
@@ -77,10 +75,8 @@ public class WriteSimcosDB {
 			}else if(line.contains(this.ProjectFolderPath)){
 				String newLine = line.replace(this.ProjectFolderPath, this.CObj.getProjectFolderPath());
 				this.outputDataList.add(newLine);
-			}else if(line.contains(this.CenterBeamNodeStart)){
-				String newLine = line.replace(this.CenterBeamNodeStart, this.CObj.getCenterBeamNodeStart());
-				this.outputDataList.add(newLine);
-			}else {
+			}
+			else {
 				if(line.contains("%")){
 					
 				}else{

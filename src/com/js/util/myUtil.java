@@ -54,7 +54,15 @@ public class myUtil {
 		}catch(Exception e){
 			return null;
 		}
-		
+	}
+	
+	public static String getFileNameIncludeExtension(String path){
+		try{
+			File f = new File(path);
+			return f.getName();
+		}catch(Exception e){
+			return null;
+		}
 	}
 	// Check parentPath
 	public static String getParentPath(String path){
