@@ -1,8 +1,0 @@
-| Created by Marc Mentat 2014.2.0 (64bit)
-*prog_option compatibility:prog_version:ment2014.2
-*prog_analysis_class structural
-*prog_use_current_job on
-*set_default_length_unit millimeter
-*set_model_length_unit millimeter
-|
-*py_file_run iterative_reverse_setting_0721.py
