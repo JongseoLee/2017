@@ -238,46 +238,63 @@ public class MainController {
 	
 	
 	public void Button_StartSimulation(){
-		med.getLblSimulationStatus().setText("Ready");
-		med.getProgressBarSimulationIteration().setSelection(0);
-		med.getTextLogEditor().setText("");
-		
-		
-		WriteSimcosDB dbObj = new WriteSimcosDB();
-		// Save All Data -> include coil_design.csv
-		dbObj.saveDBFile(this.coilDBObj);
-		myUtil.CleareObj(dbObj);
-		// create coil_param.csv
-		//==> to do something......
-		this.writeCoilParam();
-		// copy select source files - MaterialDB, initial conditioner file
-		this.copySourceFileForModeling();
-		
-		// run mentat - pr main_dwku.proc
-		String cmd = this.Command.replace("{MentatPath}", this.MentatPath);
-		RunCMD runCmdThread = new RunCMD();
-		runCmdThread.running(this.coilDBObj,cmd);
-		Runnable r_runCmd = runCmdThread;
-		Thread t_runCmd = new Thread(r_runCmd);
-		t_runCmd.start();
-		
-		 
-		// Read log File 
-		String logFilePath = myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),AppFolder.coilItrLogFileName);
-		ReadLog readLogThread = new ReadLog();
-		readLogThread.running(logFilePath, this.coilDBObj.getMaximumIterationNumber());
-		Runnable r_readLog = readLogThread;
-		Thread t_readLog = new Thread(r_readLog);
-		t_readLog.start();
-		/*
-		// make dummyLogFile Delete!!!!!!!!!
-		String fakeLogFilePath = myUtil.setPath(myUtil.setPath(this.AppPath, AppFolder.CONFIG),AppFolder.coilItrLogFileName);
-		FakeLogWriter fakeLogThread = new FakeLogWriter();
-		fakeLogThread.running(this.coilDBObj, fakeLogFilePath);
-		Runnable r_fakeLog = fakeLogThread;
-		Thread t_fakeLog = new Thread(r_fakeLog);
-		t_fakeLog.start();
-		// */
+		// Step1. Save All data -> include coil_design.csv
+		this.File_Save_Run();
+		// Step2. Check input data
+		if(this.coilDBObj.isReadySolving()){
+			med.getLblSimulationStatus().setText("Ready");
+			med.getProgressBarSimulationIteration().setSelection(0);
+			med.getTextLogEditor().setText("");
+			med.getLblIterationNumber().setText(" ");
+			med.getBtnStartSimulation().setEnabled(false);
+			
+			
+			WriteSimcosDB dbObj = new WriteSimcosDB();
+			// Write SimcosDB.sdb 
+			dbObj.saveDBFile(this.coilDBObj);
+			myUtil.CleareObj(dbObj);
+			// create coil_param.csv
+			this.writeCoilParam();
+			// copy select source files - MaterialDB, initial conditioner file
+			this.copySourceFileForModeling();
+			
+			// run mentat - pr main_dwku.proc
+			String cmd = this.Command.replace("{MentatPath}", this.MentatPath);
+			RunCMD runCmdThread = new RunCMD();
+			runCmdThread.running(this.coilDBObj,cmd);
+			Runnable r_runCmd = runCmdThread;
+			Thread t_runCmd = new Thread(r_runCmd);
+			t_runCmd.start();
+			
+			 
+			// Read log File 
+			String logFilePath = myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),AppFolder.coilItrLogFileName);
+			if(myUtil.checkPath(logFilePath)){
+				myUtil.fileDelete(logFilePath);
+			}
+			ReadLog readLogThread = new ReadLog();
+			readLogThread.running(logFilePath, this.coilDBObj.getMaximumIterationNumber());
+			Runnable r_readLog = readLogThread;
+			Thread t_readLog = new Thread(r_readLog);
+			t_readLog.start();
+			/* */
+			// make dummyLogFile Delete!!!!!!!!!
+			String fakeLogFilePath = myUtil.setPath(myUtil.setPath(this.AppPath, AppFolder.CONFIG),AppFolder.coilItrLogFileName);
+			FakeLogWriter fakeLogThread = new FakeLogWriter();
+			fakeLogThread.running(this.coilDBObj, fakeLogFilePath);
+			Runnable r_fakeLog = fakeLogThread;
+			Thread t_fakeLog = new Thread(r_fakeLog);
+			t_fakeLog.start();
+			// */
+		}else{
+			String msg = "";
+			for(String line : this.coilDBObj.getPrintAllData()){
+				msg = msg+line+ "\n";
+			}
+			msg = msg +"\n\n Error - Check input data ";
+			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
+			msgDlg.open();
+		}
 	}
 	
 	public void Button_ReadLog(){

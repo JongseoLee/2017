@@ -29,6 +29,7 @@ public class FakeLogWriter implements Runnable {
 		Reader reader = new Reader(this.filePath);
 		reader.running();
 		this.dummyFileDataList = reader.getFileDataList();
+		myUtil.CleareObj(reader);
 	}
 	
 	private void writeDymmyFile(){
@@ -39,12 +40,14 @@ public class FakeLogWriter implements Runnable {
 			try{
 				//int sleepTime = (int) ((Math.random()*10000)+1000)%2;
 				//Thread.sleep(sleepTime*1000);
-				Thread.sleep(100);
+				Thread.sleep(500);
 				
 				Writer writer = new Writer(outputFilePath);
 				writer.running(tempDataList);
+				myUtil.CleareObj(writer);
 			}catch(Exception e){
 				System.out.println("SLEEP - ERROR \n"+e.getMessage());
+				e.printStackTrace();
 			}
 		}
 	}

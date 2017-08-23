@@ -545,7 +545,7 @@ public class myUtil {
 	} 
 	
 	public static void CleareObj (Object obj){
-		System.out.println("Clear : "+obj.getClass().toString());
+		//System.out.println("Clear : "+obj.getClass().toString());
 		obj = null;
 		System.gc();
 	}

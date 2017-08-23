@@ -194,6 +194,7 @@ public class Mediator {
 	public static String TEXT_textMaximumIterationNumber = "textMaximumIterationNumber";
 	
 	private Label lblSimulationStatus;
+	private Label lblIterationNumber;
 	
 	private Button btnStartSimulation;
 	public ICommand C_btnStartSimulation;
@@ -1018,6 +1019,14 @@ public class Mediator {
 
 	public void setLblSimulationStatus(Label lblSimulationStatus) {
 		this.lblSimulationStatus = lblSimulationStatus;
+	}
+
+	public Label getLblIterationNumber() {
+		return lblIterationNumber;
+	}
+
+	public void setLblIterationNumber(Label lblIterationNumber) {
+		this.lblIterationNumber = lblIterationNumber;
 	}
 
 	public Button getBtnStartSimulation() {

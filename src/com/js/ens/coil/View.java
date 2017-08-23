@@ -962,6 +962,15 @@ public class View extends ViewPart {
 		lblSimulationStatus.setLayoutData(fd_lblSimulationStatus);
 		lblSimulationStatus.setText(LabelDatas.getLabel(UILabel.SimulationStatus));
 		
+		Label lblIterationNumber = new Label(grpAnalysisOptions, SWT.NONE);
+		med.setLblIterationNumber(lblIterationNumber);
+		FormData fd_lblIterationNumber = new FormData();
+		fd_lblIterationNumber.top = new FormAttachment(lblSimulationIteration, 0, SWT.TOP);
+		fd_lblIterationNumber.left = new FormAttachment(lblSimulationStatus, 0);
+		fd_lblIterationNumber.right = new FormAttachment(lblSimulationStatus,200,SWT.RIGHT);
+		lblIterationNumber.setLayoutData(fd_lblIterationNumber);
+		lblIterationNumber.setText("  ");
+		
 		Button btnStartSimulation = new Button(grpAnalysisOptions, SWT.NONE);
 		med.setBtnStartSimulation(btnStartSimulation);
 		CustomButton c_btnStartSimulation = new CustomButton(Mediator.BUTTON_btnStartSimulation,med);
@@ -1014,6 +1023,7 @@ public class View extends ViewPart {
 		btnReadLog.setText(LabelDatas.getLabel(UILabel.ReadLog));
 		
 		textLogEditor = new Text(grpAnalysisOptions, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
+		textLogEditor.setEditable(false);
 		med.setTextLogEditor(textLogEditor);
 		CustomText c_textLogEditor = new CustomText(Mediator.TEXT_textLogEditor, med);
 		med.setC_textLogEditor(c_textLogEditor);
@@ -1024,6 +1034,8 @@ public class View extends ViewPart {
 		fd_textLogEditor.right = new FormAttachment(100, -10);
 		fd_textLogEditor.bottom = new FormAttachment(100, -10);
 		textLogEditor.setLayoutData(fd_textLogEditor);
+		
+		
 		
 		
 		
@@ -1262,7 +1274,7 @@ public class View extends ViewPart {
 		med.getTextRadiusTolerance().addListener(SWT.CHANGED, handlerText);
 		med.getTextHeightTolerance().addListener(SWT.CHANGED, handlerText);
 		med.getTextMaximumIterationNumber().addListener(SWT.CHANGED, handlerText);
-		med.getTextLogEditor().addListener(SWT.CHANGED, handlerText);
+		//med.getTextLogEditor().addListener(SWT.CHANGED, handlerText);
 		// TableViewer
 		HandlerTableViewer handlerTableViewer = new HandlerTableViewer();
 		med.getTableViewerCoilTable().addSelectionChangedListener(handlerTableViewer);

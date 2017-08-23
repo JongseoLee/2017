@@ -71,6 +71,191 @@ public class CoilDB {
 		this.tabelDataList = new ArrayList<ComboData_selectTableData>();
 	}
 	
+	public boolean isReadySolving(){
+		boolean result = false;
+		try{
+			if(projectName.equals("null")){
+				result = false;
+				return result;
+			}
+			if(projectFolderPath.equals("null")){
+				result = false;
+				return result;
+			}
+			if(dbFilePath.equals("null")){
+				result = false;
+				return result;
+			}
+			if(CenterBeamNodeStart.equals("null")){
+				result = false;
+				return result;
+			}
+			// Step1. Modeling 
+			if(ProductName.equals("null")){
+				result = false;
+				return result;
+			}
+			if(WireDiameter.equals("null")){
+				result = false;
+				return result;
+			}
+			if(CenterDiameter.equals("null")){
+				result = false;
+				return result;
+			}
+				
+		
+			if(InternalDiameter.equals("null")){
+				result = false;
+				return result;
+			}
+			if(ExternalDiameter.equals("null")){
+				result = false;
+				return result;
+			}
+			if(UpperInnerDiameter.equals("null")){
+				result = false;
+				return result;
+			}
+			if(LowerInnerDiameter.equals("null")){
+				result = false;
+				return result;
+			}
+			if(TotalTurns.equals("null")){
+				result = false;
+				return result;
+			}
+			
+			if(CoilDesignFilePath.equals("null")){
+				result = false;
+				return result;
+			}
+			if(CoilDesignUserFilePath.equals("null")){
+				result = false;
+				return result;
+			}
+			if(GeometryDataTableList.size()==0){
+				result = false;
+				return result;
+			}
+			
+			if(HotSettingTemp.equals("null")){
+				result = false;
+				return result;
+			}
+			if(ColdSettingTemp.equals("null")){
+				result = false;
+				return result;
+			}
+			if(HotSettingHeight.equals("null")){
+				result = false;
+				return result;
+			}
+			if(ColdSettingHeight.equals("null")){
+				result = false;
+				return result;
+			}
+			if(SeatUIneerMargina.equals("null")){
+				result = false;
+				return result;
+			}
+			if(SeatLIneerMargina.equals("null")){
+				result = false;
+				return result;
+			}
+			if(SeatHeight.equals("null")){
+				result = false;
+				return result;
+			}
+			
+			if(InitialConditionerType.equals("null")){	
+				result = false;
+				return result;
+			}
+			if(InitialConditionerConstant.equals("null")){
+				result = false;
+				return result;
+			}
+			if(InitialConditionerFile.equals("null")){
+				result = false;
+				return result;
+			}
+			
+			if(MaterialDB.equals("null")){
+				result = false;
+				return result;
+			}
+			
+			// Step2. Simulation and Export Result
+			if(RadiusTolerance.equals("null")){
+				result = false;
+				return result;
+			}
+			if(HeightTolerance.equals("null")){
+				result = false;
+				return result;
+			}
+			if(MaximumIterationNumber.equals("null")){
+				result = false;
+				return result;
+			}
+			
+			result = true;
+			return result;
+		}catch(Exception e){
+			result = false;
+		}
+		return result;
+	}
+	public ArrayList<String> getPrintAllData(){
+		ArrayList<String> resultList = new ArrayList<String>();
+		
+		resultList.add("=======================================================");
+		resultList.add("projectName         : "+projectName);
+		resultList.add("projectFolderPath   : "+projectFolderPath);
+		resultList.add("dbFilePath          : "+dbFilePath);
+		resultList.add("CenterBeamNodeStart : "+CenterBeamNodeStart);
+		resultList.add("-------------------------------------------------------");
+		resultList.add("ProductName         : "+ProductName);
+		resultList.add("WireDiameter        : "+WireDiameter);
+		resultList.add("CenterDiameter      : "+CenterDiameter);
+		resultList.add("InternalDiameter    : "+InternalDiameter);
+		resultList.add("ExternalDiameter    : "+ExternalDiameter);
+		resultList.add("UpperInnerDiameter  : "+UpperInnerDiameter);
+		resultList.add("LowerInnerDiameter  : "+LowerInnerDiameter);
+		resultList.add("TotalTurns          : "+TotalTurns);
+		resultList.add("-------------------------------------------------------");
+		resultList.add("CoilDesignFilePath     : "+CoilDesignFilePath);
+		resultList.add("CoilDesignUserFilePath : "+CoilDesignUserFilePath);
+		if(this.GeometryDataTableList.size() > 0){
+			resultList.add("Geometry Data");
+			resultList.add(String.format("%-8s%-8s%-8s", "Theta","Radius", "Height"));
+			for(TableData_Coil obj : this.GeometryDataTableList){
+				resultList.add(obj.getAllData());
+			}
+		}
+		resultList.add("-------------------------------------------------------");
+		resultList.add("HotSettingHeight    : "+HotSettingHeight);
+		resultList.add("HotSettingTemp      : "+HotSettingTemp);
+		resultList.add("ColdSettingHeight   : "+ColdSettingHeight);
+		resultList.add("ColdSettingTemp     : "+ColdSettingTemp);
+		resultList.add("SeatUIneerMargina   : "+SeatUIneerMargina);
+		resultList.add("SeatLIneerMargina   : "+SeatLIneerMargina);
+		resultList.add("SeatHeight          : "+SeatHeight);
+		resultList.add("-------------------------------------------------------");
+		resultList.add("InitialConditionerType       : "+InitialConditionerType);
+		resultList.add("InitialConditionerConstant   : "+InitialConditionerConstant);
+		resultList.add("InitialConditionerFile       : "+InitialConditionerFile);
+		resultList.add("-------------------------------------------------------");
+		resultList.add("MaterialDB           : "+MaterialDB);
+		resultList.add("-------------------------------------------------------");
+		resultList.add("RadiusTolerance         : "+RadiusTolerance);
+		resultList.add("HeightTolerance         : "+HeightTolerance);
+		resultList.add("MaximumIterationNumber  : "+MaximumIterationNumber);
+		resultList.add("=======================================================");
+		
+		return resultList;
+	}
 	public void PrintAllData(){
 		System.out.println("=======================================================");
 		System.out.println("projectName         : "+projectName);

@@ -51,7 +51,7 @@ public class MessageDlg extends Dialog {
 		lblMessageDialog.setLayoutData(fd_lblMessageDialog);
 		lblMessageDialog.setText("Message Dialog");
 		
-		textMessage = new Text(container, SWT.BORDER | SWT.READ_ONLY | SWT.MULTI);
+		textMessage = new Text(container, SWT.BORDER | SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
 		textMessage.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		FormData fd_textMessage = new FormData();
 		fd_textMessage.top = new FormAttachment(lblMessageDialog, 5);
@@ -60,6 +60,7 @@ public class MessageDlg extends Dialog {
 		fd_textMessage.bottom = new FormAttachment(100,0);
 		textMessage.setLayoutData(fd_textMessage);
 		textMessage.setText(msg);
+		textMessage.setSelection(msg.length());
 		//textMessage.setEnabled(false);
 		return container;
 	}

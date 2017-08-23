@@ -13,9 +13,11 @@ public class ReadLog implements Runnable{
 	private String logFilePath;
 	private Double maxItrNum;
 	private int progressbarValue = 0;
-	private int readFilePeriod = 100;
+	private int readFilePeriod = 500;
 	private RandomAccessFile rf;
 	private ArrayList<String> logDataList;
+	private int currentItrNum;
+	private int currentMaxItrNum;
 	
 	// log Status value
 	private final String READY = "Ready";
@@ -43,6 +45,8 @@ public class ReadLog implements Runnable{
 	public void running(String logFilePath, String maxItrNum){
 		this.logFilePath = logFilePath;
 		this.maxItrNum = Double.valueOf(maxItrNum);
+		this.currentMaxItrNum = Integer.valueOf(maxItrNum);
+		this.currentItrNum = 1;
 		this.logDataList = new ArrayList<String>();
 	}
 
@@ -59,7 +63,8 @@ public class ReadLog implements Runnable{
 			try{
 				Thread.sleep(this.readFilePeriod);
 			}catch(InterruptedException e){
-				System.out.println(e.getMessage());
+				System.out.println("Read log(Thread Sleep) : "+e.getMessage());
+				e.printStackTrace();
 			}
 			
 			if(myUtil.fileIsLive(logFilePath)){
@@ -75,6 +80,7 @@ public class ReadLog implements Runnable{
 					
 					if(itrNum > 0.0){
 						progressbarValue = (int) Math.round(( itrNum/(this.maxItrNum+1) )* 100.0);
+						currentItrNum = (int) itrNum;
 					}
 					
 					if(simStatus.equals(this.DONE)){
@@ -84,6 +90,8 @@ public class ReadLog implements Runnable{
 					
 					
 					rf.close();
+					myUtil.CleareObj(rf);
+					
 					med.getParentView().getDisplay().asyncExec(new Runnable(){
 						@Override
 						public void run() {
@@ -98,14 +106,21 @@ public class ReadLog implements Runnable{
 							}
 							med.getTextLogEditor().setText(logData);
 							med.getTextLogEditor().setSelection(logData.length());
+							
+							if(simStatus.equals(SOLVING)){
+								med.getLblIterationNumber().setText( "Iteration step : "+ String.valueOf(currentItrNum) + " / " +String.valueOf(currentMaxItrNum));
+							}
+							
+							if(simStatus.equals(DONE)){
+								med.getBtnStartSimulation().setEnabled(true);
+							}
+							
 						}
-						
 					});
-					
 				}catch(Exception e){
-					
+					System.out.println("Read log : "+e.getMessage());
+					//e.printStackTrace();
 				}finally{
-					
 				}
 			}
 		}
@@ -130,6 +145,8 @@ public class ReadLog implements Runnable{
 		resultList.add(filePointer);
 		resultList.add(parsingDataList.get(0));
 		resultList.add(parsingDataList.get(1));
+		
+		myUtil.CleareObj(parsingDataList);
 		return resultList;
 	}
 	
