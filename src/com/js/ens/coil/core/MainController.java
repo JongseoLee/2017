@@ -3,6 +3,7 @@ package com.js.ens.coil.core;
 import java.util.ArrayList;
 
 
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -237,6 +238,11 @@ public class MainController {
 	
 	
 	public void Button_StartSimulation(){
+		med.getLblSimulationStatus().setText("Ready");
+		med.getProgressBarSimulationIteration().setSelection(0);
+		med.getTextLogEditor().setText("");
+		
+		
 		WriteSimcosDB dbObj = new WriteSimcosDB();
 		// Save All Data -> include coil_design.csv
 		dbObj.saveDBFile(this.coilDBObj);
@@ -248,12 +254,30 @@ public class MainController {
 		this.copySourceFileForModeling();
 		
 		// run mentat - pr main_dwku.proc
-		String runCMD = this.Command.replace("{MentatPath}", this.MentatPath);
+		String cmd = this.Command.replace("{MentatPath}", this.MentatPath);
+		RunCMD runCmdThread = new RunCMD();
+		runCmdThread.running(this.coilDBObj,cmd);
+		Runnable r_runCmd = runCmdThread;
+		Thread t_runCmd = new Thread(r_runCmd);
+		t_runCmd.start();
 		
-		
-		// after read coil_itr.log file, update read log field and progressbar.
-		//==> to do something......
-		
+		 
+		// Read log File 
+		String logFilePath = myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),AppFolder.coilItrLogFileName);
+		ReadLog readLogThread = new ReadLog();
+		readLogThread.running(logFilePath, this.coilDBObj.getMaximumIterationNumber());
+		Runnable r_readLog = readLogThread;
+		Thread t_readLog = new Thread(r_readLog);
+		t_readLog.start();
+		/*
+		// make dummyLogFile Delete!!!!!!!!!
+		String fakeLogFilePath = myUtil.setPath(myUtil.setPath(this.AppPath, AppFolder.CONFIG),AppFolder.coilItrLogFileName);
+		FakeLogWriter fakeLogThread = new FakeLogWriter();
+		fakeLogThread.running(this.coilDBObj, fakeLogFilePath);
+		Runnable r_fakeLog = fakeLogThread;
+		Thread t_fakeLog = new Thread(r_fakeLog);
+		t_fakeLog.start();
+		// */
 	}
 	
 	public void Button_ReadLog(){
@@ -685,12 +709,20 @@ public class MainController {
 	private void copySourceFileForModeling(){
 		// MaterialDB, Initial Conditioner 
 		String SimcosDataFolder = myUtil.setPath(this.coilDBObj.getProjectFolderPath(),AppFolder.SIMCOS_DATA);
-		//String destPyScriptPath = myUtil.setPath(SimcosDataFolder, AppFolder.pythonScriptFileName);
-		//String destMainProcPath = myUtil.setPath(SimcosDataFolder, AppFolder.mainProcFileName);
 		
-		//String materialDBFile = "";
+		String destMaterialDBFile = "";
+		String destInitialConditionerFile = "";
+		
+		if(this.coilDBObj.getInitialConditionerType().equals(CoilDB.FILE_TYPE)){
+			String InitialConditionerFileName = myUtil.getFileNameIncludeExtension(this.coilDBObj.getInitialConditionerFile());
+			destInitialConditionerFile = myUtil.setPath(SimcosDataFolder, InitialConditionerFileName);
+			myUtil.fileCopy(this.coilDBObj.getInitialConditionerFile(), destInitialConditionerFile);
+		}
+		
 		if(!this.coilDBObj.getMaterialDB().equals("null")){
-			
+			String MaterialDBFileName = myUtil.getFileNameIncludeExtension(this.coilDBObj.getMaterialDB());
+			destMaterialDBFile = myUtil.setPath(SimcosDataFolder, MaterialDBFileName);
+			myUtil.fileCopy(this.coilDBObj.getMaterialDB(), destMaterialDBFile);
 		}
 		
 	}

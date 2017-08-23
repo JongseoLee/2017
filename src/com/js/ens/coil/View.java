@@ -1013,7 +1013,7 @@ public class View extends ViewPart {
 		btnReadLog.setLayoutData(fd_btnReadLog);
 		btnReadLog.setText(LabelDatas.getLabel(UILabel.ReadLog));
 		
-		textLogEditor = new Text(grpAnalysisOptions, SWT.BORDER | SWT.MULTI);
+		textLogEditor = new Text(grpAnalysisOptions, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
 		med.setTextLogEditor(textLogEditor);
 		CustomText c_textLogEditor = new CustomText(Mediator.TEXT_textLogEditor, med);
 		med.setC_textLogEditor(c_textLogEditor);

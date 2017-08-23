@@ -91,8 +91,8 @@ public class OpenDlg extends Dialog {
 				FileDialog dlg = new FileDialog(btnExplorer.getShell(),SWT.OPEN);
 				dlg.setText("Select SimcosDB file.");
 				
-				String [] extNames = {"DBFile(*.ens)"};
-				String [] extType = {"*.ens"};
+				String [] extNames = {"DBFile(*.sdb)"};
+				String [] extType = {"*.sdb"};
 				
 				dlg.setFilterNames(extNames);
 				dlg.setFilterExtensions(extType);

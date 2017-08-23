@@ -19,7 +19,7 @@ public class AppFolder {
 	public static String InitValueFile = "InitValue.ini";
 	public static String PreferencesFile = "preferences.ini";
 	public static String DbTemplateFile = "SimcosDbTemplate.ini";
-	public static String dbFileName = "SimcosDB.ens";
+	public static String dbFileName = "SimcosDB.sdb";
 	
 	// input files in SimcosData folder for Simulation
 	public static String coilParamCSVFileName = "coil_param.csv";
