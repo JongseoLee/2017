@@ -20,13 +20,31 @@ public class HandlerButton implements Listener {
 			med.getC_btnStepSave().execute();
 		}else if(event.widget == med.getBtnExplorer()){
 			med.getC_btnExplorer().execute();
-		}else if(event.widget == med.getBtnInitialConditionerConstant()){
+		}
+		/*
+		else if(event.widget == med.getBtnInitialConditionerConstant()){
 			med.getC_btnInitialConditionerConstant().execute();
 		}else if(event.widget == med.getBtnInitialConditionerFile()){
 			med.getC_btnInitialConditionerFile().execute();
 		}else if(event.widget == med.getBtnInitialConditionerExplorer()){
 			med.getC_btnInitialConditionerExplorer().execute();
-		}else if(event.widget == med.getBtnMaterialDBExplorer()){
+		}
+		// */
+		else if(event.widget == med.getBtnRadiusConditionerConstant()){
+			med.getC_btnRadiusConditionerConstant().execute();
+		}else if(event.widget == med.getBtnRadiusConditionerFile()){
+			med.getC_btnRadiusConditionerFile().execute();
+		}else if(event.widget == med.getBtnRadiusConditionerExplorer()){
+			med.getC_btnRadiusConditionerExplorer().execute();
+		}
+		else if(event.widget == med.getBtnHeightConditionerConstant()){
+			med.getC_btnHeightConditionerConstant().execute();
+		}else if(event.widget == med.getBtnHeightConditionerFile()){
+			med.getC_btnHeightConditionerFile().execute();
+		}else if(event.widget == med.getBtnHeightConditionerExplorer()){
+			med.getC_btnHeightConditionerExplorer().execute();
+		}
+		else if(event.widget == med.getBtnMaterialDBExplorer()){
 			med.getC_btnMaterialDBExplorer().execute();
 		}else if(event.widget == med.getBtnStartSimulation()){
 			med.getC_btnStartSimulation().execute();

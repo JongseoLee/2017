@@ -39,11 +39,11 @@ import com.js.io.Reader;
 import com.js.io.Writer;
 import com.js.util.myUtil;
 
-public class MainController {
+public class MainController_backup {
 	
 	
-	private static MainController instance = new MainController();
-	public static MainController getInstatnce(){
+	private static MainController_backup instance = new MainController_backup();
+	public static MainController_backup getInstatnce(){
 		return instance;
 	}
 	
@@ -76,12 +76,10 @@ public class MainController {
 	private InitValue initValueObj;
 	private AppFolder appFolderObj;
 	private Preferences preferencesObj;
-	private Thread t_readLog;
-	private Thread t_runCmd;
 	////////////////////////////////////////////
 	
 	
-	public MainController(){
+	public MainController_backup(){
 		if(myUtil.checkOS().equals("window")){
 			this.AppPath = System.getProperty("user.dir"); 
 		}else{
@@ -123,7 +121,7 @@ public class MainController {
 	
 	public void Tool_TextEditor(){
 		if(this.preferencesObj != null){
-			this.Tool_TextEditor_Run();
+			this.Tool_TextEditor();
 		}else{
 			String msg = "If you want to use this menu, you have to create a project.\n\n  File->new \t or \t File->Open";
 			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
@@ -361,9 +359,6 @@ public class MainController {
 			// copy select source files - MaterialDB, initial conditioner file
 			this.copySourceFileForModeling();
 			
-			
-			
-			
 			// Read log File 
 			String logFileName = this.coilDBObj.getProductName()+AppFolder.coilItrLogFileName;
 			String logFilePath = myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),logFileName);
@@ -373,21 +368,35 @@ public class MainController {
 			ReadLog readLogThread = new ReadLog();
 			readLogThread.running(logFilePath, this.coilDBObj.getMaximumIterationNumber());
 			Runnable r_readLog = readLogThread;
-			this.t_readLog = new Thread(r_readLog);
-			this.t_readLog.start();
+			Thread t_readLog = new Thread(r_readLog);
+			t_readLog.start();
+			
 			
 			
 			
 			// run mentat - pr main_dwku.proc
+			/*
+			String cmd = this.Command.replace("{MentatPath}", this.MentatPath);
+			String simcosDataPath = myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA);
+			String cmd2 = cmd.replace("{SimcosDataPath}", simcosDataPath+File.separator);
+			//*/
+			/*
+			List<String> cmdList = new ArrayList<String>();
+			cmdList.add(this.MentatPath);
+			cmdList.add("-pr");
+			cmdList.add(simcosDataPath+File.separator+"main_dwku.proc");
+			//*/
 			RunCMD runCmdThread = new RunCMD();
+			//runCmdThread.running(this.coilDBObj,cmd2);
+			//runCmdThread.running(this.coilDBObj,cmdList);
 			runCmdThread.running(this.coilDBObj);
 			Runnable r_runCmd = runCmdThread;
-			this.t_runCmd = new Thread(r_runCmd);
-			this.t_runCmd.start();
+			Thread t_runCmd = new Thread(r_runCmd);
+			t_runCmd.start();
 			
 			 
 			
-			/*
+			/* 
 			// make dummyLogFile Delete!!!!!!!!!
 			String fakelogFileName = "FS"+AppFolder.coilItrLogFileName;
 			String fakeLogFilePath = myUtil.setPath(myUtil.setPath(this.AppPath, AppFolder.CONFIG),fakelogFileName);
@@ -397,8 +406,6 @@ public class MainController {
 			Thread t_fakeLog = new Thread(r_fakeLog);
 			t_fakeLog.start();
 			// */
-			
-			
 		}else{
 			String msg = "";
 			for(String line : this.coilDBObj.getPrintAllData()){
@@ -770,11 +777,11 @@ public class MainController {
 	}
 	
 	public void Tool_TextEditor_Run(){
-		//this.t_readLog.interrupt();
+		
 	}
 	
 	public void Tool_Mentat_Run(){
-		//this.t_runCmd.interrupt();
+		
 	}
 	
 	public void Setting_Preferences_Run(){

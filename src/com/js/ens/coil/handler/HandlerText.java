@@ -52,11 +52,22 @@ public class HandlerText implements Listener {
 		}else if(event.widget == med.getTextSeatHeight()){
 			med.getC_textSeatHeight().execute();
 		}
-		
+		/*
 		else if(event.widget == med.getTextInitialConditionerValue()){
 			med.getC_textInitialConditionerValue().execute();
 		}else if(event.widget == med.getTextInitialConditionerPath()){
 			med.getC_textInitialConditionerPath().execute();
+		}
+		//*/
+		else if(event.widget == med.getTextRadiusConditionerValue()){
+			med.getC_textRadiusConditionerValue().execute();
+		}else if(event.widget == med.getTextRadiusConditionerPath()){
+			med.getC_textRadiusConditionerPath().execute();
+		}
+		else if(event.widget == med.getTextHeightConditionerValue()){
+			med.getC_textHeightConditionerValue().execute();
+		}else if(event.widget == med.getTextHeightConditionerPath()){
+			med.getC_textHeightConditionerPath().execute();
 		}
 		
 		else if(event.widget == med.getTextMaterialDBPath()){

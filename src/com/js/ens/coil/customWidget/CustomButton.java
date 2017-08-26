@@ -31,6 +31,7 @@ public class CustomButton implements ICommand {
 			MC.Button_FileExplorer_CoilData();
 		}
 		
+		/*
 		else if(this.widgetName.equals(Mediator.BUTTON_btnInitialConditionerConstant)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnInitialConditionerConstant);
 			MC.Button_InitialConditionerConstant();
@@ -40,6 +41,27 @@ public class CustomButton implements ICommand {
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnInitialConditionerExplorer)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnInitialConditionerExplorer);
 			MC.Button_InitialConditioner_FileExplorer();
+		}
+		// */
+		else if(this.widgetName.equals(Mediator.BUTTON_btnRadiusConditionerConstant)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnRadiusConditionerConstant);
+			MC.Button_RadiusConditionerConstant();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnRadiusConditionerFile)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnRadiusConditionerFile);
+			MC.Button_RadiusConditionerFile();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnRadiusConditionerExplorer)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnRadiusConditionerExplorer);
+			MC.Button_RadiusConditioner_FileExplorer();
+		}
+		else if(this.widgetName.equals(Mediator.BUTTON_btnHeightConditionerConstant)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnHeightConditionerConstant);
+			MC.Button_HeightConditionerConstant();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnHeightConditionerFile)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnHeightConditionerFile);
+			MC.Button_HeightConditionerFile();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnHeightConditionerExplorer)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnHeightConditionerExplorer);
+			MC.Button_HeightConditioner_FileExplorer();
 		}
 		
 		else if(this.widgetName.equals(Mediator.BUTTON_btnMaterialDBExplorer)){
@@ -81,6 +103,7 @@ public class CustomButton implements ICommand {
 		this.button = med.getBtnExplorer();
 	}
 	
+	/*
 	public void setCustomWidget_btnInitialConditionerConstant(){
 		this.button = med.getBtnInitialConditionerConstant();
 	}
@@ -91,6 +114,29 @@ public class CustomButton implements ICommand {
 	
 	public void setCustomWidget_btnInitialConditionerExplorer(){
 		this.button = med.getBtnInitialConditionerExplorer();
+	}
+	// */
+	public void setCustomWidget_btnRadiusConditionerConstant(){
+		this.button = med.getBtnRadiusConditionerConstant();
+	}
+	
+	public void setCustomWidget_btnRadiusConditionerFile(){
+		this.button = med.getBtnRadiusConditionerFile();
+	}
+	
+	public void setCustomWidget_btnRadiusConditionerExplorer(){
+		this.button = med.getBtnRadiusConditionerExplorer();
+	}
+	public void setCustomWidget_btnHeightConditionerConstant(){
+		this.button = med.getBtnHeightConditionerConstant();
+	}
+	
+	public void setCustomWidget_btnHeightConditionerFile(){
+		this.button = med.getBtnHeightConditionerFile();
+	}
+	
+	public void setCustomWidget_btnHeightConditionerExplorer(){
+		this.button = med.getBtnHeightConditionerExplorer();
 	}
 	
 	public void setCustomWidget_btnMaterialDBExplorer(){

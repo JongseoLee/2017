@@ -45,9 +45,19 @@ public class CoilDB {
 	private String SeatLIneerMargina = "null";
 	private String SeatHeight = "null";
 	
-	private String InitialConditionerType = "null";	//constant, file
+	/*
+	private String InitialConditionerType = "null";	
 	private String InitialConditionerConstant = "null";
 	private String InitialConditionerFile = "null";
+	//*/
+	
+	private String RadiusConditionerType = "null";	//'Constant', 'File'
+	private String RadiusConditionerConstant = "null";
+	private String RadiusConditionerFile = "null";
+	private String HeightConditionerType = "null";	//'Constant', 'File'
+	private String HeightConditionerConstant = "null";
+	private String HeightConditionerFile = "null";
+		
 	
 	private String MaterialDB = "null";
 	
@@ -167,7 +177,7 @@ public class CoilDB {
 				result = false;
 				return result;
 			}
-			
+			/*
 			if(InitialConditionerType.equals("null")){	
 				result = false;
 				return result;
@@ -177,6 +187,32 @@ public class CoilDB {
 				return result;
 			}
 			if(InitialConditionerFile.equals("null")){
+				result = false;
+				return result;
+			}
+			// */
+			if(RadiusConditionerType.equals("null")){	
+				result = false;
+				return result;
+			}
+			if(RadiusConditionerConstant.equals("null")){
+				result = false;
+				return result;
+			}
+			if(RadiusConditionerFile.equals("null")){
+				result = false;
+				return result;
+			}
+			
+			if(HeightConditionerType.equals("null")){	
+				result = false;
+				return result;
+			}
+			if(HeightConditionerConstant.equals("null")){
+				result = false;
+				return result;
+			}
+			if(HeightConditionerFile.equals("null")){
 				result = false;
 				return result;
 			}
@@ -243,9 +279,17 @@ public class CoilDB {
 		resultList.add("SeatLIneerMargina   : "+SeatLIneerMargina);
 		resultList.add("SeatHeight          : "+SeatHeight);
 		resultList.add("-------------------------------------------------------");
+		/*
 		resultList.add("InitialConditionerType       : "+InitialConditionerType);
 		resultList.add("InitialConditionerConstant   : "+InitialConditionerConstant);
 		resultList.add("InitialConditionerFile       : "+InitialConditionerFile);
+		// */
+		resultList.add("RadiusConditionerType       : "+RadiusConditionerType);
+		resultList.add("RadiusConditionerConstant   : "+RadiusConditionerConstant);
+		resultList.add("RadiusConditionerFile       : "+RadiusConditionerFile);
+		resultList.add("HeightConditionerType       : "+HeightConditionerType);
+		resultList.add("HeightConditionerConstant   : "+HeightConditionerConstant);
+		resultList.add("HeightConditionerFile       : "+HeightConditionerFile);
 		resultList.add("-------------------------------------------------------");
 		resultList.add("MaterialDB           : "+MaterialDB);
 		resultList.add("-------------------------------------------------------");
@@ -290,9 +334,17 @@ public class CoilDB {
 		System.out.println("SeatLIneerMargina   : "+SeatLIneerMargina);
 		System.out.println("SeatHeight          : "+SeatHeight);
 		System.out.println("-------------------------------------------------------");
+		/*
 		System.out.println("InitialConditionerType       : "+InitialConditionerType);
 		System.out.println("InitialConditionerConstant   : "+InitialConditionerConstant);
 		System.out.println("InitialConditionerFile       : "+InitialConditionerFile);
+		// */
+		System.out.println("RadiusConditionerType       : "+RadiusConditionerType);
+		System.out.println("RadiusConditionerConstant   : "+RadiusConditionerConstant);
+		System.out.println("RadiusConditionerFile       : "+RadiusConditionerFile);
+		System.out.println("HeightConditionerType       : "+HeightConditionerType);
+		System.out.println("HeightConditionerConstant   : "+HeightConditionerConstant);
+		System.out.println("HeightConditionerFile       : "+HeightConditionerFile);
 		System.out.println("-------------------------------------------------------");
 		System.out.println("MaterialDB           : "+MaterialDB);
 		System.out.println("-------------------------------------------------------");
@@ -543,7 +595,7 @@ public class CoilDB {
 	public void setSeatHeight(String seatHeight) {
 		SeatHeight = seatHeight;
 	}
-
+	/*
 	public String getInitialConditionerType() {
 		return InitialConditionerType;
 	}
@@ -567,7 +619,55 @@ public class CoilDB {
 	public void setInitialConditionerFile(String initialConditionerFile) {
 		InitialConditionerFile = initialConditionerFile;
 	}
-	
+	// */
+	public String getRadiusConditionerType() {
+		return RadiusConditionerType;
+	}
+
+	public void setRadiusConditionerType(String radiusConditionerType) {
+		RadiusConditionerType = radiusConditionerType;
+	}
+
+	public String getRadiusConditionerConstant() {
+		return RadiusConditionerConstant;
+	}
+
+	public void setRadiusConditionerConstant(String radiusConditionerConstant) {
+		RadiusConditionerConstant = radiusConditionerConstant;
+	}
+
+	public String getRadiusConditionerFile() {
+		return RadiusConditionerFile;
+	}
+
+	public void setRadiusConditionerFile(String radiusConditionerFile) {
+		RadiusConditionerFile = radiusConditionerFile;
+	}
+
+	public String getHeightConditionerType() {
+		return HeightConditionerType;
+	}
+
+	public void setHeightConditionerType(String heightConditionerType) {
+		HeightConditionerType = heightConditionerType;
+	}
+
+	public String getHeightConditionerConstant() {
+		return HeightConditionerConstant;
+	}
+
+	public void setHeightConditionerConstant(String heightConditionerConstant) {
+		HeightConditionerConstant = heightConditionerConstant;
+	}
+
+	public String getHeightConditionerFile() {
+		return HeightConditionerFile;
+	}
+
+	public void setHeightConditionerFile(String heightConditionerFile) {
+		HeightConditionerFile = heightConditionerFile;
+	}
+
 	public String getRadiusTolerance() {
 		return RadiusTolerance;
 	}

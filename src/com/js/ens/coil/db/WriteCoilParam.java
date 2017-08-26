@@ -13,7 +13,9 @@ public class WriteCoilParam {
 	
 	private final String Model = "Model";
 	private final String SpringDesingDataFile = "Spring Design Data File";
-	private final String InitialConditionerFile = "Initial Conditioner File";
+	//private final String InitialConditionerFile = "Initial Conditioner File";
+	private final String InitialConditionerRadius = "Initial Conditioner - Radius";
+	private final String InitialConditionerHeight = "Initial Conditioner - Height";
 	private final String HotSettingHeight = "Hot setting height";
 	private final String HotSettingTemperature = "Hot setting temperature";
 	private final String ColdSettingHeight = "Cold setting height";
@@ -41,11 +43,25 @@ public class WriteCoilParam {
 		
 		this.outputDataList.add(this.Model+","+this.CObj.getProductName());
 		this.outputDataList.add(this.SpringDesingDataFile+","+myUtil.getFileNameIncludeExtension(this.CObj.getCoilDesignUserFilePath()));
+		/*
 		if(this.CObj.getInitialConditionerType().equals(CoilDB.CONSTANT_TYPE)){
 			this.outputDataList.add(this.InitialConditionerFile+","+this.CObj.getInitialConditionerConstant());
 		}else{
 			this.outputDataList.add(this.InitialConditionerFile+","+myUtil.getFileNameIncludeExtension(this.CObj.getInitialConditionerFile()));
 		}
+		// */
+		if(this.CObj.getHeightConditionerType().equals(CoilDB.CONSTANT_TYPE)){
+			this.outputDataList.add(this.InitialConditionerHeight+","+this.CObj.getHeightConditionerConstant());
+		}else{
+			this.outputDataList.add(this.InitialConditionerHeight+","+myUtil.getFileNameIncludeExtension(this.CObj.getHeightConditionerFile()));
+		}
+		
+		if(this.CObj.getRadiusConditionerType().equals(CoilDB.CONSTANT_TYPE)){
+			this.outputDataList.add(this.InitialConditionerRadius+","+this.CObj.getRadiusConditionerConstant());
+		}else{
+			this.outputDataList.add(this.InitialConditionerRadius+","+myUtil.getFileNameIncludeExtension(this.CObj.getRadiusConditionerFile()));
+		}
+		
 		this.outputDataList.add(this.HotSettingHeight+","+this.CObj.getHotSettingHeight());
 		this.outputDataList.add(this.HotSettingTemperature+","+this.CObj.getHotSettingTemp());
 		this.outputDataList.add(this.ColdSettingHeight+","+this.CObj.getColdSettingHeight());

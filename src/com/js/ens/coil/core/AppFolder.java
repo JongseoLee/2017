@@ -22,12 +22,12 @@ public class AppFolder {
 	public static String dbFileName = "SimcosDB.sdb";
 	
 	// input files in SimcosData folder for Simulation
-	public static String coilParamCSVFileName = "coil_param.csv";
+	public static String coilParamCSVFileName = "coil_param_0825_icf.csv";
 	public static String coilDesignCSVFileName = "coil_design.csv";
 	public static String mainProcFileName = "main_dwku.proc";
-	public static String pythonScriptFileName = "iterative_reverse_setting_0721.py";
-	public static String coilItrLogFileName = "coil_itr.log";
-	
+	public static String pythonScriptFileName = "iterative_reverse_setting_0825.py";
+	public static String coilItrLogFileName = "_simcos.log";
+	public static String dummyLogFileName = "coil_itr.log";
 	// member variable
 	private String userWorkspace;
 	

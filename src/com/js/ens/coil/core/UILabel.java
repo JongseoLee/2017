@@ -92,6 +92,10 @@ public class UILabel {
 	
 	public static String InitialConditioner = "InitialConditioner";
 	private String base_InitialConditioner = "Initial conditioner";
+	public static String RadiusConditioner = "RadiusConditioner";
+	public String base_RadiusConditioner = "Radius Conditioner(%)";
+	public static String HeightConditioner = "HeightConditioner";
+	public String base_HeightConditioner = "Height Conditioner(%)";
 	public static String Constant = "Constant";
 	private String base_Constant = "Constant";
 	public static String File = "File";
@@ -100,10 +104,6 @@ public class UILabel {
 	public static String MaterialDatabase = "MaterialDatabase";
 	private String base_MaterialDatabase="Material Database";
 
-	public static String RadiusConditionerConstant = "RadiusConditionerConstant";
-	public static String RadiusConditionerFile = "RadiusConditionerFile";
-	public static String HeightConditionerConstant = "HeightConditionerConstant";
-	public static String HeightConditionerFile = "HeightConditionerFile";
 	
 	
 	// Step2
@@ -188,6 +188,8 @@ public class UILabel {
 		this.BaseUILabelMap.put("SeatHeight", this.base_SeatHeight);
 	
 		this.BaseUILabelMap.put("InitialConditioner", this.base_InitialConditioner);
+		this.BaseUILabelMap.put("RadiusConditioner", this.base_RadiusConditioner);
+		this.BaseUILabelMap.put("HeightConditioner", this.base_HeightConditioner);
 		this.BaseUILabelMap.put("Constant", this.base_Constant);
 		this.BaseUILabelMap.put("File",this.base_File);
 

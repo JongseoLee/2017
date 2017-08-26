@@ -21,10 +21,18 @@ public class InitValue {
 	public static String SeatUInnerMargina="SeatUInnerMargina";
 	public static String SeatLInnerMargina="SeatLInnerMargina";
 	public static String SeatHeight="SeatHeight";
-	
+	/*
 	public static String InitialConditionerType="InitialConditionerType";
 	public static String InitialConditionerConstant="InitialConditionerConstant";
 	public static String InitialConditionerFile="InitialConditionerFile";
+	//*/
+	public static String RadiusConditionerType = "RadiusConditionerType";
+	public static String RadiusConditionerConstant = "RadiusConditionerConstant";
+	public static String RadiusConditionerFile = "RadiusConditionerFile";
+	public static String HeightConditionerType = "HeightConditionerType";
+	public static String HeightConditionerConstant = "HeightConditionerConstant";
+	public static String HeightConditionerFile = "HeightConditionerFile";
+	
 	
 	public static String MaterialDatabase="MaterialDatabase";
 	

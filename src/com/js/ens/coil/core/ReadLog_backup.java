@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import com.js.util.myUtil;
 
-public class ReadLog implements Runnable{
+public class ReadLog_backup implements Runnable{
 	private MainController MC = MainController.getInstatnce();
 	private Mediator med = Mediator.getInstance();
 	
@@ -39,7 +39,7 @@ public class ReadLog implements Runnable{
 	private final String LogStatus_error ="*** Error";
 	private final String LogStatus_endAllProcess = "*** End Process";
 	
-	public ReadLog() {
+	public ReadLog_backup() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -76,10 +76,8 @@ public class ReadLog implements Runnable{
 					e.printStackTrace();
 				}
 			}else{
-				//long currentFileSize = logFile.length();
-				
-				//if(fileSize == currentFileSize){
-				/*
+				long currentFileSize = logFile.length();
+				if(fileSize == currentFileSize){
 					try{
 						System.out.println("sleep in - fileSize equal");
 						Thread.sleep(this.readFilePeriod);
@@ -88,15 +86,11 @@ public class ReadLog implements Runnable{
 						//System.out.println("Read log(Thread Sleep) : "+e.getMessage());
 						e.printStackTrace();
 					}
-				// */
-				//}else{
-					//fileSize = currentFileSize;
-					//System.out.println("File Size : "+fileSize);
+				}else{
+					fileSize = currentFileSize;
+					System.out.println("File Size : "+fileSize);
 					if(myUtil.fileIsLive(logFilePath)){
 						try{
-							System.out.println("Ready to read file");
-							Thread.sleep(this.readFilePeriod);
-							System.out.println("Read file...");
 							rf = new RandomAccessFile(this.logFilePath,"r");
 							rf.seek(linePosition);
 							resultList = readLines(rf);
@@ -157,14 +151,14 @@ public class ReadLog implements Runnable{
 							
 							
 						}catch(Exception e){
-							System.out.println("Log file size is same("+ logFile.length() +") - "+e.getMessage());
+							System.out.println("Read log : "+e.getMessage());
 							//e.printStackTrace();
 						}finally{
-							//System.out.println("BYEBYE - readLog");
+							System.out.println("BYEBYE - readLog");
 						}
 					}
 					
-				//}
+				}
 			}
 			
 			/* */
@@ -184,13 +178,8 @@ public class ReadLog implements Runnable{
 		while((line = rf.readLine())!= null){
 			logDataList.add(line);
 			parsingDataList = parsing(line);
-			/*
 			if(parsingDataList.get(0).equals(this.LogStatus_endAllProcess)){
 				//System.out.println("Line data contains Job End");
-				break;
-			}
-			//*/
-			if(!parsingDataList.get(0).equals(this.SKIP_LINE)){
 				break;
 			}
 		}
@@ -227,31 +216,21 @@ public class ReadLog implements Runnable{
 		if(line.contains(this.LogStatus_modelingStart)){
 			resultTokens.add(this.MODELING);
 			resultTokens.add(this.MODELING_NUM); // 0
-		}
-		/*
-		else if(line.contains(this.LogStatus_modelingEnd)){
+		}else if(line.contains(this.LogStatus_modelingEnd)){
 			resultTokens.add(this.MODELING);
 			resultTokens.add(this.MODELING_NUM); // 0
-		}
-		//*/
-		else if(line.contains(this.LogStatus_solvingStart)){
+		}else if(line.contains(this.LogStatus_solvingStart)){
 			String itrNum = myUtil.splitData(line.trim(), "=").get(1);
 			resultTokens.add(this.SOLVING);
 			resultTokens.add(itrNum);
-		}
-		/*
-		else if(line.contains(this.LogStatus_solvingEnd)){
+		}else if(line.contains(this.LogStatus_solvingEnd)){
 			String itrNum = myUtil.splitData(line.trim(), "=").get(1);
 			resultTokens.add(this.SOLVING);
 			resultTokens.add(itrNum);
-		}
-		//*/
-		else if(line.contains(this.LogStatus_error)){
+		}else if(line.contains(this.LogStatus_error)){
 			resultTokens.add(this.ERROR);
 			resultTokens.add(this.ERROR_NUM); // -1
-		}
-		
-		else if(line.contains(this.LogStatus_endAllProcess)){
+		}else if(line.contains(this.LogStatus_endAllProcess)){
 			resultTokens.add(this.DONE);
 			resultTokens.add(this.DONE_NUM); // -99
 		}else{

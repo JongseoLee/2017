@@ -33,7 +33,8 @@ public class FakeLogWriter implements Runnable {
 	}
 	
 	private void writeDymmyFile(){
-		String outputFilePath = myUtil.setPath(myUtil.setPath(this.CObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),AppFolder.coilItrLogFileName); 
+		String fakelogFileName = "FS"+AppFolder.coilItrLogFileName;
+		String outputFilePath = myUtil.setPath(myUtil.setPath(this.CObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),fakelogFileName); 
 		ArrayList<String> tempDataList = new ArrayList<String>();
 		for(int i=0;i<this.dummyFileDataList.size();i++){
 			tempDataList.add(this.dummyFileDataList.get(i));

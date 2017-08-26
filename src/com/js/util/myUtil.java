@@ -40,6 +40,13 @@ public class myUtil {
 	System.out.println( "���� �ð� : " + ( end - start )/1000.0 );
 	// */
 	// Check FileName
+	public static void changeDirectory(String path){
+		System.out.println("dir : " + System.getProperty("user.dir"));
+		System.setProperty("user.dir", path);
+		System.out.println("change dir : "+System.getProperty("user.dir"));
+		
+	}
+	
 	public static String getFileName(String path){
 		try{
 			File f = new File(path);
@@ -142,16 +149,20 @@ public class myUtil {
 		try{
 			if (!inputData.isEmpty()){
 				double value = Double.parseDouble(inputData);
+				result = true;
+				/*
 				if (value > 0){
 					result = true;	
 				}else {
 					result = false;
 					JOptionPane.showMessageDialog(null, "Input Data must be greater than '0'. ", "Input Data error", JOptionPane.ERROR_MESSAGE);
 				}
+				// */
 			}
 		}catch(Exception e){
 			//JOptionPane.showMessageDialog(null, "Input Data is not String", "Input Data error", JOptionPane.ERROR_MESSAGE);
-			JOptionPane.showMessageDialog(null, "Input Data must be greater than '0'. ", "Input Data error", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Input Data must be greater than '0'. ", "Input Data error", JOptionPane.ERROR_MESSAGE);
+			result = false;
 		}
 		return result;
 	}
@@ -161,16 +172,20 @@ public class myUtil {
 		try{
 			if (!inputData.isEmpty()){
 				float value = Float.parseFloat(inputData);
+				result = true;
+				/*
 				if (value >= 0){
 					result = true;	
 				}else {
 					result = false;
 					//JOptionPane.showMessageDialog(null, "Input Data must be greater than '0'. ", "Input Data error", JOptionPane.ERROR_MESSAGE);
 				}
+				//*/
 			}
 		}catch(Exception e){
 			//JOptionPane.showMessageDialog(null, "Input Data is not String", "Input Data error", JOptionPane.ERROR_MESSAGE);
 			//JOptionPane.showMessageDialog(null, "Input Data must be greater than '0'. ", "Input Data error", JOptionPane.ERROR_MESSAGE);
+			result = false;
 		}
 		return result;
 	}
@@ -181,16 +196,21 @@ public class myUtil {
 		try{
 			if (!inputData.isEmpty()){
 				int value = Integer.parseInt(inputData);
+				result = true;
+				/*
 				if (value >= 0){
 					result = true;	
 				}else {
 					result = false;
 					//JOptionPane.showMessageDialog(null, "Input Data must be greater than '0'. ", "Input Data error", JOptionPane.ERROR_MESSAGE);
 				}
+				// */
+				
 			}
 		}catch(Exception e){
 			//JOptionPane.showMessageDialog(null, "Input Data is not String", "Input Data error", JOptionPane.ERROR_MESSAGE);
 			//JOptionPane.showMessageDialog(null, "Input Data must be greater than '0'. ", "Input Data error", JOptionPane.ERROR_MESSAGE);
+			result =false;
 		}
 		return result;
 	}

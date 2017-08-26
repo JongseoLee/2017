@@ -39,9 +39,18 @@ private MainController MC = MainController.getInstatnce();
 	public final String SeatLIneerMargina="SeatLIneerMargina";
 	public final String SeatHeight="SeatHeight";
 	// Initial conditioner
+	/*
 	public final String InitialConditionerType="InitialConditionerType";
 	public final String InitialConditionerConstant="InitialConditionerConstant";
 	public final String InitialConditionerFile="InitialConditionerFile";
+	//*/
+	public final String RadiusConditionerType="RadiusConditionerType";
+	public final String RadiusConditionerConstant="RadiusConditionerConstant";
+	public final String RadiusConditionerFile="RadiusConditionerFile";
+	public final String HeightConditionerType="HeightConditionerType";
+	public final String HeightConditionerConstant="HeightConditionerConstant";
+	public final String HeightConditionerFile="HeightConditionerFile";
+	
 	// Material Database
 	public final String MaterialDB="MaterialDB";
 	// Simulation Data
@@ -242,7 +251,7 @@ private MainController MC = MainController.getInstatnce();
 				}
 			
 			}
-			
+			/*
 			else if(line.contains(this.InitialConditionerType)){
 				String value = myUtil.splitData(line, "=").get(1);
 				if(value.contains("%")){
@@ -266,8 +275,52 @@ private MainController MC = MainController.getInstatnce();
 				}else{
 					this.CObj.setInitialConditionerFile(value);
 				}
-				
 			}
+			//*/
+			else if(line.contains(this.RadiusConditionerType)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setRadiusConditionerType("null");
+				}else{
+					this.CObj.setRadiusConditionerType(value);
+				}
+			}else if(line.contains(this.RadiusConditionerConstant)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setRadiusConditionerConstant("null");
+				}else{
+					this.CObj.setRadiusConditionerConstant(value);
+				}
+			}else if(line.contains(this.RadiusConditionerFile)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setRadiusConditionerFile("null");
+				}else{
+					this.CObj.setRadiusConditionerFile(value);
+				}
+			}else if(line.contains(this.HeightConditionerType)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setHeightConditionerType("null");
+				}else{
+					this.CObj.setHeightConditionerType(value);
+				}
+			}else if(line.contains(this.HeightConditionerConstant)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setHeightConditionerConstant("null");
+				}else{
+					this.CObj.setHeightConditionerConstant(value);
+				}
+			}else if(line.contains(this.HeightConditionerFile)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setHeightConditionerFile("null");
+				}else{
+					this.CObj.setHeightConditionerFile(value);
+				}
+			}
+			
 			
 			else if(line.contains(this.MaterialDB)){
 				String value = myUtil.splitData(line, "=").get(1);

@@ -40,9 +40,17 @@ public class WriteSimcosDB {
 	private final String SeatLIneerMargina="%SeatLIneerMargina%";
 	private final String SeatHeight="%SeatHeight%";
 	// Initial conditioner
+	/*
 	private final String InitialConditionerType="%InitialConditionerType%";
 	private final String InitialConditionerConstant="%InitialConditionerConstant%";
 	private final String InitialConditionerFile="%InitialConditionerFile%";
+	// */
+	private final String RadiusConditionerType="%RadiusConditionerType%";
+	private final String RadiusConditionerConstant="%RadiusConditionerConstant%";
+	private final String RadiusConditionerFile="%RadiusConditionerFile%";
+	private final String HeightConditionerType="%HeightConditionerType%";
+	private final String HeightConditionerConstant="%HeightConditionerConstant%";
+	private final String HeightConditionerFile="%HeightConditionerFile%";
 	// Material Database
 	private final String MaterialDB ="%MaterialDB%";
 	// Simulation Data
@@ -172,7 +180,7 @@ public class WriteSimcosDB {
 				String newLine = line.replace(this.SeatHeight, this.CObj.getSeatHeight());
 				this.outputDataList.add(newLine);
 			}
-			
+			/*
 			else if(line.contains(this.InitialConditionerType)){
 				String newLine = line.replace(this.InitialConditionerType, this.CObj.getInitialConditionerType());
 				this.outputDataList.add(newLine);
@@ -183,6 +191,27 @@ public class WriteSimcosDB {
 				String newLine = line.replace(this.InitialConditionerFile, this.CObj.getInitialConditionerFile());
 				this.outputDataList.add(newLine);
 			}
+			// */
+			else if(line.contains(this.RadiusConditionerType)){
+				String newLine = line.replace(this.RadiusConditionerType, this.CObj.getRadiusConditionerType());
+				this.outputDataList.add(newLine);
+			}else if(line.contains(this.RadiusConditionerConstant)){
+				String newLine = line.replace(this.RadiusConditionerConstant, this.CObj.getRadiusConditionerConstant());
+				this.outputDataList.add(newLine);
+			}else if(line.contains(this.RadiusConditionerFile)){
+				String newLine = line.replace(this.RadiusConditionerFile, this.CObj.getRadiusConditionerFile());
+				this.outputDataList.add(newLine);
+			}else if(line.contains(this.HeightConditionerType)){
+				String newLine = line.replace(this.HeightConditionerType, this.CObj.getHeightConditionerType());
+				this.outputDataList.add(newLine);
+			}else if(line.contains(this.HeightConditionerConstant)){
+				String newLine = line.replace(this.HeightConditionerConstant, this.CObj.getHeightConditionerConstant());
+				this.outputDataList.add(newLine);
+			}else if(line.contains(this.HeightConditionerFile)){
+				String newLine = line.replace(this.HeightConditionerFile, this.CObj.getHeightConditionerFile());
+				this.outputDataList.add(newLine);
+			}
+			
 			
 			else if(line.contains(this.MaterialDB)){
 				String newLine = line.replace(this.MaterialDB, this.CObj.getMaterialDB());
