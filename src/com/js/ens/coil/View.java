@@ -1,6 +1,7 @@
 package com.js.ens.coil;
 
 
+import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
@@ -13,6 +14,7 @@ import com.js.ens.coil.core.UILabel;
 import com.js.ens.coil.customWidget.CustomButton;
 import com.js.ens.coil.customWidget.CustomComboViewer;
 import com.js.ens.coil.customWidget.CustomLabel;
+import com.js.ens.coil.customWidget.CustomList;
 import com.js.ens.coil.customWidget.CustomProgressBar;
 import com.js.ens.coil.customWidget.CustomTableViewer;
 import com.js.ens.coil.customWidget.CustomText;
@@ -20,6 +22,7 @@ import com.js.ens.coil.customWidget.TableColumnLabel;
 import com.js.ens.coil.handler.HandlerButton;
 import com.js.ens.coil.handler.HandlerComboViewer;
 import com.js.ens.coil.handler.HandlerLabel;
+import com.js.ens.coil.handler.HandlerList;
 import com.js.ens.coil.handler.HandlerTableViewer;
 import com.js.ens.coil.handler.HandlerText;
 import com.js.util.myUtil;
@@ -37,6 +40,8 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.widgets.List;
 
 public class View extends ViewPart {
 	public static final String ID = "com.js.ens.coil.view";
@@ -1175,7 +1180,7 @@ public class View extends ViewPart {
 		FormData fd_lblSelectGraph = new FormData();
 		fd_lblSelectGraph.top = new FormAttachment(0, 10);
 		fd_lblSelectGraph.left = new FormAttachment(0, 10);
-		fd_lblSelectGraph.right = new FormAttachment(0,150);
+		fd_lblSelectGraph.right = new FormAttachment(0,350);
 		lblSelectGraph.setLayoutData(fd_lblSelectGraph);
 		lblSelectGraph.setText(LabelDatas.getLabel(UILabel.SelectGraph));
 		
@@ -1186,10 +1191,48 @@ public class View extends ViewPart {
 		c_comboViewerSelectGraph.setCustomWidget_comboViewerSelectGraph();
 		comboSelectGraph = comboViewerSelectGraph.getCombo();
 		FormData fd_comboViewerSelectGraph = new FormData();
-		fd_comboViewerSelectGraph.top = new FormAttachment(lblSelectGraph, -2, SWT.TOP);
-		fd_comboViewerSelectGraph.left = new FormAttachment(lblSelectGraph, 0);
-		fd_comboViewerSelectGraph.right = new FormAttachment(lblSelectGraph, 400,SWT.RIGHT);
+		fd_comboViewerSelectGraph.top = new FormAttachment(lblSelectGraph, 6);
+		fd_comboViewerSelectGraph.left = new FormAttachment(lblSelectGraph, 0, SWT.LEFT);
+		fd_comboViewerSelectGraph.right = new FormAttachment(lblSelectGraph,0,SWT.RIGHT);
 		comboSelectGraph.setLayoutData(fd_comboViewerSelectGraph);
+		
+		Button btnAddGraph = new Button(grpDisplayResultCoil, SWT.NONE);
+		med.setBtnAddGraph(btnAddGraph);
+		CustomButton c_btnAddGraph = new CustomButton(Mediator.BUTTON_btnAddGraph,med);
+		med.setC_btnAddGraph(c_btnAddGraph);
+		c_btnAddGraph.setCustomWidget_btnAddGraph();
+		FormData fd_btnAddGraph = new FormData();
+		fd_btnAddGraph.top = new FormAttachment(comboSelectGraph, 12);
+		fd_btnAddGraph.left = new FormAttachment(lblSelectGraph, 0, SWT.LEFT);
+		fd_btnAddGraph.right = new FormAttachment(0,175);
+		btnAddGraph.setLayoutData(fd_btnAddGraph);
+		btnAddGraph.setText(LabelDatas.getLabel(UILabel.AddGraph));
+		
+		Button btnDeleteGraph = new Button(grpDisplayResultCoil, SWT.NONE);
+		med.setBtnDeleteGraph(btnDeleteGraph);
+		CustomButton c_btnDeleteGraph = new CustomButton(Mediator.BUTTON_btnDeleteGraph,med);
+		med.setC_btnDeleteGraph(c_btnDeleteGraph);
+		c_btnDeleteGraph.setCustomWidget_btnDeleteGraph();
+		FormData fd_btnDeleteGraph = new FormData();
+		fd_btnDeleteGraph.top = new FormAttachment(btnAddGraph, 0,SWT.TOP);
+		fd_btnDeleteGraph.left = new FormAttachment(btnAddGraph,10,SWT.RIGHT);
+		fd_btnDeleteGraph.right = new FormAttachment(comboSelectGraph,0,SWT.RIGHT);
+		btnDeleteGraph.setLayoutData(fd_btnDeleteGraph);
+		btnDeleteGraph.setText(LabelDatas.getLabel(UILabel.DeleteGraph));
+		
+		ListViewer listViewerSelectedGraph = new ListViewer(grpDisplayResultCoil, SWT.BORDER | SWT.V_SCROLL);
+		med.setListViewerSelectedGraph(listViewerSelectedGraph);
+		List listSelectedGraph = listViewerSelectedGraph.getList();
+		med.setListSelectedGraph(listSelectedGraph);
+		CustomList c_listSelectedGraph = new CustomList(Mediator.LIST_listSelectedGraph,med);
+		med.setC_listSelectedGraph(c_listSelectedGraph);
+		c_listSelectedGraph.setCustomWidget_listSelectedGraph();
+		FormData fd_listSelectedGraph = new FormData();
+		fd_listSelectedGraph.top = new FormAttachment(btnAddGraph, 6);
+		fd_listSelectedGraph.left = new FormAttachment(comboSelectGraph, 0, SWT.LEFT);
+		fd_listSelectedGraph.right = new FormAttachment(comboSelectGraph, 0, SWT.RIGHT);
+		fd_listSelectedGraph.bottom = new FormAttachment(100,-80);
+		listSelectedGraph.setLayoutData(fd_listSelectedGraph);
 		
 		Button btnShowGraphWindow = new Button(grpDisplayResultCoil, SWT.NONE);
 		med.setBtnShowGraphWindow(btnShowGraphWindow);
@@ -1197,12 +1240,45 @@ public class View extends ViewPart {
 		med.setC_btnShowGraphWindow(c_btnShowGraphWindow);
 		c_btnShowGraphWindow.setCustomWidget_btnShowGraphWindow();
 		FormData fd_btnShowGraphWindow = new FormData();
-		fd_btnShowGraphWindow.top = new FormAttachment(comboSelectGraph, 0, SWT.TOP);
-		fd_btnShowGraphWindow.left = new FormAttachment(comboSelectGraph, 10);
-		fd_btnShowGraphWindow.right = new FormAttachment(comboSelectGraph, 150, SWT.RIGHT); 
+		fd_btnShowGraphWindow.top = new FormAttachment(listSelectedGraph, 6);
+		fd_btnShowGraphWindow.left = new FormAttachment(comboSelectGraph, 0, SWT.LEFT);
+		fd_btnShowGraphWindow.right = new FormAttachment(comboSelectGraph, 0, SWT.RIGHT);
 		btnShowGraphWindow.setLayoutData(fd_btnShowGraphWindow);
 		btnShowGraphWindow.setText(LabelDatas.getLabel(UILabel.ShowPopupWindow_1));
 		
+		Label lblSelectImage = new Label(grpDisplayResultCoil, SWT.NONE);
+		FormData fd_lblSelectImage = new FormData();
+		fd_lblSelectImage.top = new FormAttachment(lblSelectGraph, 0,SWT.TOP);
+		fd_lblSelectImage.left = new FormAttachment(lblSelectGraph, 100, SWT.RIGHT);
+		fd_lblSelectImage.right = new FormAttachment(lblSelectGraph, 400,SWT.RIGHT);
+		lblSelectImage.setLayoutData(fd_lblSelectImage);
+		lblSelectImage.setText(LabelDatas.getLabel(UILabel.SelectImage));
+		
+		ComboViewer comboViewerSelectImage = new ComboViewer(grpDisplayResultCoil, SWT.NONE | SWT.READ_ONLY);
+		med.setComboViewerSelectImage(comboViewerSelectImage);
+		CustomComboViewer c_comboViewerSelectImage = new CustomComboViewer(Mediator.COMBOVIEWER_comboViewerSelectImage,med);
+		med.setC_comboViewerSelectImage(c_comboViewerSelectImage);
+		c_comboViewerSelectImage.setCustomWidget_comboViewerSelectImage();
+		comboSelectImage = comboViewerSelectImage.getCombo();
+		FormData fd_comboViewerSelectImage = new FormData();
+		fd_comboViewerSelectImage.top = new FormAttachment(lblSelectImage, 6);
+		fd_comboViewerSelectImage.left = new FormAttachment(lblSelectImage, 0, SWT.LEFT);
+		fd_comboViewerSelectImage.right = new FormAttachment(lblSelectImage, 0,SWT.RIGHT);
+		comboSelectImage.setLayoutData(fd_comboViewerSelectImage);
+		
+		Button btnShowImageWindow = new Button(grpDisplayResultCoil, SWT.NONE);
+		med.setBtnShowImageWindow(btnShowImageWindow);
+		CustomButton c_btnShowImageWindow = new CustomButton(Mediator.BUTTON_btnShowImageWindow,med);
+		med.setC_btnShowImageWindow(c_btnShowImageWindow);
+		c_btnShowImageWindow.setCustomWidget_btnShowImageWindow();
+		FormData fd_btnShowImageWindow = new FormData();
+		fd_btnShowImageWindow.top = new FormAttachment(comboSelectImage, 6);
+		fd_btnShowImageWindow.left = new FormAttachment(comboSelectImage, 0, SWT.LEFT);
+		fd_btnShowImageWindow.right = new FormAttachment(comboSelectImage, 0, SWT.RIGHT); 
+		btnShowImageWindow.setLayoutData(fd_btnShowImageWindow);
+		btnShowImageWindow.setText(LabelDatas.getLabel(UILabel.ShowPopupWindow_2));
+		
+		/*
 		Label lblSelectImage = new Label(grpDisplayResultCoil, SWT.NONE);
 		FormData fd_lblSelectImage = new FormData();
 		fd_lblSelectImage.top = new FormAttachment(lblSelectGraph, 12);
@@ -1234,7 +1310,9 @@ public class View extends ViewPart {
 		fd_btnShowImageWindow.right = new FormAttachment(btnShowGraphWindow, 0, SWT.RIGHT); 
 		btnShowImageWindow.setLayoutData(fd_btnShowImageWindow);
 		btnShowImageWindow.setText(LabelDatas.getLabel(UILabel.ShowPopupWindow_2));
+		//*/
 		
+		/*
 		Label lblSelectTableData = new Label(grpDisplayResultCoil, SWT.NONE);
 		FormData fd_lblSelectTableData = new FormData();
 		fd_lblSelectTableData.top = new FormAttachment(lblSelectImage, 12);
@@ -1266,15 +1344,17 @@ public class View extends ViewPart {
 		fd_btnShowTableData.right = new FormAttachment(btnShowGraphWindow, 0, SWT.RIGHT); 
 		btnShowTableData.setLayoutData(fd_btnShowTableData);
 		btnShowTableData.setText(LabelDatas.getLabel(UILabel.Show));
+		//*/
 		
-		
+		/*
 		// graph area
 		Composite compositeGraph = new Composite(grpDisplayResultCoil, SWT.BORDER);
 		compositeGraph.setLayout(new FormLayout());
 		FormData fd_compositeGraph = new FormData();
 		fd_compositeGraph.top = new FormAttachment(lblSelectTableData, 30);
 		fd_compositeGraph.left = new FormAttachment(lblSelectGraph, 0, SWT.LEFT);
-		fd_compositeGraph.right = new FormAttachment(0,390);
+		//fd_compositeGraph.right = new FormAttachment(0,390);
+		fd_compositeGraph.right = new FormAttachment(100,-10);
 		fd_compositeGraph.bottom = new FormAttachment(100,-10);
 		compositeGraph.setLayoutData(fd_compositeGraph);
 		
@@ -1285,6 +1365,16 @@ public class View extends ViewPart {
 		lblGraphArea.setLayoutData(fd_lblGraphArea);
 		lblGraphArea.setText("Display Graph");
 		
+		Browser browser = new Browser(compositeGraph, SWT.NONE);
+		FormData fd_browser = new FormData();
+		fd_browser.top = new FormAttachment(lblGraphArea, 6);
+		fd_browser.left = new FormAttachment(0, 10);
+		fd_browser.right = new FormAttachment(100,-10);
+		fd_browser.bottom = new FormAttachment(100,-10);
+		browser.setLayoutData(fd_browser);
+		//*/
+		
+		/*
 		Composite compositeImage = new Composite(grpDisplayResultCoil, SWT.BORDER);
 		compositeImage.setLayout(new FormLayout());
 		FormData fd_compositeImage = new FormData();
@@ -1294,12 +1384,18 @@ public class View extends ViewPart {
 		fd_compositeImage.bottom = new FormAttachment(compositeGraph, 0, SWT.BOTTOM);
 		compositeImage.setLayoutData(fd_compositeImage);
 		
+		
 		Label lblImageArea = new Label(compositeImage, SWT.NONE);
 		FormData fd_lblImageArea = new FormData();
 		fd_lblImageArea.top = new FormAttachment(0,10);
 		fd_lblImageArea.left = new FormAttachment(0,10);
 		lblImageArea.setLayoutData(fd_lblImageArea);
 		lblImageArea.setText("Display Image");
+		//*/
+		
+		
+		
+		
 		
 		
 		this.init_WidgetSetting();
@@ -1355,8 +1451,10 @@ public class View extends ViewPart {
 		med.getBtnStartSimulation().addListener(SWT.Selection, handlerButton);
 		med.getBtnReadLog().addListener(SWT.Selection, handlerButton);
 		med.getBtnShowGraphWindow().addListener(SWT.Selection, handlerButton);
+		med.getBtnAddGraph().addListener(SWT.Selection, handlerButton);
+		med.getBtnDeleteGraph().addListener(SWT.Selection, handlerButton);
 		med.getBtnShowImageWindow().addListener(SWT.Selection, handlerButton);
-		med.getBtnShowTableData().addListener(SWT.Selection, handlerButton);
+		//med.getBtnShowTableData().addListener(SWT.Selection, handlerButton);
 		// Label 
 		HandlerLabel handlerLabel = new HandlerLabel();
 		med.getLblModeling().addListener(SWT.MouseDoubleClick, handlerLabel);
@@ -1398,7 +1496,10 @@ public class View extends ViewPart {
 		HandlerComboViewer handlerComboViewer = new HandlerComboViewer();
 		med.getComboViewerSelectGraph().addSelectionChangedListener(handlerComboViewer);
 		med.getComboViewerSelectImage().addSelectionChangedListener(handlerComboViewer);
-		med.getComboViewerSelectTableData().addSelectionChangedListener(handlerComboViewer);
+		//med.getComboViewerSelectTableData().addSelectionChangedListener(handlerComboViewer);
+		// ListViewer
+		HandlerList handlerList = new HandlerList();
+		med.getListSelectedGraph().addListener(SWT.Selection,handlerList);
 	}
 
 	@Override

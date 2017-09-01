@@ -69,7 +69,7 @@ public class OpenDlg extends Dialog {
 		fd_lblSelectDbFile.top = new FormAttachment(lblOpen, 30);
 		fd_lblSelectDbFile.left = new FormAttachment(lblOpen, 10, SWT.LEFT);
 		lblSelectDbFile.setLayoutData(fd_lblSelectDbFile);
-		lblSelectDbFile.setText("Select Simcos db(SimcosDB.ens) File");
+		lblSelectDbFile.setText("Select Simcos db(SimcosDB.sdb) File");
 		
 		textDBFile = new Text(container, SWT.BORDER);
 		textDBFile.addModifyListener(new ModifyListener() {

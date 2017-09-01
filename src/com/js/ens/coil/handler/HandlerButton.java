@@ -52,6 +52,10 @@ public class HandlerButton implements Listener {
 			med.getC_btnReadLog().execute();
 		}else if(event.widget == med.getBtnShowGraphWindow()){
 			med.getC_btnShowGraphWindow().execute();
+		}else if(event.widget == med.getBtnAddGraph()){
+			med.getC_btnAddGraph().execute();
+		}else if(event.widget == med.getBtnDeleteGraph()){
+			med.getC_btnDeleteGraph().execute();
 		}else if(event.widget == med.getBtnShowImageWindow()){
 			med.getC_btnShowImageWindow().execute();
 		}else if(event.widget == med.getBtnShowTableData()){

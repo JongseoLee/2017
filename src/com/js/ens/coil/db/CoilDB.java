@@ -6,7 +6,9 @@ import com.js.ens.coil.core.AppFolder;
 import com.js.ens.coil.customWidget.ComboData_selectGraph;
 import com.js.ens.coil.customWidget.ComboData_selectImage;
 import com.js.ens.coil.customWidget.ComboData_selectTableData;
+import com.js.ens.coil.customWidget.ListData_selectedGraph;
 import com.js.ens.coil.customWidget.TableData_Coil;
+import com.js.graph.GraphData;
 import com.js.util.myUtil;
 
 public class CoilDB {
@@ -68,7 +70,9 @@ public class CoilDB {
 	
 	
 	// Step3. Show result
+	private GraphData graphDataObj;
 	private ArrayList<ComboData_selectGraph> graphDataList;
+	private ArrayList<ListData_selectedGraph> selectedGraphList;
 	private ArrayList<ComboData_selectImage> imageDataList;
 	private ArrayList<ComboData_selectTableData> tabelDataList;
 	private String LogEditor;
@@ -77,6 +81,7 @@ public class CoilDB {
 		// TODO Auto-generated constructor stub
 		this.GeometryDataTableList = new ArrayList<TableData_Coil>();
 		this.graphDataList = new ArrayList<ComboData_selectGraph>();
+		this.selectedGraphList = new ArrayList<ListData_selectedGraph>();
 		this.imageDataList = new ArrayList<ComboData_selectImage>();
 		this.tabelDataList = new ArrayList<ComboData_selectTableData>();
 	}
@@ -360,6 +365,14 @@ public class CoilDB {
 	
 	public void add_GraphDataCombo(ComboData_selectGraph obj){
 		this.graphDataList.add(obj);
+	}
+	
+	public void add_SelectedGraph(ListData_selectedGraph obj){
+		this.selectedGraphList.add(obj);
+	}
+	
+	public void delete_SelectedGraph(ListData_selectedGraph obj){
+		this.selectedGraphList.remove(obj);
 	}
 	
 	public void add_ImageDataCombo(ComboData_selectImage obj){
@@ -735,6 +748,22 @@ public class CoilDB {
 
 	public void setMaterialDB(String materialDB) {
 		MaterialDB = materialDB;
+	}
+
+	public GraphData getGraphDataObj() {
+		return graphDataObj;
+	}
+
+	public void setGraphDataObj(GraphData graphDataObj) {
+		this.graphDataObj = graphDataObj;
+	}
+
+	public ArrayList<ListData_selectedGraph> getSelectedGraphList() {
+		return selectedGraphList;
+	}
+
+	public void setSelectedGraphList(ArrayList<ListData_selectedGraph> selectedGraphList) {
+		this.selectedGraphList = selectedGraphList;
 	}
 
 }

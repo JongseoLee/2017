@@ -2,6 +2,7 @@ package com.js.ens.coil.core;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -12,17 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import com.js.ens.coil.customWidget.ComboData_selectGraph;
+import com.js.ens.coil.customWidget.ComboData_selectGraph.ColumnData;
 import com.js.ens.coil.customWidget.ComboData_selectImage;
 import com.js.ens.coil.customWidget.ComboData_selectTableData;
 import com.js.ens.coil.customWidget.ComboViewerLabelProvider_SelectGraph;
 import com.js.ens.coil.customWidget.ComboViewerLabelProvider_SelectImage;
 import com.js.ens.coil.customWidget.ComboViewerLabelProvider_SelectTableData;
+import com.js.ens.coil.customWidget.ListData_selectedGraph;
+import com.js.ens.coil.customWidget.ListLabelProvider_SelectedGraph;
 import com.js.ens.coil.customWidget.TableData_Coil;
 import com.js.ens.coil.customWidget.TableViewerLabelProvider_Coil;
 import com.js.ens.coil.db.CoilDB;
@@ -35,6 +40,11 @@ import com.js.ens.coil.dialog.OpenDlg;
 import com.js.ens.coil.dialog.PreferencesDlg;
 import com.js.ens.coil.dialog.SaveAsDlg;
 import com.js.ens.coil.dialog.SaveDlg;
+import com.js.graph.GraphData;
+import com.js.graph.GraphWindow;
+import com.js.graph.GraphWindow_bak;
+import com.js.graph.MakePlot;
+import com.js.graph.RunSimcosGraph;
 import com.js.io.Reader;
 import com.js.io.Writer;
 import com.js.util.myUtil;
@@ -68,6 +78,14 @@ public class MainController {
 	private String ExcelPath;
 	private String Command;
 
+	public String getMentatPath() {
+		return MentatPath;
+	}
+
+	public String getCommand() {
+		return Command;
+	}
+
 	private Mediator med = Mediator.getInstance();
 	
 	
@@ -78,6 +96,7 @@ public class MainController {
 	private Preferences preferencesObj;
 	private Thread t_readLog;
 	private Thread t_runCmd;
+	private Thread t_runGraph;
 	////////////////////////////////////////////
 	
 	
@@ -426,7 +445,101 @@ public class MainController {
 	}
 	
 	public void Button_ShowGraphWindow(){
+		if(this.coilDBObj.getSelectedGraphList().size() == 0){
+			
+		}else{
+			MakePlot obj = new MakePlot();
+			obj.running(this.coilDBObj);
+			
+			RunSimcosGraph runGraphThread = new RunSimcosGraph();
+			runGraphThread.running(this.coilDBObj, obj.getGraphHtmFilePath());
+			Runnable r_runGraphThread = runGraphThread;
+			this.t_runGraph = new Thread(r_runGraphThread);
+			this.t_runGraph.start();
+		}
 		
+		
+		
+		/* 
+		try {
+			GraphWindow_bak window = new GraphWindow_bak();
+			window.open(obj.getGraphHtmFilePath());
+			System.out.println("in plot path : "+obj.getGraphHtmFilePath());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//*/
+		
+		/* 
+		med.getParentView().getDisplay().asyncExec(new Runnable(){
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try{
+					String [] path = {obj.getGraphHtmFilePath()};
+					GraphWindow.main(path);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		});
+		//*/
+	}
+	
+	public void Button_AddGraph(){
+		String fileName = med.getComboViewerSelectGraph().getCombo().getText();
+		//System.out.println("select graph : "+ fileName);
+		if(fileName.length() == 0){
+			//System.out.println("null obj: "+fileName);
+		}else {
+			ComboData_selectGraph obj = this.coilDBObj.getGraphDataObj().getGraphObj(fileName);
+			/*
+			System.out.println("Graph Title : " + obj.getGraphTitle());
+			System.out.println("Iteration Name : " + obj.getIterationName());
+			System.out.println("File Path : "+obj.getFilePath());
+			System.out.println("result Type : "+ obj.getResultType());
+			// */
+			
+			ListData_selectedGraph listGraphObj = new ListData_selectedGraph();
+			listGraphObj.setGraph(obj);
+			
+			boolean isDuplicated = false;
+			for(ListData_selectedGraph lObj : this.coilDBObj.getSelectedGraphList()){
+				if(lObj.getName().equals(listGraphObj.getName())){
+					isDuplicated = true;
+					break;
+				}
+			}
+			
+			if(!isDuplicated){
+				this.coilDBObj.add_SelectedGraph(listGraphObj);
+			}
+			
+		}
+		
+		med.getListViewerSelectedGraph().refresh();
+	}
+	
+	public void Button_DeleteGraph(){
+		try{
+			IStructuredSelection selectionList =(IStructuredSelection)med.getListViewerSelectedGraph().getSelection();
+			ListData_selectedGraph obj = (ListData_selectedGraph) selectionList.getFirstElement();
+			System.out.println(obj.getName());
+			
+			this.coilDBObj.delete_SelectedGraph(obj);
+			
+			med.getListSelectedGraph().deselectAll();
+			med.getListViewerSelectedGraph().refresh();
+			
+		}catch(Exception e){
+		}
+		/*
+		System.out.println("+++++++++++++++++++++++++++");
+		for(ListData_selectedGraph obj : this.coilDBObj.getSelectedGraphList()){
+			System.out.println(obj.getName());
+		}
+		System.out.println("+++++++++++++++++++++++++++");
+		//*/
 	}
 	
 	public void Button_ShowImageWindow(){
@@ -440,6 +553,22 @@ public class MainController {
 	//
 	///////////////////////////////////////////
 	
+	///////////////////////////////////////////
+	//
+	// List event (select list)
+	//
+	
+	
+	public void List_SelectedGraph(){
+		/*
+		IStructuredSelection selectionList =(IStructuredSelection)med.getListViewerSelectedGraph().getSelection();
+		ListData_selectedGraph obj = (ListData_selectedGraph) selectionList.getFirstElement();
+		System.out.println(obj.getName());
+		*/
+	}
+	//
+	//
+	///////////////////////////////////////////
 	
 	
 	///////////////////////////////////////////
@@ -618,7 +747,7 @@ public class MainController {
 		// load combo data - image
 		this.UpdateSelectImageData();
 		// load combo data - tableData
-		this.UpdateSelectTableData();
+		//this.UpdateSelectTableData();
 		
 	}
 	
@@ -633,7 +762,8 @@ public class MainController {
 	
 	public void Combo_selectGraph() {
 		// TODO Auto-generated method stub
-		System.out.println(med.getComboViewerSelectGraph().getCombo().getText());
+		//System.out.println(med.getComboViewerSelectGraph().getCombo().getText());
+		
 	}
 
 
@@ -771,10 +901,29 @@ public class MainController {
 	
 	public void Tool_TextEditor_Run(){
 		//this.t_readLog.interrupt();
+		try {
+			Process p = Runtime.getRuntime().exec(this.TextEditorPath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error - Run TextEditor");
+			String msg = "Check TextEditor execution path";
+			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
+			msgDlg.open();
+		}
+		
 	}
 	
 	public void Tool_Mentat_Run(){
 		//this.t_runCmd.interrupt();
+		try {
+			Process p = Runtime.getRuntime().exec(this.MentatPath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error - Run Mentat");
+			String msg = "Check Mentat execution path";
+			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
+			msgDlg.open();
+		}
 	}
 	
 	public void Setting_Preferences_Run(){
@@ -808,8 +957,8 @@ public class MainController {
 		}
 		
 		//String projectFolder = myUtil.setPath(parentPath, projectName);
-		System.out.println(projectName);
-		System.out.println(parentPath);
+		//System.out.println(projectName);
+		//System.out.println(parentPath);
 		if(myUtil.checkPath(parentPath)){
 			// exist
 			result = true;
@@ -1343,18 +1492,32 @@ public class MainController {
 		// DEMO Data --> todo... access graph data folder
 		if(!this.coilDBObj.getGraphDataList().isEmpty()){
 			this.coilDBObj.getGraphDataList().clear();
+			this.coilDBObj.getSelectedGraphList().clear();
+			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
 		}
+		/* 
+		//Demo data
 		for(int i = 0; i<10 ;i++){
 			ComboData_selectGraph obj = new ComboData_selectGraph();
 			obj.setName("Graph - "+(i+1));
 			this.coilDBObj.add_GraphDataCombo(obj);
 		}
+		//*/
+		
+		GraphData obj = new GraphData(this.coilDBObj);
+		this.coilDBObj.setGraphDataObj(obj);
+		obj.LoadingResult(myUtil.setPath(this.coilDBObj.getProjectFolderPath(),AppFolder.SIMCOS_DATA));
+		
 		//
 		///////////////////////////////////////////////////////////////
 		try{
 			med.getComboViewerSelectGraph().setLabelProvider(new ComboViewerLabelProvider_SelectGraph());
 			med.getComboViewerSelectGraph().setContentProvider(new ArrayContentProvider());
 			med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList());
+			
+			med.getListViewerSelectedGraph().setLabelProvider(new ListLabelProvider_SelectedGraph());
+			med.getListViewerSelectedGraph().setContentProvider(new ArrayContentProvider());
+			med.getListViewerSelectedGraph().setInput(this.coilDBObj.getSelectedGraphList());
 		}catch(Exception e){
 			System.out.println("ERROR - Graph data");
 		}
@@ -1404,6 +1567,7 @@ public class MainController {
 			System.out.println("ERROR - Table data select Table Data");
 		}
 	}
+	
 	
 	//==================================================================================
 	//==================================================================================

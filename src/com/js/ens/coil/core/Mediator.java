@@ -2,11 +2,13 @@ package com.js.ens.coil.core;
 
 
 import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.swt.widgets.Text;
 
@@ -260,6 +262,20 @@ public class Mediator {
 	public ICommand C_comboViewerSelectGraph;
 	public static String COMBOVIEWER_comboViewerSelectGraph = "comboViewerSelectGraph";
 	
+	private Button btnAddGraph;
+	public ICommand C_btnAddGraph;
+	public static String BUTTON_btnAddGraph = "btnAddGraph";
+	
+	private Button btnDeleteGraph;
+	public ICommand C_btnDeleteGraph;
+	public static String BUTTON_btnDeleteGraph = "btnDeleteGraph";
+	
+	private ListViewer listViewerSelectedGraph;
+	
+	private List listSelectedGraph;
+	public ICommand C_listSelectedGraph;
+	public static String LIST_listSelectedGraph = "listSelectedGraph";
+	
 	private Button btnShowGraphWindow;
 	public ICommand C_btnShowGraphWindow;
 	public static String BUTTON_btnShowGraphWindow = "btnShowGraphWindow";
@@ -279,6 +295,8 @@ public class Mediator {
 	private Button btnShowTableData;
 	public ICommand C_btnShowTableData;
 	public static String BUTTON_btnShowTableData = "btnShowTableData";
+	
+	
 	
 	//////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////
@@ -1165,6 +1183,62 @@ public class Mediator {
 
 	public void setC_btnShowGraphWindow(ICommand c_btnShowGraphWindow) {
 		C_btnShowGraphWindow = c_btnShowGraphWindow;
+	}
+
+	public Button getBtnAddGraph() {
+		return btnAddGraph;
+	}
+
+	public void setBtnAddGraph(Button btnAddGraph) {
+		this.btnAddGraph = btnAddGraph;
+	}
+
+	public ICommand getC_btnAddGraph() {
+		return C_btnAddGraph;
+	}
+
+	public void setC_btnAddGraph(ICommand c_btnAddGraph) {
+		C_btnAddGraph = c_btnAddGraph;
+	}
+
+	public Button getBtnDeleteGraph() {
+		return btnDeleteGraph;
+	}
+
+	public void setBtnDeleteGraph(Button btnDeleteGraph) {
+		this.btnDeleteGraph = btnDeleteGraph;
+	}
+
+	public ICommand getC_btnDeleteGraph() {
+		return C_btnDeleteGraph;
+	}
+
+	public void setC_btnDeleteGraph(ICommand c_btnDeleteGraph) {
+		C_btnDeleteGraph = c_btnDeleteGraph;
+	}
+
+	public ListViewer getListViewerSelectedGraph() {
+		return listViewerSelectedGraph;
+	}
+
+	public void setListViewerSelectedGraph(ListViewer listViewerSelectedGraph) {
+		this.listViewerSelectedGraph = listViewerSelectedGraph;
+	}
+
+	public List getListSelectedGraph() {
+		return listSelectedGraph;
+	}
+
+	public void setListSelectedGraph(List listSelectedGraph) {
+		this.listSelectedGraph = listSelectedGraph;
+	}
+
+	public ICommand getC_listSelectedGraph() {
+		return C_listSelectedGraph;
+	}
+
+	public void setC_listSelectedGraph(ICommand c_listSelectedGraph) {
+		C_listSelectedGraph = c_listSelectedGraph;
 	}
 
 	public ComboViewer getComboViewerSelectImage() {

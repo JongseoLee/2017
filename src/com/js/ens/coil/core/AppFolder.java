@@ -9,8 +9,10 @@ public class AppFolder {
 	public static String CONFIG = "Config";
 	public static String SCRIPT = "Script";
 	public static String MATERIAL_DB = "MaterialDB";
+	public static String GRAPH_LIB = "GraphLib";
 	public static String SIMCOS_WORKSPACE = "Simcos_Workspace";
 	public static String SIMCOS_DATA = "SimcosData";
+	public static String PLOT = "Plot";
 	
 	
 	// Config file Name
@@ -20,6 +22,13 @@ public class AppFolder {
 	public static String PreferencesFile = "preferences.ini";
 	public static String DbTemplateFile = "SimcosDbTemplate.ini";
 	public static String dbFileName = "SimcosDB.sdb";
+	// Graph file Name
+	public static String PlotTmpFile = "plot.tmp";
+	public static String exportingFile = "exporting.js";
+	public static String highchartsFile = "highcharts.js";
+	public static String jqueryFile	= "jquery-3.2.1.min.js";
+	public static String SimcosGraphExeFile = "SimcosGraph.exe";
+	
 	
 	// input files in SimcosData folder for Simulation
 	public static String coilParamCSVFileName = "coil_param_0825_icf.csv";
@@ -28,6 +37,9 @@ public class AppFolder {
 	public static String pythonScriptFileName = "iterative_reverse_setting_0825.py";
 	public static String coilItrLogFileName = "_simcos.log";
 	public static String dummyLogFileName = "coil_itr.log";
+	// result file Name 
+	
+	
 	// member variable
 	private String userWorkspace;
 	
@@ -39,6 +51,8 @@ public class AppFolder {
 		this.userWorkspace = MC.getCoilDBObj().getProjectFolderPath();
 		String simcosDataFolderPath = myUtil.setPath(this.userWorkspace, SIMCOS_DATA);
 		myUtil.makeDirectory(simcosDataFolderPath);
+		String plotFolderPath = myUtil.setPath(simcosDataFolderPath, PLOT);
+		myUtil.makeDir(plotFolderPath);
 	}
 	
 }

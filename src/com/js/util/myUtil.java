@@ -96,7 +96,7 @@ public class myUtil {
 	}
 	// Get current Time 
 	public static String getCurrentTime(){
-		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss" );
+		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyyMMdd_HHmmss" );
 		Date currentTime = new Date ( );
 		String dTime = formatter.format (currentTime);
 		return dTime;
@@ -235,6 +235,21 @@ public class myUtil {
 		for(int i=0; i<arr.length;i++){
 			if(arr[i].length() !=0){
 				result.add(arr[i]);
+			}
+		}
+
+		return result;
+	}
+	
+	public static ArrayList<String> splitData_csv(String line,String token){
+		
+		ArrayList<String> result = new ArrayList<String>();
+
+		String[] arr = line.trim().split(token);
+
+		for(int i=0; i<arr.length;i++){
+			if(arr[i].length() !=0){
+				result.add(arr[i].trim());
 			}
 		}
 

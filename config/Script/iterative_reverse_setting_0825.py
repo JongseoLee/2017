@@ -3,6 +3,7 @@
 from py_mentat import *
 from py_post import *
 from math import *
+import csv
 
 def param_define() :
 # Dummy Routine for describing the parameters
@@ -11,7 +12,11 @@ def param_define() :
 # Revised 2017. 8. 13 : Enhance Error Writing & Log 
 # Revised 2017. 8. 13 : Add Tolerance exit function.
 # Revised 2017. 8. 14 : Change Seat movement from stroke to height.
-#                       Align writing the log file format
+#                       Update log file writing
+# Revised 2017. 8. 25 : Change Paramete file format for controlling initial conditioner 
+#                       Update log file writing
+#                       Update checking consistency of coil design data(turn no.)
+#                       Change csv parsing method  
 #   ndiv : no. of divisions through spring center line
 #   s_model : Spring Model Name  --> coil_name
 #   s_d1 : Spring diameter --> wire_dia
@@ -149,73 +154,68 @@ def add_align_center_elem(cnt_beam_start) :
  
 def read_coil_data(iname,lf) :
    print "Start Reading Coil Data from : read_coil_data %s " %iname  
-   ds_x,ds_y,ds_z,ds_r,ds_t=[],[],[],[],[] # designed spring
-   coil_param=[] 
-   rf=open(iname,"r")
-   s = rf.read()
-   no_lines=s.count('\n')
-   print (" number of lines : Coil Data ",no_lines)
-   rf.seek(0) # move to first line
    sl="\n*** Start Read Coil Data *** \n"
    lf.write(sl)
-   for i in range(1,11) :
-      s1= rf.readline().strip('\n')
-      s2=s1.split(',')
-      if (i == 1) :
-        s3=s2[1].strip()   # remove left & right blank in the string
-        s4=s3.replace(" ","")  # remove blank in the string 
-        s_model = s4
+   ds_x,ds_y,ds_z,ds_r,ds_t=[],[],[],[],[] # designed spring
+   coil_param=[] 
+   s=[] 
+   f = open(iname,"r")
+   csvReader = csv.reader(f)
+   for row in csvReader:
+      s.append(row)
+      print row
+   f.close()
+   for i in range(0,10) :
+      s2= s[i] 
+      if (i == 0) :
+        s_model = s2[1]
         coil_param.append(s_model)
         py_send("*define coil_name %s " %s_model)
         print " Spring Model Name ",s_model
-      if (i == 2) :
+      if (i == 1) :
         s_d1 = float(s2[1])
         coil_param.append(s_d1)
         py_send("*eval wire_dia %f " %s_d1)
         print " Spring diameter ",s_d1
-      if (i == 3) :
+      if (i == 2) :
         c_d = float(s2[1])
         coil_param.append(c_d)
         py_send("*eval coil_dia %f " %c_d)        
         print " Coil Central diameter ",c_d
-      if (i == 4) :
+      if (i == 3) :
         c_id = float(s2[1])
         coil_param.append(c_id)
         py_send("*eval coil_int_dia %f " %c_id)                
         print " Coil Internal diameter ",c_id
-      if (i == 5) :
+      if (i == 4) :
         c_ed = float(s2[1])
         coil_param.append(c_ed)
         py_send("*eval coil_ext_dia %f " %c_ed)                        
         print " Coil External diameter ",c_ed
-      if (i == 6) :
+      if (i == 5) :
         c_ud = float(s2[1])
         coil_param.append(c_ud)
         py_send("*eval coil_up_dia %f " %c_ud)                        
         print " Coil Upper diameter ",c_ud
-      if (i == 7) :
+      if (i == 6) :
         c_ld = float(s2[1])
         coil_param.append(c_ld)
         py_send("*eval coil_low_dia %f " %c_ld)                        
         print " Coil Lower diameter ",c_ld        
-      if (i == 8) :
+      if (i == 7) :
         c_turn = float(s2[1])
         coil_param.append(c_turn)
         py_send("*eval coil_turn_no %f " %c_turn)                        
         print " Coil Total turns NO. ",c_turn 
         py_send("*define c_turn %f " %c_turn)
    #print "Coil Parameter ",coil_param    
-   k=11
    sl="++++ Coil Geometry Data(Input) *** \n"
    lf.write(sl)
    sl="         X,         Y,         Z,         R, Theta(turn),   \n"
    lf.write(sl)   
-   while k<= no_lines : 
-     s1= rf.readline().strip('\n')
-     s2=s1.split(',')     
-     ns = len(s2)
-     if (s2[0] != 'end') and (ns == 5)  : 
-       #print "Line:",k,"Spring Data :",s2
+   for i in range(10,len(s)) :
+       s2= s[i]    
+       print s2
        ds_x.append(float(s2[0]))
        ds_y.append(float(s2[1]))
        ds_z.append(float(s2[2]))
@@ -226,9 +226,7 @@ def read_coil_data(iname,lf) :
          sl = sl + str.format("{0:" ">10.5f},",float(s2[si]))
        sl = sl + "\n"  
        lf.write(sl)
-     k=k+1   
    # print ds_t
-   rf.close()
    check_coil_data(ds_t) 
    print " Angular division no. for a turn - read_coil_data", py_get_float("a_div") 
    lx,ly,lz,lr,lt=len(ds_x),len(ds_y),len(ds_z),len(ds_r),len(ds_t)
@@ -238,6 +236,17 @@ def read_coil_data(iname,lf) :
       sl = sl+"*** End Process \n"
       lf.write(sl)   
       exit()
+# Check the consistency of coil turn no. between parameter & geometry data
+   if abs(c_turn - max(ds_t)) > 0.00001  :
+          sl = "++++ ERROR : Coil turn no. does not consist between param. and geom.\n"
+          sl = sl+str.format("Parameter : {0:" ">10.5f},\n", c_turn)
+          sl = sl+str.format("Geometry  : {0:" ">10.5f},\n", max(ds_t))
+          sl = sl + "*** End Process \n"
+          lf.write(sl)          
+          lf.close()
+          exit()
+
+         
    return  ds_x,ds_y,ds_z,ds_r,ds_t,coil_param
 
 def check_coil_data(t_no) :
@@ -257,16 +266,14 @@ def read_ic_data(icname,ictype,dt,lf) :
    print "Start Reading Initial Conditioner Data from : read_ic_data %s " %icname  
    sl = "\n*** Start Reading Initial Conditioner *** \n"
    lf.write(sl) 
-   rf=open(icname,"r")   
-   s = rf.read()
-   no_lines=s.count('\n')
-   print (" number of lines : initial Conditioner data file ",no_lines)
-   rf.seek(0) # move to first line   
-   if len(dt) != (no_lines-2) :
-     sl = "\n*** ERROR : Diffrent the length of Initial Conditioner & Spring Data *** \n"
-     sl = sl+"*** End Process \n"
-     lf.write(sl) 
-     exit()  
+   s = []
+   f = open(icname,"r")
+   csvReader = csv.reader(f)
+   for row in csvReader:
+      s.append(row)
+      #print row
+   f.close()
+   #print s[0],s[1],len(s)   
    if ictype == "h" :
      sl = "++++ Height Initial Conditioner Data \n"
      sl = sl+"Theta(Turn),         Z,    \n"
@@ -276,26 +283,29 @@ def read_ic_data(icname,ictype,dt,lf) :
      sl = sl+"Theta(Turn),   Radius,    \n"
      lf.write(sl)    
    ic_t,ic_v=[],[] # initial condition data 
-   s1= rf.readline().strip('\n')    
-   # print "Line - Init. Con. = 1",s1     
-   s1= rf.readline().strip('\n')
-   # print "Line - Init. Con. = 2",s1  
-   k=3
-   while k<= no_lines : 
-     s1= rf.readline().strip('\n')
-     s2=s1.split(',')
-     ns = len(s2) # Number of values
-     if (s2[0] != 'end') and (ns == 2)  :      
-       # print "Line - Init. Con. =",k,s2   
-       turn=float(s2[0])
-       val=float(s2[1])
-       ic_t.append(turn)
-       ic_v.append(val)
-       sl = str.format("{0:" ">10.5f},", turn)
-       sl = sl + str.format("{0:" ">10.5f},\n", val) 
-       lf.write(sl)       
-     k=k+1   
-   rf.close()   
+   for k in range(2,len(s)) : 
+     s1= s[k]
+     #print "***",s1[0],s1[1]
+     turn=float(s1[0])
+     val=float(s1[1])
+     ic_t.append(turn)
+     ic_v.append(val)
+     sl = str.format("{0:" ">10.5f},", turn)
+     sl = sl + str.format("{0:" ">10.5f},\n", val)
+     #print sl 
+     lf.write(sl)       
+     
+   if max(dt) != max(ic_t) :
+     sl = "\n*** ERROR : Diffrent the Turn No. of Initial Conditioner & Spring Data *** \n"
+     if ictype == "h" :
+        sl = sl +"*** Conditioner Type  -  Height            \n"
+     if ictype == "r" :
+        sl = sl +"*** Conditioner Type  -  Radius            : \n"   
+     sl = sl +"*** ERROR : Turn No. of Design              : "+str(max(dt))+"\n"
+     sl = sl +"*** ERROR : Trun No. of Initial Conditioner : "+str(max(ic_t))+"\n"
+     sl = sl+"*** End Process \n"
+     lf.write(sl) 
+     exit()  
    return  ic_t,ic_v
 
 def generate_ic_data(icrate,ictype,dt,dv,lf) :
@@ -362,28 +372,24 @@ def read_param(ipname) :
    iparam,tparam=[],[] # tparam = title,iparam=parameter
    print "Start Reading Parameter from : read_param %s " %ipname  
    ic_t,ic_r,ic_z=[],[],[] # initial conditioner data 
-   rf=open(ipname,"r")   
-   s = rf.read()
-   no_lines=s.count('\n')
-   print (" number of lines : Parameters ",no_lines)
-   rf.seek(0) # move to first line
-   k=1
-   while k<= no_lines : 
-     s1= rf.readline().strip('\n')
-     s2=s1.split(',')
-     #print "k=",k,s1,s2     
-     tparam.append(s2[0])
-     s3=s2[1].strip()       # remove left & right blank in the string
-     s4=s3.replace(" ","")  # remove blank in the string 
+   s = []
+   f = open(ipname,"r")
+   csvReader = csv.reader(f)
+   for row in csvReader:
+      s.append(row)
+      #print row
+   f.close()
+   for i in range(0,len(s)) : 
+     s1=s[i]
+     tparam.append(s1[0])
+     s2=s1[1]
      try :
-        s4 = float(s2[1])
-        print "Converting parameter as float",s4,type(s4)
+        s2 = float(s2)
+        print "Converting parameter as float",s2,type(s2)
      except ValueError:
         pass
-     iparam.append(s4)
-     print "k=",k,tparam[k-1],iparam[k-1]
-     k=k+1   
-   rf.close()   
+     iparam.append(s2)
+     print "i=",i,tparam[i],iparam[i]
    #print iparam
    return  tparam,iparam
 
@@ -641,12 +647,14 @@ def create_seat(s_x,s_y,s_z,s_d,su_m,sl_m,s_h2,lf) :
    print " Seat Parameters ",s_h,s_d,len_r,U_seat_Rad,L_seat_Rad
    py_send("*define U_seat_Rad %f" %U_seat_Rad)
    py_send("*define L_seat_Rad %f" %L_seat_Rad)
+   so_r = 200.0 # Seat Out Radius (170.0 : the value from DWKU)
+   py_send("*define so_r %f" %so_r)
 # Create Upper Seat
    py_send("*select_clear *visible_selected ")   
    py_send("*system_reset *system_rotate 90 0 0 ")
    py_send("*set_curve_type line *add_curves ")
-   py_send("point(170.0/2.0,-wire_dia/2.0-10.0,0.0) point(170/2.0,-wire_dia/2.0,0.0) ")
-   py_send("point(170.0/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) ")
+   py_send("point(so_r/2.0,-wire_dia/2.0-10.0,0.0) point(so_r/2.0,-wire_dia/2.0,0.0) ")
+   py_send("point(so_r/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) ")
    py_send("point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0,0.0) point(U_seat_Rad-wire_dia/2.0,-wire_dia/2.0+s_h2,0.0) ")
    py_send("point(U_seat_Rad/2.0-wire_dia/2.0,-wire_dia/2.0+s_h2,0.0) point(0.0,-wire_dia/2.0+s_h2,0.0) ")
    py_send("*set_curve_type fillet *add_curves %d %d  10.0 " %(max_crv_id+3,max_crv_id+4) )
@@ -656,8 +664,8 @@ def create_seat(s_x,s_y,s_z,s_d,su_m,sl_m,s_h2,lf) :
    py_send("*select_clear *visible_selected ")
    py_send("*flip_surfaces 6 # ")   
    py_send("*set_curve_type line *add_curves ")
-   py_send("point(170.0/2.0,s_h+wire_dia/2.0+10.0,0.0) point(170.0/2.0,s_h+wire_dia/2.0,0.0) ")
-   py_send("point(170.0/2.0,s_h+wire_dia/2.0,0.0)   point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) ")
+   py_send("point(so_r/2.0,s_h+wire_dia/2.0+10.0,0.0) point(so_r/2.0,s_h+wire_dia/2.0,0.0) ")
+   py_send("point(so_r/2.0,s_h+wire_dia/2.0,0.0)   point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) ")
    py_send("point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0,0.0) point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-s_h2,0.0) ")
    py_send("point(L_seat_Rad-wire_dia/2.0,s_h+wire_dia/2.0-s_h2,0.0) point(0.0,s_h+wire_dia/2.0-s_h2,0.0) ")
    py_send("*set_curve_type fillet *add_curves %d %d  10.0 " %(max_crv_id+10,max_crv_id+11) )   
@@ -952,6 +960,15 @@ def create_lcase_job() :
     py_send("*job_option frictype:coulomb_bilinear ")
     py_send("*element_type 7 spring_solid ")
     py_send("*element_type 98 spring_center ")
+    py_send("*job_option nod_quantities:manual")
+    py_send("*add_post_nodal_quantity Displacement")
+    py_send("*add_post_nodal_quantity Rotation")
+    py_send("*add_post_nodal_quantity Ext_Force")
+    py_send("*add_post_nodal_quantity Rea_Force")
+    py_send("*add_post_nodal_quantity Cont_Nor_Force")
+    py_send("*add_post_nodal_quantity Cont_Fri_Force")
+    py_send("*add_post_nodal_quantity Cont_Status")
+    py_send("*add_post_nodal_quantity Cont_Tchd_Body")    
     py_send("*save_model ")    
     return
 
@@ -1295,7 +1312,8 @@ def find_set_id(name):
 def main():  
 
    py_send("*new_model yes") 
-   ipname="coil_param_0825_icf.csv"
+   #ipname="coil_param_0825_icr.csv"  # IC-Rate
+   ipname="coil_param_0825_icf.csv" # IC-File
    title,param=read_param(ipname)   
    mname=param[0]   # Model Name
    iname=param[1]   # Spring Data Name
@@ -1318,12 +1336,12 @@ def main():
    if type(param[2]) is str :  
       ic_type="file"
       icname_h=param[2]  # Initial Conditioner name - Height
-      sl = "Initial Conditioner File   : "+str(icname_h)+"\n"
+      sl = "Initial Conditioner File       : "+str(icname_h)+"\n"
       lf.write(sl)
    elif type(param[2]) is float :
       ic_type="rate_linear"
       icrate_h=param[2]  # Initial Conditioner rate - Height
-      sl = "Initial Conditioner Rate   : "+str(icrate_h)+"\n"
+      sl = "Initial Conditioner Rate       : "+str(icrate_h)+"\n"
       lf.write(sl)
    else :
       print " Height Initial Conditioner is not defined "
@@ -1333,12 +1351,12 @@ def main():
    if type(param[3]) is str :
       ic_type="file"
       icname_r=param[3]  # Initial Conditioner file name - Radius
-      sl = "Initial Conditioner File   : "+str(icname_r)+"\n"
+      sl = "Initial Conditioner File       : "+str(icname_r)+"\n"
       lf.write(sl)
    elif type(param[3]) is float :
       ic_type="rate_linear"
       icrate_r=param[3]  # Initial Conditioner rate - Radius
-      sl = "Initial Conditioner Rate   : "+str(icrate_r)+"\n"      
+      sl = "Initial Conditioner Rate       : "+str(icrate_r)+"\n"      
       lf.write(sl)
    else :
       print " Radius Initial Conditioner is not defined "
@@ -1591,7 +1609,6 @@ def main():
           lf.write(sl)          
           sl = "*** End Process \n"
           lf.write(sl)          
-
           lf.close()
           exit()
       i_no=i_no+1

@@ -80,6 +80,12 @@ public class CustomButton implements ICommand {
 		else if(this.widgetName.equals(Mediator.BUTTON_btnShowGraphWindow)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnShowGraphWindow);
 			MC.Button_ShowGraphWindow();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnAddGraph)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnAddGraph);
+			MC.Button_AddGraph();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnDeleteGraph)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnDeleteGraph);
+			MC.Button_DeleteGraph();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnShowImageWindow)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnShowImageWindow);
 			MC.Button_ShowImageWindow();
@@ -153,6 +159,14 @@ public class CustomButton implements ICommand {
 	
 	public void setCustomWidget_btnShowGraphWindow(){
 		this.button = med.getBtnShowGraphWindow();
+	}
+	
+	public void setCustomWidget_btnAddGraph(){
+		this.button = med.getBtnAddGraph();
+	}
+	
+	public void setCustomWidget_btnDeleteGraph(){
+		this.button = med.getBtnDeleteGraph();
 	}
 	
 	public void setCustomWidget_btnShowImageWindow(){

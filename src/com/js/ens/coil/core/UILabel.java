@@ -131,6 +131,10 @@ public class UILabel {
 	private String base_DisplayResultCoilData = "Display Result Coil Data";
 	public static String SelectGraph = "SelectGraph";
 	private String base_SelectGraph = "Select Graph";
+	public static String AddGraph = "AddGraph";
+	private String base_AddGraph = "Add Graph";
+	public static String DeleteGraph ="DeleteGraph";
+	private String base_DeleteGraph ="Delete Graph";
 	public static String ShowPopupWindow_1 = "ShowPopupWindow_1";
 	private String base_ShowPopupWindow_1 = "Show popup window";
 	public static String SelectImage = "SelectImage";
@@ -207,6 +211,8 @@ public class UILabel {
 		
 		this.BaseUILabelMap.put("DisplayResultCoilData", this.base_DisplayResultCoilData);
 		this.BaseUILabelMap.put("SelectGraph", this.base_SelectGraph);
+		this.BaseUILabelMap.put("AddGraph", this.base_AddGraph);
+		this.BaseUILabelMap.put("DeleteGraph", this.base_DeleteGraph);
 		this.BaseUILabelMap.put("ShowPopupWindow_1", this.base_ShowPopupWindow_1);
 		this.BaseUILabelMap.put("SelectImage", this.base_SelectImage);
 		this.BaseUILabelMap.put("ShowPopupWindow_2", this.base_ShowPopupWindow_2);

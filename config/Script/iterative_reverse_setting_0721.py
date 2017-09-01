@@ -143,7 +143,7 @@ def read_coil_data(iname,lf) :
    no_lines=s.count('\n')
    print (" number of lines : Coil Data ",no_lines)
    rf.seek(0) # move to first line
-   sl="\n *** Start Read Coil Data *** \n\n"
+   sl=" *** Start Modeling \n\n *** Start Read Coil Data *** \n\n"
    lf.write(sl)
    for i in range(1,11) :
       s1= rf.readline().strip('\n')
@@ -1128,8 +1128,10 @@ def main():
    i_no=1
    #while (max_err_z > err_tol) or (min_err_z < -1*err_tol) or (max_err_r > err_tol) or (min_err_r < -1*err_tol) or (i_no < max_itr)  :
    while (i_no <= max_itr)  : 
+      sl_add = "*** Start Marc Run =%d" %i_no
       sl = "\n Start %d - th Iteration of Setting Simulation : Marc Run \n\n" %i_no
       print sl
+      lf.write(sl_add)
       lf.write(sl)
       sc_name=coil_param[0]+"_"+str(i_no)  # Define Current sim. model name
       sl="\n Simulation Model Name : "+sc_name+" \n\n"
@@ -1211,6 +1213,8 @@ def main():
       print sl
       lf.write(sl)
       i_no=i_no+1
+   sl_add = "*** End Process"
+   lf.write(sl_add)
    lf.close()
    return     
    

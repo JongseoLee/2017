@@ -30,11 +30,22 @@ public class RunCMD implements Runnable{
 		this.batPath = myUtil.setPath(this.simcosDataPath, "runSimcos.bat");
 		this.preCMD = "rundll32 url.dll,FileProtocolHandler ";
 		this.runProc = this.preCMD + myUtil.setPath(this.simcosDataPath, AppFolder.mainProcFileName);
-		
+		/*
 		this.outputDataList = new ArrayList<String>();
 		this.outputDataList.add("cd "+this.simcosDataPath);
 		this.outputDataList.add(this.simcosDataPath.charAt(0)+":");
 		this.outputDataList.add(this.runProc);
+		//*/
+		this.outputDataList = new ArrayList<String>();
+		this.outputDataList.add("cd "+this.simcosDataPath);
+		this.outputDataList.add(this.simcosDataPath.charAt(0)+":");
+		
+		String cmd = MC.getCommand(); 
+		String ch_cmd1 = cmd.replace("{MentatPath}", MC.getMentatPath());
+		String ch_cmd2 = ch_cmd1.replace("{SimcosDataPath}", this.simcosDataPath);
+		this.outputDataList.add(ch_cmd2);
+		System.out.println("\n\n\n\nCMCMCMCMCMCMDDDDDD : "+ch_cmd2+"\n\n\n");
+		
 		Writer writer = new Writer(this.batPath);
 		writer.running(outputDataList);
 		
@@ -46,6 +57,8 @@ public class RunCMD implements Runnable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 	}
 	
 	@Override

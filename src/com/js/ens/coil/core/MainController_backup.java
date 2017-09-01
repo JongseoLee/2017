@@ -1351,11 +1351,13 @@ public class MainController_backup {
 		if(!this.coilDBObj.getGraphDataList().isEmpty()){
 			this.coilDBObj.getGraphDataList().clear();
 		}
+		/*
 		for(int i = 0; i<10 ;i++){
 			ComboData_selectGraph obj = new ComboData_selectGraph();
 			obj.setName("Graph - "+(i+1));
 			this.coilDBObj.add_GraphDataCombo(obj);
 		}
+		//*/
 		//
 		///////////////////////////////////////////////////////////////
 		try{
