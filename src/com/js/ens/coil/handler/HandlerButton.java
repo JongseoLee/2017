@@ -48,8 +48,16 @@ public class HandlerButton implements Listener {
 			med.getC_btnMaterialDBExplorer().execute();
 		}else if(event.widget == med.getBtnStartSimulation()){
 			med.getC_btnStartSimulation().execute();
+		}else if(event.widget == med.getBtnResetSimulation()){
+			med.getC_btnResetSimulation().execute();
 		}else if(event.widget == med.getBtnReadLog()){
 			med.getC_btnReadLog().execute();
+		}
+		
+		else if(event.widget == med.getBtnRadius()){
+			med.getC_btnRadius().execute();
+		}else if(event.widget == med.getBtnHeight()){
+			med.getC_btnHeight().execute();
 		}else if(event.widget == med.getBtnShowGraphWindow()){
 			med.getC_btnShowGraphWindow().execute();
 		}else if(event.widget == med.getBtnAddGraph()){

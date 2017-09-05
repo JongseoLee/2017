@@ -1086,12 +1086,23 @@ public class View extends ViewPart {
 		c_btnStartSimulation.setCustomWidget_btnStartSimulation();
 		FormData fd_btnStartSimulation = new FormData();
 		fd_btnStartSimulation.top = new FormAttachment(lblSimulationIteration, -2, SWT.TOP);
-		//fd_btnStartSimulation.left = new FormAttachment(textRadiusTolerance, 0, SWT.LEFT);
-		//fd_btnStartSimulation.right = new FormAttachment(textRadiusTolerance, 0, SWT.RIGHT);
-		fd_btnStartSimulation.left = new FormAttachment(100,-140);
-		fd_btnStartSimulation.right = new FormAttachment(100,-10);
+		fd_btnStartSimulation.left = new FormAttachment(100,-280);
+		fd_btnStartSimulation.right = new FormAttachment(100,-150);
 		btnStartSimulation.setLayoutData(fd_btnStartSimulation);
 		btnStartSimulation.setText(LabelDatas.getLabel(UILabel.StartSimulation));
+		
+		Button btnResetSimulation = new Button(grpAnalysisOptions, SWT.NONE);
+		med.setBtnResetSimulation(btnResetSimulation);
+		CustomButton c_btnResetSimulation = new CustomButton(Mediator.BUTTON_btnResetSimulation,med);
+		med.setC_btnResetSimulation(c_btnResetSimulation);
+		c_btnResetSimulation.setCustomWidget_btnResetSimulation();
+		FormData fd_btnResetSimulation = new FormData();
+		fd_btnResetSimulation.top = new FormAttachment(lblSimulationIteration, -2, SWT.TOP);
+		fd_btnResetSimulation.left = new FormAttachment(100,-140);
+		fd_btnResetSimulation.right = new FormAttachment(100,-10);
+		btnResetSimulation.setLayoutData(fd_btnResetSimulation);
+		btnResetSimulation.setText(LabelDatas.getLabel(UILabel.ResetSimulation));
+		
 		
 		ProgressBar progressBarSimulationIteration = new ProgressBar(grpAnalysisOptions, SWT.NONE);
 		med.setProgressBarSimulationIteration(progressBarSimulationIteration);
@@ -1125,8 +1136,8 @@ public class View extends ViewPart {
 		fd_btnReadLog.top = new FormAttachment(lblCheckStatus, 0, SWT.TOP);
 		//fd_btnReadLog.left = new FormAttachment(textRadiusTolerance, 0, SWT.LEFT);
 		//fd_btnReadLog.right = new FormAttachment(textRadiusTolerance, 0, SWT.RIGHT);
-		fd_btnReadLog.left = new FormAttachment(btnStartSimulation, 0, SWT.LEFT);
-		fd_btnReadLog.right = new FormAttachment(btnStartSimulation, 0, SWT.RIGHT);
+		fd_btnReadLog.left = new FormAttachment(btnResetSimulation, 0, SWT.LEFT);
+		fd_btnReadLog.right = new FormAttachment(btnResetSimulation, 0, SWT.RIGHT);
 		btnReadLog.setLayoutData(fd_btnReadLog);
 		btnReadLog.setText(LabelDatas.getLabel(UILabel.ReadLog));
 		
@@ -1184,6 +1195,38 @@ public class View extends ViewPart {
 		lblSelectGraph.setLayoutData(fd_lblSelectGraph);
 		lblSelectGraph.setText(LabelDatas.getLabel(UILabel.SelectGraph));
 		
+		Composite compositeGraphType = new Composite(grpDisplayResultCoil, SWT.NONE);
+		compositeGraphType.setLayout(new FormLayout());
+		FormData fd_compositeGraphType = new FormData();
+		fd_compositeGraphType.top = new FormAttachment(lblSelectGraph, 6);
+		fd_compositeGraphType.left = new FormAttachment(lblSelectGraph,0,SWT.LEFT);
+		fd_compositeGraphType.right = new FormAttachment(lblSelectGraph,0,SWT.RIGHT);
+		compositeGraphType.setLayoutData(fd_compositeGraphType);
+		
+		Button btnRadius = new Button(compositeGraphType, SWT.RADIO);
+		med.setBtnRadius(btnRadius);
+		CustomButton c_btnRadius = new CustomButton(Mediator.BUTTON_btnRadius,med);
+		med.setC_btnRadius(c_btnRadius);
+		c_btnRadius.SetCustomWidget_btnRadius();
+		FormData fd_btnRadius = new FormData();
+		fd_btnRadius.top = new FormAttachment(0, 0);
+		fd_btnRadius.left = new FormAttachment(0, 10);
+		btnRadius.setLayoutData(fd_btnRadius);
+		btnRadius.setText(LabelDatas.getLabel(UILabel.Radius));
+		btnRadius.setSelection(true);
+		
+		Button btnHeight = new Button(compositeGraphType, SWT.RADIO);
+		med.setBtnHeight(btnHeight);
+		CustomButton c_btnHeight = new CustomButton(Mediator.BUTTON_btnHeight,med);
+		med.setC_btnHeight(c_btnHeight);
+		c_btnHeight.SetCustomWidget_btnHeihght();
+		FormData fd_btnHeight = new FormData();
+		fd_btnHeight.top = new FormAttachment(btnRadius, 0, SWT.TOP);
+		fd_btnHeight.left = new FormAttachment(btnRadius, 110);
+		btnHeight.setLayoutData(fd_btnHeight);
+		btnHeight.setText(LabelDatas.getLabel(UILabel.Height));
+		
+		/* */
 		ComboViewer comboViewerSelectGraph = new ComboViewer(grpDisplayResultCoil, SWT.NONE | SWT.READ_ONLY);
 		med.setComboViewerSelectGraph(comboViewerSelectGraph);
 		CustomComboViewer c_comboViewerSelectGraph = new CustomComboViewer(Mediator.COMBOVIEWER_comboViewerSelectGraph,med);
@@ -1191,7 +1234,7 @@ public class View extends ViewPart {
 		c_comboViewerSelectGraph.setCustomWidget_comboViewerSelectGraph();
 		comboSelectGraph = comboViewerSelectGraph.getCombo();
 		FormData fd_comboViewerSelectGraph = new FormData();
-		fd_comboViewerSelectGraph.top = new FormAttachment(lblSelectGraph, 6);
+		fd_comboViewerSelectGraph.top = new FormAttachment(compositeGraphType, 6);
 		fd_comboViewerSelectGraph.left = new FormAttachment(lblSelectGraph, 0, SWT.LEFT);
 		fd_comboViewerSelectGraph.right = new FormAttachment(lblSelectGraph,0,SWT.RIGHT);
 		comboSelectGraph.setLayoutData(fd_comboViewerSelectGraph);
@@ -1277,6 +1320,8 @@ public class View extends ViewPart {
 		fd_btnShowImageWindow.right = new FormAttachment(comboSelectImage, 0, SWT.RIGHT); 
 		btnShowImageWindow.setLayoutData(fd_btnShowImageWindow);
 		btnShowImageWindow.setText(LabelDatas.getLabel(UILabel.ShowPopupWindow_2));
+		
+		//*/
 		
 		/*
 		Label lblSelectImage = new Label(grpDisplayResultCoil, SWT.NONE);
@@ -1449,7 +1494,10 @@ public class View extends ViewPart {
  		med.getBtnHeightConditionerExplorer().addListener(SWT.Selection, handlerButton);
 		med.getBtnMaterialDBExplorer().addListener(SWT.Selection, handlerButton);
 		med.getBtnStartSimulation().addListener(SWT.Selection, handlerButton);
+		med.getBtnResetSimulation().addListener(SWT.Selection, handlerButton);
 		med.getBtnReadLog().addListener(SWT.Selection, handlerButton);
+		med.getBtnRadius().addListener(SWT.Selection, handlerButton);
+		med.getBtnHeight().addListener(SWT.Selection, handlerButton);
 		med.getBtnShowGraphWindow().addListener(SWT.Selection, handlerButton);
 		med.getBtnAddGraph().addListener(SWT.Selection, handlerButton);
 		med.getBtnDeleteGraph().addListener(SWT.Selection, handlerButton);

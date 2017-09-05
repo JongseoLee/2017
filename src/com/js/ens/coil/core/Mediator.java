@@ -244,6 +244,10 @@ public class Mediator {
 	public ICommand C_btnStartSimulation;
 	public static String BUTTON_btnStartSimulation = "btnStartSimulation";
 	
+	private Button btnResetSimulation;
+	public ICommand C_btnResetSimulation;
+	public static String BUTTON_btnResetSimulation = "btnResetSimulation";
+	
 	private ProgressBar progressBarSimulationIteration;
 	public ICommand C_progressBarSimulationIteration;
 	public static String PROGRESSBAR_progressBarSimulationIteration = "progressBarSimulationIteration";
@@ -258,10 +262,18 @@ public class Mediator {
 	
 	//////////////////////////////////////////////////////////////////////////
 	// step3
+	private Button btnRadius;
+	private ICommand C_btnRadius;
+	public static String BUTTON_btnRadius = "btnRadius";
+	
+	private Button btnHeight;
+	private ICommand C_btnHeight;
+	public static String BUTTON_btnHeight = "btnHeight";
+	
 	private ComboViewer comboViewerSelectGraph;
 	public ICommand C_comboViewerSelectGraph;
 	public static String COMBOVIEWER_comboViewerSelectGraph = "comboViewerSelectGraph";
-	
+
 	private Button btnAddGraph;
 	public ICommand C_btnAddGraph;
 	public static String BUTTON_btnAddGraph = "btnAddGraph";
@@ -1103,6 +1115,22 @@ public class Mediator {
 		C_btnStartSimulation = c_btnStartSimulation;
 	}
 
+	public Button getBtnResetSimulation() {
+		return btnResetSimulation;
+	}
+
+	public void setBtnResetSimulation(Button btnResetSimulation) {
+		this.btnResetSimulation = btnResetSimulation;
+	}
+
+	public ICommand getC_btnResetSimulation() {
+		return C_btnResetSimulation;
+	}
+
+	public void setC_btnResetSimulation(ICommand c_btnResetSimulation) {
+		C_btnResetSimulation = c_btnResetSimulation;
+	}
+
 	public ProgressBar getProgressBarSimulationIteration() {
 		return progressBarSimulationIteration;
 	}
@@ -1151,6 +1179,38 @@ public class Mediator {
 
 	public void setC_textLogEditor(ICommand c_textLogEditor) {
 		C_textLogEditor = c_textLogEditor;
+	}
+
+	public Button getBtnRadius() {
+		return btnRadius;
+	}
+
+	public void setBtnRadius(Button btnRadius) {
+		this.btnRadius = btnRadius;
+	}
+
+	public ICommand getC_btnRadius() {
+		return C_btnRadius;
+	}
+
+	public void setC_btnRadius(ICommand c_btnRadius) {
+		C_btnRadius = c_btnRadius;
+	}
+
+	public Button getBtnHeight() {
+		return btnHeight;
+	}
+
+	public void setBtnHeight(Button btnHeight) {
+		this.btnHeight = btnHeight;
+	}
+
+	public ICommand getC_btnHeight() {
+		return C_btnHeight;
+	}
+
+	public void setC_btnHeight(ICommand c_btnHeight) {
+		C_btnHeight = c_btnHeight;
 	}
 
 	public ComboViewer getComboViewerSelectGraph() {

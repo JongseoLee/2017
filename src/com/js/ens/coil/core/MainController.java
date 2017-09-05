@@ -1,16 +1,8 @@
 package com.js.ens.coil.core;
 
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
-
-
-
-
-
-import java.util.List;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -20,7 +12,6 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import com.js.ens.coil.customWidget.ComboData_selectGraph;
-import com.js.ens.coil.customWidget.ComboData_selectGraph.ColumnData;
 import com.js.ens.coil.customWidget.ComboData_selectImage;
 import com.js.ens.coil.customWidget.ComboData_selectTableData;
 import com.js.ens.coil.customWidget.ComboViewerLabelProvider_SelectGraph;
@@ -40,13 +31,14 @@ import com.js.ens.coil.dialog.OpenDlg;
 import com.js.ens.coil.dialog.PreferencesDlg;
 import com.js.ens.coil.dialog.SaveAsDlg;
 import com.js.ens.coil.dialog.SaveDlg;
-import com.js.graph.GraphData;
-import com.js.graph.GraphWindow;
-import com.js.graph.GraphWindow_bak;
 import com.js.graph.MakePlot;
 import com.js.graph.RunSimcosGraph;
+import com.js.image.ImageAllData;
+import com.js.image.SimcosImageViewer;
 import com.js.io.Reader;
 import com.js.io.Writer;
+import com.js.plot.GraphAllData;
+import com.js.plot.SimcosGraphViewer;
 import com.js.util.myUtil;
 
 public class MainController {
@@ -389,8 +381,11 @@ public class MainController {
 			if(myUtil.checkPath(logFilePath)){
 				myUtil.fileDelete(logFilePath);
 			}
+			String interruptFilePath = myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(),AppFolder.SIMCOS_DATA),"itr");
+			
+			
 			ReadLog readLogThread = new ReadLog();
-			readLogThread.running(logFilePath, this.coilDBObj.getMaximumIterationNumber());
+			readLogThread.running(logFilePath, this.coilDBObj.getMaximumIterationNumber(),interruptFilePath);
 			Runnable r_readLog = readLogThread;
 			this.t_readLog = new Thread(r_readLog);
 			this.t_readLog.start();
@@ -429,6 +424,26 @@ public class MainController {
 		}
 	}
 	
+	public void Button_ResetSimulation(){
+		String interruptFilePath = myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(),AppFolder.SIMCOS_DATA),"itr");
+		ArrayList<String> endDataList = new ArrayList<String>();
+		endDataList.add("interrupt read log thread");
+		Writer writer = new Writer(interruptFilePath);
+		writer.running(endDataList);
+		
+		try{
+			Thread.sleep(3000);
+			if(myUtil.checkPath(interruptFilePath)){
+				myUtil.fileDelete(interruptFilePath);
+				//System.out.println("delete simcos.log file");
+			}
+			med.getBtnStartSimulation().setEnabled(true);
+			
+		}catch(Exception e){
+			System.out.println("Read log thread is null : "+ e.getMessage());
+		}
+	}
+	
 	public void Button_ReadLog(){
 		String logFileName = this.coilDBObj.getProductName()+AppFolder.coilItrLogFileName;
 		String logFilePath = myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),logFileName);
@@ -448,6 +463,7 @@ public class MainController {
 		if(this.coilDBObj.getSelectedGraphList().size() == 0){
 			
 		}else{
+			/*
 			MakePlot obj = new MakePlot();
 			obj.running(this.coilDBObj);
 			
@@ -456,6 +472,9 @@ public class MainController {
 			Runnable r_runGraphThread = runGraphThread;
 			this.t_runGraph = new Thread(r_runGraphThread);
 			this.t_runGraph.start();
+			// */
+			SimcosGraphViewer viewer = new SimcosGraphViewer();
+			viewer.running(this.coilDBObj);
 		}
 		
 		
@@ -484,6 +503,14 @@ public class MainController {
 			}
 		});
 		//*/
+	}
+	
+	public void Button_Radius(){
+		
+	}
+	
+	public void Button_Height(){
+		
 	}
 	
 	public void Button_AddGraph(){
@@ -544,6 +571,16 @@ public class MainController {
 	
 	public void Button_ShowImageWindow(){
 		
+		try{
+			String selectImageName = med.getComboViewerSelectImage().getCombo().getText();
+			ComboData_selectImage obj = this.coilDBObj.getImageAllDataObj().getImageObj(selectImageName);
+			SimcosImageViewer viewer = new SimcosImageViewer();
+			viewer.running(obj.getFilePath());
+			System.out.println(selectImageName);
+			System.out.println(obj.getFilePath());
+		}catch(Exception e){
+			
+		}
 	}
 	
 	public void Button_ShowTableData(){
@@ -743,7 +780,7 @@ public class MainController {
 		
 		
 		// load combo data - graph
-		this.UpdateSelectGrpahData();
+		this.UpdateSelectGraphData();
 		// load combo data - image
 		this.UpdateSelectImageData();
 		// load combo data - tableData
@@ -776,6 +813,7 @@ public class MainController {
 	public void Combo_selectTableData() {
 		// TODO Auto-generated method stub
 		System.out.println(med.getComboViewerSelectTableData().getCombo().getText());
+		
 	}
 	
 	//
@@ -1487,7 +1525,7 @@ public class MainController {
 		
 	}
 	//==================================================================================
-	private void UpdateSelectGrpahData(){
+	private void UpdateSelectGraphData(){
 		///////////////////////////////////////////////////////////////
 		// DEMO Data --> todo... access graph data folder
 		if(!this.coilDBObj.getGraphDataList().isEmpty()){
@@ -1504,8 +1542,8 @@ public class MainController {
 		}
 		//*/
 		
-		GraphData obj = new GraphData(this.coilDBObj);
-		this.coilDBObj.setGraphDataObj(obj);
+		GraphAllData obj = new GraphAllData(this.coilDBObj);
+		this.coilDBObj.setGraphAllDataObj(obj);
 		obj.LoadingResult(myUtil.setPath(this.coilDBObj.getProjectFolderPath(),AppFolder.SIMCOS_DATA));
 		
 		//
@@ -1530,11 +1568,18 @@ public class MainController {
 		if(!this.coilDBObj.getImageDataList().isEmpty()){
 			this.coilDBObj.getImageDataList().clear();
 		}
+		
+		/*
 		for(int i = 0; i<10 ;i++){
 			ComboData_selectImage obj = new ComboData_selectImage();
 			obj.setName("image - "+(i+1));
 			this.coilDBObj.add_ImageDataCombo(obj);
 		}
+		//*/
+		ImageAllData obj = new ImageAllData(this.coilDBObj);
+		this.coilDBObj.setImageAllDataObj(obj);
+		obj.LoadingResult(myUtil.setPath(this.coilDBObj.getProjectFolderPath(),AppFolder.SIMCOS_DATA));
+		
 		//
 		///////////////////////////////////////////////////////////////
 		try{

@@ -12,6 +12,7 @@ public class ReadLog implements Runnable{
 	private Mediator med = Mediator.getInstance();
 	
 	private String logFilePath;
+	private String interruptFilePath;
 	private Double maxItrNum;
 	private int progressbarValue = 0;
 	private int readFilePeriod = 2000;
@@ -19,6 +20,7 @@ public class ReadLog implements Runnable{
 	private ArrayList<String> logDataList;
 	private int currentItrNum;
 	private int currentMaxItrNum;
+	//private boolean doing = true;
 	
 	// log Status value
 	private final String READY = "Ready";
@@ -43,8 +45,9 @@ public class ReadLog implements Runnable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void running(String logFilePath, String maxItrNum){
+	public void running(String logFilePath, String maxItrNum,String interruptFilePath){
 		this.logFilePath = logFilePath;
+		this.interruptFilePath = interruptFilePath;
 		this.maxItrNum = Double.valueOf(maxItrNum);
 		this.currentMaxItrNum = Integer.valueOf(maxItrNum);
 		this.currentItrNum = 1;
@@ -64,6 +67,11 @@ public class ReadLog implements Runnable{
 		
 		// [filePointer, log status, iteration num]
 		while(doing){
+			if(myUtil.checkPath(this.interruptFilePath)){
+				doing = false;
+				break;
+			}
+			
 			
 			File logFile = new File(this.logFilePath);
 			if(!logFile.exists()){

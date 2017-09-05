@@ -8,7 +8,8 @@ import com.js.ens.coil.customWidget.ComboData_selectImage;
 import com.js.ens.coil.customWidget.ComboData_selectTableData;
 import com.js.ens.coil.customWidget.ListData_selectedGraph;
 import com.js.ens.coil.customWidget.TableData_Coil;
-import com.js.graph.GraphData;
+import com.js.image.ImageAllData;
+import com.js.plot.GraphAllData;
 import com.js.util.myUtil;
 
 public class CoilDB {
@@ -70,7 +71,8 @@ public class CoilDB {
 	
 	
 	// Step3. Show result
-	private GraphData graphDataObj;
+	private GraphAllData graphAllDataObj;
+	private ImageAllData imageAllDataObj;
 	private ArrayList<ComboData_selectGraph> graphDataList;
 	private ArrayList<ListData_selectedGraph> selectedGraphList;
 	private ArrayList<ComboData_selectImage> imageDataList;
@@ -750,12 +752,12 @@ public class CoilDB {
 		MaterialDB = materialDB;
 	}
 
-	public GraphData getGraphDataObj() {
-		return graphDataObj;
+	public GraphAllData getGraphDataObj() {
+		return graphAllDataObj;
 	}
 
-	public void setGraphDataObj(GraphData graphDataObj) {
-		this.graphDataObj = graphDataObj;
+	public void setGraphAllDataObj(GraphAllData graphAllDataObj) {
+		this.graphAllDataObj = graphAllDataObj;
 	}
 
 	public ArrayList<ListData_selectedGraph> getSelectedGraphList() {
@@ -764,6 +766,14 @@ public class CoilDB {
 
 	public void setSelectedGraphList(ArrayList<ListData_selectedGraph> selectedGraphList) {
 		this.selectedGraphList = selectedGraphList;
+	}
+
+	public ImageAllData getImageAllDataObj() {
+		return imageAllDataObj;
+	}
+
+	public void setImageAllDataObj(ImageAllData imageAllDataObj) {
+		this.imageAllDataObj = imageAllDataObj;
 	}
 
 }

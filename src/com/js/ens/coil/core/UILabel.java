@@ -121,6 +121,8 @@ public class UILabel {
 	private String base_SimulationStatus = "Ready";
 	public static String StartSimulation = "StartSimulation";
 	private String base_StartSimulation = "Start Simulation";
+	public static String ResetSimulation = "ResetSimulation";
+	private String base_ResetSimulation = "Reset";
 	public static String CheckStatus = "CheckStatus";
 	private String base_CheckStatus = "Check Status";
 	public static String ReadLog = "ReadLog";
@@ -129,6 +131,10 @@ public class UILabel {
 	// Step3
 	public static String DisplayResultCoilData = "DisplayResultCoilData";
 	private String base_DisplayResultCoilData = "Display Result Coil Data";
+	public static String Radius = "Radius";
+	private String base_Radius = "Radius";
+	public static String Height = "Height";
+	private String base_Height = "Height";
 	public static String SelectGraph = "SelectGraph";
 	private String base_SelectGraph = "Select Graph";
 	public static String AddGraph = "AddGraph";
@@ -136,11 +142,11 @@ public class UILabel {
 	public static String DeleteGraph ="DeleteGraph";
 	private String base_DeleteGraph ="Delete Graph";
 	public static String ShowPopupWindow_1 = "ShowPopupWindow_1";
-	private String base_ShowPopupWindow_1 = "Show popup window";
+	private String base_ShowPopupWindow_1 = "Show Graph";
 	public static String SelectImage = "SelectImage";
 	private String base_SelectImage = "Select Image";	
 	public static String ShowPopupWindow_2 = "ShowPopupWindow_2";
-	private String base_ShowPopupWindow_2 = "Show popup window";
+	private String base_ShowPopupWindow_2 = "Show Image";
 	public static String SelectTableData = "SelectTableData";
 	private String base_SelectTableData = "Select table Data";
 	public static String Show = "Show";
@@ -206,10 +212,13 @@ public class UILabel {
 		this.BaseUILabelMap.put("SimulationIteration", this.base_SimulationIteration);
 		this.BaseUILabelMap.put("SimulationStatus", this.base_SimulationStatus);
 		this.BaseUILabelMap.put("StartSimulation", this.base_StartSimulation);
+		this.BaseUILabelMap.put("ResetSimulation",this.base_ResetSimulation);
 		this.BaseUILabelMap.put("CheckStatus", this.base_CheckStatus);
 		this.BaseUILabelMap.put("ReadLog", this.base_ReadLog);
 		
 		this.BaseUILabelMap.put("DisplayResultCoilData", this.base_DisplayResultCoilData);
+		this.BaseUILabelMap.put("Radius", this.base_Radius);
+		this.BaseUILabelMap.put("Height", this.base_Height);
 		this.BaseUILabelMap.put("SelectGraph", this.base_SelectGraph);
 		this.BaseUILabelMap.put("AddGraph", this.base_AddGraph);
 		this.BaseUILabelMap.put("DeleteGraph", this.base_DeleteGraph);

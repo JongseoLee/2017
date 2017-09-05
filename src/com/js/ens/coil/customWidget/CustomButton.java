@@ -72,6 +72,9 @@ public class CustomButton implements ICommand {
 		else if(this.widgetName.equals(Mediator.BUTTON_btnStartSimulation)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnStartSimulation);
 			MC.Button_StartSimulation();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnResetSimulation)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnResetSimulation);
+			MC.Button_ResetSimulation();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnReadLog)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnReadLog);
 			MC.Button_ReadLog();
@@ -80,6 +83,12 @@ public class CustomButton implements ICommand {
 		else if(this.widgetName.equals(Mediator.BUTTON_btnShowGraphWindow)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnShowGraphWindow);
 			MC.Button_ShowGraphWindow();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnRadius)){
+			System.out.println("Click btn : "+Mediator.BUTTON_btnRadius);
+			MC.Button_Radius();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnHeight)){
+			System.out.println("Click btn : "+Mediator.BUTTON_btnHeight);
+			MC.Button_Height();
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnAddGraph)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnAddGraph);
 			MC.Button_AddGraph();
@@ -153,8 +162,20 @@ public class CustomButton implements ICommand {
 		this.button = med.getBtnStartSimulation();
 	}
 	
+	public void setCustomWidget_btnResetSimulation(){
+		this.button = med.getBtnResetSimulation();
+	}
+	
 	public void setCustomWidget_btnReadLog(){
 		this.button = med.getBtnReadLog();
+	}
+	
+	public void SetCustomWidget_btnRadius(){
+		this.button = med.getBtnRadius();
+	}
+	
+	public void SetCustomWidget_btnHeihght(){
+		this.button = med.getBtnHeight();
 	}
 	
 	public void setCustomWidget_btnShowGraphWindow(){

@@ -359,6 +359,7 @@ public class MainController_backup {
 			// copy select source files - MaterialDB, initial conditioner file
 			this.copySourceFileForModeling();
 			
+			/*
 			// Read log File 
 			String logFileName = this.coilDBObj.getProductName()+AppFolder.coilItrLogFileName;
 			String logFilePath = myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),logFileName);
@@ -370,7 +371,7 @@ public class MainController_backup {
 			Runnable r_readLog = readLogThread;
 			Thread t_readLog = new Thread(r_readLog);
 			t_readLog.start();
-			
+			//*/
 			
 			
 			

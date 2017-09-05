@@ -12,7 +12,8 @@ public class AppFolder {
 	public static String GRAPH_LIB = "GraphLib";
 	public static String SIMCOS_WORKSPACE = "Simcos_Workspace";
 	public static String SIMCOS_DATA = "SimcosData";
-	public static String PLOT = "Plot";
+	//public static String PLOT = "Plot";
+	public static String LOG = "Simcos_Log";
 	
 	
 	// Config file Name
@@ -22,6 +23,7 @@ public class AppFolder {
 	public static String PreferencesFile = "preferences.ini";
 	public static String DbTemplateFile = "SimcosDbTemplate.ini";
 	public static String dbFileName = "SimcosDB.sdb";
+	public static String LogPropertyFile = "log4j.properties";
 	// Graph file Name
 	public static String PlotTmpFile = "plot.tmp";
 	public static String exportingFile = "exporting.js";
@@ -51,8 +53,8 @@ public class AppFolder {
 		this.userWorkspace = MC.getCoilDBObj().getProjectFolderPath();
 		String simcosDataFolderPath = myUtil.setPath(this.userWorkspace, SIMCOS_DATA);
 		myUtil.makeDirectory(simcosDataFolderPath);
-		String plotFolderPath = myUtil.setPath(simcosDataFolderPath, PLOT);
-		myUtil.makeDir(plotFolderPath);
+		//String plotFolderPath = myUtil.setPath(simcosDataFolderPath, PLOT);
+		//myUtil.makeDir(plotFolderPath);
 	}
 	
 }

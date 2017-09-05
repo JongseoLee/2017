@@ -68,7 +68,7 @@ public class MakePlot {
 		this.copyLib();
 		
 		String graphFileName = this.coilDBObj.getProductName()+"_"+myUtil.getCurrentTime()+".html";
-		this.GraphHtmFilePath = myUtil.setPath(myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),AppFolder.PLOT),graphFileName);
+		//this.GraphHtmFilePath = myUtil.setPath(myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),AppFolder.PLOT),graphFileName);
 		// read template file 
 		this.readTemplate();
 		// make plot data
@@ -78,6 +78,7 @@ public class MakePlot {
 	}
 	
 	private void copyLib(){
+		/*
 		String graphLibPath = myUtil.setPath(myUtil.setPath(MC.getAppPath(), AppFolder.CONFIG),AppFolder.GRAPH_LIB);
 		
 		String highchartFile = myUtil.setPath(graphLibPath, AppFolder.highchartsFile);
@@ -98,7 +99,7 @@ public class MakePlot {
 		if(!myUtil.checkPath(destJqueryFile)){
 			myUtil.fileCopy(jqueryFile, destJqueryFile);
 		}
-		
+		//*/
 	}
 	
 	private void readTemplate(){
