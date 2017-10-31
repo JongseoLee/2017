@@ -38,32 +38,34 @@ public class GraphData {
 					ComboData_selectGraph obj = new ComboData_selectGraph(GraphData.conditionerType);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running();
-					this.CObj.add_GraphDataCombo(obj);
+					obj.running("normal");
+					this.CObj.add_GraphDataCombo_conditioner(obj);
 				}else if(this.isMatch_errorType(fileName)){
 					//System.out.println(f.getName());
 					this.csvFilePathList.add(f.getAbsolutePath());
 					ComboData_selectGraph obj = new ComboData_selectGraph(GraphData.errorType);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running();
-					this.CObj.add_GraphDataCombo(obj);
+					obj.running("normal");
+					this.CObj.add_GraphDataCombo_error(obj);
 				}else if(this.isMatch_formSetErrorType(fileName)){
 					//System.out.println(f.getName());
 					this.csvFilePathList.add(f.getAbsolutePath());
 					ComboData_selectGraph obj = new ComboData_selectGraph(GraphData.formSetErrorType);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running();
-					this.CObj.add_GraphDataCombo(obj);
+					obj.running("normal");
+					this.CObj.add_GraphDataCombo_formSetError(obj);
 				}
 			}
 		}
 	}
 	
 	public ComboData_selectGraph getGraphObj(String fileName){
+		
+		// 세부 적으로 업데이트 해야함, 타입을 나눴기 때문에 Conditioner, Error, FormSetError, MaximumError 타입으로 구분해서 해야함
 		ComboData_selectGraph returnObj = null;
-		for(ComboData_selectGraph obj : this.CObj.getGraphDataList()){
+		for(ComboData_selectGraph obj : this.CObj.getGraphDataList_conditioner()){
 			if(obj.getName().equals(fileName)){
 				returnObj = obj;
 				break;

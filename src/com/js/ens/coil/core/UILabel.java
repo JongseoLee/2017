@@ -131,6 +131,14 @@ public class UILabel {
 	// Step3
 	public static String DisplayResultCoilData = "DisplayResultCoilData";
 	private String base_DisplayResultCoilData = "Display Result Coil Data";
+	public static String Conditioner ="Conditioner";
+	private String base_Conditioner = "Conditioner";
+	public static String Error = "Error";
+	private String base_Error = "Error";
+	public static String FormSetError = "FormSetError";
+	private String base_FormSetError = "Form set Error";
+	public static String MaximumError = "MaximumError";
+	private String base_MaximumError = "Maximum error";
 	public static String Radius = "Radius";
 	private String base_Radius = "Radius";
 	public static String Height = "Height";
@@ -217,6 +225,10 @@ public class UILabel {
 		this.BaseUILabelMap.put("ReadLog", this.base_ReadLog);
 		
 		this.BaseUILabelMap.put("DisplayResultCoilData", this.base_DisplayResultCoilData);
+		this.BaseUILabelMap.put("Conditioner", this.base_Conditioner);
+		this.BaseUILabelMap.put("Error", this.base_Error);
+		this.BaseUILabelMap.put("FormSetError", this.base_FormSetError);
+		this.BaseUILabelMap.put("MaximumError", this.base_MaximumError);
 		this.BaseUILabelMap.put("Radius", this.base_Radius);
 		this.BaseUILabelMap.put("Height", this.base_Height);
 		this.BaseUILabelMap.put("SelectGraph", this.base_SelectGraph);

@@ -24,7 +24,8 @@ public class Preferences {
 	public static String MentatPath ="MentatPath";
 	public static String TextEditorPath = "TextEditorPath";
 	public static String ExcelPath = "ExcelPath";
-	public static String Command = "Command";
+	public static String CommandSolving = "CommandSolving";
+	public static String CommandPost = "CommandPost";
 	
 	public Preferences() {
 		// TODO Auto-generated constructor stub
@@ -67,8 +68,10 @@ public class Preferences {
 			this.preferencesMap.put(TextEditorPath, value);
 		}else if(key.equals(ExcelPath)){
 			this.preferencesMap.put(ExcelPath, value);
-		}else if(key.equals(Command)){
-			this.preferencesMap.put(Command, value);
+		}else if(key.equals(CommandSolving)){
+			this.preferencesMap.put(CommandSolving, value);
+		}else if(key.equals(CommandPost)){
+			this.preferencesMap.put(CommandPost, value);
 		}
 	}
 	
@@ -80,11 +83,12 @@ public class Preferences {
 		outputDataList.add("#");
 		outputDataList.add("#");
 		outputDataList.add("#######################################################");
-		outputDataList.add("MarcPath="+this.preferencesMap.get(this.MarcPath));
-		outputDataList.add("MentatPath="+this.preferencesMap.get(this.MentatPath));
-		outputDataList.add("TextEditorPath="+this.preferencesMap.get(this.TextEditorPath));
-		outputDataList.add("ExcelPath="+this.preferencesMap.get(this.ExcelPath));
-		outputDataList.add("Command="+this.preferencesMap.get(this.Command));
+		outputDataList.add("MarcPath="+this.preferencesMap.get(Preferences.MarcPath));
+		outputDataList.add("MentatPath="+this.preferencesMap.get(Preferences.MentatPath));
+		outputDataList.add("TextEditorPath="+this.preferencesMap.get(Preferences.TextEditorPath));
+		outputDataList.add("ExcelPath="+this.preferencesMap.get(Preferences.ExcelPath));
+		outputDataList.add("CommandSolving="+this.preferencesMap.get(Preferences.CommandSolving));
+		outputDataList.add("CommandPost="+this.preferencesMap.get(Preferences.CommandPost));
 		
 		Writer writer = new Writer(this.preferencePath);
 		writer.running_utf8(outputDataList);

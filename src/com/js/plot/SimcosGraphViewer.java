@@ -6,9 +6,13 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import com.js.ens.coil.core.Mediator;
 import com.js.ens.coil.db.CoilDB;
+import com.js.util.myUtil;
 
 public class SimcosGraphViewer {
+	
+	private Mediator med = Mediator.getInstance();
 	
 	private String chartTitle;
 	private String xTitle;
@@ -43,6 +47,8 @@ public class SimcosGraphViewer {
 		this.legendList = obj.getLegendList();
 		this.xDataList = obj.getxDataList();
 		this.yDataList = obj.getyDataList();
+		//System.out.println("####### Xdata size : "+this.xDataList.size());
+		//System.out.println("####### Ydata size : "+this.yDataList.size());
 	}
 	
 	private void ShowPlotData(){

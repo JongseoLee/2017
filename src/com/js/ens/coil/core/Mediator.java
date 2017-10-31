@@ -37,6 +37,15 @@ public class Mediator {
 	private Composite compositeTop;
 	public static String COMPOSITE_compositeTop = "compositeTop"; 
 	
+	private Label lblModelname;
+	public ICommand C_lblModelname;
+	public static String LABEL_lblModelname = "lblModelname";
+	
+	private Label lblModelnameValue;
+	public ICommand C_lblModelnameValue;
+	public static String LABEL_lblModelnameValue = "lblModelnameValue";
+	
+	
 	private Label lblProcessStep;
 	public ICommand C_lblProcessStep;
 	public static String LABEL_lblProcessStep = "lblProcessStep";
@@ -262,6 +271,23 @@ public class Mediator {
 	
 	//////////////////////////////////////////////////////////////////////////
 	// step3
+	
+	private Button btnConditioner;
+	private ICommand C_btnConditioner;
+	public static String BUTTON_btnConditioner = "btnConditioner";
+	
+	private Button btnError;
+	private ICommand C_btnError;
+	public static String BUTTON_btnError = "btnError";
+	
+	private Button btnFormSetError;
+	private ICommand C_btnFormSetError;
+	public static String BUTTON_btnFormSetError = "btnFormSetError";
+	
+	private Button btnMaximumError;
+	private ICommand C_btnMaximumError;
+	public static String BUTTON_btnMaximumError = "btnMaximumError";
+	
 	private Button btnRadius;
 	private ICommand C_btnRadius;
 	public static String BUTTON_btnRadius = "btnRadius";
@@ -332,6 +358,38 @@ public class Mediator {
 
 	public void setCompositeTop(Composite compositeTop) {
 		this.compositeTop = compositeTop;
+	}
+
+	public Label getLblModelname() {
+		return lblModelname;
+	}
+
+	public void setLblModelname(Label lblModelname) {
+		this.lblModelname = lblModelname;
+	}
+
+	public ICommand getC_lblModelname() {
+		return C_lblModelname;
+	}
+
+	public void setC_lblModelname(ICommand c_lblModelname) {
+		C_lblModelname = c_lblModelname;
+	}
+
+	public Label getLblModelnameValue() {
+		return lblModelnameValue;
+	}
+
+	public void setLblModelnameValue(Label lblModelnameValue) {
+		this.lblModelnameValue = lblModelnameValue;
+	}
+
+	public ICommand getC_lblModelnameValue() {
+		return C_lblModelnameValue;
+	}
+
+	public void setC_lblModelnameValue(ICommand c_lblModelnameValue) {
+		C_lblModelnameValue = c_lblModelnameValue;
 	}
 
 	public Label getLblProcessStep() {
@@ -1179,6 +1237,70 @@ public class Mediator {
 
 	public void setC_textLogEditor(ICommand c_textLogEditor) {
 		C_textLogEditor = c_textLogEditor;
+	}
+
+	public Button getBtnConditioner() {
+		return btnConditioner;
+	}
+
+	public void setBtnConditioner(Button btnConditioner) {
+		this.btnConditioner = btnConditioner;
+	}
+
+	public ICommand getC_btnConditioner() {
+		return C_btnConditioner;
+	}
+
+	public void setC_btnConditioner(ICommand c_btnConditioner) {
+		C_btnConditioner = c_btnConditioner;
+	}
+
+	public Button getBtnError() {
+		return btnError;
+	}
+
+	public void setBtnError(Button btnError) {
+		this.btnError = btnError;
+	}
+
+	public ICommand getC_btnError() {
+		return C_btnError;
+	}
+
+	public void setC_btnError(ICommand c_btnError) {
+		C_btnError = c_btnError;
+	}
+
+	public Button getBtnFormSetError() {
+		return btnFormSetError;
+	}
+
+	public void setBtnFormSetError(Button btnFormSetError) {
+		this.btnFormSetError = btnFormSetError;
+	}
+
+	public ICommand getC_btnFormSetError() {
+		return C_btnFormSetError;
+	}
+
+	public void setC_btnFormSetError(ICommand c_btnFormSetError) {
+		C_btnFormSetError = c_btnFormSetError;
+	}
+
+	public Button getBtnMaximumError() {
+		return btnMaximumError;
+	}
+
+	public void setBtnMaximumError(Button btnMaximumError) {
+		this.btnMaximumError = btnMaximumError;
+	}
+
+	public ICommand getC_btnMaximumError() {
+		return C_btnMaximumError;
+	}
+
+	public void setC_btnMaximumError(ICommand c_btnMaximumError) {
+		C_btnMaximumError = c_btnMaximumError;
 	}
 
 	public Button getBtnRadius() {

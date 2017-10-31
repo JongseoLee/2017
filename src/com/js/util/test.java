@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.js.plot.GraphAllData;
+
 public class test {
 
 	public test() {
@@ -32,13 +34,14 @@ public class test {
 		System.out.println(str.replaceAll("\\\\", "/"));
 		//*/
 		
-		
-		int a =0 ;
-		
-		if( a != 0){
-			System.out.println("dddd");
+		String fileName = "HGsdf1_err_hist.csv";
+		Pattern p = Pattern.compile("("+GraphAllData.maximumErrorType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			System.out.println("Y");
+		}else{
+			System.out.println("N");
 		}
-		
 		
 		
 	}

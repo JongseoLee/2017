@@ -257,7 +257,8 @@ public class WriteSimcosDB {
 	}
 	
 	private void writeDBFile(){
-		String dbFilePath = myUtil.setPath(this.CObj.getProjectFolderPath(), AppFolder.dbFileName);
+		
+		String dbFilePath = myUtil.setPath(this.CObj.getProjectFolderPath(), this.CObj.getProjectName()+"_"+AppFolder.dbFileName);
 		Writer writer = new Writer(dbFilePath);
 		writer.running(this.outputDataList);
 		

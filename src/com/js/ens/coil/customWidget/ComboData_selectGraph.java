@@ -17,11 +17,21 @@ public class ComboData_selectGraph {
 	private ArrayList<String> fileDataList;
 	private ColumnData xDataObj;
 	private ArrayList<ColumnData> yDataObjList;
+	
 	private ArrayList<Float> xDataValue;
 	private String yLegend_Radius;
 	private ArrayList<Float> yDataValue_Radius;
+	
 	private String yLegend_Height;
 	private ArrayList<Float> yDataValue_Height;
+	
+	
+	private String yLegend_MaxErrorR;
+	private ArrayList<Float> yDataValue_MaxErrorR;
+	
+	private String yLegend_MaxErrorZ;
+	private ArrayList<Float> yDataValue_MaxErrorZ;
+	
 	 
 	
 	public ComboData_selectGraph(String resultType) {
@@ -30,9 +40,29 @@ public class ComboData_selectGraph {
 		
 	}
 	
-	public void running(){
-		this.readResultCSV();
-		this.parsing();
+	public void running(String type){
+		if(type.equals("normal")){
+			this.readResultCSV();
+			this.parsing();
+		}else if(type.equals("err")){
+			this.readResultCSV_err();
+			this.parsing_err();
+		}
+		
+	}
+	private void readResultCSV_err(){
+		this.fileDataList = new ArrayList<String>();
+		Reader reader = new Reader(this.filePath);
+		reader.running();
+		
+		for(int i=0; i<reader.getFileDataList().size();i++){
+			if(i==0){
+				// title is first line of csv file
+				this.graphTitle = "Maximum Iteration Error";
+			}else{
+				this.fileDataList.add(reader.getFileDataList().get(i));
+			}
+		}
 	}
 	
 	private void readResultCSV(){
@@ -47,6 +77,68 @@ public class ComboData_selectGraph {
 				this.graphTitle = reader.getFileDataList().get(0).trim();
 			}else{
 				this.fileDataList.add(reader.getFileDataList().get(i));
+			}
+		}
+	}
+	
+	private void parsing_err(){
+		this.yDataObjList = new ArrayList<ColumnData>();
+		
+		int dataSize = myUtil.splitData_csv(this.fileDataList.get(0),",").size();
+		//create columnDataObj init
+		this.xDataObj = new ColumnData();
+		for(int i=1; i<dataSize;i++){
+			ColumnData obj = new ColumnData();
+			this.yDataObjList.add(obj);
+		}
+		this.xDataValue = new ArrayList<Float>();
+		this.yDataValue_MaxErrorR = new ArrayList<Float>();
+		this.yDataValue_MaxErrorZ = new ArrayList<Float>();
+		// set value at columnDataObj
+		for(int lineNum = 0; lineNum <this.fileDataList.size();lineNum++){
+			String line = this.fileDataList.get(lineNum);
+			//System.out.println(line);
+			ArrayList<String> tokens = new ArrayList<String>();
+			tokens = myUtil.splitData_csv(line, ",");
+			if(lineNum == 0){
+				this.xDataObj.setDataName(tokens.get(0));
+				for(int i=0;i<tokens.size()-1;i++){
+					this.yDataObjList.get(i).setDataName(tokens.get(i+1));
+				}
+				if(this.resultType.equals(GraphAllData.conditionerType)){
+					this.yLegend_Radius = iterationName+"_"+tokens.get(1);
+					this.yLegend_Height = iterationName+"_"+tokens.get(2);
+				}else if(this.resultType.equals(GraphAllData.errorType)){
+					this.yLegend_Radius = iterationName+"_"+tokens.get(2);
+					this.yLegend_Height = iterationName+"_"+tokens.get(3);
+				}else if(this.resultType.equals(GraphAllData.formSetErrorType)){
+					this.yLegend_Radius = iterationName+"_"+tokens.get(2);
+					this.yLegend_Height = iterationName+"_"+tokens.get(3);
+				}else if(this.resultType.equals(GraphAllData.maximumErrorType)){
+					this.yLegend_MaxErrorR = tokens.get(1);
+					this.yLegend_MaxErrorZ = tokens.get(2);
+				}
+			}else {
+				this.xDataObj.addValue(tokens.get(0));
+				this.xDataValue.add(Float.parseFloat(tokens.get(0)));
+				
+				for(int i=0;i<tokens.size()-1;i++){
+					this.yDataObjList.get(i).addValue(tokens.get(i+1));
+				}
+
+				if(this.resultType.equals(GraphAllData.conditionerType)){
+					this.yDataValue_Radius.add(Float.parseFloat(tokens.get(1)));
+					this.yDataValue_Height.add(Float.parseFloat(tokens.get(2)));
+				}else if(this.resultType.equals(GraphAllData.errorType)){
+					this.yDataValue_Radius.add(Float.parseFloat(tokens.get(2)));
+					this.yDataValue_Height.add(Float.parseFloat(tokens.get(3)));
+				}else if(this.resultType.equals(GraphAllData.formSetErrorType)){
+					this.yDataValue_Radius.add(Float.parseFloat(tokens.get(2)));
+					this.yDataValue_Height.add(Float.parseFloat(tokens.get(3)));
+				}else if(this.resultType.equals(GraphAllData.maximumErrorType)){
+					this.yDataValue_MaxErrorR.add(Float.parseFloat(tokens.get(1)));
+					this.yDataValue_MaxErrorZ.add(Float.parseFloat(tokens.get(2)));
+				}
 			}
 		}
 	}
@@ -111,8 +203,6 @@ public class ComboData_selectGraph {
 					this.yDataValue_Height.add(Float.parseFloat(tokens.get(3)));
 				}
 			}
-			
-			
 		}
 	}
 	
@@ -171,7 +261,26 @@ public class ComboData_selectGraph {
 	public ArrayList<Float> getyDataValue_Height() {
 		return yDataValue_Height;
 	}
+	
+	
+	
+	public String getyLegend_MaxErrorR() {
+		return yLegend_MaxErrorR;
+	}
 
+	public ArrayList<Float> getyDataValue_MaxErrorR() {
+		return yDataValue_MaxErrorR;
+	}
+
+	public String getyLegend_MaxErrorZ() {
+		return yLegend_MaxErrorZ;
+	}
+
+	public ArrayList<Float> getyDataValue_MaxErrorZ() {
+		return yDataValue_MaxErrorZ;
+	}
+	
+	
 	/////////////////////////////////////////////////////////////////////////////////////
 	// inner class
 	public class ColumnData{

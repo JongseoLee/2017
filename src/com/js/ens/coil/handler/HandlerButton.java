@@ -68,7 +68,16 @@ public class HandlerButton implements Listener {
 			med.getC_btnShowImageWindow().execute();
 		}else if(event.widget == med.getBtnShowTableData()){
 			med.getC_btnShowTableData().execute();
+		}else if(event.widget == med.getBtnConditioner()){
+			med.getC_btnConditioner().execute();
+		}else if(event.widget == med.getBtnError()){
+			med.getC_btnError().execute();
+		}else if(event.widget == med.getBtnFormSetError()){
+			med.getC_btnFormSetError().execute();
+		}else if(event.widget == med.getBtnMaximumError()){
+			med.getC_btnMaximumError().execute();
 		}
 	}
+	
 
 }

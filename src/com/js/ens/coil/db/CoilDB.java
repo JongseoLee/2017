@@ -74,6 +74,10 @@ public class CoilDB {
 	private GraphAllData graphAllDataObj;
 	private ImageAllData imageAllDataObj;
 	private ArrayList<ComboData_selectGraph> graphDataList;
+	private ArrayList<ComboData_selectGraph> graphDataList_conditioner;
+	private ArrayList<ComboData_selectGraph> graphDataList_error;
+	private ArrayList<ComboData_selectGraph> graphDataList_formSetError;
+	private ArrayList<ComboData_selectGraph> graphDataList_maximumError;
 	private ArrayList<ListData_selectedGraph> selectedGraphList;
 	private ArrayList<ComboData_selectImage> imageDataList;
 	private ArrayList<ComboData_selectTableData> tabelDataList;
@@ -83,6 +87,11 @@ public class CoilDB {
 		// TODO Auto-generated constructor stub
 		this.GeometryDataTableList = new ArrayList<TableData_Coil>();
 		this.graphDataList = new ArrayList<ComboData_selectGraph>();
+		this.graphDataList_conditioner = new ArrayList<ComboData_selectGraph>();
+		this.graphDataList_error = new ArrayList<ComboData_selectGraph>();
+		this.graphDataList_formSetError = new ArrayList<ComboData_selectGraph>();
+		this.graphDataList_maximumError = new ArrayList<ComboData_selectGraph>();
+	
 		this.selectedGraphList = new ArrayList<ListData_selectedGraph>();
 		this.imageDataList = new ArrayList<ComboData_selectImage>();
 		this.tabelDataList = new ArrayList<ComboData_selectTableData>();
@@ -201,28 +210,34 @@ public class CoilDB {
 			if(RadiusConditionerType.equals("null")){	
 				result = false;
 				return result;
+			}else if(RadiusConditionerType.equals(CoilDB.CONSTANT_TYPE)){
+				if(RadiusConditionerConstant.equals("null")){
+					result = false;
+					return result;
+				}
+			}else if(RadiusConditionerType.equals(CoilDB.FILE_TYPE)){
+				if(RadiusConditionerFile.equals("null")){
+					result = false;
+					return result;
+				}
 			}
-			if(RadiusConditionerConstant.equals("null")){
-				result = false;
-				return result;
-			}
-			if(RadiusConditionerFile.equals("null")){
-				result = false;
-				return result;
-			}
+			
 			
 			if(HeightConditionerType.equals("null")){	
 				result = false;
 				return result;
+			}else if(HeightConditionerType.equals(CoilDB.CONSTANT_TYPE)){
+				if(HeightConditionerConstant.equals("null")){
+					result = false;
+					return result;
+				}
+			}else if(HeightConditionerType.equals(CoilDB.FILE_TYPE)){
+				if(HeightConditionerFile.equals("null")){
+					result = false;
+					return result;
+				}
 			}
-			if(HeightConditionerConstant.equals("null")){
-				result = false;
-				return result;
-			}
-			if(HeightConditionerFile.equals("null")){
-				result = false;
-				return result;
-			}
+			
 			
 			if(MaterialDB.equals("null")){
 				result = false;
@@ -292,11 +307,17 @@ public class CoilDB {
 		resultList.add("InitialConditionerFile       : "+InitialConditionerFile);
 		// */
 		resultList.add("RadiusConditionerType       : "+RadiusConditionerType);
-		resultList.add("RadiusConditionerConstant   : "+RadiusConditionerConstant);
-		resultList.add("RadiusConditionerFile       : "+RadiusConditionerFile);
+		if(RadiusConditionerType.equals(CoilDB.CONSTANT_TYPE)){
+			resultList.add("RadiusConditionerConstant   : "+RadiusConditionerConstant);
+		}else if (RadiusConditionerType.equals(CoilDB.FILE_TYPE)){
+			resultList.add("RadiusConditionerFile       : "+RadiusConditionerFile);
+		}
 		resultList.add("HeightConditionerType       : "+HeightConditionerType);
-		resultList.add("HeightConditionerConstant   : "+HeightConditionerConstant);
-		resultList.add("HeightConditionerFile       : "+HeightConditionerFile);
+		if(HeightConditionerType.equals(CoilDB.CONSTANT_TYPE)){
+			resultList.add("HeightConditionerConstant   : "+HeightConditionerConstant);
+		}else if(HeightConditionerType.equals(CoilDB.FILE_TYPE)){
+			resultList.add("HeightConditionerFile       : "+HeightConditionerFile);
+		}
 		resultList.add("-------------------------------------------------------");
 		resultList.add("MaterialDB           : "+MaterialDB);
 		resultList.add("-------------------------------------------------------");
@@ -365,13 +386,31 @@ public class CoilDB {
 		this.GeometryDataTableList.add(obj);
 	}
 	
+	/*
 	public void add_GraphDataCombo(ComboData_selectGraph obj){
 		this.graphDataList.add(obj);
+	}
+	//*/
+	public void add_GraphDataCombo_conditioner(ComboData_selectGraph obj){
+		this.graphDataList_conditioner.add(obj);
+	}
+	
+	public void add_GraphDataCombo_error(ComboData_selectGraph obj){
+		this.graphDataList_error.add(obj);
+	}
+	
+	public void add_GraphDataCombo_formSetError(ComboData_selectGraph obj){
+		this.graphDataList_formSetError.add(obj);
+	}
+	
+	public void add_GraphDataCombo_maximumError(ComboData_selectGraph obj){
+		this.graphDataList_maximumError.add(obj);
 	}
 	
 	public void add_SelectedGraph(ListData_selectedGraph obj){
 		this.selectedGraphList.add(obj);
 	}
+	
 	
 	public void delete_SelectedGraph(ListData_selectedGraph obj){
 		this.selectedGraphList.remove(obj);
@@ -514,13 +553,46 @@ public class CoilDB {
 	public void setGeometryDataTableList(ArrayList<TableData_Coil> geometryDataTableList) {
 		GeometryDataTableList = geometryDataTableList;
 	}
-
+	
+	/*
 	public ArrayList<ComboData_selectGraph> getGraphDataList() {
 		return graphDataList;
 	}
 
 	public void setGraphDataList(ArrayList<ComboData_selectGraph> graphDataList) {
 		this.graphDataList = graphDataList;
+	}
+	//*/
+	public ArrayList<ComboData_selectGraph> getGraphDataList_conditioner() {
+		return graphDataList_conditioner;
+	}
+
+	public void setGraphDataList_conditioner(ArrayList<ComboData_selectGraph> graphDataList) {
+		this.graphDataList_conditioner = graphDataList;
+	}
+	
+	public ArrayList<ComboData_selectGraph> getGraphDataList_error() {
+		return graphDataList_error;
+	}
+
+	public void setGraphDataList_error(ArrayList<ComboData_selectGraph> graphDataList) {
+		this.graphDataList_error = graphDataList;
+	}
+	
+	public ArrayList<ComboData_selectGraph> getGraphDataList_formSetError() {
+		return graphDataList_formSetError;
+	}
+
+	public void setGraphDataList_formSetError(ArrayList<ComboData_selectGraph> graphDataList) {
+		this.graphDataList_formSetError = graphDataList;
+	}
+	
+	public ArrayList<ComboData_selectGraph> getGraphDataList_maximumError() {
+		return graphDataList_maximumError;
+	}
+
+	public void setGraphDataList_maximumError(ArrayList<ComboData_selectGraph> graphDataList) {
+		this.graphDataList_maximumError = graphDataList;
 	}
 
 	public ArrayList<ComboData_selectImage> getImageDataList() {

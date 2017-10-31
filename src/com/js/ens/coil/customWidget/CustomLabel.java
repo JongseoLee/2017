@@ -23,6 +23,7 @@ public class CustomLabel implements ICommand {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
+		
 		if(this.widgetName.equals(Mediator.LABEL_lblProcessStep)){
 			// Call MC method
 			System.out.println("Double Click : "+ Mediator.LABEL_lblProcessStep);

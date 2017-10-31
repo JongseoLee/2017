@@ -4,6 +4,7 @@ package com.js.ens.coil.core;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
@@ -11,6 +12,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.wb.swt.SWTResourceManager;
 
+import com.js.ens.coil.Application;
 import com.js.ens.coil.customWidget.ComboData_selectGraph;
 import com.js.ens.coil.customWidget.ComboData_selectImage;
 import com.js.ens.coil.customWidget.ComboData_selectTableData;
@@ -31,8 +33,6 @@ import com.js.ens.coil.dialog.OpenDlg;
 import com.js.ens.coil.dialog.PreferencesDlg;
 import com.js.ens.coil.dialog.SaveAsDlg;
 import com.js.ens.coil.dialog.SaveDlg;
-import com.js.graph.MakePlot;
-import com.js.graph.RunSimcosGraph;
 import com.js.image.ImageAllData;
 import com.js.image.SimcosImageViewer;
 import com.js.io.Reader;
@@ -42,7 +42,7 @@ import com.js.plot.SimcosGraphViewer;
 import com.js.util.myUtil;
 
 public class MainController {
-	
+	private Logger log = Logger.getLogger(Application.class);
 	
 	private static MainController instance = new MainController();
 	public static MainController getInstatnce(){
@@ -68,14 +68,19 @@ public class MainController {
 	private String MentatPath;
 	private String TextEditorPath;
 	private String ExcelPath;
-	private String Command;
+	private String CommandSolving;
+	private String CommandPost;
 
 	public String getMentatPath() {
 		return MentatPath;
 	}
 
-	public String getCommand() {
-		return Command;
+	public String getCommandSolving() {
+		return CommandSolving;
+	}
+	
+	public String getCommandPost(){
+		return CommandPost;
 	}
 
 	private Mediator med = Mediator.getInstance();
@@ -186,10 +191,12 @@ public class MainController {
 			String msg = "Success - save step ";
 			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
 			msgDlg.open();
+			log.info("Step Save Button - save complete");
 		}catch(Exception e){
 			String msg = "Error - save step ";
 			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
 			msgDlg.open();
+			log.error("Step Save Button - "+e.getMessage());
 		}
 		
 	}
@@ -421,6 +428,8 @@ public class MainController {
 			msg = msg +"\n\n Error - Check input data ";
 			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
 			msgDlg.open();
+			log.warn("Start Simulation button - Check input data ");
+			
 		}
 	}
 	
@@ -431,16 +440,25 @@ public class MainController {
 		Writer writer = new Writer(interruptFilePath);
 		writer.running(endDataList);
 		
+		String itrLogFile = myUtil.setPath(myUtil.setPath(this.coilDBObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA), this.coilDBObj.getProductName()+AppFolder.coilItrLogFileName);
 		try{
 			Thread.sleep(3000);
 			if(myUtil.checkPath(interruptFilePath)){
 				myUtil.fileDelete(interruptFilePath);
+				//myUtil.fileDelete(itrLogFile);
 				//System.out.println("delete simcos.log file");
 			}
+			
+			
 			med.getBtnStartSimulation().setEnabled(true);
+			med.getProgressBarSimulationIteration().setSelection(0);
+			med.getTextLogEditor().setText("");
+			med.getLblSimulationStatus().setText("Ready");
+			med.getLblIterationNumber().setText("    ");
 			
 		}catch(Exception e){
 			System.out.println("Read log thread is null : "+ e.getMessage());
+			log.error("Read log thread is null - "+e.getMessage());
 		}
 	}
 	
@@ -505,6 +523,30 @@ public class MainController {
 		//*/
 	}
 	
+	public void Button_Conditioner(){
+		this.UpdateSelectGraphData();
+		med.getBtnRadius().setEnabled(true);
+		med.getBtnHeight().setEnabled(true);
+	}
+	
+	public void Button_Error(){
+		this.UpdateSelectGraphData();
+		med.getBtnRadius().setEnabled(true);
+		med.getBtnHeight().setEnabled(true);
+	}
+	
+	public void Button_FormSetError(){
+		this.UpdateSelectGraphData();
+		med.getBtnRadius().setEnabled(true);
+		med.getBtnHeight().setEnabled(true);
+	}
+	
+	public void Button_MaximumError(){
+		this.UpdateSelectGraphData();
+		med.getBtnRadius().setEnabled(false);
+		med.getBtnHeight().setEnabled(false);
+	}
+	
 	public void Button_Radius(){
 		
 	}
@@ -519,7 +561,18 @@ public class MainController {
 		if(fileName.length() == 0){
 			//System.out.println("null obj: "+fileName);
 		}else {
-			ComboData_selectGraph obj = this.coilDBObj.getGraphDataObj().getGraphObj(fileName);
+			ComboData_selectGraph obj = null;
+			if(med.getBtnConditioner().getSelection()){
+				obj = this.coilDBObj.getGraphDataObj().getGraphObj_conditioner(fileName);
+			}else if(med.getBtnError().getSelection()){
+				obj = this.coilDBObj.getGraphDataObj().getGraphObj_error(fileName);
+			}else if(med.getBtnFormSetError().getSelection()){
+				obj = this.coilDBObj.getGraphDataObj().getGraphObj_formSetError(fileName);
+			}else if(med.getBtnMaximumError().getSelection()){
+				obj = this.coilDBObj.getGraphDataObj().getGraphObj_maximumError(fileName);
+			}
+			
+			//ComboData_selectGraph obj = this.coilDBObj.getGraphDataObj().getGraphObj(fileName);
 			/*
 			System.out.println("Graph Title : " + obj.getGraphTitle());
 			System.out.println("Iteration Name : " + obj.getIterationName());
@@ -870,6 +923,8 @@ public class MainController {
 		med.getLblSimulationAndExportResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		med.getLblShowResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		
+		med.getLblModelnameValue().setText(projectName);
+		med.getLblModelnameValue().setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_BLUE));
 	}
 	
 	public void File_Open_Run(String SimcosDBFilePath){
@@ -906,11 +961,15 @@ public class MainController {
 			med.getLblSimulationAndExportResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 			med.getLblShowResult().setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 			*/
+			this.projectName = this.coilDBObj.getProjectName();
+			med.getLblModelnameValue().setText(this.projectName);
+			med.getLblModelnameValue().setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_BLUE));
 		}else{
 			
 			String msg = "Check Project Folder.";
 			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
 			msgDlg.open();
+			log.error("File->Open - Check Project Folder");
 		}
 		
 	}
@@ -935,6 +994,9 @@ public class MainController {
 		this.copyScriptFile();
 		// Create SimcosDB File
 		this.SaveSimcosDB();
+		
+		med.getLblModelnameValue().setText(this.projectName);
+		med.getLblModelnameValue().setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_BLUE));
 	}
 	
 	public void Tool_TextEditor_Run(){
@@ -947,6 +1009,7 @@ public class MainController {
 			String msg = "Check TextEditor execution path";
 			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
 			msgDlg.open();
+			log.error("Check TextEditor execution path - "+e.getMessage());
 		}
 		
 	}
@@ -961,6 +1024,7 @@ public class MainController {
 			String msg = "Check Mentat execution path";
 			MessageDlg msgDlg = new MessageDlg(med.getCompositeTop().getShell(),msg);
 			msgDlg.open();
+			log.error("Check Mentat execution path - "+e.getMessage());
 		}
 	}
 	
@@ -969,7 +1033,8 @@ public class MainController {
 		this.MentatPath = this.getPreferencesObj().getPreferencesValue(Preferences.MentatPath);
 		this.TextEditorPath = this.getPreferencesObj().getPreferencesValue(Preferences.TextEditorPath);
 		this.ExcelPath = this.getPreferencesObj().getPreferencesValue(Preferences.ExcelPath);
-		this.Command = this.getPreferencesObj().getPreferencesValue(Preferences.Command);
+		this.CommandSolving = this.getPreferencesObj().getPreferencesValue(Preferences.CommandSolving);
+		this.CommandPost = this.getPreferencesObj().getPreferencesValue(Preferences.CommandPost);
 		// write new data  in preference file
 		this.preferencesObj.writePreferenceValue();
 		
@@ -1015,13 +1080,16 @@ public class MainController {
 		
 		String pyScript = myUtil.setPath(scriptFolder, AppFolder.pythonScriptFileName);
 		String mainProc = myUtil.setPath(scriptFolder, AppFolder.mainProcFileName);
+		String postProc = myUtil.setPath(scriptFolder, AppFolder.postProcFileName);
 		
 		String SimcosDataFolder = myUtil.setPath(this.coilDBObj.getProjectFolderPath(),AppFolder.SIMCOS_DATA);
 		String destPyScriptPath = myUtil.setPath(SimcosDataFolder, AppFolder.pythonScriptFileName);
 		String destMainProcPath = myUtil.setPath(SimcosDataFolder, AppFolder.mainProcFileName);
+		String destPostProcPath = myUtil.setPath(SimcosDataFolder, AppFolder.postProcFileName);
 		
 		myUtil.fileCopy(pyScript, destPyScriptPath);
 		myUtil.fileCopy(mainProc, destMainProcPath);
+		myUtil.fileCopy(postProc, destPostProcPath);
 	}
 	
 	private void copySourceFileForModeling(){
@@ -1065,14 +1133,16 @@ public class MainController {
 		this.MentatPath = this.getPreferencesObj().getPreferencesValue(Preferences.MentatPath);
 		this.TextEditorPath = this.getPreferencesObj().getPreferencesValue(Preferences.TextEditorPath);
 		this.ExcelPath = this.getPreferencesObj().getPreferencesValue(Preferences.ExcelPath);
-		this.Command = this.getPreferencesObj().getPreferencesValue(Preferences.Command);
+		this.CommandSolving = this.getPreferencesObj().getPreferencesValue(Preferences.CommandSolving);
+		this.CommandPost = this.getPreferencesObj().getPreferencesValue(Preferences.CommandPost);
 		
 		/*
 		System.out.println(this.MarcPath);
 		System.out.println(this.MentatPath);
 		System.out.println(this.TextEditorPath);
 		System.out.println(this.ExcelPath);
-		System.out.println(this.Command);
+		System.out.println(this.CommandSovling);
+		System.out.println(this.CommandPost);
 		*/
 	}
 	
@@ -1169,6 +1239,7 @@ public class MainController {
 			
 		}catch(Exception e){
 			System.out.println("ERROR - Coil data table");
+			log.error("Coil data table - "+e.getMessage());
 		}
 	}
 	//==================================================================================
@@ -1251,6 +1322,20 @@ public class MainController {
 	
 	//==================================================================================
 	private void SetupInitValue(){
+		// Setting Coil Information
+		med.getTextCoilFilePath().setText("");
+		med.getTextProductName().setText("");
+		med.getTextWireDiameter().setText("");
+		med.getTextCenterDiameter().setText("");
+		med.getTextInternalDiameter().setText("");
+		med.getTextExternalDiameter().setText("");
+		med.getTextUpperInnerDiameter().setText("");
+		med.getTextLowerInnerDiameter().setText("");
+		med.getTextTotalTurns().setText("");
+		this.coilDBObj.getGeometryDataTableList().clear();
+		this.UpdateCoilGeometryData();
+		
+		
 		// Setting Process Information 
 		med.getTextHotSettingTemp().setText(this.initValueObj.getInitValue(InitValue.HotSettingTemp));
 		med.getTextColdSettingTemp().setText(this.initValueObj.getInitValue(InitValue.ColdSettingTemp));
@@ -1528,11 +1613,36 @@ public class MainController {
 	private void UpdateSelectGraphData(){
 		///////////////////////////////////////////////////////////////
 		// DEMO Data --> todo... access graph data folder
+		/*
 		if(!this.coilDBObj.getGraphDataList().isEmpty()){
 			this.coilDBObj.getGraphDataList().clear();
 			this.coilDBObj.getSelectedGraphList().clear();
 			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
 		}
+		// */
+		if(!this.coilDBObj.getGraphDataList_conditioner().isEmpty()){
+			this.coilDBObj.getGraphDataList_conditioner().clear();
+			this.coilDBObj.getSelectedGraphList().clear();
+			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
+		}
+		if(!this.coilDBObj.getGraphDataList_error().isEmpty()){
+			this.coilDBObj.getGraphDataList_error().clear();
+			this.coilDBObj.getSelectedGraphList().clear();
+			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
+		}
+		if(!this.coilDBObj.getGraphDataList_formSetError().isEmpty()){
+			this.coilDBObj.getGraphDataList_formSetError().clear();
+			this.coilDBObj.getSelectedGraphList().clear();
+			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
+		}
+		if(!this.coilDBObj.getGraphDataList_maximumError().isEmpty()){
+			this.coilDBObj.getGraphDataList_maximumError().clear();
+			this.coilDBObj.getSelectedGraphList().clear();
+			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
+		}
+		
+		
+		
 		/* 
 		//Demo data
 		for(int i = 0; i<10 ;i++){
@@ -1549,15 +1659,26 @@ public class MainController {
 		//
 		///////////////////////////////////////////////////////////////
 		try{
+
 			med.getComboViewerSelectGraph().setLabelProvider(new ComboViewerLabelProvider_SelectGraph());
 			med.getComboViewerSelectGraph().setContentProvider(new ArrayContentProvider());
-			med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList());
+			if(med.getBtnConditioner().getSelection()){
+				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_conditioner());	
+			}else if(med.getBtnError().getSelection()){
+				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_error());
+			}else if(med.getBtnFormSetError().getSelection()){
+				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_formSetError());
+			}else if(med.getBtnMaximumError().getSelection()){
+				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_maximumError());
+			}
+			
 			
 			med.getListViewerSelectedGraph().setLabelProvider(new ListLabelProvider_SelectedGraph());
 			med.getListViewerSelectedGraph().setContentProvider(new ArrayContentProvider());
 			med.getListViewerSelectedGraph().setInput(this.coilDBObj.getSelectedGraphList());
 		}catch(Exception e){
 			System.out.println("ERROR - Graph data");
+			log.error("Graph data - "+e.getMessage());
 		}
 	}
 	
@@ -1588,6 +1709,7 @@ public class MainController {
 			med.getComboViewerSelectImage().setInput(this.coilDBObj.getImageDataList());
 		}catch(Exception e){
 			System.out.println("ERROR - Image data");
+			log.error("Image data - "+e.getMessage());
 		}
 	}
 	
@@ -1610,6 +1732,7 @@ public class MainController {
 			med.getComboViewerSelectTableData().setInput(this.coilDBObj.getTabelDataList());
 		}catch(Exception e){
 			System.out.println("ERROR - Table data select Table Data");
+			log.error("Table data select Table Data - "+e.getMessage());
 		}
 	}
 	

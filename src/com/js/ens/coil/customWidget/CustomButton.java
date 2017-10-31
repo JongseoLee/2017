@@ -101,6 +101,18 @@ public class CustomButton implements ICommand {
 		}else if(this.widgetName.equals(Mediator.BUTTON_btnShowTableData)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnShowTableData);
 			MC.Button_ShowTableData();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnConditioner)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnConditioner);
+			MC.Button_Conditioner();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnError)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnError);
+			MC.Button_Error();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnFormSetError)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnFormSetError);
+			MC.Button_FormSetError();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnMaximumError)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnMaximumError);
+			MC.Button_MaximumError();
 		}
 		
 	}
@@ -197,4 +209,21 @@ public class CustomButton implements ICommand {
 	public void setCustomWidget_btnShowTableData(){
 		this.button = med.getBtnShowTableData();
 	}
+	
+	public void setCustomWidget_btnConditioner(){
+		this.button = med.getBtnConditioner();
+	}
+	
+	public void setCustomWidget_btnError(){
+		this.button = med.getBtnError();
+	}
+	
+	public void setCustomWidget_btnFormSetError(){
+		this.button = med.getBtnFormSetError();
+	}
+	
+	public void setCustomWidget_btnMaximumError(){
+		this.button = med.getBtnMaximumError();
+	}
+	
 }

@@ -35,7 +35,8 @@ public class PreferencesDlg extends Dialog {
 	private String MentatPath;
 	private String TextEditorPath;
 	private String ExcelPath;
-	private String Command;
+	private String CommandSolving;
+	private String CommandPost;
 	
 	private Map<String,String> PreferencesMap = new HashMap<String,String>();
 	
@@ -43,7 +44,8 @@ public class PreferencesDlg extends Dialog {
 	private Text textMentatPath;
 	private Text textTextEditorPath;
 	private Text textExcelPath;
-	private Text textCommand;
+	private Text textCommandSolving;
+	private Text textCommandPost;
 
 	/**
 	 * Create the dialog.
@@ -275,28 +277,47 @@ public class PreferencesDlg extends Dialog {
 		btnExcelPathFileExplorer.setLayoutData(fd_btnExcelPathFileExplorer);
 		btnExcelPathFileExplorer.setText("...");
 		
-		Label lblCommand = new Label(container, SWT.NONE);
-		FormData fd_lblCommand = new FormData();
-		fd_lblCommand.top = new FormAttachment(textExcelPath, 60);
-		fd_lblCommand.left = new FormAttachment(lblMarcPath, 0, SWT.LEFT);
-		lblCommand.setLayoutData(fd_lblCommand);
-		lblCommand.setText("Command");
+		Label lblCommandSovling = new Label(container, SWT.NONE);
+		FormData fd_lblCommandSovling = new FormData();
+		fd_lblCommandSovling.top = new FormAttachment(textExcelPath, 60);
+		fd_lblCommandSovling.left = new FormAttachment(lblMarcPath, 0, SWT.LEFT);
+		lblCommandSovling.setLayoutData(fd_lblCommandSovling);
+		lblCommandSovling.setText("Command (Sovling)");
 		
-		textCommand = new Text(container, SWT.BORDER);
-		textCommand.addModifyListener(new ModifyListener() {
+		textCommandSolving = new Text(container, SWT.BORDER);
+		textCommandSolving.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				Text text = (Text)e.getSource();
-				Command = text.getText().trim();
+				CommandSolving = text.getText().trim();
 			}
 		});
-		FormData fd_textCommand = new FormData();
-		fd_textCommand.top = new FormAttachment(lblCommand, 6);
-		fd_textCommand.left = new FormAttachment(textMarcPath, 0, SWT.LEFT);
-		fd_textCommand.right = new FormAttachment(100, -10);
-		textCommand.setLayoutData(fd_textCommand);
-		textCommand.setText(MC.getPreferencesObj().getPreferencesValue(Preferences.Command));
+		FormData fd_textCommandSolving = new FormData();
+		fd_textCommandSolving.top = new FormAttachment(lblCommandSovling, 6);
+		fd_textCommandSolving.left = new FormAttachment(textMarcPath, 0, SWT.LEFT);
+		fd_textCommandSolving.right = new FormAttachment(100, -10);
+		textCommandSolving.setLayoutData(fd_textCommandSolving);
+		textCommandSolving.setText(MC.getPreferencesObj().getPreferencesValue(Preferences.CommandSolving));
 		
+		Label lblCommandPost = new Label(container, SWT.NONE);
+		FormData fd_lblCommandPost = new FormData();
+		fd_lblCommandPost.top = new FormAttachment(textCommandSolving, 20);
+		fd_lblCommandPost.left = new FormAttachment(lblMarcPath, 0, SWT.LEFT);
+		lblCommandPost.setLayoutData(fd_lblCommandPost);
+		lblCommandPost.setText("Command (Post)");
 		
+		textCommandPost = new Text(container, SWT.BORDER);
+		textCommandPost.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				Text text = (Text)e.getSource();
+				CommandPost = text.getText().trim();
+			}
+		});
+		FormData fd_textCommandPost = new FormData();
+		fd_textCommandPost.top = new FormAttachment(lblCommandPost, 6);
+		fd_textCommandPost.left = new FormAttachment(textMarcPath, 0, SWT.LEFT);
+		fd_textCommandPost.right = new FormAttachment(100, -10);
+		textCommandPost.setLayoutData(fd_textCommandPost);
+		textCommandPost.setText(MC.getPreferencesObj().getPreferencesValue(Preferences.CommandPost));
 		return container;
 	}
 
@@ -329,7 +350,8 @@ public class PreferencesDlg extends Dialog {
 		MC.getPreferencesObj().setPreferencesValue(Preferences.MentatPath, this.MentatPath);
 		MC.getPreferencesObj().setPreferencesValue(Preferences.TextEditorPath, this.TextEditorPath);
 		MC.getPreferencesObj().setPreferencesValue(Preferences.ExcelPath, this.ExcelPath);
-		MC.getPreferencesObj().setPreferencesValue(Preferences.Command, this.Command);
+		MC.getPreferencesObj().setPreferencesValue(Preferences.CommandSolving, this.CommandSolving);
+		MC.getPreferencesObj().setPreferencesValue(Preferences.CommandPost, this.CommandPost);
 		MC.Setting_Preferences_Run();
 	}
 }

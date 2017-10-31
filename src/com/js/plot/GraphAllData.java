@@ -17,6 +17,7 @@ public class GraphAllData {
 	public static String conditionerType = "_conditioner.csv";
 	public static String errorType = "_error.csv";
 	public static String formSetErrorType = "_form_set_error.csv";
+	public static String maximumErrorType = "_err_hist.csv";
 	
 	private ArrayList<String> csvFilePathList; 
 	
@@ -38,32 +39,72 @@ public class GraphAllData {
 					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.conditionerType);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running();
-					this.CObj.add_GraphDataCombo(obj);
+					obj.running("normal");
+					this.CObj.add_GraphDataCombo_conditioner(obj);
 				}else if(this.isMatch_errorType(fileName)){
 					//System.out.println(f.getName());
 					this.csvFilePathList.add(f.getAbsolutePath());
 					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.errorType);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running();
-					this.CObj.add_GraphDataCombo(obj);
+					obj.running("normal");
+					this.CObj.add_GraphDataCombo_error(obj);
 				}else if(this.isMatch_formSetErrorType(fileName)){
 					//System.out.println(f.getName());
 					this.csvFilePathList.add(f.getAbsolutePath());
 					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.formSetErrorType);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running();
-					this.CObj.add_GraphDataCombo(obj);
+					obj.running("normal");
+					this.CObj.add_GraphDataCombo_formSetError(obj);
+				}else if(this.isMatch_MaximumErrorType(fileName)){
+					this.csvFilePathList.add(f.getAbsolutePath());
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.maximumErrorType);
+					obj.setName(f.getName());
+					obj.setFilePath(f.getAbsolutePath());
+					obj.running("err");
+					this.CObj.add_GraphDataCombo_maximumError(obj);
 				}
 			}
 		}
 	}
 	
-	public ComboData_selectGraph getGraphObj(String fileName){
+	public ComboData_selectGraph getGraphObj_conditioner(String fileName){
 		ComboData_selectGraph returnObj = null;
-		for(ComboData_selectGraph obj : this.CObj.getGraphDataList()){
+		for(ComboData_selectGraph obj : this.CObj.getGraphDataList_conditioner()){
+			if(obj.getName().equals(fileName)){
+				returnObj = obj;
+				break;
+			}
+		}
+		return returnObj;
+	}
+	
+	public ComboData_selectGraph getGraphObj_error(String fileName){
+		ComboData_selectGraph returnObj = null;
+		for(ComboData_selectGraph obj : this.CObj.getGraphDataList_error()){
+			if(obj.getName().equals(fileName)){
+				returnObj = obj;
+				break;
+			}
+		}
+		return returnObj;
+	}
+	
+	public ComboData_selectGraph getGraphObj_formSetError(String fileName){
+		ComboData_selectGraph returnObj = null;
+		for(ComboData_selectGraph obj : this.CObj.getGraphDataList_formSetError()){
+			if(obj.getName().equals(fileName)){
+				returnObj = obj;
+				break;
+			}
+		}
+		return returnObj;
+	}
+	
+	public ComboData_selectGraph getGraphObj_maximumError(String fileName){
+		ComboData_selectGraph returnObj = null;
+		for(ComboData_selectGraph obj : this.CObj.getGraphDataList_maximumError()){
 			if(obj.getName().equals(fileName)){
 				returnObj = obj;
 				break;
@@ -106,6 +147,19 @@ public class GraphAllData {
 		}else {
 			result = false;
 		}
+		return result;
+	}
+	
+	public boolean isMatch_MaximumErrorType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("("+GraphAllData.maximumErrorType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+		}else{
+			result = false;
+		}
+		
 		return result;
 	}
 }

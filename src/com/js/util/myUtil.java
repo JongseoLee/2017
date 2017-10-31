@@ -103,7 +103,7 @@ public class myUtil {
 	}
 	
 	
-	//�Ҽ��� �ڸ��� ǥ�� 1.-4 => 0.0004
+	//소수점 자리수 표현 1.-4 => 0.0004
 	public static String getSmallNumber(String s){
 		String str = s;
 		ArrayList<String> tempList = new ArrayList<String>();

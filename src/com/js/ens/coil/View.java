@@ -119,8 +119,36 @@ public class View extends ViewPart {
 		fd_compositeTop.top = new FormAttachment(0);
 		fd_compositeTop.left = new FormAttachment(0);
 		fd_compositeTop.right = new FormAttachment(100,0);
-		fd_compositeTop.bottom = new FormAttachment(0,45);
+		fd_compositeTop.bottom = new FormAttachment(0,65);
 		compositeTop.setLayoutData(fd_compositeTop);
+		
+		Label lblModelname = new Label(compositeTop, SWT.NONE);
+		if(myUtil.checkOS().equals("window")){
+			lblModelname.setFont(SWTResourceManager.getFont("Arial", 11, SWT.BOLD));	
+		}else{
+			lblModelname.setFont(SWTResourceManager.getFont(".SF NS Text", 12, SWT.BOLD));
+		}
+		med.setLblModelname(lblModelname);
+		FormData fd_lblModelname = new FormData();
+		fd_lblModelname.top = new FormAttachment(0, 10);
+		fd_lblModelname.left = new FormAttachment(0, 10);
+		lblModelname.setLayoutData(fd_lblModelname);
+		lblModelname.setText("Project(model) Name ");
+		
+		Label lblModelnameValue = new Label(compositeTop, SWT.NONE);
+		if(myUtil.checkOS().equals("window")){
+			lblModelnameValue.setFont(SWTResourceManager.getFont("Arial", 11, SWT.BOLD));	
+		}else{
+			lblModelnameValue.setFont(SWTResourceManager.getFont(".SF NS Text", 12, SWT.BOLD));
+		}
+		med.setLblModelnameValue(lblModelnameValue);
+		FormData fd_lblModelnameValue = new FormData();
+		fd_lblModelnameValue.top = new FormAttachment(lblModelname, 0, SWT.TOP);
+		fd_lblModelnameValue.left = new FormAttachment(lblModelname, 20);
+		fd_lblModelnameValue.right = new FormAttachment(lblModelname,500);
+		lblModelnameValue.setLayoutData(fd_lblModelnameValue);
+		lblModelnameValue.setText("-");
+		
 		
 		Label lblProcessStep = new Label(compositeTop, SWT.NONE);
 		if(myUtil.checkOS().equals("window")){
@@ -133,7 +161,7 @@ public class View extends ViewPart {
 		med.setC_lblProcessStep(c_lblProcessStep);
 		c_lblProcessStep.setCustomeWidget_lblProcessStep();
 		FormData fd_lblProcessStep = new FormData();
-		fd_lblProcessStep.top = new FormAttachment(0, 15);
+		fd_lblProcessStep.top = new FormAttachment(0, 40);
 		fd_lblProcessStep.left = new FormAttachment(0, 10);
 		lblProcessStep.setLayoutData(fd_lblProcessStep);
 		lblProcessStep.setText(LabelDatas.getLabel(UILabel.ProcessStep));
@@ -1195,10 +1223,63 @@ public class View extends ViewPart {
 		lblSelectGraph.setLayoutData(fd_lblSelectGraph);
 		lblSelectGraph.setText(LabelDatas.getLabel(UILabel.SelectGraph));
 		
-		Composite compositeGraphType = new Composite(grpDisplayResultCoil, SWT.NONE);
+		Composite compositeCSVType = new Composite(grpDisplayResultCoil, SWT.BORDER);
+		compositeCSVType.setLayout(new FormLayout());
+		FormData fd_compositeCSVType = new FormData();
+		fd_compositeCSVType.top = new FormAttachment(lblSelectGraph, 6);
+		fd_compositeCSVType.left = new FormAttachment(lblSelectGraph,0,SWT.LEFT);
+		fd_compositeCSVType.right = new FormAttachment(lblSelectGraph,0,SWT.RIGHT);
+		compositeCSVType.setLayoutData(fd_compositeCSVType);
+		
+		Button btnConditioner = new Button(compositeCSVType, SWT.RADIO);
+		med.setBtnConditioner(btnConditioner);
+		CustomButton c_btnConditioner = new CustomButton(Mediator.BUTTON_btnConditioner,med);
+		med.setC_btnConditioner(c_btnConditioner);
+		c_btnConditioner.setCustomWidget_btnConditioner();
+		FormData fd_btnConditioner = new FormData();
+		fd_btnConditioner.top = new FormAttachment(0, 0);
+		fd_btnConditioner.left = new FormAttachment(0, 10);
+		btnConditioner.setLayoutData(fd_btnConditioner);
+		btnConditioner.setText(LabelDatas.getLabel(UILabel.Conditioner));
+		btnConditioner.setSelection(true);
+		
+		Button btnError = new Button(compositeCSVType, SWT.RADIO);
+		med.setBtnError(btnError);
+		CustomButton c_btnError = new CustomButton(Mediator.BUTTON_btnError,med);
+		med.setC_btnError(c_btnError);
+		c_btnError.setCustomWidget_btnError();
+		FormData fd_btnError = new FormData();
+		fd_btnError.top = new FormAttachment(0, 0);
+		fd_btnError.left = new FormAttachment(btnConditioner, 82);
+		btnError.setLayoutData(fd_btnError);
+		btnError.setText(LabelDatas.getLabel(UILabel.Error));
+		
+		Button btnFormSetError = new Button(compositeCSVType, SWT.RADIO);
+		med.setBtnFormSetError(btnFormSetError);
+		CustomButton c_btnFormSetError = new CustomButton(Mediator.BUTTON_btnFormSetError,med);
+		med.setC_btnFormSetError(c_btnFormSetError);
+		c_btnFormSetError.setCustomWidget_btnFormSetError();
+		FormData fd_btnFormSetError = new FormData();
+		fd_btnFormSetError.top = new FormAttachment(btnConditioner, 12);
+		fd_btnFormSetError.left = new FormAttachment(btnConditioner, 0, SWT.LEFT);
+		btnFormSetError.setLayoutData(fd_btnFormSetError);
+		btnFormSetError.setText(LabelDatas.getLabel(UILabel.FormSetError));
+		
+		Button btnMaximumError = new Button(compositeCSVType, SWT.RADIO);
+		med.setBtnMaximumError(btnMaximumError);
+		CustomButton c_btnMaximumError = new CustomButton(Mediator.BUTTON_btnMaximumError,med);
+		med.setC_btnMaximumError(c_btnMaximumError);
+		c_btnMaximumError.setCustomWidget_btnMaximumError();
+		FormData fd_btnMaximumError = new FormData();
+		fd_btnMaximumError.top = new FormAttachment(btnFormSetError, 0, SWT.TOP);
+		fd_btnMaximumError.left = new FormAttachment(btnError, 0, SWT.LEFT);
+		btnMaximumError.setLayoutData(fd_btnMaximumError);
+		btnMaximumError.setText(LabelDatas.getLabel(UILabel.MaximumError));
+		
+		Composite compositeGraphType = new Composite(grpDisplayResultCoil, SWT.BORDER);
 		compositeGraphType.setLayout(new FormLayout());
 		FormData fd_compositeGraphType = new FormData();
-		fd_compositeGraphType.top = new FormAttachment(lblSelectGraph, 6);
+		fd_compositeGraphType.top = new FormAttachment(compositeCSVType, 6);
 		fd_compositeGraphType.left = new FormAttachment(lblSelectGraph,0,SWT.LEFT);
 		fd_compositeGraphType.right = new FormAttachment(lblSelectGraph,0,SWT.RIGHT);
 		compositeGraphType.setLayoutData(fd_compositeGraphType);
@@ -1225,6 +1306,7 @@ public class View extends ViewPart {
 		fd_btnHeight.left = new FormAttachment(btnRadius, 110);
 		btnHeight.setLayoutData(fd_btnHeight);
 		btnHeight.setText(LabelDatas.getLabel(UILabel.Height));
+		
 		
 		/* */
 		ComboViewer comboViewerSelectGraph = new ComboViewer(grpDisplayResultCoil, SWT.NONE | SWT.READ_ONLY);
@@ -1496,6 +1578,10 @@ public class View extends ViewPart {
 		med.getBtnStartSimulation().addListener(SWT.Selection, handlerButton);
 		med.getBtnResetSimulation().addListener(SWT.Selection, handlerButton);
 		med.getBtnReadLog().addListener(SWT.Selection, handlerButton);
+		med.getBtnConditioner().addListener(SWT.Selection, handlerButton);
+		med.getBtnError().addListener(SWT.Selection, handlerButton);
+		med.getBtnFormSetError().addListener(SWT.Selection, handlerButton);
+		med.getBtnMaximumError().addListener(SWT.Selection, handlerButton);
 		med.getBtnRadius().addListener(SWT.Selection, handlerButton);
 		med.getBtnHeight().addListener(SWT.Selection, handlerButton);
 		med.getBtnShowGraphWindow().addListener(SWT.Selection, handlerButton);
