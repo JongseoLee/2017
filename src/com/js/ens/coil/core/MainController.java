@@ -212,6 +212,46 @@ public class MainController {
 			this.UpdateCoilGeometryData();
 		}
 	}
+	
+	public void Button_ShowRadiusGraph(){
+		System.out.println("Show Radius Graph.... MC");
+		if(this.coilDBObj.getGeometryDataTableList().size() !=0){
+			System.out.println("Size > 0");
+			SimcosGraphViewer viewer = new SimcosGraphViewer();
+			viewer.running_geometryData_radius(this.coilDBObj);
+		}else{
+			System.out.println("Size = 0");
+		}
+	}
+	
+	public void Button_ShowPitchGraph(){
+		System.out.println("Show Pitch Graph.... MC");
+		if(this.coilDBObj.getGeometryDataTableList().size() != 0){
+			System.out.println("Size > 0");
+			SimcosGraphViewer viewer = new SimcosGraphViewer();
+			viewer.running_geometryData_pitch(this.coilDBObj);
+		}else{
+			System.out.println("Size = 0");
+		}
+	}
+	
+	public void Button_Standard(){
+		System.out.println("Standard...MC");
+		this.coilDBObj.setSeatType(CoilDB.SEAT_TYPE_STANDARD);
+		med.getTextSeatUStepRotationHeight().setEnabled(false);
+		med.getTextSeatLStepRotationHeight().setEnabled(false);
+		med.getTextSeatURotationAngle().setEnabled(false);
+		med.getTextSeatLRotationAngle().setEnabled(false);
+	}
+	
+	public void Button_RrCoil(){
+		System.out.println("RR Coil...MC");
+		this.coilDBObj.setSeatType(CoilDB.SEAT_TYPE_RRCoil);
+		med.getTextSeatUStepRotationHeight().setEnabled(true);
+		med.getTextSeatLStepRotationHeight().setEnabled(true);
+		med.getTextSeatURotationAngle().setEnabled(true);
+		med.getTextSeatLRotationAngle().setEnabled(true);
+	}
 	/*
 	public void Button_InitialConditionerConstant(){
 		// radio button
@@ -746,6 +786,26 @@ public class MainController {
 		this.coilDBObj.setSeatHeight(data);
 	}
 	
+	public void Text_Modify_SeatUStepRotationHeight(){
+		String data = med.getTextSeatUStepRotationHeight().getText().trim();
+		this.coilDBObj.setSeatUStepRotationHeight(data);
+	}
+	
+	public void Text_Modify_SeatLStepRotationHeight(){
+		String data = med.getTextSeatLStepRotationHeight().getText().trim();
+		this.coilDBObj.setSeatLStepRotationHeight(data);
+	}
+	
+	public void Text_Modify_SeatURotationAngle(){
+		String data = med.getTextSeatURotationAngle().getText().trim();
+		this.coilDBObj.setSeatURotationAngle(data);
+	}
+	
+	public void Text_Modify_SeatLRotationAngle(){
+		String data = med.getTextSeatLRotationAngle().getText().trim();
+		this.coilDBObj.setSeatLRotationAngle(data);
+	}
+	
 	public void Text_Modify_RadiusConditionerValue(){
 		String data =med.getTextRadiusConditionerValue().getText().trim();
 		this.coilDBObj.setRadiusConditionerConstant(data);
@@ -760,6 +820,11 @@ public class MainController {
 	public void Text_Modify_MaterialDBPath(){
 		String data = med.getTextMaterialDBPath().getText().trim();
 		this.coilDBObj.setMaterialDB(data);
+	}
+	
+	public void Text_Modify_ParallelCpuNmber(){
+		String data = med.getTextParallelCpuNumber().getText().trim();
+		this.coilDBObj.setParallerCpuNmber(data);
 	}
 	
 	public void Text_Modify_RadiusTolerance(){
@@ -859,13 +924,13 @@ public class MainController {
 
 	public void Combo_selectImage() {
 		// TODO Auto-generated method stub
-		System.out.println(med.getComboViewerSelectImage().getCombo().getText());
+		//System.out.println(med.getComboViewerSelectImage().getCombo().getText());
 	}
 
 
 	public void Combo_selectTableData() {
 		// TODO Auto-generated method stub
-		System.out.println(med.getComboViewerSelectTableData().getCombo().getText());
+		//System.out.println(med.getComboViewerSelectTableData().getCombo().getText());
 		
 	}
 	
@@ -975,9 +1040,11 @@ public class MainController {
 	}
 
 	public void File_Save_Run(){
+		System.out.println("File - > save In");
 		this.SaveStep1();	
 		this.SaveStep2();
 		this.SaveSimcosDB();
+		System.out.println("File - > save Out");
 	}
 	
 	public void File_SaveAs_Run(String newProjectName, String newWorkspace){
@@ -1341,9 +1408,28 @@ public class MainController {
 		med.getTextColdSettingTemp().setText(this.initValueObj.getInitValue(InitValue.ColdSettingTemp));
 		med.getTextHotSettingHeight().setText(this.initValueObj.getInitValue(InitValue.HotSettingHeight));
 		med.getTextColdSettingHeight().setText(this.initValueObj.getInitValue(InitValue.ColdSettingHeight));
+		if(this.initValueObj.getInitValue(InitValue.SeatType).equals(CoilDB.SEAT_TYPE_STANDARD)){
+			med.getBtnStandard().setSelection(true);
+			med.getBtnRrCoil().setSelection(false);
+			med.getTextSeatUStepRotationHeight().setEnabled(false);
+			med.getTextSeatLStepRotationHeight().setEnabled(false);
+			med.getTextSeatURotationAngle().setEnabled(false);
+			med.getTextSeatLRotationAngle().setEnabled(false);
+		}else{
+			med.getBtnStandard().setSelection(false);
+			med.getBtnRrCoil().setSelection(true);
+			med.getTextSeatUStepRotationHeight().setEnabled(true);
+			med.getTextSeatLStepRotationHeight().setEnabled(true);
+			med.getTextSeatURotationAngle().setEnabled(true);
+			med.getTextSeatLRotationAngle().setEnabled(true);
+		}
 		med.getTextSeatUInnerMargina().setText(this.initValueObj.getInitValue(InitValue.SeatUInnerMargina));
 		med.getTextSeatLInnerMargina().setText(this.initValueObj.getInitValue(InitValue.SeatLInnerMargina));
 		med.getTextSeatHeight().setText(this.initValueObj.getInitValue(InitValue.SeatHeight));
+		med.getTextSeatUStepRotationHeight().setText(this.initValueObj.getInitValue(InitValue.SeatUStepRotationHeight));
+		med.getTextSeatLStepRotationHeight().setText(this.initValueObj.getInitValue(InitValue.SeatLStepRotationHeight));
+		med.getTextSeatURotationAngle().setText(this.initValueObj.getInitValue(InitValue.SeatURotationAngle));
+		med.getTextSeatLRotationAngle().setText(this.initValueObj.getInitValue(InitValue.SeatLRotationAngle));
 		// Initial Conditioner
 		/*
 		if(this.initValueObj.getInitValue(InitValue.InitialConditionerType).equals(CoilDB.CONSTANT_TYPE)){
@@ -1400,6 +1486,8 @@ public class MainController {
 		}
 		// Material Database 
 		med.getTextMaterialDBPath().setText(this.initValueObj.getInitValue(InitValue.MaterialDatabase));
+		// Parallel CPU Number 
+		med.getTextParallelCpuNumber().setText(this.initValueObj.getInitValue(InitValue.ParallelCPUNumber));
 		// Analysis Options
 		med.getTextRadiusTolerance().setText(this.initValueObj.getInitValue(InitValue.RadiusTolerance));
 		med.getTextHeightTolerance().setText(this.initValueObj.getInitValue(InitValue.HeightTolerance));
@@ -1418,9 +1506,28 @@ public class MainController {
 		med.getTextColdSettingTemp().setText(this.coilDBObj.getColdSettingTemp());
 		med.getTextHotSettingHeight().setText(this.coilDBObj.getHotSettingHeight());
 		med.getTextColdSettingHeight().setText(this.coilDBObj.getColdSettingHeight());
+		if(this.coilDBObj.getSeatType().equals(CoilDB.SEAT_TYPE_STANDARD)){
+			med.getBtnStandard().setSelection(true);
+			med.getBtnRrCoil().setSelection(false);
+			med.getTextSeatUStepRotationHeight().setEnabled(false);
+			med.getTextSeatLStepRotationHeight().setEnabled(false);
+			med.getTextSeatURotationAngle().setEnabled(false);
+			med.getTextSeatLRotationAngle().setEnabled(false);
+		}else{
+			med.getBtnStandard().setSelection(false);
+			med.getBtnRrCoil().setSelection(true);
+			med.getTextSeatUStepRotationHeight().setEnabled(true);
+			med.getTextSeatLStepRotationHeight().setEnabled(true);
+			med.getTextSeatURotationAngle().setEnabled(true);
+			med.getTextSeatLRotationAngle().setEnabled(true);
+		}
 		med.getTextSeatUInnerMargina().setText(this.coilDBObj.getSeatUIneerMargina());
 		med.getTextSeatLInnerMargina().setText(this.coilDBObj.getSeatLIneerMargina());
 		med.getTextSeatHeight().setText(this.coilDBObj.getSeatHeight());
+		med.getTextSeatUStepRotationHeight().setText(this.coilDBObj.getSeatUStepRotationHeight());
+		med.getTextSeatLStepRotationHeight().setText(this.coilDBObj.getSeatLStepRotationHeight());
+		med.getTextSeatURotationAngle().setText(this.coilDBObj.getSeatURotationAngle());
+		med.getTextSeatLRotationAngle().setText(this.coilDBObj.getSeatLRotationAngle());
 		// Initial Conditioner
 		/*
 		if(this.coilDBObj.getInitialConditionerType().equals(CoilDB.CONSTANT_TYPE)){
@@ -1479,7 +1586,8 @@ public class MainController {
 		
 		// Material Datatbase
 		med.getTextMaterialDBPath().setText(myUtil.getFileName(this.coilDBObj.getMaterialDB()));
-		
+		// Parallel CPU Number
+		med.getTextParallelCpuNumber().setText(this.coilDBObj.getParallerCpuNmber());
 		// Analysis Options
 		med.getTextRadiusTolerance().setText(this.coilDBObj.getRadiusTolerance());
 		med.getTextHeightTolerance().setText(this.coilDBObj.getHeightTolerance());
@@ -1571,9 +1679,18 @@ public class MainController {
 		this.coilDBObj.setColdSettingTemp(med.getTextColdSettingTemp().getText().trim());
 		this.coilDBObj.setHotSettingHeight(med.getTextHotSettingHeight().getText().trim());
 		this.coilDBObj.setColdSettingHeight(med.getTextColdSettingHeight().getText().trim());
+		if(med.getBtnStandard().getSelection()){
+			this.coilDBObj.setSeatType(CoilDB.SEAT_TYPE_STANDARD);
+		}else if(med.getBtnRrCoil().getSelection()){
+			this.coilDBObj.setSeatType(CoilDB.SEAT_TYPE_RRCoil);
+		}
 		this.coilDBObj.setSeatUIneerMargina(med.getTextSeatUInnerMargina().getText().trim());
 		this.coilDBObj.setSeatLIneerMargina(med.getTextSeatLInnerMargina().getText().trim());
 		this.coilDBObj.setSeatHeight(med.getTextSeatHeight().getText().trim());
+		this.coilDBObj.setSeatUStepRotationHeight(med.getTextSeatUStepRotationHeight().getText().trim());
+		this.coilDBObj.setSeatLStepRotationHeight(med.getTextSeatLStepRotationHeight().getText().trim());
+		this.coilDBObj.setSeatURotationAngle(med.getTextSeatURotationAngle().getText().trim());
+		this.coilDBObj.setSeatLRotationAngle(med.getTextSeatLRotationAngle().getText().trim());
 		// Initial Conditioner
 		/*
 		if(med.getBtnInitialConditionerConstant().getSelection()){
@@ -1597,7 +1714,7 @@ public class MainController {
 		this.coilDBObj.setRadiusConditionerConstant(med.getTextRadiusConditionerValue().getText().trim());
 		this.coilDBObj.setHeightConditionerConstant(med.getTextHeightConditionerValue().getText().trim());
 		
-		
+		this.coilDBObj.setParallerCpuNmber(med.getTextParallelCpuNumber().getText().trim());
 	}
 	
 	private void SaveStep2(){

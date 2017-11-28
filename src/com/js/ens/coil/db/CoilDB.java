@@ -15,6 +15,8 @@ import com.js.util.myUtil;
 public class CoilDB {
 	public static String CONSTANT_TYPE = "Constant";
 	public static String FILE_TYPE = "File";
+	public static String SEAT_TYPE_STANDARD = "Standard";
+	public static String SEAT_TYPE_RRCoil = "RR Coil";
 	public static String STEP1 = "STEP1";
 	public static String STEP2 = "STEP2";
 	public static String STEP3 = "STEP3";
@@ -44,9 +46,15 @@ public class CoilDB {
 	private String ColdSettingTemp = "null";
 	private String HotSettingHeight = "null";
 	private String ColdSettingHeight = "null";
+	private String SeatType = "null"; // 'Standard', 'RR Coil'
 	private String SeatUIneerMargina = "null";
 	private String SeatLIneerMargina = "null";
 	private String SeatHeight = "null";
+	private String SeatUStepRotationHeight = "null";
+	private String SeatLStepRotationHeight = "null";
+	private String SeatURotationAngle = "null";
+	private String SeatLRotationAngle = "null";
+	
 	
 	/*
 	private String InitialConditionerType = "null";	
@@ -63,6 +71,8 @@ public class CoilDB {
 		
 	
 	private String MaterialDB = "null";
+	
+	private String ParallerCpuNmber = "null";
 	
 	// Step2. Simulation and Export Result
 	private String RadiusTolerance = "null";
@@ -181,6 +191,20 @@ public class CoilDB {
 				result = false;
 				return result;
 			}
+			if(SeatType.equals("null")){	
+				result = false;
+				return result;
+			}else if(SeatType.equals(CoilDB.SEAT_TYPE_STANDARD)){
+				if(RadiusConditionerConstant.equals("null")){
+					result = false;
+					return result;
+				}
+			}else if(RadiusConditionerType.equals(CoilDB.SEAT_TYPE_RRCoil)){
+				if(RadiusConditionerFile.equals("null")){
+					result = false;
+					return result;
+				}
+			}
 			if(SeatUIneerMargina.equals("null")){
 				result = false;
 				return result;
@@ -190,6 +214,22 @@ public class CoilDB {
 				return result;
 			}
 			if(SeatHeight.equals("null")){
+				result = false;
+				return result;
+			}
+			if(SeatUStepRotationHeight.equals("null")){
+				result = false;
+				return result;
+			}
+			if(SeatLStepRotationHeight.equals("null")){
+				result = false;
+				return result;
+			}
+			if(SeatURotationAngle.equals("null")){
+				result = false;
+				return result;
+			}
+			if(SeatLRotationAngle.equals("null")){
 				result = false;
 				return result;
 			}
@@ -244,6 +284,10 @@ public class CoilDB {
 				return result;
 			}
 			
+			if(ParallerCpuNmber.equals("null")){
+				result =false;
+				return result;
+			}
 			// Step2. Simulation and Export Result
 			if(RadiusTolerance.equals("null")){
 				result = false;
@@ -297,9 +341,16 @@ public class CoilDB {
 		resultList.add("HotSettingTemp      : "+HotSettingTemp);
 		resultList.add("ColdSettingHeight   : "+ColdSettingHeight);
 		resultList.add("ColdSettingTemp     : "+ColdSettingTemp);
+		resultList.add("SeatType            : "+SeatType);
 		resultList.add("SeatUIneerMargina   : "+SeatUIneerMargina);
 		resultList.add("SeatLIneerMargina   : "+SeatLIneerMargina);
 		resultList.add("SeatHeight          : "+SeatHeight);
+		if(SeatType.equals(CoilDB.SEAT_TYPE_RRCoil)){
+			resultList.add("SeatUStepRotationHeight : "+SeatUStepRotationHeight);
+			resultList.add("SeatLStepRotationHeight : "+SeatLStepRotationHeight);
+			resultList.add("SeatURotationAngle : "+SeatURotationAngle);
+			resultList.add("SeatLRotationAngle : "+SeatLRotationAngle);
+		}
 		resultList.add("-------------------------------------------------------");
 		/*
 		resultList.add("InitialConditionerType       : "+InitialConditionerType);
@@ -320,6 +371,8 @@ public class CoilDB {
 		}
 		resultList.add("-------------------------------------------------------");
 		resultList.add("MaterialDB           : "+MaterialDB);
+		resultList.add("-------------------------------------------------------");
+		resultList.add("ParallelCpuNumber    : "+ParallerCpuNmber);
 		resultList.add("-------------------------------------------------------");
 		resultList.add("RadiusTolerance         : "+RadiusTolerance);
 		resultList.add("HeightTolerance         : "+HeightTolerance);
@@ -358,9 +411,14 @@ public class CoilDB {
 		System.out.println("HotSettingTemp      : "+HotSettingTemp);
 		System.out.println("ColdSettingHeight   : "+ColdSettingHeight);
 		System.out.println("ColdSettingTemp     : "+ColdSettingTemp);
+		System.out.println("SeatType            : "+SeatType);
 		System.out.println("SeatUIneerMargina   : "+SeatUIneerMargina);
 		System.out.println("SeatLIneerMargina   : "+SeatLIneerMargina);
 		System.out.println("SeatHeight          : "+SeatHeight);
+		System.out.println("SeatUStepRotationHeight : "+SeatUStepRotationHeight);
+		System.out.println("SeatLStepRotationHeight : "+SeatLStepRotationHeight);
+		System.out.println("SeatURotationAngle : "+SeatURotationAngle);
+		System.out.println("SeatLRotationAngle : "+SeatLRotationAngle);
 		System.out.println("-------------------------------------------------------");
 		/*
 		System.out.println("InitialConditionerType       : "+InitialConditionerType);
@@ -375,6 +433,8 @@ public class CoilDB {
 		System.out.println("HeightConditionerFile       : "+HeightConditionerFile);
 		System.out.println("-------------------------------------------------------");
 		System.out.println("MaterialDB           : "+MaterialDB);
+		System.out.println("-------------------------------------------------------");
+		System.out.println("ParallelCpuNumber    : "+ParallerCpuNmber);
 		System.out.println("-------------------------------------------------------");
 		System.out.println("RadiusTolerance         : "+RadiusTolerance);
 		System.out.println("HeightTolerance         : "+HeightTolerance);
@@ -659,6 +719,14 @@ public class CoilDB {
 		ColdSettingHeight = coldSettingHeight;
 	}
 
+	public String getSeatType() {
+		return SeatType;
+	}
+
+	public void setSeatType(String seatType) {
+		SeatType = seatType;
+	}
+
 	public String getSeatUIneerMargina() {
 		return SeatUIneerMargina;
 	}
@@ -682,6 +750,39 @@ public class CoilDB {
 	public void setSeatHeight(String seatHeight) {
 		SeatHeight = seatHeight;
 	}
+	
+	public String getSeatUStepRotationHeight() {
+		return SeatUStepRotationHeight;
+	}
+
+	public void setSeatUStepRotationHeight(String seatUStepRotationHeight) {
+		SeatUStepRotationHeight = seatUStepRotationHeight;
+	}
+
+	public String getSeatLStepRotationHeight() {
+		return SeatLStepRotationHeight;
+	}
+
+	public void setSeatLStepRotationHeight(String seatLStepRotationHeight) {
+		SeatLStepRotationHeight = seatLStepRotationHeight;
+	}
+
+	public String getSeatURotationAngle() {
+		return SeatURotationAngle;
+	}
+
+	public void setSeatURotationAngle(String seatURotationAngle) {
+		SeatURotationAngle = seatURotationAngle;
+	}
+
+	public String getSeatLRotationAngle() {
+		return SeatLRotationAngle;
+	}
+
+	public void setSeatLRotationAngle(String seatLRotationAngle) {
+		SeatLRotationAngle = seatLRotationAngle;
+	}
+
 	/*
 	public String getInitialConditionerType() {
 		return InitialConditionerType;
@@ -785,7 +886,7 @@ public class CoilDB {
 
 	public void setProjectFolderPath(String projectFolderPath) {
 		this.projectFolderPath = projectFolderPath;
-		this.dbFilePath = myUtil.setPath(this.projectFolderPath, AppFolder.dbFileName);
+		this.dbFilePath = myUtil.setPath(this.projectFolderPath, this.getProjectName()+"_"+AppFolder.dbFileName);
 	}
 
 	public String getLogEditor() {
@@ -822,6 +923,14 @@ public class CoilDB {
 
 	public void setMaterialDB(String materialDB) {
 		MaterialDB = materialDB;
+	}
+
+	public String getParallerCpuNmber() {
+		return ParallerCpuNmber;
+	}
+
+	public void setParallerCpuNmber(String parallerCpuNmber) {
+		ParallerCpuNmber = parallerCpuNmber;
 	}
 
 	public GraphAllData getGraphDataObj() {

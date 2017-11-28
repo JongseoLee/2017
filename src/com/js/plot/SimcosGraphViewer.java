@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import com.js.ens.coil.core.Mediator;
+import com.js.ens.coil.customWidget.TableData_Coil;
 import com.js.ens.coil.db.CoilDB;
 import com.js.util.myUtil;
 
@@ -31,6 +32,58 @@ public class SimcosGraphViewer {
 		// SimcosGraphViewer -> CreatePlotData -> GraphPanel
 		this.GenPlotData(coilDBObj);
 		this.ShowPlotData();
+	}
+	
+	public void running_geometryData_radius(CoilDB coilDBObj){
+		this.GenPlotData_geometryData_radius(coilDBObj);
+		this.ShowPlotData();
+	}
+	
+	public void running_geometryData_pitch(CoilDB coilDBObj){
+		this.GenPlotData_geometryData_pitch(coilDBObj);
+		this.ShowPlotData();
+	}
+	
+	private void GenPlotData_geometryData_radius(CoilDB coilDBObj){
+		this.legendList = new ArrayList<String>();
+		this.xDataList = new ArrayList<ArrayList<Float>>();
+		this.yDataList = new ArrayList<ArrayList<Float>>();
+		
+		ArrayList<Float> xList = new ArrayList<Float>();
+		ArrayList<Float> yList = new ArrayList<Float>();
+		
+		for(TableData_Coil obj : coilDBObj.getGeometryDataTableList()){
+			xList.add(Float.parseFloat(obj.getTheta()));
+			yList.add(Float.parseFloat(obj.getRadius()));
+		}
+
+		this.chartTitle = "Coil Geometry Radius";
+		this.xTitle = "Theta";
+		this.yTitle = "Radius";
+		this.legendList.add("Radius Data");
+		this.xDataList.add(xList);
+		this.yDataList.add(yList);
+	}
+	
+	private void GenPlotData_geometryData_pitch(CoilDB coilDBObj){
+		this.legendList = new ArrayList<String>();
+		this.xDataList = new ArrayList<ArrayList<Float>>();
+		this.yDataList = new ArrayList<ArrayList<Float>>();
+		
+		ArrayList<Float> xList = new ArrayList<Float>();
+		ArrayList<Float> yList = new ArrayList<Float>();
+		
+		for(TableData_Coil obj : coilDBObj.getGeometryDataTableList()){
+			xList.add(Float.parseFloat(obj.getTheta()));
+			yList.add(Float.parseFloat(obj.getHeight()));
+		}
+
+		this.chartTitle = "Coil Geometry Pitch";
+		this.xTitle = "Theta";
+		this.yTitle = "Pitch";
+		this.legendList.add("Pitch Data");
+		this.xDataList.add(xList);
+		this.yDataList.add(yList);
 	}
 
 	private void GenPlotData(CoilDB coilDBObj){

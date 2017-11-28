@@ -71,7 +71,12 @@ public class UILabel {
 	public static String ColumnRadius = "ColumnRadius";
 	private String base_ColumnRadius = "Radius";
 	public static String ColumnHeight = "ColumnHeight";
-	private String base_ColumnHeight = "Height";
+	private String base_ColumnHeight = "Pitch";
+	
+	public static String ShowRadiusGraph = "ShowRadiusGraph";
+	private String base_ShowRadiusGraph = "Show Radius Graph";
+	public static String ShowPitchGraph = "ShowPitchGraph";
+	private String base_ShowPitchGraph = "Show Pitch Graph";
 	
 	public static String SettingProcessInformation = "SettingProcessInformation";
 	private String base_SettingProcessInformation = "Setting Process Information";
@@ -83,12 +88,30 @@ public class UILabel {
 	private String base_HotSettingHeight = "Hot Setting Height(mm)";
 	public static String ColdSettingHeight = "ColdSettingHeight";
 	private String base_ColdSettingHeight = "Cold Setting Height(mm)";
+	
+	public static String Standard = "Standard";
+	private String base_Standard = "Starndard";
+	public static String RRCoil = "RRCoil";
+	private String base_RRCoil = "RR Coil";
+	
 	public static String SeatUInnerMargina = "SeatUInnerMargina";
 	private String base_SeatUInnerMargina = "Seat U. Inner Margina(mm)";
 	public static String SeatLInnerMargina = "SeatLInnerMargina";
 	private String base_SeatLInnerMargina = "Seat L. Inner Margina(mm)";
 	public static String SeatHeight = "SeatHeight";
 	private String base_SeatHeight = "Seat Height(mm)";
+	
+	
+	public static String SeatUStepRotationHeight = "SeatUStepRotationHeight";
+	private String base_SeatUStepRotationHeight = "Seat U. Step Rotation Height(mm)";
+	public static String SeatLStepRotationHeight = "SeatLStepRotationHeight";
+	private String base_SeatLStepRotationHeight = "Seat L. Step Rotation Height(mm)";
+	public static String SeatURotationAngle = "SeatURotationAngle";
+	private String base_SeatURotationAngle = "Seat U. Rotation Angle(Turn)";
+	public static String SeatLRotationAngle = "SeatLRotationAngle";
+	private String base_SeatLRotationAngle = "Seat L. Rotation Angle(Turn)";
+
+	
 	
 	public static String InitialConditioner = "InitialConditioner";
 	private String base_InitialConditioner = "Initial conditioner";
@@ -104,6 +127,8 @@ public class UILabel {
 	public static String MaterialDatabase = "MaterialDatabase";
 	private String base_MaterialDatabase="Material Database";
 
+	public static String ParallelCPUNumber = "ParallelCPUNumber";
+	private String base_ParallelCPUNumber = "Parallel CPU Number";
 	
 	
 	// Step2
@@ -195,15 +220,23 @@ public class UILabel {
 		this.BaseUILabelMap.put("ColumnTheta",this.base_ColumnTheta);
 		this.BaseUILabelMap.put("ColumnRadius",this.base_ColumnRadius);
 		this.BaseUILabelMap.put("ColumnHeight",this.base_ColumnHeight);
+		this.BaseUILabelMap.put("ShowRadiusGraph",this.base_ShowRadiusGraph);
+		this.BaseUILabelMap.put("ShowPitchGraph", this.base_ShowPitchGraph);
 		
 		this.BaseUILabelMap.put("SettingProcessInformation", this.base_SettingProcessInformation);
 		this.BaseUILabelMap.put("HotSettingTemp", this.base_HotSettingTemp);
 		this.BaseUILabelMap.put("ColdSettingTemp", this.base_ColdSettingTemp);
 		this.BaseUILabelMap.put("HotSettingHeight", this.base_HotSettingHeight);
 		this.BaseUILabelMap.put("ColdSettingHeight", this.base_ColdSettingHeight);
+		this.BaseUILabelMap.put("Standard", this.base_Standard);
+		this.BaseUILabelMap.put("RRCoil", this.base_RRCoil);
 		this.BaseUILabelMap.put("SeatUInnerMargina", this.base_SeatUInnerMargina);
 		this.BaseUILabelMap.put("SeatLInnerMargina", this.base_SeatLInnerMargina);
 		this.BaseUILabelMap.put("SeatHeight", this.base_SeatHeight);
+		this.BaseUILabelMap.put("SeatUStepRotationHeight", this.base_SeatUStepRotationHeight);
+		this.BaseUILabelMap.put("SeatLStepRotationHeight", this.base_SeatLStepRotationHeight);
+		this.BaseUILabelMap.put("SeatURotationAngle", this.base_SeatURotationAngle);
+		this.BaseUILabelMap.put("SeatLRotationAngle", this.base_SeatLRotationAngle);
 	
 		this.BaseUILabelMap.put("InitialConditioner", this.base_InitialConditioner);
 		this.BaseUILabelMap.put("RadiusConditioner", this.base_RadiusConditioner);
@@ -212,6 +245,8 @@ public class UILabel {
 		this.BaseUILabelMap.put("File",this.base_File);
 
 		this.BaseUILabelMap.put("MaterialDatabase", this.base_MaterialDatabase);
+		
+		this.BaseUILabelMap.put("ParallelCPUNumber", this.base_ParallelCPUNumber);
 		
 		this.BaseUILabelMap.put("AnalysisOptions", this.base_AnalysisOptions);
 		this.BaseUILabelMap.put("RadiusTolerance", this.base_RadiusTolerance);

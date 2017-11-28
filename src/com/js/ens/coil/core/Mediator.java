@@ -129,6 +129,14 @@ public class Mediator {
 	public ICommand C_textTotalTurns;
 	public static String TEXT_textTotalTurns = "textTotalTurns";
 	
+	private Button btnShowRadiusGraph;
+	public ICommand C_btnShowRadiusGraph;
+	public static String BUTTON_btnShowRadiusGraph = "btnShowRadiusGraph";
+	
+	private Button btnShowPitchGraph;
+	public ICommand C_btnShowPitchGraph;
+	public static String BUTTON_btnShowPitchGraph = "btnShowPitchGraph";
+	
 	private TableViewer tableViewerCoilTable;
 	public ICommand C_tableViewerCoilTable;
 	public static String TABLEVIEWER_tableViewerCoilTable = "tableViewerCoilTable";
@@ -149,6 +157,14 @@ public class Mediator {
 	public ICommand C_textColdSettingHeight;
 	public static String TEXT_textColdSettingHeight = "textColdSettingHeight";
 		
+	private Button btnStandard;
+	public ICommand C_btnStandard;
+	public static String BUTTON_btnStandard = "btnStandard";
+	
+	private Button btnRrCoil;
+	public ICommand C_btnRrCoil;
+	public static String BUTTON_btnRrCoil = "btnRrCoil";
+	
 	private Text textSeatUInnerMargina;
 	public ICommand C_textSeatUInnerMargina;
 	public static String TEXT_textSeatUInnerMargina = "textSeatUInnerMargina";
@@ -160,6 +176,22 @@ public class Mediator {
 	private Text textSeatHeight;
 	public ICommand C_textSeatHeight;
 	public static String TEXT_textSeatHeight = "textSeatHeight";
+	
+	private Text textSeatUStepRotationHeight;
+	public ICommand C_textSeatUStepRotationHeight;
+	public static String TEXT_textSeatUStepRotationHeight = "textSeatUStepRotationHeight";
+	
+	private Text textSeatLStepRotationHeight;
+	public ICommand C_textSeatLStepRotationHeight;
+	public static String TEXT_textSeatLStepRotationHeight = "textSeatLStepRotationHeight";
+	
+	private Text textSeatURotationAngle;
+	public ICommand C_textSeatURotationAngle;
+	public static String TEXT_textSeatURotationAngle = "textSeatURotationAngle";
+	
+	private Text textSeatLRotationAngle;
+	public ICommand C_textSeatLRotationAngle;
+	public static String TEXT_textSeatLRotationAngle = "textSeatLRotationAngle";
 	
 	/*
 	private Button btnInitialConditionerConstant;
@@ -231,6 +263,11 @@ public class Mediator {
 	private Button btnMaterialDBExplorer;
 	public ICommand C_btnMaterialDBExplorer;
 	public static String BUTTON_btnMaterialDBExplorer = "btnMaterialDBExplorer";
+	
+	private Text textParallelCpuNumber;
+	public ICommand C_textParallelCpuNumber;
+	public static String TEXT_textParallelCpuNumber = "textParallelCpuNumber";
+	
 	
 	//////////////////////////////////////////////////////////////////////////
 	// step2
@@ -685,6 +722,38 @@ public class Mediator {
 	public void setC_textTotalTurns(ICommand c_textTotalTurns) {
 		C_textTotalTurns = c_textTotalTurns;
 	}
+	
+	public Button getBtnShowRadiusGraph() {
+		return btnShowRadiusGraph;
+	}
+
+	public void setBtnShowRadiusGraph(Button btnShowRadiusGraph) {
+		this.btnShowRadiusGraph = btnShowRadiusGraph;
+	}
+
+	public ICommand getC_btnShowRadiusGraph() {
+		return C_btnShowRadiusGraph;
+	}
+
+	public void setC_btnShowRadiusGraph(ICommand c_btnShowRadiusGraph) {
+		C_btnShowRadiusGraph = c_btnShowRadiusGraph;
+	}
+
+	public Button getBtnShowPitchGraph() {
+		return btnShowPitchGraph;
+	}
+
+	public void setBtnShowPitchGraph(Button btnShowPitchGraph) {
+		this.btnShowPitchGraph = btnShowPitchGraph;
+	}
+
+	public ICommand getC_btnShowPitchGraph() {
+		return C_btnShowPitchGraph;
+	}
+
+	public void setC_btnShowPitchGraph(ICommand c_btnShowPitchGraph) {
+		C_btnShowPitchGraph = c_btnShowPitchGraph;
+	}
 
 	public TableViewer getTableViewerCoilTable() {
 		return tableViewerCoilTable;
@@ -766,6 +835,38 @@ public class Mediator {
 		C_textColdSettingHeight = c_textColdSettingHeight;
 	}
 
+	public Button getBtnStandard() {
+		return btnStandard;
+	}
+
+	public void setBtnStandard(Button btnStandard) {
+		this.btnStandard = btnStandard;
+	}
+
+	public ICommand getC_btnStandard() {
+		return C_btnStandard;
+	}
+
+	public void setC_btnStandard(ICommand c_btnStandard) {
+		C_btnStandard = c_btnStandard;
+	}
+
+	public Button getBtnRrCoil() {
+		return btnRrCoil;
+	}
+
+	public void setBtnRrCoil(Button btnRrCoil) {
+		this.btnRrCoil = btnRrCoil;
+	}
+
+	public ICommand getC_btnRrCoil() {
+		return C_btnRrCoil;
+	}
+
+	public void setC_btnRrCoil(ICommand c_btnRrCoil) {
+		C_btnRrCoil = c_btnRrCoil;
+	}
+
 	public Text getTextSeatUInnerMargina() {
 		return textSeatUInnerMargina;
 	}
@@ -812,6 +913,72 @@ public class Mediator {
 
 	public void setC_textSeatHeight(ICommand c_textSeatHeight) {
 		C_textSeatHeight = c_textSeatHeight;
+	}
+	
+	public Text getTextSeatUStepRotationHeight() {
+		return textSeatUStepRotationHeight;
+	}
+
+	public void setTextSeatUStepRotationHeight(Text textSeatUStepRotationHeight) {
+		this.textSeatUStepRotationHeight = textSeatUStepRotationHeight;
+	}
+
+	public ICommand getC_textSeatUStepRotationHeight() {
+		return C_textSeatUStepRotationHeight;
+	}
+
+	public void setC_textSeatUStepRotationHeight(
+			ICommand c_textSeatUStepRotationHeight) {
+		C_textSeatUStepRotationHeight = c_textSeatUStepRotationHeight;
+	}
+
+	public Text getTextSeatLStepRotationHeight() {
+		return textSeatLStepRotationHeight;
+	}
+
+	public void setTextSeatLStepRotationHeight(Text textSeatLStepRotationHeight) {
+		this.textSeatLStepRotationHeight = textSeatLStepRotationHeight;
+	}
+
+	public ICommand getC_textSeatLStepRotationHeight() {
+		return C_textSeatLStepRotationHeight;
+	}
+
+	public void setC_textSeatLStepRotationHeight(
+			ICommand c_textSeatLStepRotationHeight) {
+		C_textSeatLStepRotationHeight = c_textSeatLStepRotationHeight;
+	}
+
+	public Text getTextSeatURotationAngle() {
+		return textSeatURotationAngle;
+	}
+
+	public void setTextSeatURotationAngle(Text textSeatURotationAngle) {
+		this.textSeatURotationAngle = textSeatURotationAngle;
+	}
+
+	public ICommand getC_textSeatURotationAngle() {
+		return C_textSeatURotationAngle;
+	}
+
+	public void setC_textSeatURotationAngle(ICommand c_textSeatURotationAngle) {
+		C_textSeatURotationAngle = c_textSeatURotationAngle;
+	}
+
+	public Text getTextSeatLRotationAngle() {
+		return textSeatLRotationAngle;
+	}
+
+	public void setTextSeatLRotationAngle(Text textSeatLRotationAngle) {
+		this.textSeatLRotationAngle = textSeatLRotationAngle;
+	}
+
+	public ICommand getC_textSeatLRotationAngle() {
+		return C_textSeatLRotationAngle;
+	}
+
+	public void setC_textSeatLRotationAngle(ICommand c_textSeatLRotationAngle) {
+		C_textSeatLRotationAngle = c_textSeatLRotationAngle;
 	}
 
 	public Button getBtnRadiusConditionerConstant() {
@@ -1090,6 +1257,22 @@ public class Mediator {
 
 	public void setC_btnMaterialDBExplorer(ICommand c_btnMaterialDBExplorer) {
 		C_btnMaterialDBExplorer = c_btnMaterialDBExplorer;
+	}
+
+	public Text getTextParallelCpuNumber() {
+		return textParallelCpuNumber;
+	}
+
+	public void setTextParallelCpuNumber(Text textParallelCpuNumber) {
+		this.textParallelCpuNumber = textParallelCpuNumber;
+	}
+
+	public ICommand getC_textParallelCpuNumber() {
+		return C_textParallelCpuNumber;
+	}
+
+	public void setC_textParallelCpuNumber(ICommand c_textParallelCpuNumber) {
+		C_textParallelCpuNumber = c_textParallelCpuNumber;
 	}
 
 	public Text getTextRadiusTolerance() {

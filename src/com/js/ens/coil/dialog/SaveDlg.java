@@ -79,10 +79,16 @@ public class SaveDlg extends Dialog {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if(MC.getCoilDBObj()!=null){
-					String dbFile = myUtil.setPath(MC.getCoilDBObj().getProjectFolderPath(), AppFolder.dbFileName);
+					String dbFile = myUtil.setPath(MC.getCoilDBObj().getProjectFolderPath(), MC.getProjectName()+"_"+AppFolder.dbFileName);
+					//System.out.println("db file path : "+dbFile);
 					if(myUtil.checkPath(dbFile)){
 						running();					
+					}else{
+						//System.out.println("running else");
 					}
+					
+				}else {
+					//System.out.println("DB object is null");
 				}
 				
 			}

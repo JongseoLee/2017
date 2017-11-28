@@ -31,6 +31,22 @@ public class CustomButton implements ICommand {
 			MC.Button_FileExplorer_CoilData();
 		}
 		
+		else if(this.widgetName.equals(Mediator.BUTTON_btnShowRadiusGraph)){
+			System.out.println("Click btn : "+ Mediator.BUTTON_btnShowRadiusGraph);
+			MC.Button_ShowRadiusGraph();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnShowPitchGraph)){
+			System.out.println("Click btn : "+Mediator.BUTTON_btnShowPitchGraph);
+			MC.Button_ShowPitchGraph();
+		}
+		
+		else if(this.widgetName.equals(Mediator.BUTTON_btnStandard)){
+			System.out.println("Click btn : "+Mediator.BUTTON_btnStandard);
+			MC.Button_Standard();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnRrCoil)){
+			System.out.println("Click btn : "+Mediator.BUTTON_btnRrCoil);
+			MC.Button_RrCoil();
+		}
+		
 		/*
 		else if(this.widgetName.equals(Mediator.BUTTON_btnInitialConditionerConstant)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnInitialConditionerConstant);
@@ -149,6 +165,22 @@ public class CustomButton implements ICommand {
 	
 	public void setCustomWidget_btnRadiusConditionerFile(){
 		this.button = med.getBtnRadiusConditionerFile();
+	}
+	
+	public void setCustomWidget_btnShowRadiusGraph(){
+		this.button = med.getBtnShowRadiusGraph();
+	}
+	
+	public void setCustomWidget_btnShowPitchGraph(){
+		this.button = med.getBtnShowPitchGraph();
+	}
+	
+	public void setCustomWidget_btnStandard(){
+		this.button = med.getBtnStandard();
+	}
+	
+	public void setCustomWidget_btnRrCoil(){
+		this.button = med.getBtnRrCoil();
 	}
 	
 	public void setCustomWidget_btnRadiusConditionerExplorer(){

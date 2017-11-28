@@ -74,7 +74,20 @@ public class CustomText implements ICommand {
 		}else if(this.widgetName.equals(Mediator.TEXT_textSeatHeight)){
 			System.out.println("Text("+Mediator.TEXT_textSeatHeight +")"+med.getTextSeatHeight().getText());
 			MC.Text_Modify_SeatHeight();
+		}else if(this.widgetName.equals(Mediator.TEXT_textSeatUStepRotationHeight)){
+			System.out.println("Text("+Mediator.TEXT_textSeatUStepRotationHeight+")"+med.getTextSeatUStepRotationHeight().getText());
+			MC.Text_Modify_SeatUStepRotationHeight();
+		}else if(this.widgetName.equals(Mediator.TEXT_textSeatLStepRotationHeight)){
+			System.out.println("Text("+Mediator.TEXT_textSeatLStepRotationHeight+")"+med.getTextSeatLStepRotationHeight().getText());
+			MC.Text_Modify_SeatLStepRotationHeight();
+		}else if(this.widgetName.equals(Mediator.TEXT_textSeatURotationAngle)){
+			System.out.println("Text("+Mediator.TEXT_textSeatURotationAngle+")"+med.getTextSeatURotationAngle().getText());
+			MC.Text_Modify_SeatURotationAngle();
+		}else if(this.widgetName.equals(Mediator.TEXT_textSeatLRotationAngle)){
+			System.out.println("Text("+Mediator.TEXT_textSeatLRotationAngle+")"+med.getTextSeatLRotationAngle().getText());
+			MC.Text_Modify_SeatLRotationAngle();
 		}
+		
 		
 		else if(this.widgetName.equals(Mediator.TEXT_textRadiusConditionerValue)){
 			System.out.println("Text("+Mediator.TEXT_textRadiusConditionerValue +")"+med.getTextRadiusConditionerValue().getText());
@@ -94,6 +107,11 @@ public class CustomText implements ICommand {
 		else if(this.widgetName.equals(Mediator.TEXT_textMaterialDBPath)){
 			System.out.println("Text("+Mediator.TEXT_textMaterialDBPath +")"+med.getTextMaterialDBPath().getText());
 			MC.Text_Modify_MaterialDBPath();
+		}
+		
+		else if(this.widgetName.equals(Mediator.TEXT_textParallelCpuNumber)){
+			System.out.println("Text("+Mediator.TEXT_textParallelCpuNumber+")"+med.getTextParallelCpuNumber().getText());
+			MC.Text_Modify_ParallelCpuNmber();
 		}
 		
 		
@@ -170,6 +188,19 @@ public class CustomText implements ICommand {
 	public void setCustomWidget_textSeatHeight(){
 		this.text = med.getTextSeatHeight();
 	}
+	public void setCustomWidget_textSeatUStepRotationHeight(){
+		this.text = med.getTextSeatUStepRotationHeight();
+	}
+	public void setCustomWidget_textSeatLStepRotationHeight(){
+		this.text = med.getTextSeatLStepRotationHeight();
+	}
+	public void setCustomWidget_textSeatURotationAngle(){
+		this.text = med.getTextSeatURotationAngle();
+	}
+	public void setCustomWidget_textSeatLRotationAngle(){
+		this.text = med.getTextSeatLRotationAngle();
+	}
+	
 	
 	public void setCustomWidget_textRadiusConditionerPath(){
 		this.text =med.getTextRadiusConditionerPath();
@@ -187,6 +218,10 @@ public class CustomText implements ICommand {
 	
 	public void setCustomWidget_textMaterialDBPath(){
 		this.text = med.getTextMaterialDBPath();
+	}
+	
+	public void setCustomWidget_textParallelCpuNumber(){
+		this.text = med.getTextParallelCpuNumber();
 	}
 	
 	public void setCustomWidget_textRadiusTolerance(){

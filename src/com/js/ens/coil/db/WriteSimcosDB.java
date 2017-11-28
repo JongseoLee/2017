@@ -36,9 +36,14 @@ public class WriteSimcosDB {
 	private final String ColdSettingTemp="%ColdSettingTemp%";
 	private final String HotSettingHeight="%HotSettingHeight%";
 	private final String ColdSettingHeight="%ColdSettingHeight%";
+	private final String SeatType="%SeatType%";
 	private final String SeatUIneerMargina="%SeatUIneerMargina%";
 	private final String SeatLIneerMargina="%SeatLIneerMargina%";
 	private final String SeatHeight="%SeatHeight%";
+	private final String SeatUStepRotationHeight="%SeatUStepRotationHeight%";
+	private final String SeatLStepRotationHeight="%SeatLStepRotationHeight%";
+	private final String SeatURotationAngle="%SeatURotationAngle%";
+	private final String SeatLRotationAngle="%SeatLRotationAngle%";
 	// Initial conditioner
 	/*
 	private final String InitialConditionerType="%InitialConditionerType%";
@@ -53,6 +58,8 @@ public class WriteSimcosDB {
 	private final String HeightConditionerFile="%HeightConditionerFile%";
 	// Material Database
 	private final String MaterialDB ="%MaterialDB%";
+	// Parallel CPU Number
+	private final String ParallelCPUNumber="%ParallelCPUNumber%";
 	// Simulation Data
 	private final String RadiusTolerance="%RadiusTolerance%";
 	private final String HeightTolerance="%HeightTolerance%";
@@ -170,6 +177,9 @@ public class WriteSimcosDB {
 			}else if(line.contains(this.ColdSettingHeight)){
 				String newLine = line.replace(this.ColdSettingHeight, this.CObj.getColdSettingHeight());
 				this.outputDataList.add(newLine);
+			}else if(line.contains(this.SeatType)){
+				String newLine = line.replace(this.SeatType, this.CObj.getSeatType());
+				this.outputDataList.add(newLine);
 			}else if(line.contains(this.SeatUIneerMargina)){
 				String newLine = line.replace(this.SeatUIneerMargina, this.CObj.getSeatUIneerMargina());
 				this.outputDataList.add(newLine);
@@ -179,7 +189,21 @@ public class WriteSimcosDB {
 			}else if(line.contains(this.SeatHeight)){
 				String newLine = line.replace(this.SeatHeight, this.CObj.getSeatHeight());
 				this.outputDataList.add(newLine);
+			}else if(line.contains(this.SeatUStepRotationHeight)){
+				String newLine = line.replace(this.SeatUStepRotationHeight, this.CObj.getSeatUStepRotationHeight());
+				this.outputDataList.add(newLine);
+			}else if(line.contains(this.SeatLStepRotationHeight)){
+				String newLine = line.replace(this.SeatLStepRotationHeight, this.CObj.getSeatLStepRotationHeight());
+				this.outputDataList.add(newLine);
+			}else if(line.contains(this.SeatURotationAngle)){
+				String newLine = line.replace(this.SeatURotationAngle, this.CObj.getSeatURotationAngle());
+				this.outputDataList.add(newLine);
+			}else if(line.contains(this.SeatLRotationAngle)){
+				String newLine = line.replace(this.SeatLRotationAngle, this.CObj.getSeatLRotationAngle());
+				this.outputDataList.add(newLine);
 			}
+			
+			
 			/*
 			else if(line.contains(this.InitialConditionerType)){
 				String newLine = line.replace(this.InitialConditionerType, this.CObj.getInitialConditionerType());
@@ -215,6 +239,11 @@ public class WriteSimcosDB {
 			
 			else if(line.contains(this.MaterialDB)){
 				String newLine = line.replace(this.MaterialDB, this.CObj.getMaterialDB());
+				this.outputDataList.add(newLine);
+			}
+			
+			else if(line.contains(this.ParallelCPUNumber)){
+				String newLine = line.replace(this.ParallelCPUNumber, this.CObj.getParallerCpuNmber());
 				this.outputDataList.add(newLine);
 			}
 			

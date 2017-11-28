@@ -71,6 +71,11 @@ public class View extends ViewPart {
 	private Text textSeatUInnerMargina;
 	private Text textSeatLInnerMargina;
 	private Text textSeatHeight;
+	private Text textSeatUStepRotationHeight;
+	private Text textSeatLStepRotationHeight; 
+	private Text textSeatURotationAngle;
+	private Text textSeatLRotationAngle;
+	
 	/*
 	private Text textInitialConditionerValue;
 	private Text textInitialConditionerPath;
@@ -88,6 +93,7 @@ public class View extends ViewPart {
 	private Combo comboSelectImage;
 	private Combo comboSelectTableData;
 	private Text textMaterialDBPath;
+	private Text textParallelCpuNumber;
 	
 	
 	
@@ -499,6 +505,30 @@ public class View extends ViewPart {
 		lblCoilGeoDataTable.setLayoutData(fd_lblCoilGeoDataTable);
 		lblCoilGeoDataTable.setText(LabelDatas.getLabel(UILabel.CoilGeoDataTable));
 		
+		Button btnShowRadiusGraph = new Button(grpCoil, SWT.NONE);
+		med.setBtnShowRadiusGraph(btnShowRadiusGraph);
+		CustomButton c_btnShowRadiusGraph = new CustomButton(Mediator.BUTTON_btnShowRadiusGraph,med);
+		med.setC_btnShowRadiusGraph(c_btnShowRadiusGraph);
+		c_btnShowRadiusGraph.setCustomWidget_btnShowRadiusGraph();
+		FormData fd_btnShowRadiusGraph = new FormData();
+		fd_btnShowRadiusGraph.top = new FormAttachment(lblCoilGeoDataTable, 6);
+		fd_btnShowRadiusGraph.left = new FormAttachment(lblCoilGeoDataTable, 0,SWT.LEFT);
+		fd_btnShowRadiusGraph.right = new FormAttachment(0,180);
+		btnShowRadiusGraph.setLayoutData(fd_btnShowRadiusGraph);
+		btnShowRadiusGraph.setText(LabelDatas.getLabel(UILabel.ShowRadiusGraph));
+		
+		Button btnShowPitchGraph = new Button(grpCoil, SWT.NONE);
+		med.setBtnShowPitchGraph(btnShowPitchGraph);
+		CustomButton c_btnShowPitchGraph = new CustomButton(Mediator.BUTTON_btnShowPitchGraph,med);
+		med.setC_btnShowPitchGraph(c_btnShowPitchGraph);
+		c_btnShowPitchGraph.setCustomWidget_btnShowPitchGraph();
+		FormData fd_btnShowPitchGraph = new FormData();
+		fd_btnShowPitchGraph.top = new FormAttachment(btnShowRadiusGraph, 0,SWT.TOP);
+		fd_btnShowPitchGraph.left = new FormAttachment(btnShowRadiusGraph,10);
+		fd_btnShowPitchGraph.right = new FormAttachment(btnShowRadiusGraph,190,SWT.RIGHT);
+		btnShowPitchGraph.setLayoutData(fd_btnShowPitchGraph);
+		btnShowPitchGraph.setText(LabelDatas.getLabel(UILabel.ShowPitchGraph));
+		
 		TableViewer tableViewerCoilTable = new TableViewer(grpCoil, SWT.BORDER | SWT.FULL_SELECTION);
 		med.setTableViewerCoilTable(tableViewerCoilTable);
 		CustomTableViewer c_tableViewerCoilTable = new CustomTableViewer(Mediator.TABLEVIEWER_tableViewerCoilTable, med);
@@ -508,7 +538,7 @@ public class View extends ViewPart {
 		tableCoilTable.setHeaderVisible(true);
 		tableCoilTable.setLinesVisible(true);
 		FormData fd_tableCoilTable = new FormData();
-		fd_tableCoilTable.top = new FormAttachment(lblCoilGeoDataTable, 6);
+		fd_tableCoilTable.top = new FormAttachment(btnShowRadiusGraph, 6);
 		fd_tableCoilTable.left = new FormAttachment(lblCoilGeoDataTable, 0, SWT.LEFT);
 		fd_tableCoilTable.right = new FormAttachment(btnExplorer, 0, SWT.RIGHT);
 		fd_tableCoilTable.bottom = new FormAttachment(100,-10);
@@ -533,7 +563,7 @@ public class View extends ViewPart {
 		fd_grpSettingProcessInformation.top = new FormAttachment(0, 10);
 		fd_grpSettingProcessInformation.left = new FormAttachment(grpCoil, 6);
 		fd_grpSettingProcessInformation.right = new FormAttachment(grpCoil, 410, SWT.RIGHT);
-		fd_grpSettingProcessInformation.bottom = new FormAttachment(0,230);
+		fd_grpSettingProcessInformation.bottom = new FormAttachment(0,330);
 		grpSettingProcessInformation.setLayoutData(fd_grpSettingProcessInformation);
 		grpSettingProcessInformation.setText(LabelDatas.getLabel(UILabel.SettingProcessInformation));
 		
@@ -613,9 +643,41 @@ public class View extends ViewPart {
 		fd_textColdSettingTemp.right = new FormAttachment(textHotSettingHeight, 0, SWT.RIGHT);
 		textColdSettingTemp.setLayoutData(fd_textColdSettingTemp);
 		
+		Composite compositeSeatGroup = new Composite(grpSettingProcessInformation, SWT.NONE);
+		compositeSeatGroup.setLayout(new FormLayout());
+		FormData fd_compositeSeatGroup = new FormData();
+		fd_compositeSeatGroup.top = new FormAttachment(lblColdSettingTemp, 14);
+		fd_compositeSeatGroup.left = new FormAttachment(lblHotSettingHeight, 0,SWT.LEFT);
+		fd_compositeSeatGroup.right = new FormAttachment(textHotSettingHeight, 0,SWT.RIGHT);
+		//fd_compositeSeatGroup.bottom = new FormAttachment(lblColdSettingTemp, 30, SWT.BOTTOM);
+		compositeSeatGroup.setLayoutData(fd_compositeSeatGroup);
+
+		Button btnStandard = new Button(compositeSeatGroup, SWT.RADIO);
+		med.setBtnStandard(btnStandard);
+		CustomButton c_btnStandard = new CustomButton(Mediator.BUTTON_btnStandard,med);
+		med.setC_btnStandard(c_btnStandard);
+		c_btnStandard.setCustomWidget_btnStandard();
+		FormData fd_btnStandard = new FormData();
+		fd_btnStandard.top = new FormAttachment(0, 0);
+		fd_btnStandard.left = new FormAttachment(0);
+		btnStandard.setLayoutData(fd_btnStandard);
+		btnStandard.setText(LabelDatas.getLabel(UILabel.Standard));
+		btnStandard.setSelection(true);
+		
+		Button btnRrCoil = new Button(compositeSeatGroup, SWT.RADIO);
+		med.setBtnRrCoil(btnRrCoil);
+		CustomButton c_btnRrCoil = new CustomButton(Mediator.BUTTON_btnRrCoil,med);
+		med.setC_btnRrCoil(c_btnRrCoil);
+		c_btnRrCoil.setCustomWidget_btnRrCoil();
+		FormData fd_btnRrCoil = new FormData();
+		fd_btnRrCoil.top = new FormAttachment(btnStandard, 0, SWT.TOP);
+		fd_btnRrCoil.left = new FormAttachment(btnStandard, 30, SWT.RIGHT);
+		btnRrCoil.setLayoutData(fd_btnRrCoil);
+		btnRrCoil.setText(LabelDatas.getLabel(UILabel.RRCoil));
+		
 		Label lblSeatUInnerMargina = new Label(grpSettingProcessInformation, SWT.NONE);
 		FormData fd_lblSeatUInnerMargina = new FormData();
-		fd_lblSeatUInnerMargina.top = new FormAttachment(lblColdSettingTemp, 8);
+		fd_lblSeatUInnerMargina.top = new FormAttachment(compositeSeatGroup, 5);
 		fd_lblSeatUInnerMargina.left = new FormAttachment(lblHotSettingTemp, 0, SWT.LEFT);
 		fd_lblSeatUInnerMargina.right = new FormAttachment(lblHotSettingTemp, 0, SWT.RIGHT);
 		lblSeatUInnerMargina.setLayoutData(fd_lblSeatUInnerMargina);
@@ -669,6 +731,87 @@ public class View extends ViewPart {
 		fd_textSeatHeight.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
 		fd_textSeatHeight.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
 		textSeatHeight.setLayoutData(fd_textSeatHeight);
+		
+		Label lblSeatUStepRotationHeight = new Label(grpSettingProcessInformation, SWT.NONE);
+		FormData fd_lblSeatUStepRotationHeight = new FormData();
+		fd_lblSeatUStepRotationHeight.top = new FormAttachment(lblSeatHeight, 8);
+		fd_lblSeatUStepRotationHeight.left = new FormAttachment(lblHotSettingTemp, 0, SWT.LEFT);
+		fd_lblSeatUStepRotationHeight.right = new FormAttachment(lblHotSettingTemp, 0, SWT.RIGHT);
+		lblSeatUStepRotationHeight.setLayoutData(fd_lblSeatUStepRotationHeight);
+		lblSeatUStepRotationHeight.setText(LabelDatas.getLabel(UILabel.SeatUStepRotationHeight));
+		
+		textSeatUStepRotationHeight = new Text(grpSettingProcessInformation, SWT.BORDER);
+		med.setTextSeatUStepRotationHeight(textSeatUStepRotationHeight);
+		CustomText c_textSeatUStepRotationHeight = new CustomText(Mediator.TEXT_textSeatUStepRotationHeight, med);
+		med.setC_textSeatUStepRotationHeight(c_textSeatUStepRotationHeight);
+		c_textSeatUStepRotationHeight.setCustomWidget_textSeatUStepRotationHeight();
+		FormData fd_textSeatUStepRotationHeight = new FormData();
+		fd_textSeatUStepRotationHeight.top = new FormAttachment(lblSeatUStepRotationHeight, -2, SWT.TOP);
+		fd_textSeatUStepRotationHeight.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
+		fd_textSeatUStepRotationHeight.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
+		textSeatUStepRotationHeight.setLayoutData(fd_textSeatUStepRotationHeight);
+		textSeatUStepRotationHeight.setEnabled(false);
+		
+		Label lblSeatLStepRotationHeight = new Label(grpSettingProcessInformation, SWT.NONE);
+		FormData fd_lblSeatLStepRotationHeight = new FormData();
+		fd_lblSeatLStepRotationHeight.top = new FormAttachment(lblSeatUStepRotationHeight, 8);
+		fd_lblSeatLStepRotationHeight.left = new FormAttachment(lblHotSettingTemp, 0, SWT.LEFT);
+		fd_lblSeatLStepRotationHeight.right = new FormAttachment(lblHotSettingTemp, 0, SWT.RIGHT);
+		lblSeatLStepRotationHeight.setLayoutData(fd_lblSeatLStepRotationHeight);
+		lblSeatLStepRotationHeight.setText(LabelDatas.getLabel(UILabel.SeatLStepRotationHeight));
+		
+		textSeatLStepRotationHeight = new Text(grpSettingProcessInformation, SWT.BORDER);
+		med.setTextSeatLStepRotationHeight(textSeatLStepRotationHeight);
+		CustomText c_textSeatLStepRotationHeight = new CustomText(Mediator.TEXT_textSeatLStepRotationHeight, med);
+		med.setC_textSeatLStepRotationHeight(c_textSeatLStepRotationHeight);
+		c_textSeatLStepRotationHeight.setCustomWidget_textSeatLStepRotationHeight();
+		FormData fd_textSeatLStepRotationHeight = new FormData();
+		fd_textSeatLStepRotationHeight.top = new FormAttachment(lblSeatLStepRotationHeight, -2, SWT.TOP);
+		fd_textSeatLStepRotationHeight.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
+		fd_textSeatLStepRotationHeight.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
+		textSeatLStepRotationHeight.setLayoutData(fd_textSeatLStepRotationHeight);
+		textSeatLStepRotationHeight.setEnabled(false);
+		
+		Label lblSeatURotationAngle = new Label(grpSettingProcessInformation, SWT.NONE);
+		FormData fd_lblSeatURotationAngle = new FormData();
+		fd_lblSeatURotationAngle.top = new FormAttachment(lblSeatLStepRotationHeight, 8);
+		fd_lblSeatURotationAngle.left = new FormAttachment(lblHotSettingTemp, 0, SWT.LEFT);
+		fd_lblSeatURotationAngle.right = new FormAttachment(lblHotSettingTemp, 0, SWT.RIGHT);
+		lblSeatURotationAngle.setLayoutData(fd_lblSeatURotationAngle);
+		lblSeatURotationAngle.setText(LabelDatas.getLabel(UILabel.SeatURotationAngle));
+		
+		textSeatURotationAngle = new Text(grpSettingProcessInformation, SWT.BORDER);
+		med.setTextSeatURotationAngle(textSeatURotationAngle);
+		CustomText c_textSeatURotationAngle = new CustomText(Mediator.TEXT_textSeatURotationAngle, med);
+		med.setC_textSeatURotationAngle(c_textSeatURotationAngle);
+		c_textSeatURotationAngle.setCustomWidget_textSeatURotationAngle();
+		FormData fd_textSeatURotationAngle = new FormData();
+		fd_textSeatURotationAngle.top = new FormAttachment(lblSeatURotationAngle, -2, SWT.TOP);
+		fd_textSeatURotationAngle.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
+		fd_textSeatURotationAngle.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
+		textSeatURotationAngle.setLayoutData(fd_textSeatURotationAngle);
+		textSeatURotationAngle.setEnabled(false);
+		
+		Label lblSeatLRotationAngle = new Label(grpSettingProcessInformation, SWT.NONE);
+		FormData fd_lblSeatLRotationAngle = new FormData();
+		fd_lblSeatLRotationAngle.top = new FormAttachment(lblSeatURotationAngle, 8);
+		fd_lblSeatLRotationAngle.left = new FormAttachment(lblHotSettingTemp, 0, SWT.LEFT);
+		fd_lblSeatLRotationAngle.right = new FormAttachment(lblHotSettingTemp, 0, SWT.RIGHT);
+		lblSeatLRotationAngle.setLayoutData(fd_lblSeatLRotationAngle);
+		lblSeatLRotationAngle.setText(LabelDatas.getLabel(UILabel.SeatLRotationAngle));
+		
+		textSeatLRotationAngle = new Text(grpSettingProcessInformation, SWT.BORDER);
+		med.setTextSeatLRotationAngle(textSeatLRotationAngle);
+		CustomText c_textSeatLRotationAngle = new CustomText(Mediator.TEXT_textSeatLRotationAngle, med);
+		med.setC_textSeatLRotationAngle(c_textSeatLRotationAngle);
+		c_textSeatLRotationAngle.setCustomWidget_textSeatLRotationAngle();
+		FormData fd_textSeatLRotationAngle = new FormData();
+		fd_textSeatLRotationAngle.top = new FormAttachment(lblSeatLRotationAngle, -2, SWT.TOP);
+		fd_textSeatLRotationAngle.left = new FormAttachment(textHotSettingTemp, 0, SWT.LEFT);
+		fd_textSeatLRotationAngle.right = new FormAttachment(textHotSettingTemp, 0, SWT.RIGHT);
+		textSeatLRotationAngle.setLayoutData(fd_textSeatLRotationAngle);
+		textSeatLRotationAngle.setEnabled(false);
+		
 		
 		Group grpInitialConditioner = new Group(compositeStep1, SWT.NONE);
  		if(myUtil.checkOS().equals("window")){
@@ -990,7 +1133,38 @@ public class View extends ViewPart {
 		fd_btnMaterialDBExplorer.right = new FormAttachment(100,0);
 		btnMaterialDBExplorer.setLayoutData(fd_btnMaterialDBExplorer);
 		btnMaterialDBExplorer.setText("...");
-		// */
+		
+		Group grpParallelCpuNumber = new Group(compositeStep1, SWT.NONE);
+		if(myUtil.checkOS().equals("window")){
+			grpParallelCpuNumber.setFont(SWTResourceManager.getFont("Arial", 9, SWT.BOLD));
+		}else {
+			grpParallelCpuNumber.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
+		}
+		grpParallelCpuNumber.setText(LabelDatas.getLabel(UILabel.ParallelCPUNumber));
+		FormLayout fl_grpParallelCpuNumber = new FormLayout();
+		fl_grpParallelCpuNumber.marginTop = 5;
+		fl_grpParallelCpuNumber.marginRight = 5;
+		fl_grpParallelCpuNumber.marginLeft = 5;
+		fl_grpParallelCpuNumber.marginBottom = 5;
+		grpParallelCpuNumber.setLayout(fl_grpParallelCpuNumber);
+		FormData fd_grpParallelCpuNumber = new FormData();
+		fd_grpParallelCpuNumber.top = new FormAttachment(grpMaterialDatabase, 6);
+		fd_grpParallelCpuNumber.left = new FormAttachment(grpSettingProcessInformation, 0, SWT.LEFT);
+		fd_grpParallelCpuNumber.right = new FormAttachment(grpSettingProcessInformation, 0, SWT.RIGHT);
+		fd_grpParallelCpuNumber.bottom = new FormAttachment(grpMaterialDatabase,70,SWT.BOTTOM);
+		grpParallelCpuNumber.setLayoutData(fd_grpParallelCpuNumber);
+		
+		textParallelCpuNumber = new Text(grpParallelCpuNumber, SWT.BORDER);
+		med.setTextParallelCpuNumber(textParallelCpuNumber);
+		CustomText c_textParallelCpuNumber = new CustomText(Mediator.TEXT_textParallelCpuNumber,med);
+		med.setC_textParallelCpuNumber(c_textParallelCpuNumber);
+		c_textParallelCpuNumber.setCustomWidget_textParallelCpuNumber();
+		FormData fd_textParallelCpuNumber = new FormData();
+		fd_textParallelCpuNumber.top = new FormAttachment(0, 10);
+		fd_textParallelCpuNumber.left = new FormAttachment(0, 10);
+		fd_textParallelCpuNumber.right = new FormAttachment(100, -10);
+		textParallelCpuNumber.setLayoutData(fd_textParallelCpuNumber);
+		
 		
 		////////////=> Simulation and Export result
 		////////////=> Simulation and Export result
@@ -1563,6 +1737,10 @@ public class View extends ViewPart {
 		HandlerButton handlerButton = new HandlerButton();
 		med.getBtnStepSave().addListener(SWT.Selection, handlerButton);
 		med.getBtnExplorer().addListener(SWT.Selection, handlerButton);		
+		med.getBtnShowRadiusGraph().addListener(SWT.Selection, handlerButton);
+		med.getBtnShowPitchGraph().addListener(SWT.Selection, handlerButton);
+		med.getBtnStandard().addListener(SWT.Selection, handlerButton);
+		med.getBtnRrCoil().addListener(SWT.Selection, handlerButton);
 		/*
 		med.getBtnInitialConditionerConstant().addListener(SWT.Selection, handlerButton);
 		med.getBtnInitialConditionerFile().addListener(SWT.Selection, handlerButton);
@@ -1612,6 +1790,10 @@ public class View extends ViewPart {
 		med.getTextSeatUInnerMargina().addListener(SWT.CHANGED, handlerText);
 		med.getTextSeatLInnerMargina().addListener(SWT.CHANGED, handlerText);
 		med.getTextSeatHeight().addListener(SWT.CHANGED, handlerText);
+		med.getTextSeatUStepRotationHeight().addListener(SWT.CHANGED, handlerText);
+		med.getTextSeatLStepRotationHeight().addListener(SWT.CHANGED, handlerText);
+		med.getTextSeatURotationAngle().addListener(SWT.CHANGED, handlerText);
+		med.getTextSeatLRotationAngle().addListener(SWT.CHANGED, handlerText);
 		med.getTextRadiusConditionerValue().addListener(SWT.CHANGED, handlerText);
  		//med.getTextRadiusConditionerPath().addListener(SWT.CHANGED, handlerText);
  		med.getTextHeightConditionerValue().addListener(SWT.CHANGED, handlerText);
@@ -1619,6 +1801,7 @@ public class View extends ViewPart {
  		//med.getTextInitialConditionerValue().addListener(SWT.CHANGED, handlerText);
 		//med.getTextInitialConditionerPath().addListener(SWT.CHANGED, handlerText);
 		//med.getTextMaterialDBPath().addListener(SWT.CHANGED, handlerText);
+ 		med.getTextParallelCpuNumber().addListener(SWT.CHANGED, handlerText);
 		med.getTextRadiusTolerance().addListener(SWT.CHANGED, handlerText);
 		med.getTextHeightTolerance().addListener(SWT.CHANGED, handlerText);
 		med.getTextMaximumIterationNumber().addListener(SWT.CHANGED, handlerText);

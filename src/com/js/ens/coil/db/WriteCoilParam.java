@@ -28,6 +28,7 @@ public class WriteCoilParam {
 	private final String SeatUInnerMargina = "Seat U. Inner Margina";
 	private final String SeatLInnerMargina = "Seat L. Inner Margina";
 	private final String SeatHeight = "Seat Height";
+	private final String ParallelCpuNumber = "Parallel CPU Number";
 	private final String MarcPath = "Marc Path";
 	
 	private ArrayList<String> outputDataList;
@@ -71,9 +72,15 @@ public class WriteCoilParam {
 		this.outputDataList.add(this.ErrorHeightTolerance+","+this.CObj.getHeightTolerance());
 		this.outputDataList.add(this.MaxIterationNo+","+this.CObj.getMaximumIterationNumber());
 		this.outputDataList.add(this.MaterialName+","+myUtil.getFileName(this.CObj.getMaterialDB()));
-		this.outputDataList.add(this.SeatUInnerMargina+","+this.CObj.getSeatUIneerMargina());
-		this.outputDataList.add(this.SeatLInnerMargina+","+this.CObj.getSeatLIneerMargina());
+		if(this.CObj.getSeatType().equals(CoilDB.SEAT_TYPE_STANDARD)){
+			this.outputDataList.add(this.SeatUInnerMargina+","+this.CObj.getSeatUIneerMargina());
+			this.outputDataList.add(this.SeatLInnerMargina+","+this.CObj.getSeatLIneerMargina());
+		}else if(this.CObj.getSeatType().equals(CoilDB.SEAT_TYPE_RRCoil)){
+			this.outputDataList.add(this.SeatUInnerMargina+","+this.CObj.getSeatUIneerMargina()+","+this.CObj.getSeatUStepRotationHeight()+","+this.CObj.getSeatURotationAngle());
+			this.outputDataList.add(this.SeatLInnerMargina+","+this.CObj.getSeatLIneerMargina()+","+this.CObj.getSeatLStepRotationHeight()+","+this.CObj.getSeatLRotationAngle());
+		}
 		this.outputDataList.add(this.SeatHeight+","+this.CObj.getSeatHeight());
+		this.outputDataList.add(this.ParallelCpuNumber+","+this.CObj.getParallerCpuNmber());
 		this.outputDataList.add(this.MarcPath+","+MC.getPreferencesObj().getPreferencesValue(Preferences.MarcPath));
 		
 		String coilParamFilePath = myUtil.setPath(myUtil.setPath(this.CObj.getProjectFolderPath(), AppFolder.SIMCOS_DATA),AppFolder.coilParamCSVFileName);

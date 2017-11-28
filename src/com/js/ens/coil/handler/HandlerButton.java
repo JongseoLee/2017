@@ -21,6 +21,18 @@ public class HandlerButton implements Listener {
 		}else if(event.widget == med.getBtnExplorer()){
 			med.getC_btnExplorer().execute();
 		}
+		
+		else if(event.widget == med.getBtnShowRadiusGraph()){
+			med.getC_btnShowRadiusGraph().execute();
+		}else if(event.widget == med.getBtnShowPitchGraph()){
+			med.getC_btnShowPitchGraph().execute();
+		}
+		
+		else if(event.widget == med.getBtnStandard()){
+			med.getC_btnStandard().execute();
+		}else if(event.widget == med.getBtnRrCoil()){
+			med.getC_btnRrCoil().execute();
+		}
 		/*
 		else if(event.widget == med.getBtnInitialConditionerConstant()){
 			med.getC_btnInitialConditionerConstant().execute();

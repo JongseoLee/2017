@@ -51,7 +51,16 @@ public class HandlerText implements Listener {
 			med.getC_textSeatLInnerMargina().execute();
 		}else if(event.widget == med.getTextSeatHeight()){
 			med.getC_textSeatHeight().execute();
+		}else if(event.widget == med.getTextSeatUStepRotationHeight()){
+			med.getC_textSeatUStepRotationHeight().execute();
+		}else if(event.widget == med.getTextSeatLStepRotationHeight()){
+			med.getC_textSeatLStepRotationHeight().execute();
+		}else if(event.widget == med.getTextSeatURotationAngle()){
+			med.getC_textSeatURotationAngle().execute();
+		}else if(event.widget == med.getTextSeatLRotationAngle()){
+			med.getC_textSeatLRotationAngle().execute();
 		}
+		
 		/*
 		else if(event.widget == med.getTextInitialConditionerValue()){
 			med.getC_textInitialConditionerValue().execute();
@@ -72,6 +81,10 @@ public class HandlerText implements Listener {
 		
 		else if(event.widget == med.getTextMaterialDBPath()){
 			med.getC_textMaterialDBPath().execute();
+		}
+		
+		else if(event.widget == med.getTextParallelCpuNumber()){
+			med.getC_textParallelCpuNumber().execute();
 		}
 		
 		else if(event.widget == med.getTextRadiusTolerance()){

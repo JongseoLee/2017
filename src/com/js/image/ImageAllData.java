@@ -20,7 +20,7 @@ public class ImageAllData {
 	public void LoadingResult(String resultFolder){
 		for(File f : myUtil.getDirFileList(resultFolder)){
 			String extension = myUtil.getExtensions(f.getAbsolutePath());
-			if(extension.toLowerCase().equals("png") || extension.toLowerCase().equals("jpg")){
+			if(extension.toLowerCase().equals("png") || extension.toLowerCase().equals("jpg") || extension.toLowerCase().equals("gif")){
 				ComboData_selectImage obj = new ComboData_selectImage();
 				obj.setName(f.getName());
 				obj.setFilePath(f.getAbsolutePath());

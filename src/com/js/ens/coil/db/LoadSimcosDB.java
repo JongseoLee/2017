@@ -35,9 +35,14 @@ private MainController MC = MainController.getInstatnce();
 	public final String ColdSettingTemp="ColdSettingTemp";
 	public final String HotSettingHeight="HotSettingHeight";
 	public final String ColdSettingHeight="ColdSettingHeight";
+	public final String SeatType="SeatType";
 	public final String SeatUIneerMargina="SeatUIneerMargina";
 	public final String SeatLIneerMargina="SeatLIneerMargina";
 	public final String SeatHeight="SeatHeight";
+	public final String SeatUStepRotationHeight = "SeatUStepRotationHeight";
+	public final String SeatLStepRotationHeight = "SeatLStepRotationHeight";
+	public final String SeatURotationAngle = "SeatURotationAngle";
+	public final String SeatLRotationAngle = "SeatLRotationAngle";
 	// Initial conditioner
 	/*
 	public final String InitialConditionerType="InitialConditionerType";
@@ -53,6 +58,8 @@ private MainController MC = MainController.getInstatnce();
 	
 	// Material Database
 	public final String MaterialDB="MaterialDB";
+	// Parallel CPU Number
+	public final String ParallelCPUNumber="ParallelCPUNumber";
 	// Simulation Data
 	public final String RadiusTolerance="RadiusTolerance";
 	public final String HeightTolerance="HeightTolerance";
@@ -226,6 +233,13 @@ private MainController MC = MainController.getInstatnce();
 					this.CObj.setColdSettingHeight(value);
 				}
 				
+			}else if(line.contains(this.SeatType)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setSeatType("null");
+				}else{
+					this.CObj.setSeatType(value);
+				}
 			}else if(line.contains(this.SeatUIneerMargina)){
 				String value = myUtil.splitData(line, "=").get(1);
 				if(value.contains("%")){
@@ -249,7 +263,35 @@ private MainController MC = MainController.getInstatnce();
 				}else{
 					this.CObj.setSeatHeight(value);
 				}
-			
+				
+			}else if(line.contains(this.SeatUStepRotationHeight)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setSeatUStepRotationHeight("null");
+				}else{
+					this.CObj.setSeatUStepRotationHeight(value);
+				}
+			}else if(line.contains(this.SeatLStepRotationHeight)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setSeatLStepRotationHeight("null");
+				}else{
+					this.CObj.setSeatLStepRotationHeight(value);
+				}
+			}else if(line.contains(this.SeatURotationAngle)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setSeatURotationAngle("null");
+				}else{
+					this.CObj.setSeatURotationAngle(value);
+				}
+			}else if(line.contains(this.SeatLRotationAngle)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setSeatLRotationAngle("null");
+				}else{
+					this.CObj.setSeatLRotationAngle(value);
+				}
 			}
 			/*
 			else if(line.contains(this.InitialConditionerType)){
@@ -328,6 +370,15 @@ private MainController MC = MainController.getInstatnce();
 					this.CObj.setMaterialDB("null");
 				}else{
 					this.CObj.setMaterialDB(value);
+				}
+			}
+			
+			else if(line.contains(this.ParallelCPUNumber)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setParallerCpuNmber("null");
+				}else{
+					this.CObj.setParallerCpuNmber(value);
 				}
 			}
 			

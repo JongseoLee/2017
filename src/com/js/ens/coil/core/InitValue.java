@@ -18,9 +18,14 @@ public class InitValue {
 	public static String ColdSettingTemp="ColdSettingTemp";
 	public static String HotSettingHeight="HotSettingHeight";
 	public static String ColdSettingHeight="ColdSettingHeight";
+	public static String SeatType="SeatType";
 	public static String SeatUInnerMargina="SeatUInnerMargina";
 	public static String SeatLInnerMargina="SeatLInnerMargina";
 	public static String SeatHeight="SeatHeight";
+	public static String SeatUStepRotationHeight="SeatUStepRotationHeight";
+	public static String SeatLStepRotationHeight="SeatLStepRotationHeight";
+	public static String SeatURotationAngle="SeatURotationAngle";
+	public static String SeatLRotationAngle="SeatLRotationAngle";
 	/*
 	public static String InitialConditionerType="InitialConditionerType";
 	public static String InitialConditionerConstant="InitialConditionerConstant";
@@ -35,6 +40,8 @@ public class InitValue {
 	
 	
 	public static String MaterialDatabase="MaterialDatabase";
+	
+	public static String ParallelCPUNumber="ParallelCPUNumber";
 	
 	public static String RadiusTolerance="RadiusTolerance";
 	public static String HeightTolerance="HeightTolerance";
