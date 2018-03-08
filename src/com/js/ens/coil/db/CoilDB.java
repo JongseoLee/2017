@@ -74,6 +74,8 @@ public class CoilDB {
 	
 	private String ParallerCpuNmber = "null";
 	
+	private String FormedCoilDataInterpolationFile = "null";
+	
 	// Step2. Simulation and Export Result
 	private String RadiusTolerance = "null";
 	private String HeightTolerance = "null";
@@ -285,7 +287,12 @@ public class CoilDB {
 			}
 			
 			if(ParallerCpuNmber.equals("null")){
-				result =false;
+				result = false;
+				return result;
+			}
+			
+			if(FormedCoilDataInterpolationFile.equals("null")){
+				result = false;
 				return result;
 			}
 			// Step2. Simulation and Export Result
@@ -374,6 +381,8 @@ public class CoilDB {
 		resultList.add("-------------------------------------------------------");
 		resultList.add("ParallelCpuNumber    : "+ParallerCpuNmber);
 		resultList.add("-------------------------------------------------------");
+		resultList.add("FormedCoilDataInterpolationFile : "+FormedCoilDataInterpolationFile);
+		resultList.add("-------------------------------------------------------");
 		resultList.add("RadiusTolerance         : "+RadiusTolerance);
 		resultList.add("HeightTolerance         : "+HeightTolerance);
 		resultList.add("MaximumIterationNumber  : "+MaximumIterationNumber);
@@ -435,6 +444,8 @@ public class CoilDB {
 		System.out.println("MaterialDB           : "+MaterialDB);
 		System.out.println("-------------------------------------------------------");
 		System.out.println("ParallelCpuNumber    : "+ParallerCpuNmber);
+		System.out.println("-------------------------------------------------------");
+		System.out.println("FormedCoilDataInterpolationFile : "+FormedCoilDataInterpolationFile);
 		System.out.println("-------------------------------------------------------");
 		System.out.println("RadiusTolerance         : "+RadiusTolerance);
 		System.out.println("HeightTolerance         : "+HeightTolerance);
@@ -931,6 +942,16 @@ public class CoilDB {
 
 	public void setParallerCpuNmber(String parallerCpuNmber) {
 		ParallerCpuNmber = parallerCpuNmber;
+	}
+
+	
+	public String getFormedCoilDataInterpolationFile() {
+		return FormedCoilDataInterpolationFile;
+	}
+
+	public void setFormedCoilDataInterpolationFile(
+			String formedCoilDataInterpolationFile) {
+		FormedCoilDataInterpolationFile = formedCoilDataInterpolationFile;
 	}
 
 	public GraphAllData getGraphDataObj() {

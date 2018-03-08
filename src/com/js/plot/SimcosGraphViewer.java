@@ -58,8 +58,8 @@ public class SimcosGraphViewer {
 		}
 
 		this.chartTitle = "Coil Geometry Radius";
-		this.xTitle = "Theta";
-		this.yTitle = "Radius";
+		this.xTitle = "Theta(turn)";
+		this.yTitle = "Radius(mm)";
 		this.legendList.add("Radius Data");
 		this.xDataList.add(xList);
 		this.yDataList.add(yList);
@@ -79,8 +79,8 @@ public class SimcosGraphViewer {
 		}
 
 		this.chartTitle = "Coil Geometry Pitch";
-		this.xTitle = "Theta";
-		this.yTitle = "Pitch";
+		this.xTitle = "Theta(turn)";
+		this.yTitle = "Pitch(mm)";
 		this.legendList.add("Pitch Data");
 		this.xDataList.add(xList);
 		this.yDataList.add(yList);

@@ -60,6 +60,8 @@ public class WriteSimcosDB {
 	private final String MaterialDB ="%MaterialDB%";
 	// Parallel CPU Number
 	private final String ParallelCPUNumber="%ParallelCPUNumber%";
+	// Formed Coil Data Interpolation File
+	private final String FormedCoilDataInterpolationFile = "%FormedCoilDataInterpolationFile%";
 	// Simulation Data
 	private final String RadiusTolerance="%RadiusTolerance%";
 	private final String HeightTolerance="%HeightTolerance%";
@@ -244,6 +246,11 @@ public class WriteSimcosDB {
 			
 			else if(line.contains(this.ParallelCPUNumber)){
 				String newLine = line.replace(this.ParallelCPUNumber, this.CObj.getParallerCpuNmber());
+				this.outputDataList.add(newLine);
+			}
+			
+			else if(line.contains(this.FormedCoilDataInterpolationFile)){
+				String newLine = line.replace(this.FormedCoilDataInterpolationFile, this.CObj.getFormedCoilDataInterpolationFile());
 				this.outputDataList.add(newLine);
 			}
 			

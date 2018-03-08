@@ -114,6 +114,12 @@ public class CustomText implements ICommand {
 			MC.Text_Modify_ParallelCpuNmber();
 		}
 		
+		else if(this.widgetName.equals(Mediator.TEXT_textFormedCoilDataInterp)){
+			System.out.println("Text("+Mediator.TEXT_textFormedCoilDataInterp+")"+med.getTextFormedCoilDataInterp().getText());
+			MC.Text_Modify_FormedCoildDataInterp();
+		}
+			
+		
 		
 		else if(this.widgetName.equals(Mediator.TEXT_textRadiusTolerance)){
 			System.out.println("Text("+Mediator.TEXT_textRadiusTolerance +")"+med.getTextRadiusTolerance().getText());
@@ -222,6 +228,10 @@ public class CustomText implements ICommand {
 	
 	public void setCustomWidget_textParallelCpuNumber(){
 		this.text = med.getTextParallelCpuNumber();
+	}
+	
+	public void setCustomWidte_textFormedCoilDataInterp(){
+		this.text = med.getTextFormedCoilDataInterp();
 	}
 	
 	public void setCustomWidget_textRadiusTolerance(){

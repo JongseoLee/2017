@@ -25,9 +25,10 @@ public class SimcosImageViewer {
 			BufferedImage img =ImageIO.read(new File(imagePath));
 			ImageIcon icon = new ImageIcon(img);
 			final JFrame frame = new JFrame("Simcos Image");
-			frame.setSize(600,500);
+			frame.setSize(icon.getIconWidth()+30,icon.getIconHeight()+40);
 			JLabel lbl = new JLabel();
 			lbl.setIcon(icon);
+			
 			JPanel panel = new JPanel();
 			panel.setBackground(Color.WHITE);
 			panel.setLayout(new BorderLayout());

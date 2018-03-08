@@ -85,6 +85,11 @@ public class CustomButton implements ICommand {
 			MC.Button_MaterialDB_FileExplorer();
 		}
 		
+		else if(this.widgetName.equals(Mediator.BUTTON_btnFormedCoilDataInterp)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnFormedCoilDataInterp);
+			MC.Button_FormedCoilDataInterp_FileExplorer();
+		}
+		
 		else if(this.widgetName.equals(Mediator.BUTTON_btnStartSimulation)){
 			System.out.println("Click btn : " + Mediator.BUTTON_btnStartSimulation);
 			MC.Button_StartSimulation();
@@ -200,6 +205,10 @@ public class CustomButton implements ICommand {
 	
 	public void setCustomWidget_btnMaterialDBExplorer(){
 		this.button = med.getBtnMaterialDBExplorer();
+	}
+	
+	public void setCustomWidget_btnFormedCoilDataInterp(){
+		this.button = med.getBtnFormedCoilDataInterp();
 	}
 	
 	public void setCustomWidget_btnStartSimulation(){

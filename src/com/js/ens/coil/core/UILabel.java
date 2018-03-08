@@ -130,7 +130,8 @@ public class UILabel {
 	public static String ParallelCPUNumber = "ParallelCPUNumber";
 	private String base_ParallelCPUNumber = "Parallel CPU Number";
 	
-	
+	public static String FormedCoilDataInterpolationFile = "FormedCoilDataInterpolationFile";
+	private String base_FormedCoilDataInterpolationFile = "Select Formed Coil DataInterpolation File(CSV)";
 	// Step2
 	public static String AnalysisOptions = "AnalysisOptions";
 	private String base_AnalysisOptions = "Analysis Options";
@@ -247,6 +248,8 @@ public class UILabel {
 		this.BaseUILabelMap.put("MaterialDatabase", this.base_MaterialDatabase);
 		
 		this.BaseUILabelMap.put("ParallelCPUNumber", this.base_ParallelCPUNumber);
+		
+		this.BaseUILabelMap.put("FormedCoilDataInterpolationFile", this.base_FormedCoilDataInterpolationFile);
 		
 		this.BaseUILabelMap.put("AnalysisOptions", this.base_AnalysisOptions);
 		this.BaseUILabelMap.put("RadiusTolerance", this.base_RadiusTolerance);

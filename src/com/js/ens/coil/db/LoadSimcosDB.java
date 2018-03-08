@@ -60,6 +60,8 @@ private MainController MC = MainController.getInstatnce();
 	public final String MaterialDB="MaterialDB";
 	// Parallel CPU Number
 	public final String ParallelCPUNumber="ParallelCPUNumber";
+	// Formed Coil Data Interpolation File
+	public final String FormedCoilDataInterpolationFile = "FormedCoilDataInterpolationFile";
 	// Simulation Data
 	public final String RadiusTolerance="RadiusTolerance";
 	public final String HeightTolerance="HeightTolerance";
@@ -379,6 +381,15 @@ private MainController MC = MainController.getInstatnce();
 					this.CObj.setParallerCpuNmber("null");
 				}else{
 					this.CObj.setParallerCpuNmber(value);
+				}
+			}
+			
+			else if(line.contains(this.FormedCoilDataInterpolationFile)){
+				String value = myUtil.splitData(line, "=").get(1);
+				if(value.contains("%")){
+					this.CObj.setFormedCoilDataInterpolationFile("null");
+				}else{
+					this.CObj.setFormedCoilDataInterpolationFile(value);
 				}
 			}
 			

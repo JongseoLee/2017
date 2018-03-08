@@ -61,6 +61,7 @@ public class MainController {
 	private String cPath_radiusConditioner;
 	private String cPath_heightConditioner;
 	private String cPath_materialDB;
+	private String cPath_formedCoilDataInterp;
 	
 	
 	// Preferences values
@@ -110,6 +111,7 @@ public class MainController {
 		this.cPath_radiusConditioner = myUtil.setPath(this.AppPath, AppFolder.CONFIG);
 		this.cPath_heightConditioner = myUtil.setPath(this.AppPath, AppFolder.CONFIG);
 		this.cPath_materialDB = myUtil.setPath(myUtil.setPath(this.AppPath, AppFolder.CONFIG),AppFolder.MATERIAL_DB);
+		this.cPath_formedCoilDataInterp = myUtil.setPath(this.AppPath, AppFolder.CONFIG);
 		
 	}
 		
@@ -242,6 +244,17 @@ public class MainController {
 		med.getTextSeatLStepRotationHeight().setEnabled(false);
 		med.getTextSeatURotationAngle().setEnabled(false);
 		med.getTextSeatLRotationAngle().setEnabled(false);
+		if(med.getBtnStandard().getSelection()){
+			med.getTextSeatUStepRotationHeight().setText("0.0");
+			med.getTextSeatLStepRotationHeight().setText("0.0");
+			med.getTextSeatURotationAngle().setText("0.0");
+			med.getTextSeatLRotationAngle().setText("0.0");
+			
+			this.coilDBObj.setSeatUStepRotationHeight("0.0");
+			this.coilDBObj.setSeatLStepRotationHeight("0.0");
+			this.coilDBObj.setSeatURotationAngle("0.0");
+			this.coilDBObj.setSeatLRotationAngle("0.0");
+		}
 	}
 	
 	public void Button_RrCoil(){
@@ -394,6 +407,15 @@ public class MainController {
 			String fileName = myUtil.getFileName(MaterialDBFilePath);
 			med.getTextMaterialDBPath().setText(fileName);
 			this.coilDBObj.setMaterialDB(MaterialDBFilePath);
+		}
+	}
+	
+	public void Button_FormedCoilDataInterp_FileExplorer(){
+		String FormedCoilDataInterpPath = this.FileExplorer_FormedCoilDataInterp();
+		if(myUtil.checkPath(FormedCoilDataInterpPath)){
+			String fileName = myUtil.getFileNameIncludeExtension(FormedCoilDataInterpPath);
+			med.getTextFormedCoilDataInterp().setText(fileName);
+			this.coilDBObj.setFormedCoilDataInterpolationFile(FormedCoilDataInterpPath);
 		}
 	}
 	
@@ -827,6 +849,11 @@ public class MainController {
 		this.coilDBObj.setParallerCpuNmber(data);
 	}
 	
+	public void Text_Modify_FormedCoildDataInterp(){
+		String data = med.getTextFormedCoilDataInterp().getText().trim();
+		this.coilDBObj.setFormedCoilDataInterpolationFile(data);
+	}
+	
 	public void Text_Modify_RadiusTolerance(){
 		String data = med.getTextRadiusTolerance().getText().trim();
 		this.coilDBObj.setRadiusTolerance(data);
@@ -1167,6 +1194,7 @@ public class MainController {
 		//String destInitialConditionerFile = "";
 		String destRadiusConditionerFile = "";
 		String destHeightConditionerFile = "";
+		String destFormdCoilDataInterpolationFile = "";
 		/*
 		if(this.coilDBObj.getInitialConditionerType().equals(CoilDB.FILE_TYPE)){
 			String InitialConditionerFileName = myUtil.getFileNameIncludeExtension(this.coilDBObj.getInitialConditionerFile());
@@ -1192,6 +1220,11 @@ public class MainController {
 			myUtil.fileCopy(this.coilDBObj.getMaterialDB(), destMaterialDBFile);
 		}
 		
+		if(!this.coilDBObj.getFormedCoilDataInterpolationFile().equals("null")){
+			String FormedCoilDataInterpolationFileName = myUtil.getFileNameIncludeExtension(this.coilDBObj.getFormedCoilDataInterpolationFile());
+			destFormdCoilDataInterpolationFile = myUtil.setPath(SimcosDataFolder, FormedCoilDataInterpolationFileName);
+			myUtil.fileCopy(this.coilDBObj.getFormedCoilDataInterpolationFile(), destFormdCoilDataInterpolationFile);
+		}
 	}
 	//==================================================================================
 	private void getPreferencesData(){
@@ -1488,10 +1521,13 @@ public class MainController {
 		med.getTextMaterialDBPath().setText(this.initValueObj.getInitValue(InitValue.MaterialDatabase));
 		// Parallel CPU Number 
 		med.getTextParallelCpuNumber().setText(this.initValueObj.getInitValue(InitValue.ParallelCPUNumber));
+		// Formed Coil Data Interpolation File
+		med.getTextFormedCoilDataInterp().setText(this.initValueObj.getInitValue(InitValue.FormedCoilDataInterpolationFile));
 		// Analysis Options
 		med.getTextRadiusTolerance().setText(this.initValueObj.getInitValue(InitValue.RadiusTolerance));
 		med.getTextHeightTolerance().setText(this.initValueObj.getInitValue(InitValue.HeightTolerance));
 		med.getTextMaximumIterationNumber().setText(this.initValueObj.getInitValue(InitValue.MaximumIterationNumber));
+		
 	}
 	
 	private void LoadCoilDB_UI(){
@@ -1588,6 +1624,8 @@ public class MainController {
 		med.getTextMaterialDBPath().setText(myUtil.getFileName(this.coilDBObj.getMaterialDB()));
 		// Parallel CPU Number
 		med.getTextParallelCpuNumber().setText(this.coilDBObj.getParallerCpuNmber());
+		// Formed Coil Data Interpolation File
+		med.getTextFormedCoilDataInterp().setText(this.coilDBObj.getFormedCoilDataInterpolationFile());
 		// Analysis Options
 		med.getTextRadiusTolerance().setText(this.coilDBObj.getRadiusTolerance());
 		med.getTextHeightTolerance().setText(this.coilDBObj.getHeightTolerance());
@@ -1597,7 +1635,7 @@ public class MainController {
 	
 	//==================================================================================
 	private String FileExplorer_RadiusConditioner(){
-		FileDialog dlg = new FileDialog(med.getBtnExplorer().getShell(),SWT.OPEN);
+		FileDialog dlg = new FileDialog(med.getBtnRadiusConditionerExplorer().getShell(),SWT.OPEN);
 		dlg.setText("Select Radius Conditioner File.");
 		
 		String [] extNames = {"CSV(*.CSV)"};
@@ -1619,7 +1657,7 @@ public class MainController {
 	}
 	
 	private String FileExplorer_HeightConditioner(){
-		FileDialog dlg = new FileDialog(med.getBtnExplorer().getShell(),SWT.OPEN);
+		FileDialog dlg = new FileDialog(med.getBtnHeightConditionerExplorer().getShell(),SWT.OPEN);
 		dlg.setText("Select Height Conditioner File.");
 		
 		String [] extNames = {"CSV(*.CSV)"};
@@ -1639,8 +1677,9 @@ public class MainController {
 			return path;
 		}
 	}
+	
 	private String FileExplorer_MaterialDB(){
-		FileDialog dlg = new FileDialog(med.getBtnExplorer().getShell(),SWT.OPEN);
+		FileDialog dlg = new FileDialog(med.getBtnMaterialDBExplorer().getShell(),SWT.OPEN);
 		dlg.setText("Select Materila Database File.");
 		
 		String [] extNames = {"ALL(*.*)"};
@@ -1660,6 +1699,29 @@ public class MainController {
 			return path;
 		}
 	}
+	
+	private String FileExplorer_FormedCoilDataInterp(){
+		FileDialog dlg = new FileDialog(med.getBtnFormedCoilDataInterp().getShell(),SWT.OPEN);
+		dlg.setText("Select Formed Coil Data Interpolation File.");
+		
+		String [] extNames = {"CSV(*.CSV)"};
+		String [] extType = {"*.csv"};
+		
+		dlg.setFilterNames(extNames);
+		dlg.setFilterExtensions(extType);
+		// Open ProjectFolder.
+		dlg.setFilterPath(this.cPath_formedCoilDataInterp);
+		
+		dlg.setFilterNames(extNames);
+		String path = dlg.open();
+		if (path == null){
+			return "Retry";
+		}else {
+			this.cPath_heightConditioner = myUtil.getParentPath(path);
+			return path;
+		}
+	}
+	
 	
 	//==================================================================================
 	private void SaveStep1(){
@@ -1715,6 +1777,8 @@ public class MainController {
 		this.coilDBObj.setHeightConditionerConstant(med.getTextHeightConditionerValue().getText().trim());
 		
 		this.coilDBObj.setParallerCpuNmber(med.getTextParallelCpuNumber().getText().trim());
+		
+		//this.coilDBObj.setFormedCoilDataInterpolationFile(med.getTextFormedCoilDataInterp().getText().trim());
 	}
 	
 	private void SaveStep2(){

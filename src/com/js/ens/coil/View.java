@@ -94,6 +94,7 @@ public class View extends ViewPart {
 	private Combo comboSelectTableData;
 	private Text textMaterialDBPath;
 	private Text textParallelCpuNumber;
+	private Text textFormedCoilDataInterp;
 	
 	
 	
@@ -826,16 +827,16 @@ public class View extends ViewPart {
  		fl_grpInitialConditioner.marginBottom = 5;
  		grpInitialConditioner.setLayout(fl_grpInitialConditioner);
  		FormData fd_grpInitialConditioner = new FormData();
- 		fd_grpInitialConditioner.top = new FormAttachment(grpSettingProcessInformation, 6);
+ 		fd_grpInitialConditioner.top = new FormAttachment(grpSettingProcessInformation, 3);
  		fd_grpInitialConditioner.left = new FormAttachment(grpSettingProcessInformation, 0,SWT.LEFT);
  		fd_grpInitialConditioner.right = new FormAttachment(grpSettingProcessInformation, 0,SWT.RIGHT);
- 		fd_grpInitialConditioner.bottom = new FormAttachment(grpSettingProcessInformation, 260, SWT.BOTTOM);
+ 		fd_grpInitialConditioner.bottom = new FormAttachment(grpSettingProcessInformation, 220, SWT.BOTTOM);
  		grpInitialConditioner.setLayoutData(fd_grpInitialConditioner);
  		grpInitialConditioner.setText(LabelDatas.getLabel(UILabel.InitialConditioner));
  		
  		Label lblRadiusConditioner = new Label(grpInitialConditioner, SWT.NONE);
  		FormData fd_lblRadiusConditioner = new FormData();
- 		fd_lblRadiusConditioner.top = new FormAttachment(0, 10);
+ 		fd_lblRadiusConditioner.top = new FormAttachment(0, 5);
  		fd_lblRadiusConditioner.left = new FormAttachment(0, 10);
  		fd_lblRadiusConditioner.right = new FormAttachment(0,170);
  		lblRadiusConditioner.setLayoutData(fd_lblRadiusConditioner);
@@ -847,7 +848,7 @@ public class View extends ViewPart {
  		fd_compositeRadiusConditioner.top = new FormAttachment(lblRadiusConditioner, 0);
  		fd_compositeRadiusConditioner.left = new FormAttachment(lblRadiusConditioner, 0, SWT.LEFT);
  		fd_compositeRadiusConditioner.right = new FormAttachment(100, -10);
- 		fd_compositeRadiusConditioner.bottom = new FormAttachment(lblRadiusConditioner,80,SWT.BOTTOM);
+ 		fd_compositeRadiusConditioner.bottom = new FormAttachment(lblRadiusConditioner,70,SWT.BOTTOM);
  		compositeRadiusConditioner.setLayoutData(fd_compositeRadiusConditioner);
  		
  		Button btnRadiusConditionerConstant = new Button(compositeRadiusConditioner, SWT.RADIO);
@@ -913,7 +914,7 @@ public class View extends ViewPart {
  		
  		Label lblHeightConditioner = new Label(grpInitialConditioner, SWT.NONE);
  		FormData fd_lblHeightConditioner = new FormData();
- 		fd_lblHeightConditioner.top = new FormAttachment(compositeRadiusConditioner, 6);
+ 		fd_lblHeightConditioner.top = new FormAttachment(compositeRadiusConditioner, 3);
  		fd_lblHeightConditioner.left = new FormAttachment(lblRadiusConditioner, 0, SWT.LEFT);
  		lblHeightConditioner.setLayoutData(fd_lblHeightConditioner);
  		lblHeightConditioner.setText(LabelDatas.getLabel(UILabel.HeightConditioner));
@@ -1094,10 +1095,10 @@ public class View extends ViewPart {
 		fl_grpMaterialDatabase.marginBottom = 5;
 		grpMaterialDatabase.setLayout(fl_grpMaterialDatabase);
 		FormData fd_grpMaterialDatabase = new FormData();
-		fd_grpMaterialDatabase.top = new FormAttachment(grpInitialConditioner, 6);
+		fd_grpMaterialDatabase.top = new FormAttachment(grpInitialConditioner, 3);
 		fd_grpMaterialDatabase.left = new FormAttachment(grpSettingProcessInformation, 0, SWT.LEFT);
 		fd_grpMaterialDatabase.right = new FormAttachment(grpSettingProcessInformation, 0, SWT.RIGHT);
-		fd_grpMaterialDatabase.bottom = new FormAttachment(grpInitialConditioner, 80,SWT.BOTTOM);
+		fd_grpMaterialDatabase.bottom = new FormAttachment(grpInitialConditioner, 70,SWT.BOTTOM);
 		grpMaterialDatabase.setLayoutData(fd_grpMaterialDatabase);
 	
 		Composite composite = new Composite(grpMaterialDatabase, SWT.NONE);
@@ -1106,7 +1107,7 @@ public class View extends ViewPart {
 		fd_composite.top = new FormAttachment(0);
 		fd_composite.left = new FormAttachment(0);
 		fd_composite.right = new FormAttachment(100, -10);
-		fd_composite.bottom = new FormAttachment(0, 40);
+		fd_composite.bottom = new FormAttachment(0, 30);
 		composite.setLayoutData(fd_composite);
 		
 		textMaterialDBPath = new Text(composite, SWT.BORDER);
@@ -1117,7 +1118,7 @@ public class View extends ViewPart {
 		med.setC_textMaterialDBPath(c_textMaterialDBPath);
 		c_textMaterialDBPath.setCustomWidget_textMaterialDBPath();
 		FormData fd_textMaterialDBPath = new FormData();
-		fd_textMaterialDBPath.top = new FormAttachment(0, 10);
+		fd_textMaterialDBPath.top = new FormAttachment(0, 5);
 		fd_textMaterialDBPath.left = new FormAttachment(0, 10);
 		fd_textMaterialDBPath.right = new FormAttachment(100,-40);
 		textMaterialDBPath.setLayoutData(fd_textMaterialDBPath);
@@ -1148,10 +1149,10 @@ public class View extends ViewPart {
 		fl_grpParallelCpuNumber.marginBottom = 5;
 		grpParallelCpuNumber.setLayout(fl_grpParallelCpuNumber);
 		FormData fd_grpParallelCpuNumber = new FormData();
-		fd_grpParallelCpuNumber.top = new FormAttachment(grpMaterialDatabase, 6);
+		fd_grpParallelCpuNumber.top = new FormAttachment(grpMaterialDatabase, 3);
 		fd_grpParallelCpuNumber.left = new FormAttachment(grpSettingProcessInformation, 0, SWT.LEFT);
 		fd_grpParallelCpuNumber.right = new FormAttachment(grpSettingProcessInformation, 0, SWT.RIGHT);
-		fd_grpParallelCpuNumber.bottom = new FormAttachment(grpMaterialDatabase,70,SWT.BOTTOM);
+		fd_grpParallelCpuNumber.bottom = new FormAttachment(grpMaterialDatabase,60,SWT.BOTTOM);
 		grpParallelCpuNumber.setLayoutData(fd_grpParallelCpuNumber);
 		
 		textParallelCpuNumber = new Text(grpParallelCpuNumber, SWT.BORDER);
@@ -1160,11 +1161,63 @@ public class View extends ViewPart {
 		med.setC_textParallelCpuNumber(c_textParallelCpuNumber);
 		c_textParallelCpuNumber.setCustomWidget_textParallelCpuNumber();
 		FormData fd_textParallelCpuNumber = new FormData();
-		fd_textParallelCpuNumber.top = new FormAttachment(0, 10);
+		fd_textParallelCpuNumber.top = new FormAttachment(0, 5);
 		fd_textParallelCpuNumber.left = new FormAttachment(0, 10);
 		fd_textParallelCpuNumber.right = new FormAttachment(100, -10);
 		textParallelCpuNumber.setLayoutData(fd_textParallelCpuNumber);
 		
+		Group grpFromedCoilDataInterp = new Group(compositeStep1, SWT.NONE);
+		if(myUtil.checkOS().equals("window")){
+			grpFromedCoilDataInterp.setFont(SWTResourceManager.getFont("Arial", 9, SWT.BOLD));
+		}else {
+			grpFromedCoilDataInterp.setFont(SWTResourceManager.getFont(".SF NS Text", 11, SWT.BOLD));
+		}
+		grpFromedCoilDataInterp.setText(LabelDatas.getLabel(UILabel.FormedCoilDataInterpolationFile));
+		FormLayout fl_grpFromedCoilDataInterp = new FormLayout();
+		fl_grpFromedCoilDataInterp.marginTop = 5;
+		fl_grpFromedCoilDataInterp.marginRight = 5;
+		fl_grpFromedCoilDataInterp.marginLeft = 5;
+		fl_grpFromedCoilDataInterp.marginBottom = 5;
+		grpFromedCoilDataInterp.setLayout(fl_grpFromedCoilDataInterp);
+		FormData fd_grpFromedCoilDataInterp = new FormData();
+		fd_grpFromedCoilDataInterp.top = new FormAttachment(grpParallelCpuNumber, 3);
+		fd_grpFromedCoilDataInterp.left = new FormAttachment(grpSettingProcessInformation, 0, SWT.LEFT);
+		fd_grpFromedCoilDataInterp.right = new FormAttachment(grpSettingProcessInformation, 0, SWT.RIGHT);
+		grpFromedCoilDataInterp.setLayoutData(fd_grpFromedCoilDataInterp);
+		
+		Composite comp = new Composite(grpFromedCoilDataInterp, SWT.NONE);
+		comp.setLayout(new FormLayout());
+		FormData fd_comp = new FormData();
+		fd_comp.top = new FormAttachment(0);
+		fd_comp.left = new FormAttachment(0);
+		fd_comp.right = new FormAttachment(100, -10);
+		fd_comp.bottom = new FormAttachment(0, 30);
+		comp.setLayoutData(fd_comp);
+		
+		textFormedCoilDataInterp = new Text(comp, SWT.BORDER);
+		textFormedCoilDataInterp.setEditable(false);
+		textFormedCoilDataInterp.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		med.setTextFormedCoilDataInterp(textFormedCoilDataInterp);
+		CustomText c_textFormedCoilDataInterp = new CustomText(Mediator.TEXT_textFormedCoilDataInterp,med);
+		med.setC_textFormedCoilDataInterp(c_textFormedCoilDataInterp);
+		c_textFormedCoilDataInterp.setCustomWidte_textFormedCoilDataInterp();
+		FormData fd_textFormedCoilDataInterp = new FormData();
+		fd_textFormedCoilDataInterp.top = new FormAttachment(0, 5);
+		fd_textFormedCoilDataInterp.left = new FormAttachment(0, 10);
+		fd_textFormedCoilDataInterp.right = new FormAttachment(100, -40);
+		textFormedCoilDataInterp.setLayoutData(fd_textFormedCoilDataInterp);
+		
+		Button btnFormedCoilDataInterp = new Button(comp, SWT.NONE);
+		med.setBtnFormedCoilDataInterp(btnFormedCoilDataInterp);
+		CustomButton c_btnFormedCoilDataInterp = new CustomButton(Mediator.BUTTON_btnFormedCoilDataInterp,med);
+		med.setC_btnFormedCoilDataInterp(c_btnFormedCoilDataInterp);
+		c_btnFormedCoilDataInterp.setCustomWidget_btnFormedCoilDataInterp();
+		FormData fd_btnFormedCoilDataInterp = new FormData();
+		fd_btnFormedCoilDataInterp.top = new FormAttachment(textFormedCoilDataInterp, -2, SWT.TOP);
+		fd_btnFormedCoilDataInterp.left = new FormAttachment(textFormedCoilDataInterp, 5);
+		fd_btnFormedCoilDataInterp.right = new FormAttachment(100);
+		btnFormedCoilDataInterp.setLayoutData(fd_btnFormedCoilDataInterp);
+		btnFormedCoilDataInterp.setText("...");
 		
 		////////////=> Simulation and Export result
 		////////////=> Simulation and Export result
@@ -1753,6 +1806,7 @@ public class View extends ViewPart {
  		med.getBtnHeightConditionerFile().addListener(SWT.Selection, handlerButton);
  		med.getBtnHeightConditionerExplorer().addListener(SWT.Selection, handlerButton);
 		med.getBtnMaterialDBExplorer().addListener(SWT.Selection, handlerButton);
+		med.getBtnFormedCoilDataInterp().addListener(SWT.Selection, handlerButton);
 		med.getBtnStartSimulation().addListener(SWT.Selection, handlerButton);
 		med.getBtnResetSimulation().addListener(SWT.Selection, handlerButton);
 		med.getBtnReadLog().addListener(SWT.Selection, handlerButton);
@@ -1801,6 +1855,7 @@ public class View extends ViewPart {
  		//med.getTextInitialConditionerValue().addListener(SWT.CHANGED, handlerText);
 		//med.getTextInitialConditionerPath().addListener(SWT.CHANGED, handlerText);
 		//med.getTextMaterialDBPath().addListener(SWT.CHANGED, handlerText);
+ 		//med.getTextFormedCoilDataInterp().addListener(SWT.CHANGED, handlerText);
  		med.getTextParallelCpuNumber().addListener(SWT.CHANGED, handlerText);
 		med.getTextRadiusTolerance().addListener(SWT.CHANGED, handlerText);
 		med.getTextHeightTolerance().addListener(SWT.CHANGED, handlerText);

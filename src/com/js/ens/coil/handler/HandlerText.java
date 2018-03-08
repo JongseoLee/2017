@@ -87,6 +87,10 @@ public class HandlerText implements Listener {
 			med.getC_textParallelCpuNumber().execute();
 		}
 		
+		else if(event.widget == med.getTextFormedCoilDataInterp()){
+			med.getC_textFormedCoilDataInterp().execute();
+		}
+		
 		else if(event.widget == med.getTextRadiusTolerance()){
 			med.getC_textRadiusTolerance().execute();
 		}else if(event.widget == med.getTextHeightTolerance()){

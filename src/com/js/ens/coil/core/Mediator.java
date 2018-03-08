@@ -268,6 +268,13 @@ public class Mediator {
 	public ICommand C_textParallelCpuNumber;
 	public static String TEXT_textParallelCpuNumber = "textParallelCpuNumber";
 	
+	private Text textFormedCoilDataInterp;
+	public ICommand C_textFormedCoilDataInterp;
+	public static String TEXT_textFormedCoilDataInterp = "textFormedCoilDataInterp";
+	
+	private Button btnFormedCoilDataInterp;
+	public ICommand C_btnFormedCoilDataInterp;
+	public static String BUTTON_btnFormedCoilDataInterp = "btnFormedCoilDataInterp";
 	
 	//////////////////////////////////////////////////////////////////////////
 	// step2
@@ -1273,6 +1280,38 @@ public class Mediator {
 
 	public void setC_textParallelCpuNumber(ICommand c_textParallelCpuNumber) {
 		C_textParallelCpuNumber = c_textParallelCpuNumber;
+	}
+
+	public Text getTextFormedCoilDataInterp() {
+		return textFormedCoilDataInterp;
+	}
+
+	public void setTextFormedCoilDataInterp(Text textFormedCoilDataInterp) {
+		this.textFormedCoilDataInterp = textFormedCoilDataInterp;
+	}
+
+	public ICommand getC_textFormedCoilDataInterp() {
+		return C_textFormedCoilDataInterp;
+	}
+
+	public void setC_textFormedCoilDataInterp(ICommand c_textFormedCoilDataInterp) {
+		C_textFormedCoilDataInterp = c_textFormedCoilDataInterp;
+	}
+
+	public Button getBtnFormedCoilDataInterp() {
+		return btnFormedCoilDataInterp;
+	}
+
+	public void setBtnFormedCoilDataInterp(Button btnFormedCoilDataInterp) {
+		this.btnFormedCoilDataInterp = btnFormedCoilDataInterp;
+	}
+
+	public ICommand getC_btnFormedCoilDataInterp() {
+		return C_btnFormedCoilDataInterp;
+	}
+
+	public void setC_btnFormedCoilDataInterp(ICommand c_btnFormedCoilDataInterp) {
+		C_btnFormedCoilDataInterp = c_btnFormedCoilDataInterp;
 	}
 
 	public Text getTextRadiusTolerance() {

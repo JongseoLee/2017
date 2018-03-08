@@ -43,6 +43,8 @@ public class InitValue {
 	
 	public static String ParallelCPUNumber="ParallelCPUNumber";
 	
+	public static String FormedCoilDataInterpolationFile = "FormedCoilDataInterpolationFile";
+	
 	public static String RadiusTolerance="RadiusTolerance";
 	public static String HeightTolerance="HeightTolerance";
 	public static String MaximumIterationNumber="MaximumIterationNumber";
