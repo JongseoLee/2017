@@ -32,10 +32,16 @@ public class ComboData_selectGraph {
 	private String yLegend_MaxErrorZ;
 	private ArrayList<Float> yDataValue_MaxErrorZ;
 	
-	 
+	// 2018.03_update -> etc column
+	private String yLegend_etcC2;
+	private ArrayList<Float> yDataValue_etcC2;
+	
+	private String yLegend_etcC3;
+	private ArrayList<Float> yDataValue_etcC3;
 	
 	public ComboData_selectGraph(String resultType) {
 		// TODO Auto-generated constructor stub
+		// 2018.03_update etc Type 추가 etcType1 , etcType2
 		this.resultType = resultType;
 		
 	}
@@ -47,6 +53,16 @@ public class ComboData_selectGraph {
 		}else if(type.equals("err")){
 			this.readResultCSV_err();
 			this.parsing_err();
+		}
+		//2018.03_update
+		else if(type.equals("etc1")){
+			//System.out.println("ETC 1 !!!");
+			this.readResultCSV_etc1();
+			this.parsing_etc1();
+		}else if(type.equals("etc2")){
+			//System.out.println("ETC 2 !!!");
+			this.readResultCSV_etc2();
+			this.parsing_etc2();
 		}
 		
 	}
@@ -79,6 +95,31 @@ public class ComboData_selectGraph {
 				this.fileDataList.add(reader.getFileDataList().get(i));
 			}
 		}
+	}
+	
+	private void readResultCSV_etc1(){
+		this.fileDataList = new ArrayList<String>();
+		
+		Reader reader = new Reader(this.filePath);
+		reader.running();
+		this.graphTitle = myUtil.getFileName(this.filePath);
+		
+		for(int i=0; i<reader.getFileDataList().size();i++){
+			this.fileDataList.add(reader.getFileDataList().get(i));
+		}
+	}
+	
+	private void readResultCSV_etc2(){
+		this.fileDataList = new ArrayList<String>();
+		
+		Reader reader = new Reader(this.filePath);
+		reader.running();
+		this.graphTitle = myUtil.getFileName(this.filePath);
+		
+		for(int i=0; i<reader.getFileDataList().size();i++){
+			this.fileDataList.add(reader.getFileDataList().get(i));
+		}
+		
 	}
 	
 	private void parsing_err(){
@@ -206,6 +247,126 @@ public class ComboData_selectGraph {
 		}
 	}
 	
+	private void parsing_etc1(){
+		this.yDataObjList = new ArrayList<ColumnData>();
+		
+		int dataSize = myUtil.splitData_csv(this.fileDataList.get(0), ",").size();
+		
+		this.xDataObj = new ColumnData();
+		for(int i=1; i<dataSize;i++){
+			ColumnData obj = new ColumnData();
+			this.yDataObjList.add(obj);
+		}
+		this.xDataValue = new ArrayList<Float>();
+		this.yDataValue_etcC2 = new ArrayList<Float>();
+		this.yDataValue_etcC3 = new ArrayList<Float>();
+		
+		
+		for(int lineNum = 0; lineNum < this.fileDataList.size(); lineNum++){
+			String line = this.fileDataList.get(lineNum);
+			ArrayList<String> tokens = new ArrayList<String>();
+			tokens = myUtil.splitData_csv(line, ",");
+			//System.out.println("etc1 : "+tokens);
+			if(lineNum == 0){
+				this.xDataObj.setDataName(tokens.get(0));
+				for(int i=0;i<tokens.size()-1;i++){
+					this.yDataObjList.get(i).setDataName(this.iterationName+"_"+tokens.get(i+1));
+				}
+				
+				this.yLegend_etcC2 = this.iterationName+"_"+tokens.get(1);
+				this.yLegend_etcC3 = this.iterationName+"_"+tokens.get(2);
+				/*
+				if(this.resultType.equals(GraphAllData.mFormdataTotal)){
+					this.yLegend_etcC2 = this.iterationName+"_"+tokens.get(1);
+					this.yLegend_etcC3 = this.iterationName+"_"+tokens.get(2);
+				}else{
+					this.yLegend_etcC2 = "error-C2";
+					this.yLegend_etcC3 = "error-C3";
+				}
+				//*/
+			}else {
+				this.xDataObj.addValue(tokens.get(0));
+				this.xDataValue.add(Float.parseFloat(tokens.get(0)));
+				for(int i=0;i<tokens.size()-1;i++){
+					this.yDataObjList.get(i).addValue(tokens.get(i+1));
+				}
+				this.yDataValue_etcC2.add(Float.parseFloat(tokens.get(1)));
+				this.yDataValue_etcC3.add(Float.parseFloat(tokens.get(2)));
+				/*
+				if(this.resultType.equals(GraphAllData.etcType1)){
+					this.yDataValue_etcC2.add(Float.parseFloat(tokens.get(1)));
+					this.yDataValue_etcC3.add(Float.parseFloat(tokens.get(2)));
+				}
+				//*/
+			}
+		}
+	}
+	
+	private void parsing_etc2(){
+		this.yDataObjList = new ArrayList<ColumnData>();
+		
+		int dataSize = myUtil.splitData_csv(this.fileDataList.get(0), ",").size();
+		
+		this.xDataObj = new ColumnData();
+		for(int i=1; i<dataSize;i++){
+			ColumnData obj = new ColumnData();
+			this.yDataObjList.add(obj);
+		}
+		this.xDataValue = new ArrayList<Float>();
+		this.yDataValue_etcC2 = new ArrayList<Float>();
+		this.yDataValue_etcC3 = new ArrayList<Float>();
+		
+		
+		for(int lineNum = 0; lineNum < this.fileDataList.size(); lineNum++){
+			String line = this.fileDataList.get(lineNum);
+			ArrayList<String> tokens = new ArrayList<String>();
+			tokens = myUtil.splitData_csv(line, ",");
+			//System.out.println("etc2 : "+tokens);
+			
+			if(lineNum == 0){
+				//System.out.println("etc2 : "+tokens);
+				this.xDataObj.setDataName(tokens.get(0));
+				for(int i=0;i<tokens.size()-1;i++){
+					this.yDataObjList.get(i).setDataName(tokens.get(i+1));
+					//System.out.println("==> "+tokens.get(i+1));
+				}
+				
+				this.yLegend_etcC2 = tokens.get(1);
+				this.yLegend_etcC3 = tokens.get(2);
+				/*
+				if(this.resultType.equals(GraphAllData.etcType2)){
+					this.yLegend_etcC2 = tokens.get(1);
+					this.yLegend_etcC3 = tokens.get(2);
+					//System.out.println("-->" + this.yLegend_etcC2+"\t"+this.yLegend_etcC3);
+				}else{
+					this.yLegend_etcC2 = "error-C2";
+					this.yLegend_etcC3 = "error-C3";
+				}
+				//*/
+			}else {
+				this.xDataObj.addValue(tokens.get(0));
+				this.xDataValue.add(Float.parseFloat(tokens.get(0)));
+				//System.out.print("etc2 : "+tokens.get(0)+"\t");
+				for(int i=0;i<tokens.size()-1;i++){
+					this.yDataObjList.get(i).addValue(tokens.get(i+1));
+					//System.out.print(tokens.get(i+1)+"\t");
+				}
+				//System.out.println();
+				
+				this.yDataValue_etcC2.add(Float.parseFloat(tokens.get(1)));
+				this.yDataValue_etcC3.add(Float.parseFloat(tokens.get(2)));
+				/*
+				if(this.resultType.equals(GraphAllData.etcType2)){
+					this.yDataValue_etcC2.add(Float.parseFloat(tokens.get(1)));
+					this.yDataValue_etcC3.add(Float.parseFloat(tokens.get(2)));
+					//System.out.println("etc2 re : "+tokens.get(1)+"\t"+tokens.get(2));
+				}
+				//*/
+				
+			}
+		}
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -281,6 +442,24 @@ public class ComboData_selectGraph {
 	}
 	
 	
+	// 2018.03_update
+	public String getyLegend_etcC2() {
+		return yLegend_etcC2;
+	}
+
+	public ArrayList<Float> getyDataValue_etcC2() {
+		return yDataValue_etcC2;
+	}
+
+	public String getyLegend_etcC3() {
+		return yLegend_etcC3;
+	}
+
+	public ArrayList<Float> getyDataValue_etcC3() {
+		return yDataValue_etcC3;
+	}
+
+
 	/////////////////////////////////////////////////////////////////////////////////////
 	// inner class
 	public class ColumnData{

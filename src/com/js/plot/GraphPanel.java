@@ -42,6 +42,9 @@ public class GraphPanel {
 
 	public void initialDataSet(ArrayList<ArrayList<Float>> xDataList, ArrayList<ArrayList<Float>> yDataList){
 		//Create dataset 
+		System.out.println(xDataList);
+		System.out.println(yDataList);
+		
 		for(int i=0;i<xDataList.size();i++){
 			XYSeries series = new XYSeries((i+1)+"."+this.legendList.get(i));
 			for(int j=0;j<yDataList.get(i).size();j++){

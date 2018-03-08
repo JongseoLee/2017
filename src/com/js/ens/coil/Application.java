@@ -1,5 +1,7 @@
 package com.js.ens.coil;
 
+import javax.swing.JOptionPane;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.equinox.app.IApplication;
@@ -9,6 +11,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
 import com.js.ens.coil.core.AppFolder;
+import com.js.ens.coil.core.LicenseCheck;
 import com.js.util.myUtil;
 
 /**
@@ -33,6 +36,35 @@ public class Application implements IApplication {
 		PropertyConfigurator.configure(logPropertyFile);
 		log.info("Start Simcos");
 		
+		/*
+		LicenseCheck engine = new LicenseCheck();
+		try {
+			int returnCode = 0;
+			if(engine.running()){
+				//License OK
+				log.info("License is OK..."+myUtil.getCurrentDate());
+				returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
+			}else{
+				//LIcense Error
+				log.error("License is Error..."+myUtil.getCurrentDate());
+				JOptionPane.showMessageDialog(null,"License Error" , "Simcos", JOptionPane.ERROR_MESSAGE);
+				returnCode = IApplication.EXIT_OK;
+			}
+			
+			if (returnCode == PlatformUI.RETURN_RESTART) {
+				return IApplication.EXIT_RESTART;
+			}
+			
+			return IApplication.EXIT_OK;
+		}catch(Exception e){
+			log.error("License is Error..."+myUtil.getCurrentDate());
+			JOptionPane.showMessageDialog(null, "License Error", "Leveller", JOptionPane.ERROR_MESSAGE);
+			return IApplication.EXIT_OK;
+		}finally {
+			display.dispose();
+		}
+		// */
+		/* */
 		try {
 			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
 			if (returnCode == PlatformUI.RETURN_RESTART) {
@@ -42,6 +74,7 @@ public class Application implements IApplication {
 		} finally {
 			display.dispose();
 		}
+		//*/
 	}
 
 	@Override

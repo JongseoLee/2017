@@ -332,6 +332,14 @@ public class Mediator {
 	private ICommand C_btnMaximumError;
 	public static String BUTTON_btnMaximumError = "btnMaximumError";
 	
+	private Button btnEtc;
+	private ICommand C_btnEtc;
+	public static String BUTTON_btnEtc = "BUTTON_btnEtc";
+	
+	private Button btnEtc2;
+	private ICommand C_btnEtc2;
+	public static String BUTTON_btnEtc2 = "BUTTON_btnEtc2";
+	
 	private Button btnRadius;
 	private ICommand C_btnRadius;
 	public static String BUTTON_btnRadius = "btnRadius";
@@ -1523,6 +1531,38 @@ public class Mediator {
 
 	public void setC_btnMaximumError(ICommand c_btnMaximumError) {
 		C_btnMaximumError = c_btnMaximumError;
+	}
+
+	public Button getBtnEtc() {
+		return btnEtc;
+	}
+
+	public void setBtnEtc(Button btnEtc) {
+		this.btnEtc = btnEtc;
+	}
+
+	public ICommand getC_btnEtc() {
+		return C_btnEtc;
+	}
+
+	public void setC_btnEtc2(ICommand c_btnEtc2) {
+		C_btnEtc2 = c_btnEtc2;
+	}
+	
+	public Button getBtnEtc2() {
+		return btnEtc2;
+	}
+
+	public void setBtnEtc2(Button btnEtc2) {
+		this.btnEtc2 = btnEtc2;
+	}
+
+	public ICommand getC_btnEtc2() {
+		return C_btnEtc2;
+	}
+
+	public void setC_btnEtc(ICommand c_btnEtc) {
+		C_btnEtc = c_btnEtc;
 	}
 
 	public Button getBtnRadius() {

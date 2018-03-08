@@ -136,6 +136,15 @@ public class CustomButton implements ICommand {
 			MC.Button_MaximumError();
 		}
 		
+		// 2018.03_update
+		else if(this.widgetName.equals(Mediator.BUTTON_btnEtc)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnEtc);
+			MC.Button_Etc();
+		}else if(this.widgetName.equals(Mediator.BUTTON_btnEtc2)){
+			System.out.println("Click btn : " + Mediator.BUTTON_btnEtc2);
+			MC.Button_Etc2();
+		}
+		
 	}
 	
 	////////////////////////////////////////////////
@@ -265,6 +274,14 @@ public class CustomButton implements ICommand {
 	
 	public void setCustomWidget_btnMaximumError(){
 		this.button = med.getBtnMaximumError();
+	}
+	
+	public void setCustomWidget_btnEtc(){
+		this.button = med.getBtnEtc();
+	}
+	
+	public void setCustomWidget_btnEtc2(){
+		this.button = med.getBtnEtc2();
 	}
 	
 }

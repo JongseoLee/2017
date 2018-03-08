@@ -1503,6 +1503,30 @@ public class View extends ViewPart {
 		btnMaximumError.setLayoutData(fd_btnMaximumError);
 		btnMaximumError.setText(LabelDatas.getLabel(UILabel.MaximumError));
 		
+		//2018.03_update
+		Button btnEtc = new Button(compositeCSVType, SWT.RADIO);
+		med.setBtnEtc(btnEtc);
+		CustomButton c_btnEtc = new CustomButton(Mediator.BUTTON_btnEtc,med);
+		med.setC_btnEtc(c_btnEtc);
+		c_btnEtc.setCustomWidget_btnEtc();
+		FormData fd_btnEtc = new FormData();
+		fd_btnEtc.top = new FormAttachment(btnFormSetError, 12);
+		fd_btnEtc.left = new FormAttachment(btnConditioner, 0, SWT.LEFT);
+		btnEtc.setLayoutData(fd_btnEtc);
+		btnEtc.setText(LabelDatas.getLabel(UILabel.Etc));
+
+		Button btnEtc2 = new Button(compositeCSVType, SWT.RADIO);
+		med.setBtnEtc2(btnEtc2);
+		CustomButton c_btnEtc2 = new CustomButton(Mediator.BUTTON_btnEtc2,med);
+		med.setC_btnEtc2(c_btnEtc2);
+		c_btnEtc2.setCustomWidget_btnEtc();
+		FormData fd_btnEtc2 = new FormData();
+		fd_btnEtc2.top = new FormAttachment(btnEtc, 0,SWT.TOP);
+		fd_btnEtc2.left = new FormAttachment(btnError, 0, SWT.LEFT);
+		btnEtc2.setLayoutData(fd_btnEtc2);
+		btnEtc2.setText(LabelDatas.getLabel(UILabel.Etc2));
+		
+		
 		Composite compositeGraphType = new Composite(grpDisplayResultCoil, SWT.BORDER);
 		compositeGraphType.setLayout(new FormLayout());
 		FormData fd_compositeGraphType = new FormData();
@@ -1814,6 +1838,9 @@ public class View extends ViewPart {
 		med.getBtnError().addListener(SWT.Selection, handlerButton);
 		med.getBtnFormSetError().addListener(SWT.Selection, handlerButton);
 		med.getBtnMaximumError().addListener(SWT.Selection, handlerButton);
+		// 2018.03_update
+		med.getBtnEtc().addListener(SWT.Selection, handlerButton);
+		med.getBtnEtc2().addListener(SWT.Selection, handlerButton);
 		med.getBtnRadius().addListener(SWT.Selection, handlerButton);
 		med.getBtnHeight().addListener(SWT.Selection, handlerButton);
 		med.getBtnShowGraphWindow().addListener(SWT.Selection, handlerButton);

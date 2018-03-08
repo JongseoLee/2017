@@ -165,6 +165,11 @@ public class UILabel {
 	private String base_FormSetError = "Form set Error";
 	public static String MaximumError = "MaximumError";
 	private String base_MaximumError = "Maximum error";
+	// 2018.03_update
+	public static String Etc = "Etc";
+	private String base_Etc = "Etc";
+	public static String Etc2 = "Etc2";
+	private String base_Etc2 = "Etc2";
 	public static String Radius = "Radius";
 	private String base_Radius = "Radius";
 	public static String Height = "Height";
@@ -267,6 +272,9 @@ public class UILabel {
 		this.BaseUILabelMap.put("Error", this.base_Error);
 		this.BaseUILabelMap.put("FormSetError", this.base_FormSetError);
 		this.BaseUILabelMap.put("MaximumError", this.base_MaximumError);
+		// 2018.03_update
+		this.BaseUILabelMap.put("Etc", this.base_Etc);
+		this.BaseUILabelMap.put("Etc2", this.base_Etc2);
 		this.BaseUILabelMap.put("Radius", this.base_Radius);
 		this.BaseUILabelMap.put("Height", this.base_Height);
 		this.BaseUILabelMap.put("SelectGraph", this.base_SelectGraph);

@@ -44,7 +44,18 @@ public class CreatePlotData {
 		this.legendList = new ArrayList<String>();
 		this.xDataList = new ArrayList<ArrayList<Float>>();
 		this.yDataList = new ArrayList<ArrayList<Float>>();
-		if(med.getBtnMaximumError().getSelection()){
+		// 2018.03_update
+		if(med.getBtnEtc().getSelection()){
+			this.xAxisTitle = "Iteration Number etc1";
+			this.title = "title js etc1";
+			this.yAxisTitle = "Value etc1";
+		}else if(med.getBtnEtc2().getSelection()){
+			this.xAxisTitle = "Iteration Number etc2";
+			this.title = "title js etc2";
+			this.yAxisTitle = "Value etc2";
+		}
+		
+		else if(med.getBtnMaximumError().getSelection()){
 			this.xAxisTitle = "Iteration Number";
 			this.title = "Maximum Iteration Error";
 			this.yAxisTitle = "Maximum Error(mm)";
@@ -71,7 +82,39 @@ public class CreatePlotData {
 	
 	private void setXData(){
 		// set xValue
-		if(med.getBtnMaximumError().getSelection()){
+		// 2018.03_update
+		if(med.getBtnEtc().getSelection()){
+			ArrayList<Float> tempValueList =new ArrayList<Float>();
+			System.out.println("etc1 selected graph size : "+this.coilDBObj.getSelectedGraphList().size());
+			for(int i=0; i<this.coilDBObj.getSelectedGraphList().size(); i++){
+				
+				for(int j=0; j<this.coilDBObj.getSelectedGraphList().get(i).getGraph().getxDataObj().getValueList().size();j++){
+					String strValue = this.coilDBObj.getSelectedGraphList().get(i).getGraph().getxDataObj().getValueList().get(j);
+					float value = Float.parseFloat(strValue);
+					tempValueList.add(value);
+				}
+				this.xDataList.add(tempValueList);
+				this.xDataList.add(tempValueList);
+			}
+			
+		}else if(med.getBtnEtc2().getSelection()){
+			ArrayList<Float> tempValueList =new ArrayList<Float>();
+			//System.out.println("etc2 selected graph size : "+this.coilDBObj.getSelectedGraphList().size());
+			for(int i=0; i<this.coilDBObj.getSelectedGraphList().size(); i++){
+				
+				for(int j=0; j<this.coilDBObj.getSelectedGraphList().get(i).getGraph().getxDataObj().getValueList().size();j++){
+					String strValue = this.coilDBObj.getSelectedGraphList().get(i).getGraph().getxDataObj().getValueList().get(j);
+					//System.out.println(strValue);
+					float value = Float.parseFloat(strValue);
+					tempValueList.add(value);
+				}
+				this.xDataList.add(tempValueList);
+				this.xDataList.add(tempValueList);
+			}
+			
+		}
+		
+		else if(med.getBtnMaximumError().getSelection()){
 			ArrayList<Float> tempValueList = new ArrayList<Float>();
 			for(int i=0;i<this.coilDBObj.getSelectedGraphList().size();i++){
 				
@@ -101,12 +144,17 @@ public class CreatePlotData {
 		ArrayList<Float> tempValueList;
 		ArrayList<Float> maxErrorRList;
 		ArrayList<Float> maxErrorZList;
+		ArrayList<Float> etcC2List;
+		ArrayList<Float> etcC3List;
 		
 		for(ListData_selectedGraph obj : this.coilDBObj.getSelectedGraphList()){
 			ComboData_selectGraph graphDataObj = obj.getGraph(); 
+			//System.out.println("TYpe : "+graphDataObj.getResultType());
 			tempValueList = new ArrayList<Float>();
 			maxErrorRList = new ArrayList<Float>();
 			maxErrorZList = new ArrayList<Float>();
+			etcC2List = new ArrayList<Float>();
+			etcC3List = new ArrayList<Float>();
 			
 			if(graphDataObj.getResultType().equals(GraphAllData.conditionerType)){
 				if(this.graphType.equals(GRAPH_TYPE_Radius)){
@@ -163,6 +211,91 @@ public class CreatePlotData {
 				this.yDataList.add(maxErrorZList);
 			}
 			//this.yDataList.add(tempValueList);
+			// 2018.03_update
+			else if(graphDataObj.getResultType().equals(GraphAllData.csetRezonedAlignEradType)){
+				this.legendList.add(graphDataObj.getyLegend_etcC2());
+				this.legendList.add(graphDataObj.getyLegend_etcC3());
+				for(Float f : graphDataObj.getyDataValue_etcC2()){
+					etcC2List.add(f);
+				}
+				for(Float f : graphDataObj.getyDataValue_etcC3()){
+					etcC3List.add(f);
+				}
+				this.yDataList.add(etcC2List);
+				this.yDataList.add(etcC3List);
+			}else if(graphDataObj.getResultType().equals(GraphAllData.csetRezonedAlignPtichType)){
+				this.legendList.add(graphDataObj.getyLegend_etcC2());
+				this.legendList.add(graphDataObj.getyLegend_etcC3());
+				for(Float f : graphDataObj.getyDataValue_etcC2()){
+					etcC2List.add(f);
+				}
+				for(Float f : graphDataObj.getyDataValue_etcC3()){
+					etcC3List.add(f);
+				}
+				this.yDataList.add(etcC2List);
+				this.yDataList.add(etcC3List);
+			}else if(graphDataObj.getResultType().equals(GraphAllData.formedRezonedAlignEradType)){
+				this.legendList.add(graphDataObj.getyLegend_etcC2());
+				this.legendList.add(graphDataObj.getyLegend_etcC3());
+				for(Float f : graphDataObj.getyDataValue_etcC2()){
+					etcC2List.add(f);
+				}
+				for(Float f : graphDataObj.getyDataValue_etcC3()){
+					etcC3List.add(f);
+				}
+				this.yDataList.add(etcC2List);
+				this.yDataList.add(etcC3List);
+			}else if(graphDataObj.getResultType().equals(GraphAllData.formedRezonedAlignPtichType)){
+				this.legendList.add(graphDataObj.getyLegend_etcC2());
+				this.legendList.add(graphDataObj.getyLegend_etcC3());
+				for(Float f : graphDataObj.getyDataValue_etcC2()){
+					etcC2List.add(f);
+				}
+				for(Float f : graphDataObj.getyDataValue_etcC3()){
+					etcC3List.add(f);
+				}
+				this.yDataList.add(etcC2List);
+				this.yDataList.add(etcC3List);
+			}else if(graphDataObj.getResultType().equals(GraphAllData.hsetRezonedAlignErad)){
+				this.legendList.add(graphDataObj.getyLegend_etcC2());
+				this.legendList.add(graphDataObj.getyLegend_etcC3());
+				for(Float f : graphDataObj.getyDataValue_etcC2()){
+					etcC2List.add(f);
+				}
+				for(Float f : graphDataObj.getyDataValue_etcC3()){
+					etcC3List.add(f);
+				}
+				this.yDataList.add(etcC2List);
+				this.yDataList.add(etcC3List);
+			}else if(graphDataObj.getResultType().equals(GraphAllData.hsetRezonedAlignPtich)){
+				this.legendList.add(graphDataObj.getyLegend_etcC2());
+				this.legendList.add(graphDataObj.getyLegend_etcC3());
+				for(Float f : graphDataObj.getyDataValue_etcC2()){
+					etcC2List.add(f);
+				}
+				for(Float f : graphDataObj.getyDataValue_etcC3()){
+					etcC3List.add(f);
+				}
+				this.yDataList.add(etcC2List);
+				this.yDataList.add(etcC3List);
+			}
+			
+			else if(graphDataObj.getResultType().equals(GraphAllData.mFormdataTotal)){
+				this.legendList.add(graphDataObj.getyLegend_etcC2());
+				this.legendList.add(graphDataObj.getyLegend_etcC3());
+				for(Float f : graphDataObj.getyDataValue_etcC2()){
+					//System.out.println("C2 : "+f);
+					etcC2List.add(f);
+				}
+				for(Float f : graphDataObj.getyDataValue_etcC3()){
+					//System.out.println("C3 : "+f);
+					etcC3List.add(f);
+				}
+				this.yDataList.add(etcC2List);
+				this.yDataList.add(etcC3List);
+				
+			}
+			
 		}
 	}
 

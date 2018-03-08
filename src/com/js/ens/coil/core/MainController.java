@@ -609,6 +609,18 @@ public class MainController {
 		med.getBtnHeight().setEnabled(false);
 	}
 	
+	public void Button_Etc(){
+		this.UpdateSelectGraphData();
+		med.getBtnRadius().setEnabled(false);
+		med.getBtnHeight().setEnabled(false);
+	}
+	
+	public void Button_Etc2(){
+		this.UpdateSelectGraphData();
+		med.getBtnRadius().setEnabled(false);
+		med.getBtnHeight().setEnabled(false);
+	}
+	
 	public void Button_Radius(){
 		
 	}
@@ -632,6 +644,12 @@ public class MainController {
 				obj = this.coilDBObj.getGraphDataObj().getGraphObj_formSetError(fileName);
 			}else if(med.getBtnMaximumError().getSelection()){
 				obj = this.coilDBObj.getGraphDataObj().getGraphObj_maximumError(fileName);
+			}
+			// 2018.03_update
+			else if(med.getBtnEtc().getSelection()){
+				obj = this.coilDBObj.getGraphDataObj().getGraphObj_etc(fileName);
+			}else if(med.getBtnEtc2().getSelection()){
+				obj = this.coilDBObj.getGraphDataObj().getGraphObj_etc2(fileName);
 			}
 			
 			//ComboData_selectGraph obj = this.coilDBObj.getGraphDataObj().getGraphObj(fileName);
@@ -1822,6 +1840,17 @@ public class MainController {
 			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
 		}
 		
+		if(!this.coilDBObj.getGraphDataList_etc().isEmpty()){
+			this.coilDBObj.getGraphDataList_etc().clear();
+			this.coilDBObj.getSelectedGraphList().clear();
+			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
+		}
+		
+		if(!this.coilDBObj.getGraphDataList_etc2().isEmpty()){
+			this.coilDBObj.getGraphDataList_etc2().clear();
+			this.coilDBObj.getSelectedGraphList().clear();
+			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
+		}
 		
 		
 		/* 
@@ -1851,6 +1880,12 @@ public class MainController {
 				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_formSetError());
 			}else if(med.getBtnMaximumError().getSelection()){
 				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_maximumError());
+			}
+			// 2018.03_update
+			else if(med.getBtnEtc().getSelection()){
+				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_etc());
+			}else if(med.getBtnEtc2().getSelection()){
+				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_etc2());
 			}
 			
 			

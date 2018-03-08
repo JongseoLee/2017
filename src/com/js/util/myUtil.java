@@ -6,6 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,6 +17,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -583,5 +588,70 @@ public class myUtil {
 		//System.out.println("Clear : "+obj.getClass().toString());
 		obj = null;
 		System.gc();
+	}
+	
+	public static String getIPAddress(){
+		InetAddress ip = null;
+		String IPAddress = "";
+		// ���� IP���
+		try {
+			ip = InetAddress.getLocalHost();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		IPAddress = ip.getHostAddress();
+		return IPAddress;
+	}
+	
+	public static String getMacAddress(){
+		InetAddress ip = null;
+		NetworkInterface netif = null;
+		String MacAddress = "";
+		
+		// ���� IP���
+		try {
+			ip = InetAddress.getLocalHost();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// ��Ʈ��ũ �������̽� ���
+		try {
+			netif = NetworkInterface.getByInetAddress(ip);
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// ��Ʈ��ũ �������̽��� NULL�� �ƴϸ�
+		if (netif != null) {
+			// ��Ʈ��ũ �������̽� ǥ�ø� ���
+			//System.out.print(netif.getDisplayName() + " : ");
+
+			// �ƾ�巹�� ���
+			byte[] mac = null;
+			try {
+				mac = netif.getHardwareAddress();
+			} catch (SocketException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// �ƾ�巹�� ���
+			for (byte b : mac) {
+				MacAddress = MacAddress + String.format("%02X", b);
+			}
+		}
+		return MacAddress;
+	}
+	
+	public static String getCurrentDate(){
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
+		Date currentTime = new Date ( );
+		String mTime = mSimpleDateFormat.format ( currentTime );
+		//System.out.println ( mTime );
+		return mTime;
 	}
 }

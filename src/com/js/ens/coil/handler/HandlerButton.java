@@ -94,6 +94,13 @@ public class HandlerButton implements Listener {
 		}else if(event.widget == med.getBtnMaximumError()){
 			med.getC_btnMaximumError().execute();
 		}
+		// 2018.03_update
+		else if(event.widget == med.getBtnEtc()){
+			med.getC_btnEtc().execute();
+		}else if(event.widget == med.getBtnEtc2()){
+			med.getC_btnEtc2().execute();
+		}
+		
 	}
 	
 

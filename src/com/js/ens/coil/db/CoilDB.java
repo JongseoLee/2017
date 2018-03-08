@@ -90,6 +90,10 @@ public class CoilDB {
 	private ArrayList<ComboData_selectGraph> graphDataList_error;
 	private ArrayList<ComboData_selectGraph> graphDataList_formSetError;
 	private ArrayList<ComboData_selectGraph> graphDataList_maximumError;
+	// 2018.03_update
+	private ArrayList<ComboData_selectGraph> graphDataList_etc;
+	private ArrayList<ComboData_selectGraph> graphDataList_etc2;
+	
 	private ArrayList<ListData_selectedGraph> selectedGraphList;
 	private ArrayList<ComboData_selectImage> imageDataList;
 	private ArrayList<ComboData_selectTableData> tabelDataList;
@@ -103,6 +107,8 @@ public class CoilDB {
 		this.graphDataList_error = new ArrayList<ComboData_selectGraph>();
 		this.graphDataList_formSetError = new ArrayList<ComboData_selectGraph>();
 		this.graphDataList_maximumError = new ArrayList<ComboData_selectGraph>();
+		this.graphDataList_etc = new ArrayList<ComboData_selectGraph>();
+		this.graphDataList_etc2 = new ArrayList<ComboData_selectGraph>();
 	
 		this.selectedGraphList = new ArrayList<ListData_selectedGraph>();
 		this.imageDataList = new ArrayList<ComboData_selectImage>();
@@ -481,6 +487,13 @@ public class CoilDB {
 	public void add_SelectedGraph(ListData_selectedGraph obj){
 		this.selectedGraphList.add(obj);
 	}
+	//2018.03_update
+	public void add_GraphDataCombo_etc(ComboData_selectGraph obj){
+		this.graphDataList_etc.add(obj);
+	}
+	public void add_GraphDataCombo_etc2(ComboData_selectGraph obj){
+		this.graphDataList_etc2.add(obj);
+	}
 	
 	
 	public void delete_SelectedGraph(ListData_selectedGraph obj){
@@ -664,6 +677,23 @@ public class CoilDB {
 
 	public void setGraphDataList_maximumError(ArrayList<ComboData_selectGraph> graphDataList) {
 		this.graphDataList_maximumError = graphDataList;
+	}
+	
+	//2018.03_update
+	public ArrayList<ComboData_selectGraph> getGraphDataList_etc() {
+		return graphDataList_etc;
+	}
+	public ArrayList<ComboData_selectGraph> getGraphDataList_etc2() {
+		return graphDataList_etc2;
+	}
+	//2018.03_update
+	public void setGraphDataList_etc(
+			ArrayList<ComboData_selectGraph> graphDataList_etc) {
+		this.graphDataList_etc = graphDataList_etc;
+	}
+	public void setGraphDataList_etc2(
+			ArrayList<ComboData_selectGraph> graphDataList_etc2) {
+		this.graphDataList_etc2 = graphDataList_etc2;
 	}
 
 	public ArrayList<ComboData_selectImage> getImageDataList() {

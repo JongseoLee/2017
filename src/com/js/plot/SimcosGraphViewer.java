@@ -91,6 +91,9 @@ public class SimcosGraphViewer {
 		this.xDataList = new ArrayList<ArrayList<Float>>();
 		this.yDataList = new ArrayList<ArrayList<Float>>();
 		
+		
+		
+		
 		CreatePlotData obj = new CreatePlotData();
 		obj.running(coilDBObj);
 		
@@ -100,13 +103,14 @@ public class SimcosGraphViewer {
 		this.legendList = obj.getLegendList();
 		this.xDataList = obj.getxDataList();
 		this.yDataList = obj.getyDataList();
-		//System.out.println("####### Xdata size : "+this.xDataList.size());
-		//System.out.println("####### Ydata size : "+this.yDataList.size());
+		System.out.println("####### Xdata size : "+this.xDataList.size());
+		System.out.println("####### Ydata size : "+this.yDataList.size());
 	}
 	
 	private void ShowPlotData(){
 		GraphPanel graph = new GraphPanel(this.chartTitle,this.xTitle,this.yTitle);
 		graph.setLegendList(this.legendList);
+		myUtil.printArrData(this.legendList);
 		graph.initialDataSet(this.xDataList, this.yDataList);
 		
 		final JFrame frame = new JFrame("Simcos Graph");
