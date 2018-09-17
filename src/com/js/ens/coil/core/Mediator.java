@@ -328,10 +328,23 @@ public class Mediator {
 	private ICommand C_btnFormSetError;
 	public static String BUTTON_btnFormSetError = "btnFormSetError";
 	
+	private Button btnPitch_IR;
+	private ICommand C_btnPitch_IR;
+	public static String BUTTON_btnPitch_IR = "btnPitch_IR";
+	
+	private Button btnRadius_IR;
+	private ICommand C_btnRadius_IR;
+	public static String BUTTON_btnRadius_IR = "btnRadius_IR";
+	
 	private Button btnMaximumError;
 	private ICommand C_btnMaximumError;
 	public static String BUTTON_btnMaximumError = "btnMaximumError";
 	
+	private Button btnFormDataTotal;
+	private ICommand C_btnFormDataTotal;
+	public static String BUTTON_btnFormDataTotal = "btnFormDataTotal";
+	
+	/*
 	private Button btnEtc;
 	private ICommand C_btnEtc;
 	public static String BUTTON_btnEtc = "BUTTON_btnEtc";
@@ -339,6 +352,7 @@ public class Mediator {
 	private Button btnEtc2;
 	private ICommand C_btnEtc2;
 	public static String BUTTON_btnEtc2 = "BUTTON_btnEtc2";
+	//*/
 	
 	private Button btnRadius;
 	private ICommand C_btnRadius;
@@ -1532,7 +1546,8 @@ public class Mediator {
 	public void setC_btnMaximumError(ICommand c_btnMaximumError) {
 		C_btnMaximumError = c_btnMaximumError;
 	}
-
+	
+	/*
 	public Button getBtnEtc() {
 		return btnEtc;
 	}
@@ -1564,7 +1579,8 @@ public class Mediator {
 	public void setC_btnEtc(ICommand c_btnEtc) {
 		C_btnEtc = c_btnEtc;
 	}
-
+	//*/
+	
 	public Button getBtnRadius() {
 		return btnRadius;
 	}
@@ -1750,4 +1766,54 @@ public class Mediator {
 		C_btnShowTableData = c_btnShowTableData;
 	}
 
+	public Button getBtnPitch_IR() {
+		return btnPitch_IR;
+	}
+
+	public void setBtnPitch_IR(Button btnPitch_IR) {
+		this.btnPitch_IR = btnPitch_IR;
+	}
+
+	public ICommand getC_btnPitch_IR() {
+		return C_btnPitch_IR;
+	}
+
+	public void setC_btnPitch_IR(ICommand c_btnPitch_IR) {
+		C_btnPitch_IR = c_btnPitch_IR;
+	}
+
+	public Button getBtnRadius_IR() {
+		return btnRadius_IR;
+	}
+
+	public void setBtnRadius_IR(Button btnRadius_IR) {
+		this.btnRadius_IR = btnRadius_IR;
+	}
+
+	public ICommand getC_btnRadius_IR() {
+		return C_btnRadius_IR;
+	}
+
+	public void setC_btnRadius_IR(ICommand c_btnRadius_IR) {
+		C_btnRadius_IR = c_btnRadius_IR;
+	}
+
+	public Button getBtnFormDataTotal() {
+		return btnFormDataTotal;
+	}
+
+	public void setBtnFormDataTotal(Button btnFormDataTotal) {
+		this.btnFormDataTotal = btnFormDataTotal;
+	}
+
+	public ICommand getC_btnFormDataTotal() {
+		return C_btnFormDataTotal;
+	}
+
+	public void setC_btnFormDataTotal(ICommand c_btnFormDataTotal) {
+		C_btnFormDataTotal = c_btnFormDataTotal;
+	}
+
+	
+	
 }

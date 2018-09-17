@@ -157,25 +157,37 @@ public class UILabel {
 	// Step3
 	public static String DisplayResultCoilData = "DisplayResultCoilData";
 	private String base_DisplayResultCoilData = "Display Result Coil Data";
+	public static String SelectGraph = "SelectGraph";
+	private String base_SelectGraph = "Select Graph";
+	
+	public static String InputData = "InputData";
+	private String base_InputData = "Input Data";
 	public static String Conditioner ="Conditioner";
 	private String base_Conditioner = "Conditioner";
+	
+	public static String IterationResult = "IterationResult";
+	private String base_IterationResult = "Iteration Result";
 	public static String Error = "Error";
 	private String base_Error = "Error";
 	public static String FormSetError = "FormSetError";
 	private String base_FormSetError = "Form set Error";
+	public static String Pitch_IR = "Pitch_IR";
+	private String base_Pitch_IR = "Pitch";
+	public static String Radius_IR = "Radius_IR";
+	private String base_Radius_IR = "Radius";
+	
+	public static String SummaryResult = "SummaryResult";
+	private String base_SummaryResult = "Summary Result";
 	public static String MaximumError = "MaximumError";
 	private String base_MaximumError = "Maximum error";
-	// 2018.03_update
-	public static String Etc = "Etc";
-	private String base_Etc = "Etc";
-	public static String Etc2 = "Etc2";
-	private String base_Etc2 = "Etc2";
+	public static String FormDataTotal = "FormDataTotal";
+	private String base_FormDataTotal = "Form data total";
+	
 	public static String Radius = "Radius";
 	private String base_Radius = "Radius";
 	public static String Height = "Height";
 	private String base_Height = "Height";
-	public static String SelectGraph = "SelectGraph";
-	private String base_SelectGraph = "Select Graph";
+
 	public static String AddGraph = "AddGraph";
 	private String base_AddGraph = "Add Graph";
 	public static String DeleteGraph ="DeleteGraph";
@@ -268,16 +280,25 @@ public class UILabel {
 		this.BaseUILabelMap.put("ReadLog", this.base_ReadLog);
 		
 		this.BaseUILabelMap.put("DisplayResultCoilData", this.base_DisplayResultCoilData);
+		this.BaseUILabelMap.put("SelectGraph", this.base_SelectGraph);
+		
+		this.BaseUILabelMap.put("InputData", this.base_InputData);
 		this.BaseUILabelMap.put("Conditioner", this.base_Conditioner);
+		
+		this.BaseUILabelMap.put("IterationResult", this.base_IterationResult);
 		this.BaseUILabelMap.put("Error", this.base_Error);
 		this.BaseUILabelMap.put("FormSetError", this.base_FormSetError);
+		this.BaseUILabelMap.put("Pitch_IR", this.base_Pitch_IR);
+		this.BaseUILabelMap.put("Radius_IR", this.base_Radius_IR);
+		
+		this.BaseUILabelMap.put("SummaryResult", this.base_SummaryResult);
 		this.BaseUILabelMap.put("MaximumError", this.base_MaximumError);
-		// 2018.03_update
-		this.BaseUILabelMap.put("Etc", this.base_Etc);
-		this.BaseUILabelMap.put("Etc2", this.base_Etc2);
+		this.BaseUILabelMap.put("FormDataTotal", this.base_FormDataTotal);
+		
+		
 		this.BaseUILabelMap.put("Radius", this.base_Radius);
 		this.BaseUILabelMap.put("Height", this.base_Height);
-		this.BaseUILabelMap.put("SelectGraph", this.base_SelectGraph);
+		
 		this.BaseUILabelMap.put("AddGraph", this.base_AddGraph);
 		this.BaseUILabelMap.put("DeleteGraph", this.base_DeleteGraph);
 		this.BaseUILabelMap.put("ShowPopupWindow_1", this.base_ShowPopupWindow_1);
@@ -289,6 +310,7 @@ public class UILabel {
 	
 	private void readUILabelFile(){
 		try{
+			//System.out.println(this.UILabelPath);
 			Reader reader = new Reader(this.UILabelPath);
 			reader.running();
 			for(String line : reader.getFileDataList()){

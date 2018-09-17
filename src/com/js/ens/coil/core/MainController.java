@@ -3,6 +3,8 @@ package com.js.ens.coil.core;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -539,86 +541,128 @@ public class MainController {
 		}
 	}
 	
-	public void Button_ShowGraphWindow(){
-		if(this.coilDBObj.getSelectedGraphList().size() == 0){
-			
-		}else{
-			/*
-			MakePlot obj = new MakePlot();
-			obj.running(this.coilDBObj);
-			
-			RunSimcosGraph runGraphThread = new RunSimcosGraph();
-			runGraphThread.running(this.coilDBObj, obj.getGraphHtmFilePath());
-			Runnable r_runGraphThread = runGraphThread;
-			this.t_runGraph = new Thread(r_runGraphThread);
-			this.t_runGraph.start();
-			// */
-			SimcosGraphViewer viewer = new SimcosGraphViewer();
-			viewer.running(this.coilDBObj);
-		}
-		
-		
-		
-		/* 
-		try {
-			GraphWindow_bak window = new GraphWindow_bak();
-			window.open(obj.getGraphHtmFilePath());
-			System.out.println("in plot path : "+obj.getGraphHtmFilePath());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		//*/
-		
-		/* 
-		med.getParentView().getDisplay().asyncExec(new Runnable(){
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				try{
-					String [] path = {obj.getGraphHtmFilePath()};
-					GraphWindow.main(path);
-				}catch(Exception e){
-					e.printStackTrace();
-				}
-			}
-		});
-		//*/
-	}
+	
 	
 	public void Button_Conditioner(){
-		this.UpdateSelectGraphData();
 		med.getBtnRadius().setEnabled(true);
 		med.getBtnHeight().setEnabled(true);
+		
+		med.getBtnConditioner().setSelection(true);
+		med.getBtnError().setSelection(false);
+		med.getBtnFormSetError().setSelection(false);
+		med.getBtnPitch_IR().setSelection(false);
+		med.getBtnRadius_IR().setSelection(false);
+		med.getBtnMaximumError().setSelection(false);
+		med.getBtnFormDataTotal().setSelection(false);
+		med.getBtnRadius().setSelection(true);
+		med.getBtnHeight().setSelection(false);
+		
+		this.UpdateSelectGraphData();
 	}
 	
 	public void Button_Error(){
-		this.UpdateSelectGraphData();
 		med.getBtnRadius().setEnabled(true);
 		med.getBtnHeight().setEnabled(true);
+		
+		med.getBtnConditioner().setSelection(false);
+		med.getBtnError().setSelection(true);
+		med.getBtnFormSetError().setSelection(false);
+		med.getBtnPitch_IR().setSelection(false);
+		med.getBtnRadius_IR().setSelection(false);
+		med.getBtnMaximumError().setSelection(false);
+		med.getBtnFormDataTotal().setSelection(false);
+		med.getBtnRadius().setSelection(true);
+		med.getBtnHeight().setSelection(false);
+		
+		this.UpdateSelectGraphData();
 	}
 	
 	public void Button_FormSetError(){
-		this.UpdateSelectGraphData();
 		med.getBtnRadius().setEnabled(true);
 		med.getBtnHeight().setEnabled(true);
+		
+		med.getBtnConditioner().setSelection(false);
+		med.getBtnError().setSelection(false);
+		med.getBtnFormSetError().setSelection(true);
+		med.getBtnPitch_IR().setSelection(false);
+		med.getBtnRadius_IR().setSelection(false);
+		med.getBtnMaximumError().setSelection(false);
+		med.getBtnFormDataTotal().setSelection(false);
+		med.getBtnRadius().setSelection(true);
+		med.getBtnHeight().setSelection(false);
+		
+		this.UpdateSelectGraphData();
+	}
+	
+	public void Button_Pitch_IR(){
+		// to do 
+		med.getBtnRadius().setEnabled(false);
+		med.getBtnHeight().setEnabled(false);
+		
+		med.getBtnConditioner().setSelection(false);
+		med.getBtnError().setSelection(false);
+		med.getBtnFormSetError().setSelection(false);
+		med.getBtnPitch_IR().setSelection(true);
+		med.getBtnRadius_IR().setSelection(false);
+		med.getBtnMaximumError().setSelection(false);
+		med.getBtnFormDataTotal().setSelection(false);
+		med.getBtnRadius().setSelection(false);
+		med.getBtnHeight().setSelection(false);
+		
+		this.UpdateSelectGraphData();
+	}
+	
+	public void Button_Radius_IR(){
+		// to do 
+		med.getBtnRadius().setEnabled(false);
+		med.getBtnHeight().setEnabled(false);
+		
+		med.getBtnConditioner().setSelection(false);
+		med.getBtnError().setSelection(false);
+		med.getBtnFormSetError().setSelection(false);
+		med.getBtnPitch_IR().setSelection(false);
+		med.getBtnRadius_IR().setSelection(true);
+		med.getBtnMaximumError().setSelection(false);
+		med.getBtnFormDataTotal().setSelection(false);
+		med.getBtnRadius().setSelection(false);
+		med.getBtnHeight().setSelection(false);
+		
+		this.UpdateSelectGraphData();
 	}
 	
 	public void Button_MaximumError(){
-		this.UpdateSelectGraphData();
 		med.getBtnRadius().setEnabled(false);
 		med.getBtnHeight().setEnabled(false);
+		
+		med.getBtnConditioner().setSelection(false);
+		med.getBtnError().setSelection(false);
+		med.getBtnFormSetError().setSelection(false);
+		med.getBtnPitch_IR().setSelection(false);
+		med.getBtnRadius_IR().setSelection(false);
+		med.getBtnMaximumError().setSelection(true);
+		med.getBtnFormDataTotal().setSelection(false);
+		med.getBtnRadius().setSelection(false);
+		med.getBtnHeight().setSelection(false);
+		
+		this.UpdateSelectGraphData();
 	}
 	
-	public void Button_Etc(){
-		this.UpdateSelectGraphData();
+	public void Button_FormDataTotal(){
+		// to do 
 		med.getBtnRadius().setEnabled(false);
 		med.getBtnHeight().setEnabled(false);
-	}
-	
-	public void Button_Etc2(){
+		
+		med.getBtnConditioner().setSelection(false);
+		med.getBtnError().setSelection(false);
+		med.getBtnFormSetError().setSelection(false);
+		med.getBtnPitch_IR().setSelection(false);
+		med.getBtnRadius_IR().setSelection(false);
+		med.getBtnMaximumError().setSelection(false);
+		med.getBtnFormDataTotal().setSelection(true);
+		med.getBtnRadius().setSelection(false);
+		med.getBtnHeight().setSelection(false);
+		
 		this.UpdateSelectGraphData();
-		med.getBtnRadius().setEnabled(false);
-		med.getBtnHeight().setEnabled(false);
 	}
 	
 	public void Button_Radius(){
@@ -631,7 +675,9 @@ public class MainController {
 	
 	public void Button_AddGraph(){
 		String fileName = med.getComboViewerSelectGraph().getCombo().getText();
-		//System.out.println("select graph : "+ fileName);
+		
+		String fileType = this.getfileType(fileName);
+		System.out.println("Add btn select graph : "+ fileName);
 		if(fileName.length() == 0){
 			//System.out.println("null obj: "+fileName);
 		}else {
@@ -642,17 +688,17 @@ public class MainController {
 				obj = this.coilDBObj.getGraphDataObj().getGraphObj_error(fileName);
 			}else if(med.getBtnFormSetError().getSelection()){
 				obj = this.coilDBObj.getGraphDataObj().getGraphObj_formSetError(fileName);
+			}else if(med.getBtnPitch_IR().getSelection()){
+				obj = this.coilDBObj.getGraphDataObj().getGraphObj_pitch_IR(fileName);
+			}else if(med.getBtnRadius_IR().getSelection()){
+				obj = this.coilDBObj.getGraphDataObj().getGraphObj_radius_IR(fileName);
 			}else if(med.getBtnMaximumError().getSelection()){
 				obj = this.coilDBObj.getGraphDataObj().getGraphObj_maximumError(fileName);
-			}
-			// 2018.03_update
-			else if(med.getBtnEtc().getSelection()){
-				obj = this.coilDBObj.getGraphDataObj().getGraphObj_etc(fileName);
-			}else if(med.getBtnEtc2().getSelection()){
-				obj = this.coilDBObj.getGraphDataObj().getGraphObj_etc2(fileName);
+			}else if(med.getBtnFormDataTotal().getSelection()){
+				obj = this.coilDBObj.getGraphDataObj().getGraphObj_formDataTotal(fileName);
 			}
 			
-			//ComboData_selectGraph obj = this.coilDBObj.getGraphDataObj().getGraphObj(fileName);
+			
 			/*
 			System.out.println("Graph Title : " + obj.getGraphTitle());
 			System.out.println("Iteration Name : " + obj.getIterationName());
@@ -663,22 +709,99 @@ public class MainController {
 			ListData_selectedGraph listGraphObj = new ListData_selectedGraph();
 			listGraphObj.setGraph(obj);
 			
+			
+			
 			boolean isDuplicated = false;
-			for(ListData_selectedGraph lObj : this.coilDBObj.getSelectedGraphList()){
-				if(lObj.getName().equals(listGraphObj.getName())){
-					isDuplicated = true;
-					break;
+			/*
+			if(this.coilDBObj.getSelectedGraphList().size() != 0){
+				System.out.println("1 Selected list num : "+ this.coilDBObj.getSelectedGraphList().size());
+			}else {
+				//System.out.println("Selected list num : "+ this.coilDBObj.getSelectedGraphList().size());
+				System.out.println("1 Selected list num : 0");
+			}
+			//*/
+			if(this.coilDBObj.getSelectedGraphList().size() != 0){
+				for(ListData_selectedGraph lObj : this.coilDBObj.getSelectedGraphList()){
+					//System.out.println("===>"+fileType);
+					//System.out.println("====>"+lObj.getName());
+					if(this.getfileType(lObj.getName()).equals(fileType)){
+						if(lObj.getName().equals(listGraphObj.getName())){
+							isDuplicated = true;
+							break;
+						}
+					}else{
+						isDuplicated = true;
+						break;
+					}
 				}
 			}
+			
 			
 			if(!isDuplicated){
 				this.coilDBObj.add_SelectedGraph(listGraphObj);
 			}
-			
+			/*
+			if(this.coilDBObj.getSelectedGraphList().size() != 0){
+				System.out.println("2 Selected list num : "+ this.coilDBObj.getSelectedGraphList().size());
+			}else {
+				//System.out.println("Selected list num : "+ this.coilDBObj.getSelectedGraphList().size());
+				System.out.println("2 Selected list num : 0");
+			}
+			//*/
 		}
 		
 		med.getListViewerSelectedGraph().refresh();
 	}
+	
+	private String getfileType(String fileName){
+		String type = null;
+		if(this.isMatch_conditionerType(fileName)){
+			type = "conditioner";
+		}
+		
+		if(this.isMatch_errorType(fileName)){
+			type ="error";
+		}
+		
+		if(this.isMatch_formSetErrorType(fileName)){
+			type = "fromSetError";
+		}
+		
+		if(this.isMatch_MaximumErrorType(fileName)){
+			type = "MaxError";
+		}
+		
+		if(this.isMatch_FormdataTotal(fileName)){
+			type = "FormDataTotal";
+		}
+		
+		if(this.isMatch_csetRezonedAlignPitchType(fileName)){
+			type =  "cset_pitch";
+		}
+		
+		if(this.isMatch_hsetRezonedAlignPitchType(fileName)){
+			type =  "hset_pitch";
+		}
+		
+		if(this.isMatch_formedRezonedAlignPitchType(fileName)){
+			type =  "formed_pitch";
+		}
+		
+		if(this.isMatch_csetRezonedAlignEradType(fileName)){
+			type =  "cset_radius";
+		}
+		
+		if(this.isMatch_hsetRezonedAlignEradType(fileName)){
+			type =  "hset_radius";
+		}
+		
+		if(this.isMatch_formedRezonedAlignEradType(fileName)){
+			type =  "formed_radius";
+		}
+		
+		return type;
+	}
+	
 	
 	public void Button_DeleteGraph(){
 		try{
@@ -693,6 +816,7 @@ public class MainController {
 			
 		}catch(Exception e){
 		}
+		
 		/*
 		System.out.println("+++++++++++++++++++++++++++");
 		for(ListData_selectedGraph obj : this.coilDBObj.getSelectedGraphList()){
@@ -700,6 +824,13 @@ public class MainController {
 		}
 		System.out.println("+++++++++++++++++++++++++++");
 		//*/
+	}
+	
+	public void Button_ShowGraphWindow(){
+		if(this.coilDBObj.getSelectedGraphList().size() != 0){
+			SimcosGraphViewer viewer = new SimcosGraphViewer();
+			viewer.running(this.coilDBObj);
+		}
 	}
 	
 	public void Button_ShowImageWindow(){
@@ -1811,14 +1942,6 @@ public class MainController {
 	//==================================================================================
 	private void UpdateSelectGraphData(){
 		///////////////////////////////////////////////////////////////
-		// DEMO Data --> todo... access graph data folder
-		/*
-		if(!this.coilDBObj.getGraphDataList().isEmpty()){
-			this.coilDBObj.getGraphDataList().clear();
-			this.coilDBObj.getSelectedGraphList().clear();
-			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
-		}
-		// */
 		if(!this.coilDBObj.getGraphDataList_conditioner().isEmpty()){
 			this.coilDBObj.getGraphDataList_conditioner().clear();
 			this.coilDBObj.getSelectedGraphList().clear();
@@ -1834,33 +1957,26 @@ public class MainController {
 			this.coilDBObj.getSelectedGraphList().clear();
 			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
 		}
+		if(!this.coilDBObj.getGraphDataList_pitch_IR().isEmpty()){
+			this.coilDBObj.getGraphDataList_pitch_IR().clear();
+			this.coilDBObj.getSelectedGraphList().clear();
+			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
+		}
+		if(!this.coilDBObj.getGraphDataList_radius_IR().isEmpty()){
+			this.coilDBObj.getGraphDataList_radius_IR().clear();
+			this.coilDBObj.getSelectedGraphList().clear();
+			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
+		}
 		if(!this.coilDBObj.getGraphDataList_maximumError().isEmpty()){
 			this.coilDBObj.getGraphDataList_maximumError().clear();
 			this.coilDBObj.getSelectedGraphList().clear();
 			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
 		}
-		
-		if(!this.coilDBObj.getGraphDataList_etc().isEmpty()){
-			this.coilDBObj.getGraphDataList_etc().clear();
+		if(!this.coilDBObj.getGraphDataList_formDataTotal().isEmpty()){
+			this.coilDBObj.getGraphDataList_formDataTotal().clear();
 			this.coilDBObj.getSelectedGraphList().clear();
 			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
 		}
-		
-		if(!this.coilDBObj.getGraphDataList_etc2().isEmpty()){
-			this.coilDBObj.getGraphDataList_etc2().clear();
-			this.coilDBObj.getSelectedGraphList().clear();
-			myUtil.CleareObj(this.coilDBObj.getGraphDataObj());
-		}
-		
-		
-		/* 
-		//Demo data
-		for(int i = 0; i<10 ;i++){
-			ComboData_selectGraph obj = new ComboData_selectGraph();
-			obj.setName("Graph - "+(i+1));
-			this.coilDBObj.add_GraphDataCombo(obj);
-		}
-		//*/
 		
 		GraphAllData obj = new GraphAllData(this.coilDBObj);
 		this.coilDBObj.setGraphAllDataObj(obj);
@@ -1878,16 +1994,15 @@ public class MainController {
 				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_error());
 			}else if(med.getBtnFormSetError().getSelection()){
 				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_formSetError());
+			}else if(med.getBtnPitch_IR().getSelection()){
+				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_pitch_IR());
+			}else if(med.getBtnRadius_IR().getSelection()){
+				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_radius_IR());
 			}else if(med.getBtnMaximumError().getSelection()){
 				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_maximumError());
+			}else if(med.getBtnFormDataTotal().getSelection()){
+				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_formDataTotal());
 			}
-			// 2018.03_update
-			else if(med.getBtnEtc().getSelection()){
-				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_etc());
-			}else if(med.getBtnEtc2().getSelection()){
-				med.getComboViewerSelectGraph().setInput(this.coilDBObj.getGraphDataList_etc2());
-			}
-			
 			
 			med.getListViewerSelectedGraph().setLabelProvider(new ListLabelProvider_SelectedGraph());
 			med.getListViewerSelectedGraph().setContentProvider(new ArrayContentProvider());
@@ -1992,8 +2107,148 @@ public class MainController {
 	}
 	*/
 	
-
-
+	public boolean isMatch_conditionerType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.conditionerType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("Conditioner file : "+fileName);
+		}else {
+			result = false;
+		}
+		return result;
+	}
 	
+	public boolean isMatch_errorType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.errorType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("Error file : "+fileName);
+		}else {
+			result = false;
+		}
+		return result;	
+	}
+	
+	public boolean isMatch_formSetErrorType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.formSetErrorType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("FormSetError : "+fileName);
+		}else {
+			result = false;
+		}
+		return result;
+	}
+	
+	public boolean isMatch_csetRezonedAlignPitchType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.csetRezonedAlignPitchType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("Pitch : "+fileName);
+		}else{
+			result = false;
+		}
+		return result;
+	}
+	
+	public boolean isMatch_hsetRezonedAlignPitchType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.hsetRezonedAlignPitchType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("Pitch : "+fileName);
+		}else{
+			result = false;
+		}
+		return result;
+	}
+	
+	public boolean isMatch_formedRezonedAlignPitchType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.formedRezonedAlignPitchType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("Pitch : "+fileName);
+		}else{
+			result = false;
+		}
+		return result;
+	}
+	
+	public boolean isMatch_csetRezonedAlignEradType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.csetRezonedAlignEradType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("Radius : "+fileName);
+		}else{
+			result = false;
+		}
+		return result;
+	}
+	
+	public boolean isMatch_hsetRezonedAlignEradType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.hsetRezonedAlignEradType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("Radius : "+fileName);
+		}else{
+			result = false;
+		}
+		return result;
+	}
+	
+	public boolean isMatch_formedRezonedAlignEradType(String fileName){
+		boolean result = false;                      
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.formedRezonedAlignEradType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("Radius : "+fileName);
+		}else{
+			result = false;
+		}
+		return result;
+	}
+
+	public boolean isMatch_MaximumErrorType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("("+GraphAllData.maximumErrorType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("Max Err : "+fileName);
+		}else{
+			result = false;
+		}
+		
+		return result;
+	}
+	
+	public boolean isMatch_FormdataTotal(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("("+GraphAllData.FormdataTotal+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("FomeDataTotal : " + fileName);
+		}else{
+			result = false;
+		}
+		return result;
+	}
 	
 }

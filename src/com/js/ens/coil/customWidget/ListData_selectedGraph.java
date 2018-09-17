@@ -24,5 +24,8 @@ public class ListData_selectedGraph {
 		// Label - fileName
 		return this.obj.getName();
 	}
-
+	
+	public String getResultType(){
+		return this.obj.getResultType();
+	}
 }

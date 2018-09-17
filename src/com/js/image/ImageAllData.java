@@ -18,13 +18,17 @@ public class ImageAllData {
 	}
 	
 	public void LoadingResult(String resultFolder){
+		
 		for(File f : myUtil.getDirFileList(resultFolder)){
-			String extension = myUtil.getExtensions(f.getAbsolutePath());
-			if(extension.toLowerCase().equals("png") || extension.toLowerCase().equals("jpg") || extension.toLowerCase().equals("gif")){
-				ComboData_selectImage obj = new ComboData_selectImage();
-				obj.setName(f.getName());
-				obj.setFilePath(f.getAbsolutePath());
-				this.coilDBObj.add_ImageDataCombo(obj);
+			if(f.isFile()){
+				String extension = myUtil.getExtensions(f.getAbsolutePath());
+				//System.out.println(extension + "---->"+f.getAbsolutePath());
+				if(extension.toLowerCase().equals("png") || extension.toLowerCase().equals("jpg") || extension.toLowerCase().equals("gif")){
+					ComboData_selectImage obj = new ComboData_selectImage();
+					obj.setName(f.getName());
+					obj.setFilePath(f.getAbsolutePath());
+					this.coilDBObj.add_ImageDataCombo(obj);
+				}
 			}
 		}
 	}

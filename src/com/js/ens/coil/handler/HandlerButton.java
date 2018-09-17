@@ -91,16 +91,23 @@ public class HandlerButton implements Listener {
 			med.getC_btnError().execute();
 		}else if(event.widget == med.getBtnFormSetError()){
 			med.getC_btnFormSetError().execute();
+		}else if(event.widget == med.getBtnPitch_IR()){
+			med.getC_btnPitch_IR().execute();
+		}else if(event.widget == med.getBtnRadius_IR()){
+			med.getC_btnRadius_IR().execute();
 		}else if(event.widget == med.getBtnMaximumError()){
 			med.getC_btnMaximumError().execute();
+		}else if(event.widget == med.getBtnFormDataTotal()){
+			med.getC_btnFormDataTotal().execute();
 		}
+		/*
 		// 2018.03_update
 		else if(event.widget == med.getBtnEtc()){
 			med.getC_btnEtc().execute();
 		}else if(event.widget == med.getBtnEtc2()){
 			med.getC_btnEtc2().execute();
 		}
-		
+		//*/
 	}
 	
 

@@ -29,15 +29,15 @@ public class CustomLabel implements ICommand {
 			System.out.println("Double Click : "+ Mediator.LABEL_lblProcessStep);
 		}else if(this.widgetName.equals(Mediator.LABEL_lblModeling)){
 			// Call MC method
-			System.out.println("Double Click : "+ Mediator.LABEL_lblModeling);
+			//System.out.println("Double Click : "+ Mediator.LABEL_lblModeling);
 			MC.Label_Change_ProcessStep1();
 		}else if(this.widgetName.equals(Mediator.LABEL_lblSimulationAndExportResult)){
 			// Call MC method
-			System.out.println("Double Click : "+ Mediator.LABEL_lblSimulationAndExportResult);
+			//System.out.println("Double Click : "+ Mediator.LABEL_lblSimulationAndExportResult);
 			MC.Label_Change_ProcessStep2();
 		}else if(this.widgetName.equals(Mediator.LABEL_lblShowResult)){
 			// Call MC method
-			System.out.println("Double Click : "+Mediator.LABEL_lblShowResult);
+			//System.out.println("Double Click : "+Mediator.LABEL_lblShowResult);
 			MC.Label_Change_ProcessStep3();
 		}
 	}

@@ -87,13 +87,20 @@ public class CoilDB {
 	private ImageAllData imageAllDataObj;
 	private ArrayList<ComboData_selectGraph> graphDataList;
 	private ArrayList<ComboData_selectGraph> graphDataList_conditioner;
+	
 	private ArrayList<ComboData_selectGraph> graphDataList_error;
 	private ArrayList<ComboData_selectGraph> graphDataList_formSetError;
+	private ArrayList<ComboData_selectGraph> graphDataList_pitch_IR;
+	private ArrayList<ComboData_selectGraph> graphDataList_radius_IR;
+	
 	private ArrayList<ComboData_selectGraph> graphDataList_maximumError;
-	// 2018.03_update
+	private ArrayList<ComboData_selectGraph> graphDataList_formDataTotal;
+	
+	
+	/* 2018.03_update
 	private ArrayList<ComboData_selectGraph> graphDataList_etc;
 	private ArrayList<ComboData_selectGraph> graphDataList_etc2;
-	
+	//*/
 	private ArrayList<ListData_selectedGraph> selectedGraphList;
 	private ArrayList<ComboData_selectImage> imageDataList;
 	private ArrayList<ComboData_selectTableData> tabelDataList;
@@ -106,10 +113,11 @@ public class CoilDB {
 		this.graphDataList_conditioner = new ArrayList<ComboData_selectGraph>();
 		this.graphDataList_error = new ArrayList<ComboData_selectGraph>();
 		this.graphDataList_formSetError = new ArrayList<ComboData_selectGraph>();
+		this.graphDataList_pitch_IR = new ArrayList<ComboData_selectGraph>();
+		this.graphDataList_radius_IR = new ArrayList<ComboData_selectGraph>();
 		this.graphDataList_maximumError = new ArrayList<ComboData_selectGraph>();
-		this.graphDataList_etc = new ArrayList<ComboData_selectGraph>();
-		this.graphDataList_etc2 = new ArrayList<ComboData_selectGraph>();
-	
+		this.graphDataList_formDataTotal = new ArrayList<ComboData_selectGraph>();
+		
 		this.selectedGraphList = new ArrayList<ListData_selectedGraph>();
 		this.imageDataList = new ArrayList<ComboData_selectImage>();
 		this.tabelDataList = new ArrayList<ComboData_selectTableData>();
@@ -480,20 +488,34 @@ public class CoilDB {
 		this.graphDataList_formSetError.add(obj);
 	}
 	
+	public void add_GraphDataCombo_pitch_IR(ComboData_selectGraph obj){
+		this.graphDataList_pitch_IR.add(obj);
+	}
+	
+	public void add_GraphDataCombo_radius_IR(ComboData_selectGraph obj){
+		this.graphDataList_radius_IR.add(obj);
+	}
+	
 	public void add_GraphDataCombo_maximumError(ComboData_selectGraph obj){
 		this.graphDataList_maximumError.add(obj);
+	}
+	
+	public void add_GraphDataCombo_formDataTotal(ComboData_selectGraph obj){
+		this.graphDataList_formDataTotal.add(obj);
 	}
 	
 	public void add_SelectedGraph(ListData_selectedGraph obj){
 		this.selectedGraphList.add(obj);
 	}
-	//2018.03_update
+	/*2018.03_update
 	public void add_GraphDataCombo_etc(ComboData_selectGraph obj){
 		this.graphDataList_etc.add(obj);
 	}
 	public void add_GraphDataCombo_etc2(ComboData_selectGraph obj){
 		this.graphDataList_etc2.add(obj);
 	}
+	// */
+	
 	
 	
 	public void delete_SelectedGraph(ListData_selectedGraph obj){
@@ -671,6 +693,26 @@ public class CoilDB {
 		this.graphDataList_formSetError = graphDataList;
 	}
 	
+	
+	
+	public ArrayList<ComboData_selectGraph> getGraphDataList_pitch_IR() {
+		return graphDataList_pitch_IR;
+	}
+
+	public void setGraphDataList_pitch_IR(
+			ArrayList<ComboData_selectGraph> graphDataList_pitch_IR) {
+		this.graphDataList_pitch_IR = graphDataList_pitch_IR;
+	}
+
+	public ArrayList<ComboData_selectGraph> getGraphDataList_radius_IR() {
+		return graphDataList_radius_IR;
+	}
+
+	public void setGraphDataList_radius_IR(
+			ArrayList<ComboData_selectGraph> graphDataList_radius_IR) {
+		this.graphDataList_radius_IR = graphDataList_radius_IR;
+	}
+
 	public ArrayList<ComboData_selectGraph> getGraphDataList_maximumError() {
 		return graphDataList_maximumError;
 	}
@@ -679,7 +721,16 @@ public class CoilDB {
 		this.graphDataList_maximumError = graphDataList;
 	}
 	
-	//2018.03_update
+	public ArrayList<ComboData_selectGraph> getGraphDataList_formDataTotal() {
+		return graphDataList_formDataTotal;
+	}
+
+	public void setGraphDataList_formDataTotal(
+			ArrayList<ComboData_selectGraph> graphDataList_formDataTotal) {
+		this.graphDataList_formDataTotal = graphDataList_formDataTotal;
+	}
+
+	/*2018.03_update
 	public ArrayList<ComboData_selectGraph> getGraphDataList_etc() {
 		return graphDataList_etc;
 	}
@@ -695,7 +746,8 @@ public class CoilDB {
 			ArrayList<ComboData_selectGraph> graphDataList_etc2) {
 		this.graphDataList_etc2 = graphDataList_etc2;
 	}
-
+	// */
+	
 	public ArrayList<ComboData_selectImage> getImageDataList() {
 		return imageDataList;
 	}
@@ -1007,5 +1059,24 @@ public class CoilDB {
 	public void setImageAllDataObj(ImageAllData imageAllDataObj) {
 		this.imageAllDataObj = imageAllDataObj;
 	}
+	/*
+
+	public String getSelected_pitch_IR_type() {
+		return selected_pitch_IR_type;
+	}
+
+	public void setSelected_pitch_IR_type(String selected_pitch_IR_type) {
+		this.selected_pitch_IR_type = selected_pitch_IR_type;
+	}
+
+	public String getSelected_radiusIR_type() {
+		return selected_radiusIR_type;
+	}
+
+	public void setSelected_radiusIR_type(String selected_radiusIR_type) {
+		this.selected_radiusIR_type = selected_radiusIR_type;
+	}
+	
+	//*/
 
 }

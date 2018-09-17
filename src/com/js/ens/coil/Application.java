@@ -36,7 +36,7 @@ public class Application implements IApplication {
 		PropertyConfigurator.configure(logPropertyFile);
 		log.info("Start Simcos");
 		
-		/*
+		/* 
 		LicenseCheck engine = new LicenseCheck();
 		try {
 			int returnCode = 0;

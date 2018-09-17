@@ -246,7 +246,7 @@ public class myUtil {
 		return result;
 	}
 	
-	public static ArrayList<String> splitData_csv(String line,String token){
+	public static ArrayList<String> splitData_csv(String line, String token){
 		
 		ArrayList<String> result = new ArrayList<String>();
 

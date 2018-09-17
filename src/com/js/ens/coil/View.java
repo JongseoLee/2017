@@ -1449,7 +1449,7 @@ public class View extends ViewPart {
 		fd_lblSelectGraph.right = new FormAttachment(0,350);
 		lblSelectGraph.setLayoutData(fd_lblSelectGraph);
 		lblSelectGraph.setText(LabelDatas.getLabel(UILabel.SelectGraph));
-		
+		/*
 		Composite compositeCSVType = new Composite(grpDisplayResultCoil, SWT.BORDER);
 		compositeCSVType.setLayout(new FormLayout());
 		FormData fd_compositeCSVType = new FormData();
@@ -1525,12 +1525,118 @@ public class View extends ViewPart {
 		fd_btnEtc2.left = new FormAttachment(btnError, 0, SWT.LEFT);
 		btnEtc2.setLayoutData(fd_btnEtc2);
 		btnEtc2.setText(LabelDatas.getLabel(UILabel.Etc2));
+		//*/
+		//Group grpDisplayResultCoil = new Group(compositeStep3, SWT.NONE);
 		
+		Group grpInputData = new Group(grpDisplayResultCoil, SWT.NONE);
+		grpInputData.setLayout(new FormLayout());
+		FormData fd_grpInputData = new FormData();
+		fd_grpInputData.top = new FormAttachment(lblSelectGraph,6);
+		fd_grpInputData.left = new FormAttachment(lblSelectGraph, 0,SWT.LEFT);
+		fd_grpInputData.right = new FormAttachment(lblSelectGraph, 0, SWT.RIGHT);
+		grpInputData.setLayoutData(fd_grpInputData);
+		grpInputData.setText(LabelDatas.getLabel(UILabel.InputData));
+		
+		Button btnConditioner = new Button(grpInputData, SWT.RADIO);
+		med.setBtnConditioner(btnConditioner);
+		CustomButton c_btnConditioner = new CustomButton(Mediator.BUTTON_btnConditioner,med);
+		med.setC_btnConditioner(c_btnConditioner);
+		c_btnConditioner.setCustomWidget_btnConditioner();
+		FormData fd_btnConditioner = new FormData();
+		fd_btnConditioner.top = new FormAttachment(0, 6);
+		fd_btnConditioner.left = new FormAttachment(0, 10);
+		btnConditioner.setLayoutData(fd_btnConditioner);
+		btnConditioner.setText(LabelDatas.getLabel(UILabel.Conditioner));
+		//btnConditioner.setSelection(true);
+		
+		Group grpIterationResult = new Group(grpDisplayResultCoil, SWT.NONE);
+		grpIterationResult.setLayout(new FormLayout());
+		FormData fd_grpIterationResult = new FormData();
+		fd_grpIterationResult.top = new FormAttachment(grpInputData, 6);
+		fd_grpIterationResult.left = new FormAttachment(lblSelectGraph, 0, SWT.LEFT);
+		fd_grpIterationResult.right = new FormAttachment(lblSelectGraph, 0, SWT.RIGHT);
+		grpIterationResult.setLayoutData(fd_grpIterationResult);
+		grpIterationResult.setText(LabelDatas.getLabel(UILabel.IterationResult));
+		
+		Button btnError = new Button(grpIterationResult, SWT.RADIO);
+		med.setBtnError(btnError);
+		CustomButton c_btnError = new CustomButton(Mediator.BUTTON_btnError,med);
+		med.setC_btnError(c_btnError);
+		c_btnError.setCustomWidget_btnError();
+		FormData fd_btnError = new FormData();
+		fd_btnError.top = new FormAttachment(0, 6);
+		fd_btnError.left = new FormAttachment(0, 10);
+		btnError.setLayoutData(fd_btnError);
+		btnError.setText(LabelDatas.getLabel(UILabel.Error));
+		
+		Button btnFormSetError = new Button(grpIterationResult, SWT.RADIO);
+		med.setBtnFormSetError(btnFormSetError);
+		CustomButton c_btnFormSetError = new CustomButton(Mediator.BUTTON_btnFormSetError,med);
+		med.setC_btnFormSetError(c_btnFormSetError);
+		c_btnFormSetError.setCustomWidget_btnFormSetError();
+		FormData fd_btnFormSetError = new FormData();
+		fd_btnFormSetError.top = new FormAttachment(btnError, 0, SWT.TOP);
+		fd_btnFormSetError.left = new FormAttachment(btnError, 100);
+		btnFormSetError.setLayoutData(fd_btnFormSetError);
+		btnFormSetError.setText(LabelDatas.getLabel(UILabel.FormSetError));
+		
+		Button btnPitch_IR = new Button(grpIterationResult, SWT.RADIO);
+		med.setBtnPitch_IR(btnPitch_IR);
+		CustomButton c_btnPitch_IR = new CustomButton(Mediator.BUTTON_btnPitch_IR,med);
+		med.setC_btnPitch_IR(c_btnPitch_IR);
+		c_btnPitch_IR.setCustomWidget_btnPitch_IR();
+		FormData fd_btnPitch_IR = new FormData();
+		fd_btnPitch_IR.top = new FormAttachment(btnError, 6);
+		fd_btnPitch_IR.left = new FormAttachment(btnError, 0, SWT.LEFT);
+		btnPitch_IR.setLayoutData(fd_btnPitch_IR);
+		btnPitch_IR.setText(LabelDatas.getLabel(UILabel.Pitch_IR));
+		
+		Button btnRadius_IR = new Button(grpIterationResult, SWT.RADIO);
+		med.setBtnRadius_IR(btnRadius_IR);
+		CustomButton c_btnRadius_IR = new CustomButton(Mediator.BUTTON_btnRadius_IR,med);
+		med.setC_btnRadius_IR(c_btnRadius_IR);
+		c_btnRadius_IR.setCustomWidget_btnRadius_IR();
+		FormData fd_btnRadius_IR = new FormData();
+		fd_btnRadius_IR.top = new FormAttachment(btnPitch_IR, 0 , SWT.TOP);
+		fd_btnRadius_IR.left = new FormAttachment(btnFormSetError, 0, SWT.LEFT);
+		btnRadius_IR.setLayoutData(fd_btnRadius_IR);
+		btnRadius_IR.setText(LabelDatas.getLabel(UILabel.Radius_IR));
+		
+		Group grpSummaryResult = new Group(grpDisplayResultCoil, SWT.NONE);
+		grpSummaryResult.setLayout(new FormLayout());
+		FormData fd_grpSummaryResult = new FormData();
+		fd_grpSummaryResult.top = new FormAttachment(grpIterationResult, 6);
+		fd_grpSummaryResult.left = new FormAttachment(lblSelectGraph, 0, SWT.LEFT);
+		fd_grpSummaryResult.right = new FormAttachment(lblSelectGraph, 0, SWT.RIGHT);
+		grpSummaryResult.setLayoutData(fd_grpSummaryResult);
+		grpSummaryResult.setText(LabelDatas.getLabel(UILabel.SummaryResult));
+		
+		Button btnMaximumError = new Button(grpSummaryResult, SWT.RADIO);
+		med.setBtnMaximumError(btnMaximumError);
+		CustomButton c_btnMaximumError = new CustomButton(Mediator.BUTTON_btnMaximumError,med);
+		med.setC_btnMaximumError(c_btnMaximumError);
+		c_btnMaximumError.setCustomWidget_btnMaximumError();
+		FormData fd_btnMaximumError = new FormData();
+		fd_btnMaximumError.top = new FormAttachment(0, 6);
+		fd_btnMaximumError.left = new FormAttachment(0, 10);
+		btnMaximumError.setLayoutData(fd_btnMaximumError);
+		btnMaximumError.setText(LabelDatas.getLabel(UILabel.MaximumError));
+		
+		Button btnFormDataTotal = new Button(grpSummaryResult, SWT.RADIO);
+		med.setBtnFormDataTotal(btnFormDataTotal);
+		CustomButton c_btnFormDataTotal = new CustomButton(Mediator.BUTTON_btnFormDataTotal,med);
+		med.setC_btnFormDataTotal(c_btnFormDataTotal);
+		c_btnFormDataTotal.setCustomWidget_btnFormDataTotal();
+		FormData fd_btnFormDataTotal = new FormData();
+		fd_btnFormDataTotal.top = new FormAttachment(btnMaximumError, 0 , SWT.TOP);
+		fd_btnFormDataTotal.left = new FormAttachment(btnMaximumError, 40);
+		btnFormDataTotal.setLayoutData(fd_btnFormDataTotal);
+		btnFormDataTotal.setText(LabelDatas.getLabel(UILabel.FormDataTotal));
 		
 		Composite compositeGraphType = new Composite(grpDisplayResultCoil, SWT.BORDER);
 		compositeGraphType.setLayout(new FormLayout());
 		FormData fd_compositeGraphType = new FormData();
-		fd_compositeGraphType.top = new FormAttachment(compositeCSVType, 6);
+		fd_compositeGraphType.top = new FormAttachment(grpSummaryResult, 6);
 		fd_compositeGraphType.left = new FormAttachment(lblSelectGraph,0,SWT.LEFT);
 		fd_compositeGraphType.right = new FormAttachment(lblSelectGraph,0,SWT.RIGHT);
 		compositeGraphType.setLayoutData(fd_compositeGraphType);
@@ -1545,7 +1651,7 @@ public class View extends ViewPart {
 		fd_btnRadius.left = new FormAttachment(0, 10);
 		btnRadius.setLayoutData(fd_btnRadius);
 		btnRadius.setText(LabelDatas.getLabel(UILabel.Radius));
-		btnRadius.setSelection(true);
+		//btnRadius.setSelection(true);
 		
 		Button btnHeight = new Button(compositeGraphType, SWT.RADIO);
 		med.setBtnHeight(btnHeight);
@@ -1554,7 +1660,7 @@ public class View extends ViewPart {
 		c_btnHeight.SetCustomWidget_btnHeihght();
 		FormData fd_btnHeight = new FormData();
 		fd_btnHeight.top = new FormAttachment(btnRadius, 0, SWT.TOP);
-		fd_btnHeight.left = new FormAttachment(btnRadius, 110);
+		fd_btnHeight.left = new FormAttachment(btnRadius, 90);
 		btnHeight.setLayoutData(fd_btnHeight);
 		btnHeight.setText(LabelDatas.getLabel(UILabel.Height));
 		
@@ -1653,6 +1759,8 @@ public class View extends ViewPart {
 		fd_btnShowImageWindow.right = new FormAttachment(comboSelectImage, 0, SWT.RIGHT); 
 		btnShowImageWindow.setLayoutData(fd_btnShowImageWindow);
 		btnShowImageWindow.setText(LabelDatas.getLabel(UILabel.ShowPopupWindow_2));
+		
+		
 		
 		//*/
 		
@@ -1837,10 +1945,13 @@ public class View extends ViewPart {
 		med.getBtnConditioner().addListener(SWT.Selection, handlerButton);
 		med.getBtnError().addListener(SWT.Selection, handlerButton);
 		med.getBtnFormSetError().addListener(SWT.Selection, handlerButton);
+		med.getBtnPitch_IR().addListener(SWT.Selection, handlerButton);
+		med.getBtnRadius_IR().addListener(SWT.Selection, handlerButton);
 		med.getBtnMaximumError().addListener(SWT.Selection, handlerButton);
+		med.getBtnFormDataTotal().addListener(SWT.Selection, handlerButton);
 		// 2018.03_update
-		med.getBtnEtc().addListener(SWT.Selection, handlerButton);
-		med.getBtnEtc2().addListener(SWT.Selection, handlerButton);
+		//med.getBtnEtc().addListener(SWT.Selection, handlerButton);
+		//med.getBtnEtc2().addListener(SWT.Selection, handlerButton);
 		med.getBtnRadius().addListener(SWT.Selection, handlerButton);
 		med.getBtnHeight().addListener(SWT.Selection, handlerButton);
 		med.getBtnShowGraphWindow().addListener(SWT.Selection, handlerButton);

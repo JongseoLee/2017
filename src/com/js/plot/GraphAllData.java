@@ -14,33 +14,26 @@ public class GraphAllData {
 	private MainController MC = MainController.getInstatnce();
 	private CoilDB CObj;
 	
+	public static final String Type_conditioner = "Conditioner";
 	public static String conditionerType = "_conditioner.csv";
-	public static String errorType = "_error.csv";
-	public static String formSetErrorType = "_form_set_error.csv";
-	public static String maximumErrorType = "_err_hist.csv";
-	//2018.03_update
-	/*
-	 * 성형품 / 핫세팅 / 완제품의 누적 피치 선도와 반경그래프 항목 추가
-	 * FS_1_cset_rezoned_align_erad
-	 * FS_1_cset_rezoned_align_ptich
-	 * FS_1_formed_rezoned_align_erad
-	 * FS_1_formed_rezoned_align_ptich
-	 * FS_1_hset_rezoned_align_erad
-	 * FS_1_hset_rezoned_align_ptich
-	 * 
-	 * 성형 데이터 피치 및 외경 값 그래프 항목 추가 
-	 * M_formdata_total
-	 */
-	public static String etcType1 = "etcType1";
-	public static String etcType2 = "etcType2";
-	public static String csetRezonedAlignEradType = "_cset_rezoned_align_erad.csv";
-	public static String csetRezonedAlignPtichType = "_cset_rezoned_align_ptich.csv";
-	public static String formedRezonedAlignEradType = "_formed_rezoned_align_erad.csv";
-	public static String formedRezonedAlignPtichType = "_formed_rezoned_align_ptich.csv";
-	public static String hsetRezonedAlignErad = "_hset_rezoned_align_erad.csv";
-	public static String hsetRezonedAlignPtich = "_hset_rezoned_align_ptich.csv";
 	
-	public static String mFormdataTotal = "M_formdata_total.csv";
+	public static final String Type_error = "Error";
+	public static String errorType = "_error.csv";
+	public static final String Type_formSetError = "FormSetError";
+	public static String formSetErrorType = "_form_set_error.csv";	
+	public static final String Type_pitch = "pitch";
+	public static String csetRezonedAlignPitchType = "_cset_rezoned_align_pitch.csv";
+	public static String hsetRezonedAlignPitchType = "_hset_rezoned_align_pitch.csv";
+	public static String formedRezonedAlignPitchType = "_formed_rezoned_align_pitch.csv";
+	public static final String Type_radius = "radius";
+	public static String csetRezonedAlignEradType = "_cset_rezoned_align_erad.csv";
+	public static String hsetRezonedAlignEradType = "_hset_rezoned_align_erad.csv";
+	public static String formedRezonedAlignEradType = "_formed_rezoned_align_erad.csv";
+	
+	public static final String Type_maximumError = "MaximumError";
+	public static String maximumErrorType = "_err_hist.csv";
+	public static final String Type_formDataTotal = "FormDataTotal";
+	public static String FormdataTotal = "_formdata_total.csv";
 	
 	private ArrayList<String> csvFilePathList; 
 	
@@ -60,99 +53,106 @@ public class GraphAllData {
 				if(this.isMatch_conditionerType(fileName)){
 					//System.out.println(f.getName());
 					this.csvFilePathList.add(f.getAbsolutePath());
-					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.conditionerType);
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.Type_conditioner);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running("normal");
+					obj.setPatternFileName(GraphAllData.conditionerType);
+					obj.running();
 					this.CObj.add_GraphDataCombo_conditioner(obj);
-				}else if(this.isMatch_errorType(fileName)){
+				}
+				
+				else if(this.isMatch_errorType(fileName)){
 					//System.out.println(f.getName());
 					this.csvFilePathList.add(f.getAbsolutePath());
-					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.errorType);
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.Type_error);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running("normal");
+					obj.setPatternFileName(GraphAllData.errorType);
+					obj.running();
 					this.CObj.add_GraphDataCombo_error(obj);
 				}else if(this.isMatch_formSetErrorType(fileName)){
 					//System.out.println(f.getName());
 					this.csvFilePathList.add(f.getAbsolutePath());
-					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.formSetErrorType);
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.Type_formSetError);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running("normal");
+					obj.setPatternFileName(GraphAllData.formSetErrorType);
+					obj.running();
 					this.CObj.add_GraphDataCombo_formSetError(obj);
-				}else if(this.isMatch_MaximumErrorType(fileName)){
+				}
+				
+				else if(this.isMatch_csetRezonedAlignPitchType(fileName)){
 					this.csvFilePathList.add(f.getAbsolutePath());
-					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.maximumErrorType);
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.Type_pitch);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running("err");
-					this.CObj.add_GraphDataCombo_maximumError(obj);
+					obj.setPatternFileName(GraphAllData.csetRezonedAlignPitchType);
+					obj.running();
+					this.CObj.add_GraphDataCombo_pitch_IR(obj);
+				}else if(this.isMatch_hsetRezonedAlignPitchType(fileName)){
+					this.csvFilePathList.add(f.getAbsolutePath());
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.Type_pitch);
+					obj.setName(f.getName());
+					obj.setFilePath(f.getAbsolutePath());
+					obj.setPatternFileName(GraphAllData.hsetRezonedAlignPitchType);
+					obj.running();
+					this.CObj.add_GraphDataCombo_pitch_IR(obj);
+				}else if(this.isMatch_formedRezonedAlignPitchType(fileName)){
+					this.csvFilePathList.add(f.getAbsolutePath());
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.Type_pitch);
+					obj.setName(f.getName());
+					obj.setFilePath(f.getAbsolutePath());
+					obj.setPatternFileName(GraphAllData.formedRezonedAlignPitchType);
+					obj.running();
+					this.CObj.add_GraphDataCombo_pitch_IR(obj);
 				}
-				// 2018.03_update
+				
 				else if(this.isMatch_csetRezonedAlignEradType(fileName)){
 					this.csvFilePathList.add(f.getAbsolutePath());
-					//ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.etcType1);
-					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.csetRezonedAlignEradType);
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.Type_radius);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running("etc1");
-					this.CObj.add_GraphDataCombo_etc(obj);
-				}else if(this.isMatch_csetRezonedAlignPtichType(fileName)){
+					obj.setPatternFileName(GraphAllData.csetRezonedAlignEradType);
+					obj.running();
+					this.CObj.add_GraphDataCombo_radius_IR(obj);
+				}else if(this.isMatch_hsetRezonedAlignEradType(fileName)){
 					this.csvFilePathList.add(f.getAbsolutePath());
-					//ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.etcType1);
-					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.csetRezonedAlignPtichType);
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.Type_radius);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running("etc1");
-					this.CObj.add_GraphDataCombo_etc(obj);
+					obj.setPatternFileName(GraphAllData.hsetRezonedAlignEradType);
+					obj.running();
+					this.CObj.add_GraphDataCombo_radius_IR(obj);
 				}else if(this.isMatch_formedRezonedAlignEradType(fileName)){
 					this.csvFilePathList.add(f.getAbsolutePath());
-					//ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.etcType1);
-					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.formedRezonedAlignEradType);
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.Type_radius);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running("etc1");
-					this.CObj.add_GraphDataCombo_etc(obj);
-				}else if(this.isMatch_formedRezonedAlignPtichType(fileName)){
-					this.csvFilePathList.add(f.getAbsolutePath());
-					//ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.etcType1);
-					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.formedRezonedAlignPtichType);
-					obj.setName(f.getName());
-					obj.setFilePath(f.getAbsolutePath());
-					obj.running("etc1");
-					this.CObj.add_GraphDataCombo_etc(obj);
-				}else if(this.isMatch_hsetRezonedAlignErad(fileName)){
-					this.csvFilePathList.add(f.getAbsolutePath());
-					//ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.etcType1);
-					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.hsetRezonedAlignErad);
-					obj.setName(f.getName());
-					obj.setFilePath(f.getAbsolutePath());
-					obj.running("etc1");
-					this.CObj.add_GraphDataCombo_etc(obj);
-				}else if(this.isMatch_hsetRezonedAlignPtich(fileName)){
-					this.csvFilePathList.add(f.getAbsolutePath());
-					//ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.etcType1);
-					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.hsetRezonedAlignPtich);
-					obj.setName(f.getName());
-					obj.setFilePath(f.getAbsolutePath());
-					obj.running("etc1");
-					this.CObj.add_GraphDataCombo_etc(obj);
+					obj.setPatternFileName(GraphAllData.formedRezonedAlignEradType);
+					obj.running();
+					this.CObj.add_GraphDataCombo_radius_IR(obj);
 				}
-				else if(this.isMatch_mFormdataTotal(fileName)){
-					//System.out.println("find !!! "+fileName);
+				
+				else if(this.isMatch_MaximumErrorType(fileName)){
 					this.csvFilePathList.add(f.getAbsolutePath());
-					//ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.etcType2);
-					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.mFormdataTotal);
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.Type_maximumError);
 					obj.setName(f.getName());
 					obj.setFilePath(f.getAbsolutePath());
-					obj.running("etc2");
-					this.CObj.add_GraphDataCombo_etc2(obj);
+					obj.setPatternFileName(GraphAllData.maximumErrorType);
+					obj.running();
+					this.CObj.add_GraphDataCombo_maximumError(obj);
+				}else if(this.isMatch_FormdataTotal(fileName)){
+					this.csvFilePathList.add(f.getAbsolutePath());
+					ComboData_selectGraph obj = new ComboData_selectGraph(GraphAllData.Type_formDataTotal);
+					obj.setName(f.getName());
+					obj.setFilePath(f.getAbsolutePath());
+					obj.setPatternFileName(GraphAllData.FormdataTotal);
+					obj.running();
+					this.CObj.add_GraphDataCombo_formDataTotal(obj);
 				}
 				
 			}
 		}
-		
 		//myUtil.printArrData(csvFilePathList);
 	}
 	
@@ -189,6 +189,28 @@ public class GraphAllData {
 		return returnObj;
 	}
 	
+	public ComboData_selectGraph getGraphObj_pitch_IR(String fileName){
+		ComboData_selectGraph returnObj = null;
+		for(ComboData_selectGraph obj : this.CObj.getGraphDataList_pitch_IR()){
+			if(obj.getName().equals(fileName)){
+				returnObj = obj;
+				break;
+			}
+		}
+		return returnObj;
+	}
+	
+	public ComboData_selectGraph getGraphObj_radius_IR(String fileName){
+		ComboData_selectGraph returnObj = null;
+		for(ComboData_selectGraph obj : this.CObj.getGraphDataList_radius_IR()){
+			if(obj.getName().equals(fileName)){
+				returnObj = obj;
+				break;
+			}
+		}
+		return returnObj;
+	}
+	
 	public ComboData_selectGraph getGraphObj_maximumError(String fileName){
 		ComboData_selectGraph returnObj = null;
 		for(ComboData_selectGraph obj : this.CObj.getGraphDataList_maximumError()){
@@ -200,9 +222,9 @@ public class GraphAllData {
 		return returnObj;
 	}
 	
-	public ComboData_selectGraph getGraphObj_etc(String fileName){
+	public ComboData_selectGraph getGraphObj_formDataTotal(String fileName){
 		ComboData_selectGraph returnObj = null;
-		for(ComboData_selectGraph obj : this.CObj.getGraphDataList_etc()){
+		for(ComboData_selectGraph obj : this.CObj.getGraphDataList_formDataTotal()){
 			if(obj.getName().equals(fileName)){
 				returnObj = obj;
 				break;
@@ -211,16 +233,6 @@ public class GraphAllData {
 		return returnObj;
 	}
 	
-	public ComboData_selectGraph getGraphObj_etc2(String fileName){
-		ComboData_selectGraph returnObj = null;
-		for(ComboData_selectGraph obj : this.CObj.getGraphDataList_etc2()){
-			if(obj.getName().equals(fileName)){
-				returnObj = obj;
-				break;
-			}
-		}
-		return returnObj;
-	}
 	
 	
 	public boolean isMatch_conditionerType(String fileName){
@@ -229,6 +241,7 @@ public class GraphAllData {
 		Matcher m = p.matcher(fileName);
 		if(m.find()){
 			result = true;
+			//System.out.println("Conditioner file : "+fileName);
 		}else {
 			result = false;
 		}
@@ -241,6 +254,7 @@ public class GraphAllData {
 		Matcher m = p.matcher(fileName);
 		if(m.find()){
 			result = true;
+			//System.out.println("Error file : "+fileName);
 		}else {
 			result = false;
 		}
@@ -253,44 +267,72 @@ public class GraphAllData {
 		Matcher m = p.matcher(fileName);
 		if(m.find()){
 			result = true;
+			//System.out.println("FormSetError : "+fileName);
 		}else {
 			result = false;
 		}
 		return result;
 	}
 	
-	public boolean isMatch_MaximumErrorType(String fileName){
+	public boolean isMatch_csetRezonedAlignPitchType(String fileName){
 		boolean result = false;
-		Pattern p = Pattern.compile("("+GraphAllData.maximumErrorType+")$");
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.csetRezonedAlignPitchType+")$");
 		Matcher m = p.matcher(fileName);
 		if(m.find()){
 			result = true;
+			//System.out.println("Pitch : "+fileName);
 		}else{
 			result = false;
 		}
-		
 		return result;
 	}
 	
-	// 2018.03_update
+	public boolean isMatch_hsetRezonedAlignPitchType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.hsetRezonedAlignPitchType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("Pitch : "+fileName);
+		}else{
+			result = false;
+		}
+		return result;
+	}
+	
+	public boolean isMatch_formedRezonedAlignPitchType(String fileName){
+		boolean result = false;
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.formedRezonedAlignPitchType+")$");
+		Matcher m = p.matcher(fileName);
+		if(m.find()){
+			result = true;
+			//System.out.println("Pitch : "+fileName);
+		}else{
+			result = false;
+		}
+		return result;
+	}
+	
 	public boolean isMatch_csetRezonedAlignEradType(String fileName){
 		boolean result = false;
-		Pattern p = Pattern.compile("("+GraphAllData.csetRezonedAlignEradType+")$");
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.csetRezonedAlignEradType+")$");
 		Matcher m = p.matcher(fileName);
 		if(m.find()){
 			result = true;
+			//System.out.println("Radius : "+fileName);
 		}else{
 			result = false;
 		}
 		return result;
 	}
 	
-	public boolean isMatch_csetRezonedAlignPtichType(String fileName){
+	public boolean isMatch_hsetRezonedAlignEradType(String fileName){
 		boolean result = false;
-		Pattern p = Pattern.compile("("+GraphAllData.csetRezonedAlignPtichType+")$");
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.hsetRezonedAlignEradType+")$");
 		Matcher m = p.matcher(fileName);
 		if(m.find()){
 			result = true;
+			//System.out.println("Radius : "+fileName);
 		}else{
 			result = false;
 		}
@@ -299,58 +341,39 @@ public class GraphAllData {
 	
 	public boolean isMatch_formedRezonedAlignEradType(String fileName){
 		boolean result = false;                      
-		Pattern p = Pattern.compile("("+GraphAllData.formedRezonedAlignEradType+")$");
+		Pattern p = Pattern.compile("[0-9]+("+GraphAllData.formedRezonedAlignEradType+")$");
 		Matcher m = p.matcher(fileName);
 		if(m.find()){
 			result = true;
+			//System.out.println("Radius : "+fileName);
 		}else{
 			result = false;
 		}
 		return result;
 	}
 	
-	public boolean isMatch_formedRezonedAlignPtichType(String fileName){
+	
+	public boolean isMatch_MaximumErrorType(String fileName){
 		boolean result = false;
-		Pattern p = Pattern.compile("("+GraphAllData.formedRezonedAlignPtichType+")$");
+		Pattern p = Pattern.compile("("+GraphAllData.maximumErrorType+")$");
 		Matcher m = p.matcher(fileName);
 		if(m.find()){
 			result = true;
+			//System.out.println("Max Err : "+fileName);
 		}else{
 			result = false;
 		}
+		
 		return result;
 	}
 	
-	public boolean isMatch_hsetRezonedAlignErad(String fileName){
+	public boolean isMatch_FormdataTotal(String fileName){
 		boolean result = false;
-		Pattern p = Pattern.compile("("+GraphAllData.hsetRezonedAlignErad+")$");
+		Pattern p = Pattern.compile("("+GraphAllData.FormdataTotal+")$");
 		Matcher m = p.matcher(fileName);
 		if(m.find()){
 			result = true;
-		}else{
-			result = false;
-		}
-		return result;
-	}
-	
-	public boolean isMatch_hsetRezonedAlignPtich(String fileName){
-		boolean result = false;
-		Pattern p = Pattern.compile("("+GraphAllData.hsetRezonedAlignPtich+")$");
-		Matcher m = p.matcher(fileName);
-		if(m.find()){
-			result = true;
-		}else{
-			result = false;
-		}
-		return result;
-	}
-	
-	public boolean isMatch_mFormdataTotal(String fileName){
-		boolean result = false;
-		Pattern p = Pattern.compile("("+GraphAllData.mFormdataTotal+")$");
-		Matcher m = p.matcher(fileName);
-		if(m.find()){
-			result = true;
+			//System.out.println("FomeDataTotal : " + fileName);
 		}else{
 			result = false;
 		}

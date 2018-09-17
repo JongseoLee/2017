@@ -27,22 +27,26 @@ public class SimcosGraphViewer {
 		// TODO Auto-generated constructor stub
 	}
 	
+	// Step1 call this method
+	public void running_geometryData_radius(CoilDB coilDBObj){
+		this.GenPlotData_geometryData_radius(coilDBObj);
+		this.ShowPlotData();
+	}
 	
+	// Step1 call this method
+	public void running_geometryData_pitch(CoilDB coilDBObj){
+		this.GenPlotData_geometryData_pitch(coilDBObj);
+		this.ShowPlotData();
+	}
+	
+	// Step3 call this method
 	public void running(CoilDB coilDBObj){
 		// SimcosGraphViewer -> CreatePlotData -> GraphPanel
 		this.GenPlotData(coilDBObj);
 		this.ShowPlotData();
 	}
 	
-	public void running_geometryData_radius(CoilDB coilDBObj){
-		this.GenPlotData_geometryData_radius(coilDBObj);
-		this.ShowPlotData();
-	}
 	
-	public void running_geometryData_pitch(CoilDB coilDBObj){
-		this.GenPlotData_geometryData_pitch(coilDBObj);
-		this.ShowPlotData();
-	}
 	
 	private void GenPlotData_geometryData_radius(CoilDB coilDBObj){
 		this.legendList = new ArrayList<String>();
@@ -91,26 +95,26 @@ public class SimcosGraphViewer {
 		this.xDataList = new ArrayList<ArrayList<Float>>();
 		this.yDataList = new ArrayList<ArrayList<Float>>();
 		
-		
-		
-		
 		CreatePlotData obj = new CreatePlotData();
 		obj.running(coilDBObj);
+		
+		this.legendList = obj.getLegendList();
+		this.xDataList = obj.getxDataList();
+		this.yDataList = obj.getyDataList();
 		
 		this.chartTitle = obj.getTitle();
 		this.xTitle = obj.getxAxisTitle();
 		this.yTitle = obj.getyAxisTitle();
-		this.legendList = obj.getLegendList();
-		this.xDataList = obj.getxDataList();
-		this.yDataList = obj.getyDataList();
-		System.out.println("####### Xdata size : "+this.xDataList.size());
-		System.out.println("####### Ydata size : "+this.yDataList.size());
+		
+		//System.out.println("####### Xdata size : "+this.xDataList.size());
+		//System.out.println("####### Ydata size : "+this.yDataList.size());
 	}
 	
 	private void ShowPlotData(){
 		GraphPanel graph = new GraphPanel(this.chartTitle,this.xTitle,this.yTitle);
 		graph.setLegendList(this.legendList);
 		myUtil.printArrData(this.legendList);
+		
 		graph.initialDataSet(this.xDataList, this.yDataList);
 		
 		final JFrame frame = new JFrame("Simcos Graph");
